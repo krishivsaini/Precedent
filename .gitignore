@@ -10,3 +10,7 @@ dist/
 *.db
 *.sqlite
 *.sqlite3
+
+# Cached model responses for the evals. Committed results must be reproducible from a
+# clone by running the eval, not by shipping its answers.
+evals/.cache/
