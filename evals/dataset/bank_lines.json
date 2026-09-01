@@ -1,0 +1,1842 @@
+[
+  {
+    "line_id": "line_d5ff05559abc",
+    "value_date": "2026-09-02",
+    "amount_paise": 98,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWL7gT6zin2oN8",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_518f985c2482",
+    "value_date": "2026-09-02",
+    "amount_paise": 44360,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTc6UNjfoOvYz",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5f6118cb1251",
+    "value_date": "2026-09-02",
+    "amount_paise": 17998,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTdLA15JzFDeh",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_61945d1c457c",
+    "value_date": "2026-09-02",
+    "amount_paise": 120432,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTdpWxj4iaAb3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_c0af00500593",
+    "value_date": "2026-09-02",
+    "amount_paise": 25088,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTekUBwct33ZT",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_72a413592277",
+    "value_date": "2026-09-01",
+    "amount_paise": 399432,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTfzCdUyoCO2j",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_62f3818d252e",
+    "value_date": "2026-09-01",
+    "amount_paise": 369374,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTghZwswq2VIA",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_6a09ad4ce7cc",
+    "value_date": "2026-09-02",
+    "amount_paise": 443404,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWThN2r3T95CX0",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_66521b2a4139",
+    "value_date": "2026-09-01",
+    "amount_paise": 133664,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTibRlW7aXW5c",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_43f9274e6e94",
+    "value_date": "2026-09-02",
+    "amount_paise": 123642,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTj9vthjJU9TZ",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a4f08ddcdfa6",
+    "value_date": "2026-08-16",
+    "amount_paise": 100567,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0001",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e218f8b204f3",
+    "value_date": "2026-07-22",
+    "amount_paise": 107285,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0002",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a7c8628f3deb",
+    "value_date": "2026-07-03",
+    "amount_paise": 176308,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0003",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8f8d66c3e16f",
+    "value_date": "2026-08-01",
+    "amount_paise": 257502,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0004",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_163095972a6f",
+    "value_date": "2026-08-03",
+    "amount_paise": 160537,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0005",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_726c95ce4121",
+    "value_date": "2026-06-29",
+    "amount_paise": 33198,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0006",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_bffdadb444ba",
+    "value_date": "2026-06-26",
+    "amount_paise": 18107,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0007",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e0ec059ff34f",
+    "value_date": "2026-07-18",
+    "amount_paise": 213498,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0008",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_ac38b5a1c798",
+    "value_date": "2026-07-14",
+    "amount_paise": 98619,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0009",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_62e6354cb230",
+    "value_date": "2026-08-16",
+    "amount_paise": 20639,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0010",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_04711672797e",
+    "value_date": "2026-07-24",
+    "amount_paise": 317472,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0011",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_1529088cc3b9",
+    "value_date": "2026-08-02",
+    "amount_paise": 462822,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0012",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_0cbfc1011b02",
+    "value_date": "2026-06-20",
+    "amount_paise": 413852,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0013",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_62555c286b33",
+    "value_date": "2026-08-14",
+    "amount_paise": 30959,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0014",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_683b4bad0912",
+    "value_date": "2026-06-26",
+    "amount_paise": 80122,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0015",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d2ec12ecd88e",
+    "value_date": "2026-07-09",
+    "amount_paise": 107965,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0016",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_81790329345c",
+    "value_date": "2026-08-12",
+    "amount_paise": 95018,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0017",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b6b5e5a9bc2b",
+    "value_date": "2026-07-15",
+    "amount_paise": 248740,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0018",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_2c71e9911aa1",
+    "value_date": "2026-06-28",
+    "amount_paise": 36508,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0019",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_58606b755c33",
+    "value_date": "2026-08-02",
+    "amount_paise": 172804,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0020",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_1b5a3d1747f0",
+    "value_date": "2026-08-26",
+    "amount_paise": 29693,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0021",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d22b81b2b79f",
+    "value_date": "2026-06-26",
+    "amount_paise": 26773,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0022",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_96321bfa5989",
+    "value_date": "2026-08-16",
+    "amount_paise": 144181,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0023",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b4c3047b3fbf",
+    "value_date": "2026-07-01",
+    "amount_paise": 319224,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0024",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7b9d126d5cc5",
+    "value_date": "2026-07-14",
+    "amount_paise": 38162,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0025",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_af0a7dc481e1",
+    "value_date": "2026-07-03",
+    "amount_paise": 121790,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0026",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_acfb7110ef68",
+    "value_date": "2026-06-29",
+    "amount_paise": 40500,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0027",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_ea4e72bd0c37",
+    "value_date": "2026-08-10",
+    "amount_paise": 291186,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0028",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_68ad3fa27119",
+    "value_date": "2026-07-09",
+    "amount_paise": 71361,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0029",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_73b7da98d66b",
+    "value_date": "2026-08-19",
+    "amount_paise": 243190,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0030",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7e2deb77249b",
+    "value_date": "2026-06-19",
+    "amount_paise": 64643,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0031",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4d744ebd3164",
+    "value_date": "2026-07-18",
+    "amount_paise": 180884,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0032",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a4a997a085b2",
+    "value_date": "2026-07-25",
+    "amount_paise": 481221,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0033",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7fd896b9b0a8",
+    "value_date": "2026-06-29",
+    "amount_paise": 176893,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0034",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5b5d60c7749f",
+    "value_date": "2026-07-20",
+    "amount_paise": 176114,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0035",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f2d6a15a8283",
+    "value_date": "2026-08-02",
+    "amount_paise": 12753,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0036",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d483b048ab6c",
+    "value_date": "2026-07-20",
+    "amount_paise": 23171,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0037",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_71fefbd6c9a2",
+    "value_date": "2026-07-22",
+    "amount_paise": 29596,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0038",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_ed338a176d9e",
+    "value_date": "2026-08-21",
+    "amount_paise": 12656,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0039",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_0c147c025571",
+    "value_date": "2026-08-05",
+    "amount_paise": 32419,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0040",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_fed1a81e42b6",
+    "value_date": "2026-07-16",
+    "amount_paise": 23073,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0041",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a26cc14b9792",
+    "value_date": "2026-08-07",
+    "amount_paise": 274052,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0042",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_29754fa60fb8",
+    "value_date": "2026-07-17",
+    "amount_paise": 154696,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0043",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a9bfa97b89ca",
+    "value_date": "2026-08-22",
+    "amount_paise": 56368,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0044",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8a96a41d7a20",
+    "value_date": "2026-08-31",
+    "amount_paise": 449192,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0045",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b7feebd34100",
+    "value_date": "2026-08-21",
+    "amount_paise": 19763,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0046",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e163832affb1",
+    "value_date": "2026-08-11",
+    "amount_paise": 207364,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0047",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e3bfd25c5ada",
+    "value_date": "2026-08-12",
+    "amount_paise": 364884,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0048",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5c67d27b9146",
+    "value_date": "2026-07-22",
+    "amount_paise": 16745,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0049",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5ec83610de02",
+    "value_date": "2026-08-31",
+    "amount_paise": 256431,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0050",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d559a8b96517",
+    "value_date": "2026-08-26",
+    "amount_paise": 470123,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0051",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e2a5db689f80",
+    "value_date": "2026-07-09",
+    "amount_paise": 143501,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0052",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_c8aceb26f431",
+    "value_date": "2026-08-28",
+    "amount_paise": 129578,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0053",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d0755b315792",
+    "value_date": "2026-06-30",
+    "amount_paise": 142721,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0054",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_fb33a8a74db8",
+    "value_date": "2026-08-30",
+    "amount_paise": 105045,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0055",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d8c69a7c679d",
+    "value_date": "2026-08-19",
+    "amount_paise": 133278,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0056",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_519ad49f13aa",
+    "value_date": "2026-09-02",
+    "amount_paise": 103001,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0057",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f6e287d7a6c6",
+    "value_date": "2026-08-11",
+    "amount_paise": 229561,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0058",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8e72317ac03a",
+    "value_date": "2026-07-02",
+    "amount_paise": 462822,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0059",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8e6cd66189c1",
+    "value_date": "2026-08-27",
+    "amount_paise": 160148,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0060",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_afeaf8a9e058",
+    "value_date": "2026-08-18",
+    "amount_paise": 246208,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0061",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_0aecef229779",
+    "value_date": "2026-07-26",
+    "amount_paise": 91221,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0062",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_75d275bdb14d",
+    "value_date": "2026-08-25",
+    "amount_paise": 23949,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0063",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8c2e103d43fb",
+    "value_date": "2026-08-24",
+    "amount_paise": 286026,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0064",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_25211dc291ce",
+    "value_date": "2026-06-30",
+    "amount_paise": 18205,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0065",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e32c745b7fd6",
+    "value_date": "2026-07-17",
+    "amount_paise": 421056,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0066",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_cdaafba7617e",
+    "value_date": "2026-06-22",
+    "amount_paise": 121888,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0067",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_65d29980182b",
+    "value_date": "2026-07-15",
+    "amount_paise": 15771,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0068",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_848f8808cd9b",
+    "value_date": "2026-09-02",
+    "amount_paise": 18303,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0069",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a146cc500f63",
+    "value_date": "2026-07-15",
+    "amount_paise": 56953,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0070",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_edec6f635386",
+    "value_date": "2026-08-07",
+    "amount_paise": 28233,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0071",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7baba8bcfa60",
+    "value_date": "2026-07-16",
+    "amount_paise": 124030,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0072",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_781b18ebe620",
+    "value_date": "2026-08-08",
+    "amount_paise": 359626,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0073",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_95cb730472f5",
+    "value_date": "2026-06-24",
+    "amount_paise": 136101,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0074",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f0cd2e7e90a0",
+    "value_date": "2026-07-04",
+    "amount_paise": 268503,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0075",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f7295524f47e",
+    "value_date": "2026-08-09",
+    "amount_paise": 25312,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0076",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e3d9b46f912b",
+    "value_date": "2026-06-29",
+    "amount_paise": 380070,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0077",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_45ef3d8fcff4",
+    "value_date": "2026-08-03",
+    "amount_paise": 283106,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0078",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f0c21eed2a2a",
+    "value_date": "2026-07-17",
+    "amount_paise": 16161,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0079",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7a5241c97819",
+    "value_date": "2026-07-16",
+    "amount_paise": 150412,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0080",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f04e728c1d17",
+    "value_date": "2026-07-04",
+    "amount_paise": 170272,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0081",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4c749c42f29f",
+    "value_date": "2026-07-16",
+    "amount_paise": 119940,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0082",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_bda52ceefc71",
+    "value_date": "2026-08-15",
+    "amount_paise": 465742,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0083",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_eeaf57dbc569",
+    "value_date": "2026-07-01",
+    "amount_paise": 40500,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0084",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_57fc4a39fb64",
+    "value_date": "2026-08-03",
+    "amount_paise": 247668,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0085",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_03068d813f54",
+    "value_date": "2026-08-28",
+    "amount_paise": 40596,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0086",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_038c383d3236",
+    "value_date": "2026-07-22",
+    "amount_paise": 14117,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0087",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_366485fd2a7e",
+    "value_date": "2026-08-19",
+    "amount_paise": 66395,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0088",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4ebde9049d5e",
+    "value_date": "2026-08-14",
+    "amount_paise": 15382,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0089",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b743adcd45c6",
+    "value_date": "2026-08-01",
+    "amount_paise": 106019,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0090",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_0efb797dcf5a",
+    "value_date": "2026-07-06",
+    "amount_paise": 72431,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0091",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_56763e2e7dda",
+    "value_date": "2026-08-10",
+    "amount_paise": 276681,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0092",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_6ae8062a2580",
+    "value_date": "2026-08-09",
+    "amount_paise": 103391,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0093",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5ab93b0d5552",
+    "value_date": "2026-08-06",
+    "amount_paise": 272105,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0094",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7c0735395abd",
+    "value_date": "2026-09-02",
+    "amount_paise": 110984,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0095",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_ac1dbb9ccf04",
+    "value_date": "2026-08-11",
+    "amount_paise": 368388,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0096",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_6f0fc8f2284f",
+    "value_date": "2026-08-23",
+    "amount_paise": 101929,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0097",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_57c8eb7fad46",
+    "value_date": "2026-08-30",
+    "amount_paise": 331588,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0098",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_611379877e3d",
+    "value_date": "2026-09-01",
+    "amount_paise": 177730,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTjgYr70FSGkP",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_65c7d814c3ef",
+    "value_date": "2026-09-02",
+    "amount_paise": 22568,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTkDt1zbCqUN1",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_91382229ba81",
+    "value_date": "2026-09-01",
+    "amount_paise": 33660,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTkiSVaY6kGBs",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8839d4aed167",
+    "value_date": "2026-09-02",
+    "amount_paise": 284448,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTlGB3jpQRqZZ",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_51686dc2bdcc",
+    "value_date": "2026-07-24",
+    "amount_paise": 39428,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0099",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_81c8fc12d945",
+    "value_date": "2026-07-15",
+    "amount_paise": 27843,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0100",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_2b1574674ab3",
+    "value_date": "2026-08-07",
+    "amount_paise": 45270,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0101",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_72c976e0f62a",
+    "value_date": "2026-08-19",
+    "amount_paise": 103779,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0102",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_eba8c21efa32",
+    "value_date": "2026-07-23",
+    "amount_paise": 383283,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0103",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e58bdcc90dbe",
+    "value_date": "2026-08-12",
+    "amount_paise": 283203,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0104",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_54f1dbdc19f5",
+    "value_date": "2026-08-27",
+    "amount_paise": 139703,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_382692ceabbe",
+    "value_date": "2026-08-23",
+    "amount_paise": 662787,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7b77f6cc8bf3",
+    "value_date": "2026-07-08",
+    "amount_paise": 483363,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a31a963aa180",
+    "value_date": "2026-08-26",
+    "amount_paise": 377832,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_64b9e0fc3be9",
+    "value_date": "2026-08-04",
+    "amount_paise": 40500,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_30a47bf7e39e",
+    "value_date": "2026-08-14",
+    "amount_paise": 433129,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_28f0b0f91019",
+    "value_date": "2026-08-12",
+    "amount_paise": 124223,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_975c4d45c1cb",
+    "value_date": "2026-08-17",
+    "amount_paise": 82946,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4995bdd36a6c",
+    "value_date": "2026-08-25",
+    "amount_paise": 834519,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_683f82871cbf",
+    "value_date": "2026-08-24",
+    "amount_paise": 458050,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b1ab367a0f96",
+    "value_date": "2026-08-04",
+    "amount_paise": 47412,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_32bc134117ee",
+    "value_date": "2026-07-30",
+    "amount_paise": 574973,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_056fcabf41fa",
+    "value_date": "2026-08-10",
+    "amount_paise": 76618,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5203f80802ff",
+    "value_date": "2026-08-30",
+    "amount_paise": 230437,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b143281dd053",
+    "value_date": "2026-09-02",
+    "amount_paise": 357388,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_1a8c83d78e63",
+    "value_date": "2026-08-23",
+    "amount_paise": 293328,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7aa7126a7db8",
+    "value_date": "2026-08-29",
+    "amount_paise": 190328,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f9d84208cd6a",
+    "value_date": "2026-08-20",
+    "amount_paise": 364982,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_43e18e9e1c12",
+    "value_date": "2026-09-03",
+    "amount_paise": 349014,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_fe28a59fc2bb",
+    "value_date": "2026-09-01",
+    "amount_paise": 74672,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4eb2f566689f",
+    "value_date": "2026-08-16",
+    "amount_paise": 1254992,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8f7ba3889b19",
+    "value_date": "2026-08-26",
+    "amount_paise": 217488,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_3514f52ec8df",
+    "value_date": "2026-08-30",
+    "amount_paise": 557351,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_9f0e7fa3a9e6",
+    "value_date": "2026-08-11",
+    "amount_paise": 532721,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f6a28807b2f2",
+    "value_date": "2026-07-05",
+    "amount_paise": 162972,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8a955ddbfd8c",
+    "value_date": "2026-08-25",
+    "amount_paise": 58899,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a3b33113f70a",
+    "value_date": "2026-06-26",
+    "amount_paise": 164334,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_3452cf22353a",
+    "value_date": "2026-08-29",
+    "amount_paise": 144961,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7204491c7e50",
+    "value_date": "2026-08-12",
+    "amount_paise": 134350,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_df20bfe85b26",
+    "value_date": "2026-08-07",
+    "amount_paise": 222745,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e74cca78fd80",
+    "value_date": "2026-08-06",
+    "amount_paise": 54421,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8c30a2b3ccd4",
+    "value_date": "2026-07-26",
+    "amount_paise": 573611,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_6a8edb02c185",
+    "value_date": "2026-08-19",
+    "amount_paise": 875408,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5583508094c3",
+    "value_date": "2026-07-17",
+    "amount_paise": 677195,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_79f4f8ca4d6c",
+    "value_date": "2026-09-03",
+    "amount_paise": 263927,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/2",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_570d33aca11c",
+    "value_date": "2026-08-10",
+    "amount_paise": 658892,
+    "direction": "credit",
+    "narration": "NEFT-CR SETTLEMENT batch/3",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5db538a47d7c",
+    "value_date": "2026-07-20",
+    "amount_paise": 54700,
+    "direction": "credit",
+    "narration": "NEFT/CORAL274/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_9727b3ce609f",
+    "value_date": "2026-07-15",
+    "amount_paise": 12500,
+    "direction": "credit",
+    "narration": "NEFT/EVERES167/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_63939fc3d012",
+    "value_date": "2026-07-13",
+    "amount_paise": 335100,
+    "direction": "credit",
+    "narration": "NEFT/ORBIT699/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a52c64cc8291",
+    "value_date": "2026-08-13",
+    "amount_paise": 231000,
+    "direction": "credit",
+    "narration": "NEFT/KALYAN783/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_568fd7bb3f82",
+    "value_date": "2026-07-10",
+    "amount_paise": 47600,
+    "direction": "credit",
+    "narration": "NEFT/TRIDEN677/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a7df6456221e",
+    "value_date": "2026-07-31",
+    "amount_paise": 442000,
+    "direction": "credit",
+    "narration": "NEFT/QUARTZ893/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8ff7ab03ed0e",
+    "value_date": "2026-08-29",
+    "amount_paise": 136200,
+    "direction": "credit",
+    "narration": "NEFT/ORBIT808/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4e6e6efdc23a",
+    "value_date": "2026-08-18",
+    "amount_paise": 328100,
+    "direction": "credit",
+    "narration": "NEFT/SUNRIS822/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_0b8d0c29f3a2",
+    "value_date": "2026-08-20",
+    "amount_paise": 318700,
+    "direction": "credit",
+    "narration": "NEFT/PRAKAS912/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_2ba0ef389884",
+    "value_date": "2026-08-30",
+    "amount_paise": 17300,
+    "direction": "credit",
+    "narration": "NEFT/LOTUS406/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_3ec5556f03ae",
+    "value_date": "2026-07-19",
+    "amount_paise": 429400,
+    "direction": "credit",
+    "narration": "NEFT/HORIZO193/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_32a78a5dcce5",
+    "value_date": "2026-08-05",
+    "amount_paise": 43700,
+    "direction": "credit",
+    "narration": "NEFT/RAVIS867/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d0435e1e05a1",
+    "value_date": "2026-07-18",
+    "amount_paise": 179000,
+    "direction": "credit",
+    "narration": "NEFT/ORBIT109/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d0338bb912b3",
+    "value_date": "2026-08-19",
+    "amount_paise": 466400,
+    "direction": "credit",
+    "narration": "NEFT/HORIZO836/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_cddfa0eee282",
+    "value_date": "2026-08-23",
+    "amount_paise": 421100,
+    "direction": "credit",
+    "narration": "NEFT/ORBIT592/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_1f75297aafe9",
+    "value_date": "2026-07-10",
+    "amount_paise": 457000,
+    "direction": "credit",
+    "narration": "NEFT/INDUS569/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_ff1255cf26c8",
+    "value_date": "2026-07-17",
+    "amount_paise": 178400,
+    "direction": "credit",
+    "narration": "NEFT/ORBIT595/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_994499e2795b",
+    "value_date": "2026-08-17",
+    "amount_paise": 360700,
+    "direction": "credit",
+    "narration": "NEFT/TRIDEN816/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_1ff68d1699b5",
+    "value_date": "2026-07-18",
+    "amount_paise": 17900,
+    "direction": "credit",
+    "narration": "NEFT/NIRVAN912/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_81dbc3552ee6",
+    "value_date": "2026-07-24",
+    "amount_paise": 472800,
+    "direction": "credit",
+    "narration": "NEFT/FALCON955/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e4290bc3ac68",
+    "value_date": "2026-08-21",
+    "amount_paise": 16900,
+    "direction": "credit",
+    "narration": "NEFT/PRAKAS350/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d2091227f199",
+    "value_date": "2026-08-13",
+    "amount_paise": 23700,
+    "direction": "credit",
+    "narration": "NEFT/DHANAS767/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_5f2ba83a2249",
+    "value_date": "2026-07-10",
+    "amount_paise": 129800,
+    "direction": "credit",
+    "narration": "NEFT/KALYAN462/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_aa76d2e53c2c",
+    "value_date": "2026-08-23",
+    "amount_paise": 11000,
+    "direction": "credit",
+    "narration": "NEFT/EVERES557/XFER",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7ebe22e465bc",
+    "value_date": "2026-09-02",
+    "amount_paise": 163236,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTlhQsrwRlLdw",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b9f4d3cae0f7",
+    "value_date": "2026-09-01",
+    "amount_paise": 437372,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTm7xktft5G0f",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_80cff3200b76",
+    "value_date": "2026-09-01",
+    "amount_paise": 152536,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTmhIovCRPDxL",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_b9efe56d9dbd",
+    "value_date": "2026-09-01",
+    "amount_paise": 214698,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTnGlHtIrfdjo",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_780bcf2c9f92",
+    "value_date": "2026-07-04",
+    "amount_paise": 164460,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0211",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_e91070bce5ea",
+    "value_date": "2026-08-25",
+    "amount_paise": 44555,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0212",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_9196eeb021aa",
+    "value_date": "2026-08-08",
+    "amount_paise": 37151,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0213",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_ec4b6de64b44",
+    "value_date": "2026-06-21",
+    "amount_paise": 74213,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0214",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_419b91d0bf7f",
+    "value_date": "2026-08-25",
+    "amount_paise": 37063,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0215",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8d6a80c3a494",
+    "value_date": "2026-07-17",
+    "amount_paise": 312448,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0216",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_65007bd4addf",
+    "value_date": "2026-08-15",
+    "amount_paise": 18575,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0217",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d13e7925a076",
+    "value_date": "2026-08-27",
+    "amount_paise": 212090,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0218",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_9ce5579d3de3",
+    "value_date": "2026-08-19",
+    "amount_paise": 86820,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0219",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_1c3dc40c3bd6",
+    "value_date": "2026-07-18",
+    "amount_paise": 22781,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0220",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_949ce53a25d8",
+    "value_date": "2026-08-19",
+    "amount_paise": 28826,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0221",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8e321347bb83",
+    "value_date": "2026-07-19",
+    "amount_paise": 112771,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0222",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_245fadda8f3a",
+    "value_date": "2026-07-23",
+    "amount_paise": 14979,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0223",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_90d4502fd9bb",
+    "value_date": "2026-08-07",
+    "amount_paise": 214842,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0224",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_40930f81a48e",
+    "value_date": "2026-07-06",
+    "amount_paise": 42838,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0225",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_6188502c0ac6",
+    "value_date": "2026-06-25",
+    "amount_paise": 455812,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0226",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4f15e0972075",
+    "value_date": "2026-08-21",
+    "amount_paise": 417941,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0227",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4ac1ae17efc9",
+    "value_date": "2026-07-28",
+    "amount_paise": 350961,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0228",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_4be74ad679f6",
+    "value_date": "2026-07-22",
+    "amount_paise": 86158,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0229",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_66b4f99f0110",
+    "value_date": "2026-06-27",
+    "amount_paise": 139119,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0230",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_38a46606f0b2",
+    "value_date": "2026-08-06",
+    "amount_paise": 689559,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0231",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_137a373a1469",
+    "value_date": "2026-07-07",
+    "amount_paise": 634943,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0232",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_c5c93c095241",
+    "value_date": "2026-07-24",
+    "amount_paise": 714190,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0233",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_836e737d60fb",
+    "value_date": "2026-07-04",
+    "amount_paise": 858274,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0234",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_45929d4ec55a",
+    "value_date": "2026-08-19",
+    "amount_paise": 801711,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0235",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_7befbf16416f",
+    "value_date": "2026-08-10",
+    "amount_paise": 508578,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0236",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_96036fc3f451",
+    "value_date": "2026-06-23",
+    "amount_paise": 574486,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0237",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_23445260edb4",
+    "value_date": "2026-06-20",
+    "amount_paise": 455812,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0238",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_8300468201b9",
+    "value_date": "2026-08-09",
+    "amount_paise": 375884,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0239",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_47b06fd115d7",
+    "value_date": "2026-09-02",
+    "amount_paise": 248779,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTnvY4rnDLETS (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_ac38da93a3a3",
+    "value_date": "2026-09-02",
+    "amount_paise": 13491,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTodCoL5PfEVV (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_2ac7aa56eea6",
+    "value_date": "2026-09-02",
+    "amount_paise": 249686,
+    "direction": "credit",
+    "narration": "NEFT-CR order_TWTpgv3RGVFyZL (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_dad0f08bd404",
+    "value_date": "2026-07-24",
+    "amount_paise": 32704,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0240 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f799bd34452a",
+    "value_date": "2026-07-14",
+    "amount_paise": 352075,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0241 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a9f45ef89c42",
+    "value_date": "2026-07-14",
+    "amount_paise": 16858,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0242 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_234cd566d2e5",
+    "value_date": "2026-06-28",
+    "amount_paise": 205486,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0243 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_d16d435a9598",
+    "value_date": "2026-08-28",
+    "amount_paise": 87838,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0244 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_adbda1c5818f",
+    "value_date": "2026-08-24",
+    "amount_paise": 49345,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0245 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_63c59882cdb7",
+    "value_date": "2026-08-03",
+    "amount_paise": 76478,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0246 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_a547b3939674",
+    "value_date": "2026-08-31",
+    "amount_paise": 167066,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0247 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_28ef35b29cfd",
+    "value_date": "2026-07-12",
+    "amount_paise": 91093,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0248 (net of same-day refund)",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_6ae17492790d",
+    "value_date": "2026-07-10",
+    "amount_paise": 377832,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0249",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_0bd66326d012",
+    "value_date": "2026-07-16",
+    "amount_paise": 113904,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0250",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_f0cc91ec4f8d",
+    "value_date": "2026-07-03",
+    "amount_paise": 195098,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0251",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_9e716687cd68",
+    "value_date": "2026-07-28",
+    "amount_paise": 14895,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0252",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_0a6ab11aec2a",
+    "value_date": "2026-08-31",
+    "amount_paise": 156546,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0253",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_353506437d54",
+    "value_date": "2026-07-02",
+    "amount_paise": 111860,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0254",
+    "source": "synthetic"
+  },
+  {
+    "line_id": "line_41b8eb9f3d54",
+    "value_date": "2026-07-11",
+    "amount_paise": 253608,
+    "direction": "credit",
+    "narration": "NEFT-CR order_synth_0255",
+    "source": "synthetic"
+  }
+]
