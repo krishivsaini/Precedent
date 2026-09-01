@@ -83,6 +83,7 @@ class PrecedentRecord:
     reason_code: str
     entities: list
     amount_signature: str
+    confidence_at_deposit: float
     deposited_at: str
     corpus_version: int
     embedding: bytes | None = None

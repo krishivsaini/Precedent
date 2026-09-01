@@ -1,0 +1,345 @@
+[
+  {
+    "situation": "A single captured card or UPI payment, one open ledger invoice for the same order, and one bank credit a day or two later. The credit is smaller than the invoice by a few hundred paise and the gap equals the payment processor's fee plus GST on that fee.",
+    "resolution": "This is a clean match, not a shortfall. Compare the bank credit against the payment amount net of fee and tax, and compare the ledger's expected amount against the payment gross. Both must hold. Do not compare the bank credit to the invoice directly — that comparison fails on every correctly settled payment.",
+    "reason_code": "exact_match",
+    "entities": ["settlement", "processor fee", "GST on fee"],
+    "amount_signature": "net_of_psp_fee_and_tax",
+    "confidence_at_deposit": 0.97
+  },
+  {
+    "situation": "Payment, ledger entry and bank credit all agree once processor fees are accounted for, and the settlement date falls inside the normal one-to-two working day settlement lag. Nothing about the case requires interpretation.",
+    "resolution": "Match exactly on order reference and net amount. Close without escalation. Cases of this shape are the volume baseline; spending investigation budget on them starves the genuinely ambiguous ones.",
+    "reason_code": "exact_match",
+    "entities": ["settlement lag", "order reference"],
+    "amount_signature": "clean_one_to_one",
+    "confidence_at_deposit": 0.98
+  },
+  {
+    "situation": "The ledger's expected amount and the payment differ by under a rupee — a few tens of paise in either direction — with no percentage relationship between the gap and the amount. The invoice was almost certainly rounded to whole rupees when it was raised.",
+    "resolution": "Accept inside the rounding tolerance band of one rupee and match. Record the residual so it can be swept to a rounding-difference account at period end. Do not open an investigation: a sub-rupee gap with no proportional structure carries no information.",
+    "reason_code": "tolerance_rounding",
+    "entities": ["rounding", "tolerance band", "invoice rounding"],
+    "amount_signature": "sub_rupee_absolute_delta",
+    "confidence_at_deposit": 0.95
+  },
+  {
+    "situation": "A small discrepancy of well under one rupee between what the ledger expected and what settled. Someone has flagged it as a short payment.",
+    "resolution": "Distinguish an absolute delta from a proportional one before anything else. A fixed sub-rupee gap is rounding. A gap that is a clean percentage of the invoice is a deduction — usually withholding tax — and must be investigated as such even when the absolute figure is small on a small invoice. The test is proportionality, not magnitude.",
+    "reason_code": "tolerance_rounding",
+    "entities": ["rounding", "proportional deduction"],
+    "amount_signature": "absolute_versus_proportional_gap",
+    "confidence_at_deposit": 0.9
+  },
+  {
+    "situation": "Amounts reconcile to the paise, but rounding of the fee component means the settled figure is one paise off the computed expectation depending on which way the fee was rounded.",
+    "resolution": "Apply half-up rounding at the point where a percentage meets an amount, once, and compare integers thereafter. A one-paise oscillation is a rounding-convention artefact, not a discrepancy. Never reintroduce floating point to explain it away.",
+    "reason_code": "tolerance_rounding",
+    "entities": ["rounding convention", "half-up"],
+    "amount_signature": "single_paise_rounding_artifact",
+    "confidence_at_deposit": 0.93
+  },
+  {
+    "situation": "Amount and order reference match exactly, but the bank credit is dated three to five days after capture rather than the usual one or two. Weekends, a bank holiday, or a settlement cycle change explain the delay.",
+    "resolution": "Widen the date window and match. The identity evidence — exact order reference and exact net amount — is far stronger than the date evidence. Treat the date as corroborating, never as disqualifying, when amount and reference both agree exactly.",
+    "reason_code": "date_window_timing",
+    "entities": ["settlement cycle", "bank holiday", "value date"],
+    "amount_signature": "exact_amount_late_value_date",
+    "confidence_at_deposit": 0.92
+  },
+  {
+    "situation": "A payment captured late on a Friday settles the following Tuesday or Wednesday. The reconciliation run flags it as unsettled because the credit fell outside the narrow window.",
+    "resolution": "Recognise the weekend and holiday effect before treating a late credit as missing. Match on the wider window and record the timing as the reason. A payment is only genuinely missing once the wide window has also elapsed with no credit.",
+    "reason_code": "date_window_timing",
+    "entities": ["weekend", "settlement cycle", "value date"],
+    "amount_signature": "weekend_settlement_delay",
+    "confidence_at_deposit": 0.9
+  },
+  {
+    "situation": "The bank credit precedes the ledger entry date, because the invoice was raised after the customer had already paid against a proforma or advance.",
+    "resolution": "Do not require the credit to follow the ledger entry. Match on order reference and amount; the ordering of the two dates carries no reconciliation meaning when both refer to the same commercial event.",
+    "reason_code": "date_window_timing",
+    "entities": ["advance payment", "proforma", "value date"],
+    "amount_signature": "credit_precedes_ledger_entry",
+    "confidence_at_deposit": 0.84
+  },
+
+  {
+    "situation": "One bank credit is materially larger than any single open invoice and does not equal any of them. Several payments were captured across distinct orders in the day or two before the credit's value date, and no single one accounts for it.",
+    "resolution": "This is a batched settlement, so the task is grouping rather than joining. Sum each candidate payment net of its own fee and tax, then find the subset whose total equals the credit exactly. Match the whole group to the credit at once. Never match the credit to the largest single payment and leave the remainder unexplained.",
+    "reason_code": "netted_settlement",
+    "entities": ["settlement batch", "payout", "grouping"],
+    "amount_signature": "sum_of_net_amounts_one_credit",
+    "confidence_at_deposit": 0.93
+  },
+  {
+    "situation": "A settlement credit that does not equal the sum of the gross payments captured in its window, but falls short of that sum by roughly two percent of the total.",
+    "resolution": "Net each payment individually before summing. The processor deducts its fee and the tax on that fee per payment, not once on the batch, so summing gross and then applying one deduction leaves a residue that will not close. Compute the sum of individually-netted amounts and it will reconcile to the paise.",
+    "reason_code": "netted_settlement",
+    "entities": ["settlement batch", "per-payment fee"],
+    "amount_signature": "sum_netted_per_payment_not_per_batch",
+    "confidence_at_deposit": 0.91
+  },
+  {
+    "situation": "Several open ledger entries across different orders and different customers, and a single credit whose value date is one or two days after the latest of the corresponding captures.",
+    "resolution": "The settlement window closes on a cutoff, so the credit's date tracks the latest payment in the batch, not the earliest. When searching for the group, look backward from the credit date across the full settlement window rather than anchoring on the first unmatched payment.",
+    "reason_code": "netted_settlement",
+    "entities": ["settlement cutoff", "batch window"],
+    "amount_signature": "credit_dated_from_latest_capture",
+    "confidence_at_deposit": 0.89
+  },
+  {
+    "situation": "A batch credit nearly closes against a candidate group of payments but is short by an amount matching one of the smaller payments in the window.",
+    "resolution": "Test subsets rather than assuming every payment in the date range belongs to the batch. A payment captured just after the settlement cutoff rolls into the next batch. Confirm the chosen subset closes exactly, and leave the excluded payment open to match the following credit rather than forcing the current one.",
+    "reason_code": "netted_settlement",
+    "entities": ["settlement cutoff", "subset selection"],
+    "amount_signature": "partial_subset_closes_exactly",
+    "confidence_at_deposit": 0.85
+  },
+  {
+    "situation": "A batched settlement credit where the group of payments has been identified, but the total is off by a few paise from the credit.",
+    "resolution": "Rounding is applied per payment at the fee calculation, so a batch of many payments can accumulate several paise of rounding residue. Allow the tolerance band to scale with the size of the group rather than applying a flat single-payment tolerance, but require the residue to stay within a few paise per member. A larger gap means the group is wrong, not the rounding.",
+    "reason_code": "netted_settlement",
+    "entities": ["rounding residue", "batch tolerance"],
+    "amount_signature": "batch_rounding_residue",
+    "confidence_at_deposit": 0.82
+  },
+  {
+    "situation": "Two settlement credits land on the same value date and multiple payments are open. Neither credit matches any single payment and it is unclear which payments belong to which credit.",
+    "resolution": "Solve both groups together rather than greedily assigning the first credit. A greedy assignment can consume a payment the second credit needs, leaving both unreconciled. If more than one subset assignment closes exactly, do not guess — escalate, because a wrong grouping produces two false matches rather than one.",
+    "reason_code": "netted_settlement",
+    "entities": ["settlement batch", "ambiguous grouping"],
+    "amount_signature": "multiple_credits_same_date",
+    "confidence_at_deposit": 0.72
+  },
+
+  {
+    "situation": "A bank credit exists with an open ledger invoice at exactly the same amount, but there is no payment record behind it anywhere in the processor's data. The narration is a compressed bank reference string rather than an order identifier.",
+    "resolution": "The customer paid by direct bank transfer and bypassed the payment gateway entirely, so no processor record will ever exist. Match the credit straight to the ledger entry. Note that the amount is gross, not net, because no processor fee was deducted — this is itself strong evidence of a direct transfer.",
+    "reason_code": "direct_neft_bypass",
+    "entities": ["NEFT", "direct bank transfer", "narration"],
+    "amount_signature": "gross_credit_no_payment_record",
+    "confidence_at_deposit": 0.88
+  },
+  {
+    "situation": "A credit whose narration is a truncated, uppercased fragment of a customer name concatenated with digits and a transfer keyword. The fragment is not a clean name and will not match the ledger's customer field on equality.",
+    "resolution": "Match the narration fragment fuzzily against the customer names on open ledger entries, allowing for truncation to the first several characters, removal of spaces, and uppercasing. Require the amount to agree exactly as well — a fuzzy name alone is never sufficient evidence to match money.",
+    "reason_code": "direct_neft_bypass",
+    "entities": ["NEFT", "garbled narration", "fuzzy entity match"],
+    "amount_signature": "truncated_name_in_narration",
+    "confidence_at_deposit": 0.83
+  },
+  {
+    "situation": "A direct bank credit where the narration fragment plausibly matches two different open customers, and both have an invoice outstanding.",
+    "resolution": "Do not pick the closer string match. When a fuzzy name is ambiguous, the amount must disambiguate: if only one of the candidates has an invoice at exactly this amount, match that one. If both do, escalate. A misattributed customer receipt is corrected by a human in minutes and by an auditor in months.",
+    "reason_code": "direct_neft_bypass",
+    "entities": ["NEFT", "ambiguous narration", "fuzzy entity match"],
+    "amount_signature": "ambiguous_narration_two_candidates",
+    "confidence_at_deposit": 0.7
+  },
+  {
+    "situation": "An unexplained credit is being investigated as a possible processor settlement failure because no payment record can be found for it.",
+    "resolution": "Before concluding that data is missing, check whether the amount is gross rather than net. A credit that exactly equals an open invoice, with no fee deducted, was almost certainly not a gateway payment at all. Absence of a payment record is the expected state for a direct transfer, not evidence of a gap in ingestion.",
+    "reason_code": "direct_neft_bypass",
+    "entities": ["direct bank transfer", "missing payment record"],
+    "amount_signature": "gross_amount_implies_direct_transfer",
+    "confidence_at_deposit": 0.86
+  },
+  {
+    "situation": "A direct transfer credit carries a reference the customer typed themselves — an invoice number or a partial order reference embedded among bank routing text.",
+    "resolution": "Extract candidate references from the narration and test them against invoice numbers on open entries before falling back to name matching. A customer-supplied invoice reference, when it resolves to an open entry at the same amount, is stronger evidence than a fuzzy name match.",
+    "reason_code": "direct_neft_bypass",
+    "entities": ["NEFT", "invoice reference", "narration parsing"],
+    "amount_signature": "invoice_reference_in_narration",
+    "confidence_at_deposit": 0.87
+  },
+  {
+    "situation": "Bank transfers arriving under RTGS or IMPS rather than NEFT, with the same pattern: no processor record, gross amount, machine-generated narration.",
+    "resolution": "Treat all direct transfer rails identically for reconciliation purposes. The rail affects timing and narration format, not the reconciliation logic — no processor fee is deducted on any of them, so the credit is always gross against the invoice.",
+    "reason_code": "direct_neft_bypass",
+    "entities": ["RTGS", "IMPS", "NEFT", "direct bank transfer"],
+    "amount_signature": "gross_credit_alternate_rail",
+    "confidence_at_deposit": 0.85
+  },
+
+  {
+    "situation": "A payment falls short of the open invoice by very close to two percent of the invoice value. The shortfall is proportional, not fixed, and no refund or fee explains it.",
+    "resolution": "The customer withheld tax at source before paying. Reconstruct the gross invoice by dividing the received amount by one minus the rate, confirm it equals the invoiced figure, and match at gross. Post the withheld amount to a tax-receivable account against which the customer's certificate will later be applied. The invoice is fully settled, not partly paid.",
+    "reason_code": "tds_short_payment",
+    "entities": ["TDS", "withholding tax", "tax receivable"],
+    "amount_signature": "short_by_2pct_tds",
+    "confidence_at_deposit": 0.94
+  },
+  {
+    "situation": "A payment short of the invoice by close to ten percent, proportional to the invoice value, against a customer buying professional or technical services.",
+    "resolution": "Withholding at the higher professional-services rate. Same treatment as the lower rate: reconstruct gross from net, verify against the invoice, match at gross, and carry the deduction as tax receivable. The rate differs by the nature of the supply, so the correct rate must be established from the invoice, not assumed from the observed gap.",
+    "reason_code": "tds_short_payment",
+    "entities": ["TDS", "professional services", "withholding tax"],
+    "amount_signature": "short_by_10pct_tds",
+    "confidence_at_deposit": 0.92
+  },
+  {
+    "situation": "A shortfall that is proportional to the invoice but does not land on a familiar withholding rate, and the reconstructed gross does not equal the invoiced amount at any standard rate.",
+    "resolution": "Do not force the nearest rate. A reconstruction that fails to reproduce the invoiced figure exactly means the hypothesis is wrong — the gap may be a discount, a disputed line, or withholding stacked on a partial payment. Escalate rather than matching at a gross figure that no document supports.",
+    "reason_code": "tds_short_payment",
+    "entities": ["TDS", "reconstruction failure", "unexplained deduction"],
+    "amount_signature": "proportional_gap_no_standard_rate",
+    "confidence_at_deposit": 0.68
+  },
+  {
+    "situation": "A payment that appears short against the invoice, where both a withholding deduction by the customer and the processor's own fee are in play.",
+    "resolution": "Separate the two deductions and apply them at the right level. Withholding reduces what the customer pays, so it applies to the payment amount against the invoice. The processor fee reduces what settles into the bank, so it applies to the bank credit against the payment. Conflating them double-counts one deduction and leaves the reconciliation open by exactly the fee.",
+    "reason_code": "tds_short_payment",
+    "entities": ["TDS", "processor fee", "deduction stacking"],
+    "amount_signature": "tds_and_psp_fee_stacked",
+    "confidence_at_deposit": 0.87
+  },
+  {
+    "situation": "A shortfall consistent with withholding, where the gross reconstructed from the net does not land on a whole rupee.",
+    "resolution": "Reconstruct with decimal arithmetic and half-up rounding to the paise, then allow a tolerance of about a rupee against the invoice. The customer computed the deduction on a rounded base, so a small residue is expected. A residue larger than a rupee means the rate or the base is wrong.",
+    "reason_code": "tds_short_payment",
+    "entities": ["TDS", "gross reconstruction", "rounding"],
+    "amount_signature": "tds_gross_reconstruction_residue",
+    "confidence_at_deposit": 0.85
+  },
+  {
+    "situation": "A customer who has withheld tax on every invoice for several periods sends another payment short by the same proportion.",
+    "resolution": "A consistent per-customer withholding history raises confidence but does not remove the arithmetic check. Verify the reconstruction against this invoice every time. History justifies acting without human review; it never justifies skipping the computation.",
+    "reason_code": "tds_short_payment",
+    "entities": ["TDS", "customer history", "withholding tax"],
+    "amount_signature": "recurring_customer_withholding",
+    "confidence_at_deposit": 0.9
+  },
+
+  {
+    "situation": "One payment and one bank credit against an order that has two open ledger entries, each for part of the value. Neither entry matches the credit alone, but the two together equal the payment amount.",
+    "resolution": "The customer settled two invoices with a single transfer. Match the one credit against both entries and close them together. Do not match the larger entry and leave the smaller open — a partly-closed order looks like an outstanding receivable and will be chased from a customer who has already paid in full.",
+    "reason_code": "split_payment",
+    "entities": ["split payment", "multiple invoices", "one order"],
+    "amount_signature": "one_credit_two_invoices",
+    "confidence_at_deposit": 0.9
+  },
+  {
+    "situation": "A payment covering several open invoices on the same order, where the invoices were raised on different dates and carry different payment terms.",
+    "resolution": "Group by order reference first, then confirm the sum across the open entries equals the payment. Differing dates and terms across the entries do not prevent a single settlement — customers commonly pay a statement rather than an invoice. Allocate to the oldest entries first when the payment covers only some of them.",
+    "reason_code": "split_payment",
+    "entities": ["split payment", "statement payment", "allocation"],
+    "amount_signature": "credit_covers_multiple_open_invoices",
+    "confidence_at_deposit": 0.85
+  },
+  {
+    "situation": "A credit that sits between the value of one open invoice and the sum of two, and does not equal either.",
+    "resolution": "This is not a split payment. A genuine split closes the constituent entries exactly. A credit that closes no exact subset is a part payment or carries an unexplained deduction, and forcing it across two invoices creates two wrong balances instead of one open item. Escalate with the shortfall stated.",
+    "reason_code": "split_payment",
+    "entities": ["part payment", "split payment"],
+    "amount_signature": "credit_matches_no_exact_subset",
+    "confidence_at_deposit": 0.74
+  },
+  {
+    "situation": "Two ledger entries under one order reference, and a bank credit that equals their combined value net of the processor's fee on the single payment behind it.",
+    "resolution": "Net at the payment level, not per invoice. There was one payment, so there is one fee, and it must be deducted once from the combined invoice total. Deducting a fee against each invoice separately overstates the deduction and leaves a residue equal to one fee.",
+    "reason_code": "split_payment",
+    "entities": ["split payment", "processor fee"],
+    "amount_signature": "one_fee_across_two_invoices",
+    "confidence_at_deposit": 0.88
+  },
+
+  {
+    "situation": "The settlement credit is smaller than the payment net of fees, and the missing amount corresponds to a refund issued against the same order on the same day.",
+    "resolution": "The processor nets same-day refunds against the settlement rather than debiting them separately, so the credit reflects the payment minus its fee and tax minus the refund. Reconstruct the expected credit including the refund and match. The ledger entry, which was raised before the refund, still expects the original gross — close the difference against the refund, not as a shortfall.",
+    "reason_code": "refund_netted",
+    "entities": ["refund", "same-day netting", "settlement"],
+    "amount_signature": "netted_with_refund",
+    "confidence_at_deposit": 0.9
+  },
+  {
+    "situation": "An unexplained gap between the expected settlement and the actual credit, where the gap does not correspond to any fee, tax rate or withholding rate.",
+    "resolution": "Check the refund records for the same order and settlement window before treating the gap as a deduction. A refund netted into settlement produces an arbitrary-looking absolute gap with no proportional structure — which is exactly the signature that rules out fees and withholding and points at a refund.",
+    "reason_code": "refund_netted",
+    "entities": ["refund", "unexplained gap"],
+    "amount_signature": "arbitrary_absolute_gap_check_refunds",
+    "confidence_at_deposit": 0.86
+  },
+  {
+    "situation": "A refund raised a day or more after the payment settled, so it appears as its own debit rather than reducing a credit.",
+    "resolution": "Timing determines the treatment. A refund inside the same settlement window is netted into the credit; a later one appears as a separate debit line and must be matched against the original payment as a reversal. Do not attempt to net a later refund into an earlier credit — the arithmetic will not close and the debit will remain unexplained.",
+    "reason_code": "refund_netted",
+    "entities": ["refund", "settlement window", "debit line"],
+    "amount_signature": "refund_after_settlement_window",
+    "confidence_at_deposit": 0.84
+  },
+  {
+    "situation": "A partial refund against an order where the credit falls short of the expected settlement by less than the full payment value.",
+    "resolution": "Reconstruct with the actual refunded amount rather than assuming a full reversal. Confirm the payment net of fee and tax, less the refunded amount, equals the credit to the paise. Note that the processor's fee on the original payment is generally not returned on a refund, so the fee stays deducted even where the payment is fully reversed.",
+    "reason_code": "refund_netted",
+    "entities": ["partial refund", "processor fee", "settlement"],
+    "amount_signature": "partial_refund_fee_retained",
+    "confidence_at_deposit": 0.82
+  },
+
+  {
+    "situation": "Two captured payments of identical amount against the same order, minutes apart, with only one bank credit and one open ledger entry.",
+    "resolution": "The customer submitted twice — a retry after an ambiguous confirmation screen. Match only the earlier payment against the credit and the ledger entry. Flag the later payment for refund. Matching both would close the invoice twice and produce a phantom receivable reduction; this is a false accept, the most expensive error in reconciliation.",
+    "reason_code": "duplicate_payment_rejected",
+    "entities": ["duplicate payment", "retry", "false accept"],
+    "amount_signature": "same_order_same_amount_minutes_apart",
+    "confidence_at_deposit": 0.93
+  },
+  {
+    "situation": "More payments than there are open invoices or bank credits on an order, with the surplus payments equal in value to ones that have already matched.",
+    "resolution": "Count the counterparts before matching. When payments outnumber the available credits and entries, the surplus is duplication rather than missing bank data. Never invent a counterpart to absorb an unmatched payment — an unmatched payment that should be refunded is a correct finding, not a reconciliation failure.",
+    "reason_code": "duplicate_payment_rejected",
+    "entities": ["duplicate payment", "counterpart counting"],
+    "amount_signature": "payments_outnumber_counterparts",
+    "confidence_at_deposit": 0.89
+  },
+  {
+    "situation": "A duplicate payment where the second attempt was captured before the first, or where the capture timestamps are indistinguishable.",
+    "resolution": "Where ordering cannot be established reliably, do not pick arbitrarily. Match whichever payment the settlement credit actually corresponds to if that can be determined from the settlement batch; otherwise escalate. The choice determines which payment gets refunded to a real customer, so a coin flip is not an acceptable resolution.",
+    "reason_code": "duplicate_payment_rejected",
+    "entities": ["duplicate payment", "ordering ambiguity"],
+    "amount_signature": "duplicate_indeterminate_ordering",
+    "confidence_at_deposit": 0.65
+  },
+  {
+    "situation": "Two payments on one order of different amounts, together equalling the open invoice, with two corresponding credits.",
+    "resolution": "This is instalment payment, not duplication. The distinguishing test is whether the payments sum to the invoice — duplicates are each equal to the full expected amount and their sum overshoots it. Match both against the single entry and close it. Treating instalments as duplicates would refund a customer money they legitimately owed.",
+    "reason_code": "duplicate_payment_rejected",
+    "entities": ["instalment", "duplicate payment"],
+    "amount_signature": "two_payments_summing_to_invoice",
+    "confidence_at_deposit": 0.83
+  },
+
+  {
+    "situation": "A captured payment with no open ledger entry for its order and no bank credit at or near its value in any settlement window.",
+    "resolution": "There is no valid counterpart, so there is no correct match. Report it as unmatchable with the evidence checked — which windows were searched, which entries were considered — rather than forcing a match to the nearest amount. A wrong match is strictly worse than an honest exception: the exception gets worked, the wrong match gets closed.",
+    "reason_code": "unmatchable_no_counterpart",
+    "entities": ["unmatchable", "no counterpart"],
+    "amount_signature": "orphan_payment_no_counterpart",
+    "confidence_at_deposit": 0.91
+  },
+  {
+    "situation": "An open ledger entry with no payment and no credit against it after the expected settlement window has fully elapsed.",
+    "resolution": "The invoice is simply unpaid, or was paid through a channel not yet ingested. Report it as unmatchable rather than searching progressively wider windows until something coincidentally fits. Widening a search until a match appears manufactures matches from noise.",
+    "reason_code": "unmatchable_no_counterpart",
+    "entities": ["unmatchable", "unpaid invoice"],
+    "amount_signature": "orphan_ledger_entry_no_payment",
+    "confidence_at_deposit": 0.9
+  },
+  {
+    "situation": "A bank credit that corresponds to no payment, no invoice, and no recognisable customer — the narration gives no usable reference.",
+    "resolution": "Leave it unapplied and report it. An unidentified receipt is a real and common state; it belongs in a suspense account until the customer identifies it. Attributing it to the closest open invoice by amount alone is how a receipt ends up credited to the wrong customer.",
+    "reason_code": "unmatchable_no_counterpart",
+    "entities": ["unapplied receipt", "suspense", "unmatchable"],
+    "amount_signature": "unidentified_credit_no_reference",
+    "confidence_at_deposit": 0.88
+  },
+  {
+    "situation": "Pressure to reduce the exception count on a reconciliation run where a handful of items have no counterpart at all.",
+    "resolution": "The exception list is the honest output, not the failure. A reconciliation reporting complete coverage over a population that contains genuinely unmatchable items is misreporting. Keep the residue and state the reason code for each item; the count of unmatchable items is a measurement, not a defect to be optimised away.",
+    "reason_code": "unmatchable_no_counterpart",
+    "entities": ["exception list", "coverage", "unmatchable"],
+    "amount_signature": "irreducible_exception_residue",
+    "confidence_at_deposit": 0.94
+  }
+]

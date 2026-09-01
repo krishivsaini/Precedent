@@ -14,6 +14,7 @@ def make_precedent(precedent_id="prec_1", corpus_version=0, derived_from_resolut
         reason_code="tds_short_payment",
         entities=["Acme Co"],
         amount_signature="short_by_2pct_tds",
+        confidence_at_deposit=0.88,
         deposited_at="2026-01-01T00:00:00Z",
         corpus_version=corpus_version,
         derived_from_resolution=derived_from_resolution,

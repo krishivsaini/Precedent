@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS precedents (
     )),
     entities                    TEXT NOT NULL DEFAULT '[]',  -- JSON
     amount_signature             TEXT NOT NULL DEFAULT '',
+    confidence_at_deposit       REAL NOT NULL CHECK (confidence_at_deposit BETWEEN 0.0 AND 1.0),
     embedding                   BLOB,
     derived_from_resolution     TEXT REFERENCES resolutions(resolution_id),
     deposited_at                TEXT NOT NULL,

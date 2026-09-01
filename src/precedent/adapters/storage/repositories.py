@@ -246,14 +246,16 @@ class PrecedentsRepository:
             """
             INSERT INTO precedents
                 (precedent_id, situation, resolution, reason_code, entities,
-                 amount_signature, embedding, derived_from_resolution, deposited_at,
-                 corpus_version, times_retrieved, times_cited_correctly)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                 amount_signature, confidence_at_deposit, embedding,
+                 derived_from_resolution, deposited_at, corpus_version,
+                 times_retrieved, times_cited_correctly)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """,
             (
                 record.precedent_id, record.situation, record.resolution,
                 record.reason_code, json.dumps(record.entities), record.amount_signature,
-                record.embedding, record.derived_from_resolution, record.deposited_at,
+                record.confidence_at_deposit, record.embedding,
+                record.derived_from_resolution, record.deposited_at,
                 record.corpus_version, record.times_retrieved, record.times_cited_correctly,
             ),
         )
@@ -372,6 +374,7 @@ def _row_to_precedent(row: sqlite3.Row) -> PrecedentRecord:
         precedent_id=row["precedent_id"], situation=row["situation"],
         resolution=row["resolution"], reason_code=row["reason_code"],
         entities=json.loads(row["entities"]), amount_signature=row["amount_signature"],
+        confidence_at_deposit=row["confidence_at_deposit"],
         embedding=row["embedding"], derived_from_resolution=row["derived_from_resolution"],
         deposited_at=row["deposited_at"], corpus_version=row["corpus_version"],
         times_retrieved=row["times_retrieved"], times_cited_correctly=row["times_cited_correctly"],
