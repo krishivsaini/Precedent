@@ -13,15 +13,23 @@ that introduces a float for a monetary value is a bug, not a style issue.
 | Ring | State | Gate |
 |---|---|---|
 | **0** — deterministic baseline | ✅ **complete** | ✅ **met** — rules-only baseline committed at 49.2%, before any LLM code exists |
-| **1** — precedent retrieval + kill criterion | ⬜ next | kill criterion not yet evaluated |
-| **2** — LangGraph investigation graph | ⬜ | |
+| **1** — precedent retrieval + kill criterion | ✅ **complete** | ✅ **PASS** — grounded 100% vs zero-shot 85.5% vs random control 93.5% |
+| **2** — LangGraph investigation graph | ⬜ next | must not regress against Ring 1's grounded arm |
 | **3** — deposit loop, gate, learning curve | ⬜ | ⚠️ blocked on the snapshot-scale decision below |
 | **4** — calibration | ⬜ | |
 | **5** — bounded remediation | ⬜ | |
 
-**Current state:** 178 tests passing. 240-record dataset generated and committed. Baseline result
-in `evals/results/`. Deferred from Ring 0 by explicit decision: live webhook delivery over a public
-tunnel (signature verification and dedupe are tested against fixture bytes instead).
+**Current state:** 384 tests passing. 240-record dataset generated and committed. Rules-only
+baseline and the retrieval eval are both in `evals/results/`. Deferred from Ring 0 by explicit
+decision: live webhook delivery over a public tunnel (signature verification and dedupe are tested
+against fixture bytes instead).
+
+**Model:** `openai/gpt-oss-120b` via NVIDIA NIM, temperature 0. Every result file records both
+provider and model — numbers from different models are not comparable, and mixing them inside one
+comparison is the error the eval discipline exists to prevent. Gemini and Groq were both tried and
+both ran out of free-tier quota mid-run; see FAILURES.md. `evals/.cache/` makes a run resumable and
+a re-run free, which is what lets spec §6's "re-run before any claim of improvement" actually be
+followed.
 
 > ⚠️ **Decision needed before Ring 3.4.** The spec's replay protocol calls for corpus snapshots at
 > 0/50/100/150/200 deposited precedents, but the corpus cannot exceed **102** (40 seed + 62
@@ -98,21 +106,63 @@ against fixture bytes (⬜ live delivery deferred) · ✅ dataset reproducible f
 doesn't, the precedent-retrieval thesis is dead — fall back to plain adjudication and say so in
 `docs/ARCHITECTURE.md` rather than continuing to build on a falsified premise.
 
-### 1.1 — Precedent schema & seed corpus
-- Implement the `Precedent` Pydantic model exactly as in spec §4.
-- Hand-write ~40 seed precedents covering the exception classes from 0.5, at `corpus_version = 0`.
-  These have **no** `derived_from_resolution` — the column is nullable for exactly this reason.
+### 1.1 — Precedent schema & seed corpus ✅
+- `domain/precedent.py` — the Pydantic model of spec §4, plus three validators that exist because
+  an unconstrained model produces precedents that are syntactically valid and permanently useless:
+  no concrete record id in `situation` (it is the retrieval target, and an id pins it to one past
+  case), `amount_signature` must stay a snake_case key rather than a second prose field, and
+  escalation reason codes are rejected outright — they record the agent giving up, and a corpus
+  that accumulates them teaches itself to escalate.
+- Added the `confidence_at_deposit` column Ring 0's schema had omitted. See FAILURES.md: the
+  storage round-trip tests could not have caught it, because they tested the schema against itself.
+- **42 seed precedents**, all ten reason codes covered, at least three per agent-resolvable class.
+  General reconciliation knowledge, deliberately *not* descriptions of the eval scenarios —
+  otherwise the 1.3 ablation would measure leakage rather than retrieval.
 - `prompts/deposit/v1.md`. The `situation` field is the hardest prompt-engineering problem here
-  (generalize enough to match a future case, stay specific enough to remain true) — expect to
+  (generalise enough to match a future case, stay specific enough to remain true) — expect to
   iterate it in Ring 3+ once real deposits flow.
 
-### 1.2 — Hybrid retrieval
-- `adapters/retrieval/` — BM25 (`rank_bm25`) and dense (`sqlite-vec`) retrievers behind a common
-  interface, plus a hybrid combiner.
-- A random-precedent mode, selectable exactly like the others — not a throwaway script; it is the
-  negative control used on every eval run from Ring 3 onward.
+### 1.2 — Hybrid retrieval ✅
+- `adapters/retrieval/` — BM25, dense (`sqlite-vec`), hybrid (reciprocal rank fusion), and the
+  random control, all peers behind one `Retriever` protocol so the control differs from the real
+  thing in exactly one respect: which precedents get chosen.
+- `domain/case.py` — `ReconciliationCase.retrieval_query()`, the computed observations a rules
+  engine can derive, kept separate from `summarize()`. Two bugs found here, both in FAILURES.md:
+  the full record dump retrieved *worse* than the observations alone, and the shortfall arithmetic
+  conflated the customer's withholding with the processor's fee.
+- `evals/retrieval_eval.py` — the spec §6 comparison, committed. **BM25 90.3% top-3 and 100% top-5;
+  random control 21.0%.** Hybrid scores 61.3% — *worse* than BM25 alone, because the credential-free
+  `HashingEmbedder` is not semantic and its noisy ranking drags the fusion down. The spec asks this
+  comparison to justify the hybrid choice with data; on the current embedder the data does not
+  justify it, so the ablation runs BM25 and the result file records why.
+- k=5 is the operating point, chosen because it is where lexical retrieval covers every class —
+  a threshold set from the measurement rather than asserted.
 
-### 1.3 — Zero-shot vs. grounded ablation
+### 1.3 — Zero-shot vs. grounded ablation ✅
+
+**Result: the kill criterion PASSES**, and Ring 2 proceeds. Full write-up in
+[`ARCHITECTURE.md`](ARCHITECTURE.md) §5; the numbers are in `evals/results/ablation-*.json`.
+
+| Arm | Resolved | False resolutions | Value at risk |
+|---|---|---|---|
+| Zero-shot | 85.5% | 4 | ₹24,845 |
+| Random control | 93.5% | 4 | ₹17,158 |
+| **Grounded** | **100.0%** | **0** | **₹0** |
+
+Two things the headline hides, both of which belong in any honest report of this:
+
+1. **Only about half the gain is retrieval.** The random control shares the grounded arm's prompt
+   shape and precedent count, so the +14.5pp over zero-shot decomposes into **+8.1pp from having
+   precedents at all** and **+6.5pp from their relevance**. Quoting +14.5 as retrieval's value
+   over-claims by more than 2x.
+2. **The relevance leg is not statistically significant.** Paired exact McNemar: grounded vs
+   zero-shot p=0.0039 (significant); grounded vs random control 4W–0L, p=0.125 (**not**
+   significant). Consistent in direction, never losing a case, but four cases out of 62 cannot be
+   separated from noise. A direction, not yet a demonstrated effect.
+
+Infrastructure this ring forced, all of it in FAILURES.md: retry/quota handling that distinguishes
+per-minute from per-day limits, a client-side token throttle, a circuit breaker that refuses to
+write a result degraded by provider outages, and a response cache that makes re-runs free.
 - Minimal LLM adapter (`adapters/llm/`) — Gemini 2.5 Flash primary, Ollama fallback, behind a
   vendor-agnostic interface.
 - A thin, non-graph resolution path (LangGraph is Ring 2) that either resolves zero-shot with no

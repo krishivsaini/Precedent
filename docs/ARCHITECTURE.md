@@ -156,7 +156,67 @@ The runner independently re-derives each scenario's outcome from the matcher and
 against the gold label. If the dataset and the matcher ever disagree, the run fails loudly instead
 of quietly producing metrics built on sand.
 
-*The learning curve, the four baselines, and the negative control land here as Rings 1–3 complete.*
+### Ring 1 — the kill criterion
+
+The premise the whole project rests on is that a corpus of retrieved precedents makes the agent
+better. Ring 1 was built to try to falsify that before anything was built on top of it.
+
+Three arms over the same 62 pool exceptions, the same model, the same prompt, the same *k* = 5.
+The only thing that varies is which precedents go into the prompt.
+`openai/gpt-oss-120b` via NVIDIA NIM, temperature 0, corpus of 42 hand-written seed precedents.
+
+| Arm | Resolved | Escalated | False resolutions | Value at risk | Precedent precision |
+|---|---|---|---|---|---|
+| Zero-shot (no precedents) | 85.5% | 8.1% | 4 | ₹24,845 | — |
+| Random-precedent control | 93.5% | 0.0% | 4 | ₹17,158 | 87.9% |
+| **Retrieval-grounded** | **100.0%** | **0.0%** | **0** | **₹0** | **99.0%** |
+
+**Verdict: PASS.** Grounding beats zero-shot and beats the random control. Ring 2 proceeds.
+
+**But the headline overstates what retrieval buys, and the control is what shows it.** The random
+arm carries the same prompt shape and the same five precedents, differing only in whether they are
+relevant. So the +14.5 point gain over zero-shot splits in two:
+
+- **+8.1 points from having precedents at all** — format, priming, worked examples of the reasoning
+  style. Nothing to do with retrieval.
+- **+6.5 points from those precedents being the right ones.** This is retrieval's actual
+  contribution: a little under half the total.
+
+Reporting +14.5 as the value of retrieval would over-claim by more than a factor of two. This is
+exactly what spec §6 built the random control to catch, and it caught it here.
+
+**One leg does not reach significance.** The arms answer the same cases, so the comparisons are
+paired (exact McNemar on discordant pairs):
+
+| Comparison | Discordant | p | |
+|---|---|---|---|
+| Grounded vs zero-shot | 9W–0L | 0.0039 | significant |
+| Grounded vs random control | 4W–0L | 0.1250 | **not significant** |
+| Random control vs zero-shot | 8W–3L | 0.2266 | not significant |
+
+Grounding beating zero-shot is solid. Grounding beating *random* grounding — the stricter and more
+interesting claim — is directionally consistent and never once loses a case, but at n = 62 a
+four-case margin cannot be separated from noise at conventional thresholds. It is a direction, not
+yet a demonstrated effect. The honest statement is that the kill criterion is passed on the
+evidence available and the relevance effect needs more cases to confirm.
+
+**Retrieval quality, measured separately** (no LLM involved), against the same 62 exceptions:
+
+| Retriever | top-1 | top-3 | top-5 |
+|---|---|---|---|
+| BM25 | 45.2% | 90.3% | **100%** |
+| Dense (hashing embedder) | 45.2% | 45.2% | 61.3% |
+| Hybrid (RRF) | 45.2% | 61.3% | 90.3% |
+| Random control | 11.3% | 21.0% | 46.8% |
+
+Spec §6 asks this comparison to "justify the hybrid choice with data". On the current embedder the
+data refuses to: **hybrid is worse than BM25 alone.** The credential-free `HashingEmbedder` is
+feature hashing over surface tokens, so it is a second lexical retriever wearing different clothes,
+and fusing its noisier ranking drags the result down. The ablation therefore runs BM25, and the
+claim that hybrid retrieval helps stays unmade until a real embedding model can test it. *k* = 5 is
+the operating point because that is where lexical retrieval covers every exception class.
+
+*The learning curve across corpus snapshots lands here as Ring 3 completes.*
 
 ## 6. Limits
 
@@ -173,6 +233,20 @@ Known and stated up front, not discovered by a reviewer:
   Ring 4 sets it from a calibration curve.
 - **No drift monitoring.** Nothing detects the corpus degrading or the exception mix shifting over
   time.
+- **The grounded arm scores 100% on the pool, which leaves no headroom there.** Ring 3's learning
+  curve cannot be measured on the pool set — it is saturated — so the curve has to come from the
+  held-out test set. A dataset calibrated to make a rules engine score 49% turns out not to be
+  hard for a 120B model reasoning with good precedents.
+- **The relevance effect is underpowered.** 4 discordant cases out of 62 (p = 0.125). The direction
+  is consistent and the grounded arm never loses a case to the control, but confirming it needs
+  more exceptions than the pool contains.
+- **Retrieval query rendering is fitted to the nine known exception classes.** The observations that
+  make a case retrievable were chosen knowing which classes exist. A tenth class would arrive with
+  no observation phrased to distinguish it and would retrieve badly. No number here measures that.
+- **Provider limits shaped what could be measured, not just how fast.** Gemini's free tier caps at
+  20 requests/day against an ablation needing 186, and Groq's daily token budget ran out partway
+  through. Results come from whichever provider could complete a run; models differ, so only the
+  arms *within* one run are comparable. See FAILURES.md.
 - **Corpus poisoning is a real risk.** A human who confirms a wrong resolution deposits a wrong
   precedent, which is then retrieved to justify future wrong resolutions. Corrections deposit too,
   which helps, but nothing currently detects or retracts a bad precedent after the fact.
