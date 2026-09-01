@@ -5,8 +5,12 @@ description = "An exception-resolution agent whose knowledge base is written by 
 requires-python = ">=3.11"
 dependencies = [
     "fastapi>=0.141.1",
+    "httpx>=0.28.1",
+    "pydantic>=2.13.5",
     "python-dotenv>=1.2.3",
+    "rank-bm25>=0.2.2",
     "razorpay>=2.0.1",
+    "sqlite-vec>=0.1.9",
     "uvicorn[standard]>=0.52.4",
 ]
 
