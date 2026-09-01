@@ -1,0 +1,803 @@
+{
+  "run_id": "2026-09-01-0815",
+  "baseline": "deterministic_rules_alone",
+  "corpus_size": 0,
+  "dataset": {
+    "total_records": 240,
+    "resolved_by_rules": 118,
+    "exceptions": 122
+  },
+  "metrics": {
+    "autonomous_resolution_rate": 0.49166666666666664,
+    "autonomous_resolution_rate_on_test_set": 0.0,
+    "escalation_rate": 0.5083333333333333,
+    "false_accept_count": 0
+  },
+  "per_class_breakdown": {
+    "clean_match": {
+      "total": 108,
+      "resolved": 108,
+      "resolution_rate": 1.0
+    },
+    "direct_neft_bypass": {
+      "total": 24,
+      "resolved": 0,
+      "resolution_rate": 0.0
+    },
+    "duplicate_payment": {
+      "total": 7,
+      "resolved": 0,
+      "resolution_rate": 0.0
+    },
+    "netted_settlement": {
+      "total": 36,
+      "resolved": 0,
+      "resolution_rate": 0.0
+    },
+    "refund_netted": {
+      "total": 12,
+      "resolved": 0,
+      "resolution_rate": 0.0
+    },
+    "rounding_delta": {
+      "total": 10,
+      "resolved": 10,
+      "resolution_rate": 1.0
+    },
+    "split_payment": {
+      "total": 14,
+      "resolved": 0,
+      "resolution_rate": 0.0
+    },
+    "tds_short_payment": {
+      "total": 19,
+      "resolved": 0,
+      "resolution_rate": 0.0
+    },
+    "unmatchable": {
+      "total": 10,
+      "resolved": 0,
+      "resolution_rate": 0.0
+    }
+  },
+  "gold_matcher_agreement": {
+    "mismatches": 0,
+    "total_checked": 240,
+    "mismatch_detail": []
+  },
+  "false_accepts": [],
+  "exception_list": [
+    {
+      "scenario_id": "rec_0119",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0120",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0121",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0122",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0123",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0124",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0125",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0126",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0127",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0128",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0129",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0130",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0131",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0132",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0133",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0134",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0135",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0136",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0137",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0138",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0139",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0140",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0141",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0142",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0143",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0144",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0145",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0146",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0147",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0148",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0149",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0150",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0151",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0152",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0153",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0154",
+      "kind": "netted_settlement",
+      "expected_reason_code": "netted_settlement",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0155",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0156",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0157",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0158",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0159",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0160",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0161",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0162",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0163",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0164",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0165",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0166",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0167",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0168",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0169",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0170",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0171",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0172",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0173",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0174",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0175",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0176",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0177",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0178",
+      "kind": "direct_neft_bypass",
+      "expected_reason_code": "direct_neft_bypass",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0179",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0180",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0181",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0182",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0183",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0184",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0185",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0186",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0187",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0188",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0189",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0190",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0191",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0192",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0193",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0194",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0195",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0196",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0197",
+      "kind": "tds_short_payment",
+      "expected_reason_code": "tds_short_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0198",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0199",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0200",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0201",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0202",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0203",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0204",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0205",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0206",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0207",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0208",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0209",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0210",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0211",
+      "kind": "split_payment",
+      "expected_reason_code": "split_payment",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0212",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0213",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0214",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0215",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0216",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0217",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0218",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0219",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0220",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0221",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0222",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0223",
+      "kind": "refund_netted",
+      "expected_reason_code": "refund_netted",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0224",
+      "kind": "duplicate_payment",
+      "expected_reason_code": "duplicate_payment_rejected",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0225",
+      "kind": "duplicate_payment",
+      "expected_reason_code": "duplicate_payment_rejected",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0226",
+      "kind": "duplicate_payment",
+      "expected_reason_code": "duplicate_payment_rejected",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0227",
+      "kind": "duplicate_payment",
+      "expected_reason_code": "duplicate_payment_rejected",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0228",
+      "kind": "duplicate_payment",
+      "expected_reason_code": "duplicate_payment_rejected",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0229",
+      "kind": "duplicate_payment",
+      "expected_reason_code": "duplicate_payment_rejected",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0230",
+      "kind": "duplicate_payment",
+      "expected_reason_code": "duplicate_payment_rejected",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0231",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0232",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0233",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0234",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0235",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0236",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0237",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "pool"
+    },
+    {
+      "scenario_id": "rec_0238",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0239",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "test"
+    },
+    {
+      "scenario_id": "rec_0240",
+      "kind": "unmatchable",
+      "expected_reason_code": "unmatchable_no_counterpart",
+      "pool_or_test": "pool"
+    }
+  ]
+}
