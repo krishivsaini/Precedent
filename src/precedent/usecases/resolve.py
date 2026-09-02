@@ -81,6 +81,17 @@ class ResolutionOutcome:
     cached: bool = False
     """Replayed from the eval cache rather than fetched. Excluded from latency stats."""
 
+    model_calls: int = 1
+    """Model calls this outcome cost. Always 1 for the Ring 1 chain; 2-8 for the Ring 2
+    graph, which is the whole reason it is recorded separately from tokens."""
+
+    tool_calls_made: int = 0
+    """Successful investigation tool calls. Zero for the chain, which has no tools.
+
+    Worth reporting beside accuracy: if a precedent corpus lets the agent reach the same
+    answer with less investigation, that is a real benefit the accuracy number cannot show
+    once every arm is near the ceiling."""
+
     attempts: int = 1
     """Requests it took, including retries. >1 means the provider was throttling — surfaced
     so a run degraded by rate limits is visible in the result rather than silently wrong."""

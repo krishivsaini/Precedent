@@ -141,3 +141,61 @@ class TestEstimateTokens:
 
     def test_includes_an_allowance_for_the_response(self):
         assert estimate_tokens("", "", expected_output=600) == 600
+
+
+class TestMeteredLLM:
+    """The graph makes 2-8 model calls per case, so there is no single response to read
+    totals off. Before this existed the graph reported zero tokens — a cost metric that
+    silently zeroes when the system gets *more* expensive is worse than none."""
+
+    def make(self, responses):
+        from precedent.adapters.llm.metered import MeteredLLM
+        from precedent.adapters.llm.scripted import ScriptedLLM
+
+        return MeteredLLM(ScriptedLLM(responses))
+
+    def test_totals_tokens_across_several_calls(self):
+        metered = self.make(["a", "b", "c"])
+        for _ in range(3):
+            metered.complete("s", "u")
+        assert metered.calls == 3
+        assert metered.total_tokens == 0  # ScriptedLLM reports zero-token responses
+
+    def test_counts_real_token_usage(self):
+        from precedent.adapters.llm.base import LLMResponse
+        from precedent.adapters.llm.metered import MeteredLLM
+
+        class Fixed:
+            model = "m"
+
+            def complete(self, system, user, *, temperature=0.0):
+                return LLMResponse("x", "m", 100, prompt_tokens=10,
+                                   completion_tokens=5, thinking_tokens=20)
+
+        metered = MeteredLLM(Fixed())
+        metered.complete("s", "u")
+        metered.complete("s", "u")
+        assert metered.prompt_tokens == 20
+        assert metered.thinking_tokens == 40
+        assert metered.total_tokens == 70
+        assert metered.latency_ms == 200
+
+    def test_cached_replays_are_counted_for_tokens_but_not_latency(self):
+        from precedent.adapters.llm.base import LLMResponse
+        from precedent.adapters.llm.metered import MeteredLLM
+
+        class Replayed:
+            model = "m"
+
+            def complete(self, system, user, *, temperature=0.0):
+                return LLMResponse("x", "m", 999, prompt_tokens=10,
+                                   completion_tokens=5, cached=True)
+
+        metered = MeteredLLM(Replayed())
+        metered.complete("s", "u")
+        assert metered.prompt_tokens == 10
+        assert metered.latency_ms == 0
+        assert metered.cached_calls == 1
+
+    def test_it_is_a_transparent_stand_in(self):
+        assert self.make([]).model == "scripted-test-double"
