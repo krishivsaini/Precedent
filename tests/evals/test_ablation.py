@@ -283,3 +283,47 @@ class TestSignificance:
         assert "having_precedents_at_all_pp" in result["effect_decomposition"]
         assert "relevance_of_precedents_pp" in result["effect_decomposition"]
         assert "caveat" in result["kill_criterion"]
+
+
+class TestEngineSelection:
+    """Ring 2's gate is that the graph does not regress against Ring 1's chain, which is
+    only a meaningful comparison if both are scored by identical code."""
+
+    def test_both_engines_produce_the_same_result_shape(self):
+        codes = ["netted_settlement"] * 200
+        def responses():
+            # The graph needs a tool-loop decision before each proposal; the chain does not.
+            out = []
+            for c in codes:
+                out.append(json.dumps({"done": True, "why": "enough"}))
+                out.append(json.dumps({"reason_code": c, "confidence": 0.95,
+                                       "rationale": "x", "cited_precedent_ids": []}))
+            return out
+
+        chain = run_ablation(ScriptedLLM([
+            json.dumps({"reason_code": c, "confidence": 0.95, "rationale": "x",
+                        "cited_precedent_ids": []}) for c in codes
+        ]), limit=LIMIT, workers=1, engine="chain")
+        graph = run_ablation(ScriptedLLM(responses()), limit=LIMIT, workers=1, engine="graph")
+
+        assert chain["arms"][0]["metrics"].keys() == graph["arms"][0]["metrics"].keys()
+        assert chain["settings"]["engine"] == "chain"
+        assert graph["settings"]["engine"] == "graph"
+
+    def test_the_engine_is_recorded_in_the_result(self):
+        # Without it, two result files would be indistinguishable and the regression
+        # comparison would be unverifiable after the fact.
+        llm = GoldOracleLLM({}, needs_relevant_precedent=False)
+        assert run_ablation(llm, limit=LIMIT, workers=2)["settings"]["engine"] == "chain"
+
+    def test_the_graph_engine_scores_the_same_cases(self):
+        codes = ["netted_settlement"] * 200
+        out = []
+        for c in codes:
+            out.append(json.dumps({"done": True}))
+            out.append(json.dumps({"reason_code": c, "confidence": 0.95,
+                                   "rationale": "x", "cited_precedent_ids": []}))
+        result = run_ablation(ScriptedLLM(out), limit=LIMIT, workers=1, engine="graph")
+        assert result["dataset"]["scenarios_scored"] == LIMIT
+        for arm in result["arms"]:
+            assert len(arm["per_case"]) == LIMIT

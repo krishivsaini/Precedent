@@ -1,0 +1,3136 @@
+{
+  "run_id": "2026-09-02T04:07:18Z",
+  "purpose": "Ring 1.3 kill criterion \u2014 does grounding beat zero-shot?",
+  "model": "openai/gpt-oss-120b",
+  "provider": "NVIDIA NIM",
+  "corpus": {
+    "size": 42,
+    "corpus_version": 0,
+    "composition": "seed only"
+  },
+  "dataset": {
+    "scenarios_scored": 62,
+    "split": "pool exceptions only; the 60 test exceptions are untouched"
+  },
+  "settings": {
+    "k": 5,
+    "confidence_threshold": 0.8,
+    "grounded_retriever": "bm25",
+    "temperature": 0.0,
+    "engine": "graph"
+  },
+  "arms": [
+    {
+      "arm": "zero_shot",
+      "retriever": "none",
+      "k": 0,
+      "metrics": {
+        "autonomous_resolution_rate": 0.9839,
+        "escalation_rate": 0.0161,
+        "false_resolution_count": 0,
+        "false_resolution_cost_inr": 0.0,
+        "precedent_precision": null,
+        "citations_made": 0,
+        "hallucinated_citations": 0,
+        "latency_p50_ms": null,
+        "latency_p95_ms": null,
+        "mean_tokens_per_exception": null,
+        "retry_attempts": 0
+      },
+      "false_resolutions": [],
+      "per_case": [
+        {
+          "scenario_id": "rec_0122",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0125",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0126",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0129",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0131",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0132",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0133",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0134",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0136",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0138",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0140",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0141",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0142",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0143",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0147",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0151",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0152",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0154",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0155",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0161",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0164",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0165",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0167",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0170",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0171",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0172",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0175",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0176",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0177",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0178",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0179",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0181",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.9,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0182",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0184",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0187",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.97,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0188",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0190",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0191",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0195",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0196",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0203",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0204",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0205",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0206",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0208",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0209",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.9,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0211",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0212",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0213",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0214",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0220",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0221",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0223",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.9,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0225",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0226",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0227",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "escalated_low_confidence",
+          "confidence": 0.78,
+          "escalated": true,
+          "correct": false,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0229",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0231",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0232",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0236",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.8,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0237",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        },
+        {
+          "scenario_id": "rec_0240",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.9,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": []
+        }
+      ]
+    },
+    {
+      "arm": "grounded",
+      "retriever": "grounded",
+      "k": 5,
+      "metrics": {
+        "autonomous_resolution_rate": 1.0,
+        "escalation_rate": 0.0,
+        "false_resolution_count": 0,
+        "false_resolution_cost_inr": 0.0,
+        "precedent_precision": 1.0,
+        "citations_made": 98,
+        "hallucinated_citations": 0,
+        "latency_p50_ms": null,
+        "latency_p95_ms": null,
+        "mean_tokens_per_exception": null,
+        "retry_attempts": 0
+      },
+      "false_resolutions": [],
+      "per_case": [
+        {
+          "scenario_id": "rec_0122",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0125",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0126",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0129",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0131",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0132",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0133",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0134",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0136",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0138",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0140",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0141",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0142",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0143",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0147",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0027",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0151",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0152",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0154",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0009"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0009",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0014"
+          ]
+        },
+        {
+          "scenario_id": "rec_0155",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0161",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0164",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0165",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0167",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0170",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0171",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0172",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0175",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0176",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0177",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0178",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0015",
+            "prec_seed_0018",
+            "prec_seed_0020",
+            "prec_seed_0030",
+            "prec_seed_0001"
+          ]
+        },
+        {
+          "scenario_id": "rec_0179",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0022"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0022",
+            "prec_seed_0001",
+            "prec_seed_0026"
+          ]
+        },
+        {
+          "scenario_id": "rec_0181",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0021",
+            "prec_seed_0024"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0001",
+            "prec_seed_0026",
+            "prec_seed_0024"
+          ]
+        },
+        {
+          "scenario_id": "rec_0182",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0022"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0022",
+            "prec_seed_0001",
+            "prec_seed_0026"
+          ]
+        },
+        {
+          "scenario_id": "rec_0184",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0021",
+            "prec_seed_0026"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0001",
+            "prec_seed_0026",
+            "prec_seed_0024"
+          ]
+        },
+        {
+          "scenario_id": "rec_0187",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0022"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0022",
+            "prec_seed_0001",
+            "prec_seed_0026"
+          ]
+        },
+        {
+          "scenario_id": "rec_0188",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0022"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0022",
+            "prec_seed_0001",
+            "prec_seed_0026"
+          ]
+        },
+        {
+          "scenario_id": "rec_0190",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0021",
+            "prec_seed_0024"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0001",
+            "prec_seed_0026",
+            "prec_seed_0024"
+          ]
+        },
+        {
+          "scenario_id": "rec_0191",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0021"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0001",
+            "prec_seed_0026",
+            "prec_seed_0024"
+          ]
+        },
+        {
+          "scenario_id": "rec_0195",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0021",
+            "prec_seed_0024"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0001",
+            "prec_seed_0026",
+            "prec_seed_0024"
+          ]
+        },
+        {
+          "scenario_id": "rec_0196",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0022"
+          ],
+          "retrieved": [
+            "prec_seed_0010",
+            "prec_seed_0021",
+            "prec_seed_0022",
+            "prec_seed_0001",
+            "prec_seed_0026"
+          ]
+        },
+        {
+          "scenario_id": "rec_0203",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030",
+            "prec_seed_0027"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0002",
+            "prec_seed_0033"
+          ]
+        },
+        {
+          "scenario_id": "rec_0204",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030",
+            "prec_seed_0027"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0002",
+            "prec_seed_0033"
+          ]
+        },
+        {
+          "scenario_id": "rec_0205",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0027",
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0002",
+            "prec_seed_0033"
+          ]
+        },
+        {
+          "scenario_id": "rec_0206",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030",
+            "prec_seed_0027"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0002",
+            "prec_seed_0033"
+          ]
+        },
+        {
+          "scenario_id": "rec_0208",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030",
+            "prec_seed_0027"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0002",
+            "prec_seed_0033"
+          ]
+        },
+        {
+          "scenario_id": "rec_0209",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030",
+            "prec_seed_0027"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0002",
+            "prec_seed_0033"
+          ]
+        },
+        {
+          "scenario_id": "rec_0211",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030",
+            "prec_seed_0027"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0001",
+            "prec_seed_0027",
+            "prec_seed_0002",
+            "prec_seed_0033"
+          ]
+        },
+        {
+          "scenario_id": "rec_0212",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ],
+          "retrieved": [
+            "prec_seed_0001",
+            "prec_seed_0024",
+            "prec_seed_0023",
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ]
+        },
+        {
+          "scenario_id": "rec_0213",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ],
+          "retrieved": [
+            "prec_seed_0001",
+            "prec_seed_0024",
+            "prec_seed_0023",
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ]
+        },
+        {
+          "scenario_id": "rec_0214",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ],
+          "retrieved": [
+            "prec_seed_0001",
+            "prec_seed_0024",
+            "prec_seed_0023",
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ]
+        },
+        {
+          "scenario_id": "rec_0220",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0032"
+          ],
+          "retrieved": [
+            "prec_seed_0001",
+            "prec_seed_0024",
+            "prec_seed_0023",
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ]
+        },
+        {
+          "scenario_id": "rec_0221",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ],
+          "retrieved": [
+            "prec_seed_0001",
+            "prec_seed_0024",
+            "prec_seed_0023",
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ]
+        },
+        {
+          "scenario_id": "rec_0223",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ],
+          "retrieved": [
+            "prec_seed_0001",
+            "prec_seed_0024",
+            "prec_seed_0023",
+            "prec_seed_0034",
+            "prec_seed_0032"
+          ]
+        },
+        {
+          "scenario_id": "rec_0225",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0035",
+            "prec_seed_0014",
+            "prec_seed_0038",
+            "prec_seed_0019",
+            "prec_seed_0015"
+          ]
+        },
+        {
+          "scenario_id": "rec_0226",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0035",
+            "prec_seed_0014",
+            "prec_seed_0038",
+            "prec_seed_0019",
+            "prec_seed_0015"
+          ]
+        },
+        {
+          "scenario_id": "rec_0227",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0035",
+            "prec_seed_0014",
+            "prec_seed_0038",
+            "prec_seed_0019",
+            "prec_seed_0015"
+          ]
+        },
+        {
+          "scenario_id": "rec_0229",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0035",
+            "prec_seed_0014",
+            "prec_seed_0038",
+            "prec_seed_0019",
+            "prec_seed_0015"
+          ]
+        },
+        {
+          "scenario_id": "rec_0231",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0039"
+          ],
+          "retrieved": [
+            "prec_seed_0039",
+            "prec_seed_0015",
+            "prec_seed_0040",
+            "prec_seed_0041",
+            "prec_seed_0035"
+          ]
+        },
+        {
+          "scenario_id": "rec_0232",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0039"
+          ],
+          "retrieved": [
+            "prec_seed_0039",
+            "prec_seed_0015",
+            "prec_seed_0040",
+            "prec_seed_0041",
+            "prec_seed_0035"
+          ]
+        },
+        {
+          "scenario_id": "rec_0236",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0039"
+          ],
+          "retrieved": [
+            "prec_seed_0039",
+            "prec_seed_0015",
+            "prec_seed_0040",
+            "prec_seed_0041",
+            "prec_seed_0035"
+          ]
+        },
+        {
+          "scenario_id": "rec_0237",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0039"
+          ],
+          "retrieved": [
+            "prec_seed_0039",
+            "prec_seed_0015",
+            "prec_seed_0040",
+            "prec_seed_0041",
+            "prec_seed_0035"
+          ]
+        },
+        {
+          "scenario_id": "rec_0240",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0039"
+          ],
+          "retrieved": [
+            "prec_seed_0039",
+            "prec_seed_0015",
+            "prec_seed_0040",
+            "prec_seed_0041",
+            "prec_seed_0035"
+          ]
+        }
+      ]
+    },
+    {
+      "arm": "random_control",
+      "retriever": "random_control",
+      "k": 5,
+      "metrics": {
+        "autonomous_resolution_rate": 0.9839,
+        "escalation_rate": 0.0161,
+        "false_resolution_count": 0,
+        "false_resolution_cost_inr": 0.0,
+        "precedent_precision": 1.0,
+        "citations_made": 29,
+        "hallucinated_citations": 0,
+        "latency_p50_ms": null,
+        "latency_p95_ms": null,
+        "mean_tokens_per_exception": null,
+        "retry_attempts": 0
+      },
+      "false_resolutions": [],
+      "per_case": [
+        {
+          "scenario_id": "rec_0122",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0125",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0126",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0129",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0131",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0132",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0133",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0134",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0136",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0138",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0140",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0141",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0142",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0143",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0147",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0151",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0152",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0154",
+          "kind": "netted_settlement",
+          "gold": "netted_settlement",
+          "said": "netted_settlement",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0155",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0161",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0164",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0165",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0167",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0170",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0171",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0172",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.9,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0175",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0176",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0177",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0178",
+          "kind": "direct_neft_bypass",
+          "gold": "direct_neft_bypass",
+          "said": "direct_neft_bypass",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0020"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0179",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0181",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0182",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0184",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.9,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0187",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0188",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.93,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0190",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0191",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0195",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0196",
+          "kind": "tds_short_payment",
+          "gold": "tds_short_payment",
+          "said": "tds_short_payment",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0203",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0204",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0205",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0206",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0208",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0209",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0211",
+          "kind": "split_payment",
+          "gold": "split_payment",
+          "said": "split_payment",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0030"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0212",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0033"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0213",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0033"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0214",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0033"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0220",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0033"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0221",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0033"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0223",
+          "kind": "refund_netted",
+          "gold": "refund_netted",
+          "said": "refund_netted",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0033"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0225",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.94,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0226",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0227",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.96,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0229",
+          "kind": "duplicate_payment",
+          "gold": "duplicate_payment_rejected",
+          "said": "duplicate_payment_rejected",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [
+            "prec_seed_0035"
+          ],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0231",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "escalated_low_confidence",
+          "confidence": 0.55,
+          "escalated": true,
+          "correct": false,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0232",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.85,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0236",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0237",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.92,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        },
+        {
+          "scenario_id": "rec_0240",
+          "kind": "unmatchable",
+          "gold": "unmatchable_no_counterpart",
+          "said": "unmatchable_no_counterpart",
+          "confidence": 0.95,
+          "escalated": false,
+          "correct": true,
+          "cited": [],
+          "retrieved": [
+            "prec_seed_0030",
+            "prec_seed_0002",
+            "prec_seed_0033",
+            "prec_seed_0035",
+            "prec_seed_0020"
+          ]
+        }
+      ]
+    }
+  ],
+  "significance": {
+    "grounded_vs_zero_shot": {
+      "a_wins": 1,
+      "b_wins": 0,
+      "discordant_pairs": 1,
+      "p_value": 1.0,
+      "significant_at_05": false
+    },
+    "grounded_vs_random_control": {
+      "a_wins": 1,
+      "b_wins": 0,
+      "discordant_pairs": 1,
+      "p_value": 1.0,
+      "significant_at_05": false
+    },
+    "random_control_vs_zero_shot": {
+      "a_wins": 1,
+      "b_wins": 1,
+      "discordant_pairs": 2,
+      "p_value": 1.0,
+      "significant_at_05": false
+    }
+  },
+  "effect_decomposition": {
+    "note": "The random control shares the grounded arm's prompt shape and precedent count, differing only in whether the precedents are relevant. So the gain over zero-shot splits into an effect of having precedents at all and an effect of their relevance. Reporting the total as if it were all retrieval over-claims.",
+    "having_precedents_at_all_pp": 0.0,
+    "relevance_of_precedents_pp": 1.6
+  },
+  "kill_criterion": {
+    "grounded_resolution_rate": 1.0,
+    "zero_shot_resolution_rate": 0.9839,
+    "random_control_resolution_rate": 0.9839,
+    "grounded_beats_zero_shot": true,
+    "grounded_beats_random_control": true,
+    "verdict": "PASS \u2014 grounding beats both zero-shot and the random control",
+    "caveat": "The verdict compares point estimates. See `significance` for whether each comparison survives a paired test; a gap that does not is a direction, not yet a demonstrated effect."
+  },
+  "cache": {
+    "hits": 496,
+    "misses": 6
+  }
+}

@@ -47,6 +47,7 @@ from precedent.adapters.retrieval.random_control import RandomRetriever
 from precedent.corpus.seed import seed_precedent_records
 from precedent.domain.confidence import DEFAULT_AUTO_RESOLVE_THRESHOLD
 from precedent.domain.reasons import ReasonCode
+from precedent.graph.investigation import run_investigation
 from precedent.usecases.resolve import ResolutionOutcome, resolve_case
 
 RESULTS_DIR = Path(__file__).parent / "results"
@@ -127,6 +128,7 @@ def _run_arm(
     k: int,
     threshold: float,
     workers: int,
+    engine: str = "chain",
 ) -> dict:
     records_by_id = {r.precedent_id: r for r in seed_precedent_records()}
 
@@ -134,8 +136,17 @@ def _run_arm(
 
     def attempt(scenario: Scenario) -> tuple[Scenario, ResolutionOutcome]:
         case = scenario_to_case(scenario)
-        hits = retriever.retrieve(case.retrieval_query(), k) if retriever else []
-        outcome = resolve_case(case, llm, precedents=hits, confidence_threshold=threshold)
+        if engine == "graph":
+            # The graph retrieves in its own node, so it is handed the retriever rather
+            # than a precomputed hit list. Both engines return the same ResolutionOutcome,
+            # so scoring is identical and a difference between them is a difference in the
+            # system rather than in how it was measured.
+            outcome, _trace = run_investigation(
+                case, llm, retriever=retriever, k=k, threshold=threshold
+            )
+        else:
+            hits = retriever.retrieve(case.retrieval_query(), k) if retriever else []
+            outcome = resolve_case(case, llm, precedents=hits, confidence_threshold=threshold)
         index = next(done)
         if index % 10 == 0 or index == len(scenarios):
             # A run of a few hundred calls with no output is unobservable: there is no way
@@ -179,6 +190,8 @@ def _run_arm(
     hallucinated = 0
     latencies: list[int] = []
     tokens: list[int] = []
+    model_calls: list[int] = []
+    tool_calls: list[int] = []
     retry_attempts = 0
     per_case: list[dict] = []
 
@@ -219,6 +232,8 @@ def _run_arm(
         if outcome.total_tokens is not None:
             tokens.append(outcome.total_tokens)
         retry_attempts += outcome.attempts - 1
+        model_calls.append(outcome.model_calls)
+        tool_calls.append(outcome.tool_calls_made)
 
         per_case.append(
             {
@@ -254,6 +269,11 @@ def _run_arm(
                 int(statistics.quantiles(latencies, n=20)[18]) if len(latencies) >= 20 else None
             ),
             "mean_tokens_per_exception": int(statistics.mean(tokens)) if tokens else None,
+            # Reported beside accuracy because once every arm is near the ceiling, cost is
+            # the only axis left on which the corpus can show an effect: reaching the same
+            # answer with less investigation is a real benefit accuracy cannot express.
+            "mean_model_calls_per_exception": round(statistics.mean(model_calls), 2),
+            "mean_tool_calls_per_exception": round(statistics.mean(tool_calls), 2),
             "retry_attempts": retry_attempts,
         },
         "false_resolutions": resolved_wrong,
@@ -268,6 +288,7 @@ def run_ablation(
     threshold: float = DEFAULT_AUTO_RESOLVE_THRESHOLD,
     workers: int = 8,
     limit: int | None = None,
+    engine: str = "chain",
 ) -> dict:
     records = seed_precedent_records()
     scenarios = [s for s in load_dataset() if s.is_exception and s.pool_or_test == "pool"]
@@ -284,7 +305,7 @@ def run_ablation(
         retriever = build_retriever(retriever_name, records)
         try:
             arms.append(
-                _run_arm(arm_name, retriever, scenarios, llm, k, threshold, workers)
+                _run_arm(arm_name, retriever, scenarios, llm, k, threshold, workers, engine)
             )
         finally:
             if hasattr(retriever, "close"):
@@ -322,6 +343,7 @@ def run_ablation(
             "confidence_threshold": threshold,
             "grounded_retriever": grounded_retriever,
             "temperature": 0.0,
+            "engine": engine,
         },
         "arms": arms,
         "significance": significance,
@@ -363,18 +385,22 @@ def run_ablation(
 def write_result(result: dict) -> Path:
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H%M")
-    path = RESULTS_DIR / f"ablation-{stamp}.json"
+    engine = (result.get("settings") or {}).get("engine", "chain")
+    suffix = "" if engine == "chain" else f"-{engine}"
+    path = RESULTS_DIR / f"ablation{suffix}-{stamp}.json"
     path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     return path
 
 
 def print_report(result: dict) -> None:
     print(f"model: {result['model']}   k={result['settings']['k']}   "
-          f"grounded retriever: {result['settings']['grounded_retriever']}")
+          f"grounded retriever: {result['settings']['grounded_retriever']}   "
+          f"engine: {result['settings']['engine']}")
     print(f"{result['dataset']['scenarios_scored']} pool exceptions, "
           f"corpus of {result['corpus']['size']} seed precedents\n")
 
-    header = f"{'arm':16}{'resolved':>10}{'escalated':>11}{'false':>7}{'cost INR':>12}{'prec.prec':>11}"
+    header = (f"{'arm':16}{'resolved':>10}{'escalated':>11}{'false':>7}{'cost INR':>12}"
+              f"{'prec.prec':>11}{'calls':>7}{'tools':>7}{'tokens':>9}")
     print(header)
     print("-" * len(header))
     for arm in result["arms"]:
@@ -384,6 +410,9 @@ def print_report(result: dict) -> None:
             f"{arm['arm']:16}{m['autonomous_resolution_rate']:>10.1%}"
             f"{m['escalation_rate']:>11.1%}{m['false_resolution_count']:>7}"
             f"{m['false_resolution_cost_inr']:>12,.0f}{precision:>11}"
+            f"{m['mean_model_calls_per_exception']:>7.1f}"
+            f"{m['mean_tool_calls_per_exception']:>7.1f}"
+            f"{m['mean_tokens_per_exception'] or 0:>9,}"
         )
 
     kill = result["kill_criterion"]
@@ -416,6 +445,9 @@ def main() -> None:
     parser.add_argument("--workers", type=int, default=8)
     parser.add_argument("--limit", type=int, default=None,
                         help="score only the first N scenarios — a smoke run, not a result")
+    parser.add_argument("--engine", choices=("chain", "graph"), default="chain",
+                        help="chain = Ring 1's single prompt; graph = Ring 2's LangGraph "
+                             "investigation. The Ring 2 gate is that graph does not regress.")
     parser.add_argument("--no-cache", action="store_true",
                         help="bypass the response cache and re-ask the model everything")
     args = parser.parse_args()
@@ -442,7 +474,7 @@ def main() -> None:
     cached_llm = CachingLLM(llm, enabled=not args.no_cache)
     result = run_ablation(
         cached_llm, grounded_retriever=args.retriever, k=args.k, workers=args.workers,
-        limit=args.limit,
+        limit=args.limit, engine=args.engine,
     )
     result["cache"] = cached_llm.stats()
     print_report(result)
