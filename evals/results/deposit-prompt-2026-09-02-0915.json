@@ -1,0 +1,362 @@
+{
+  "run_id": "2026-09-02-0915",
+  "model": "openai/gpt-oss-120b",
+  "what_this_measures": "Whether a deposit prompt authors precedents that can be found and that help. Measured only on the counterparty classes, where the deposited precedent is the only thing that can resolve the case.",
+  "versions": [
+    {
+      "prompt_version": "v1",
+      "customers_scored": 9,
+      "metrics": {
+        "authored_successfully": "7/9",
+        "deposit_retrieval_rate": 0.7778,
+        "resolution_rate_on_later_sightings": 0.5556,
+        "names_the_customer_rate": 1.0,
+        "mean_situation_chars": 296
+      },
+      "per_customer": [
+        {
+          "customer": "Beas Papers",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Beas Papers' invoice expects INR 3,657.00, but the captured payment settles to INR 3,170.83 and the bank credit is also INR 3,170.83, leaving a shortfall of INR 486.17 (\u224813.3%). The gap is not a round percentage of the invoice and no fee, tax, or other deduction appears in the payment or bank line, nor is an advance shown in the current records.",
+          "names_the_customer": true,
+          "situation_chars": 347,
+          "sightings": [
+            {
+              "scenario_id": "rec_0232",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0236",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0240",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Chenab Steel",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Invoice for Chenab Steel expects a gross amount, but the only bank credit received equals the payment net after processor fee and tax and is about 27.5% lower than the invoice. No other deductions appear in the statement, and the shortfall is not a round percentage. An earlier advance from the same customer is not present in the current records.",
+          "names_the_customer": true,
+          "situation_chars": 347,
+          "sightings": [
+            {
+              "scenario_id": "rec_0231",
+              "occurrence": 2,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0235",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0239",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Deccan Foods",
+          "kind": "advance_adjusted",
+          "authored": false,
+          "author_error": "ValidationError: 1 validation error for Precedent\nsituation\n  Value error, situation contains the concrete identifier 'INV-1503'; a precedent pinned to one past case can never retrieve against a future one. Describe the shape of the case, not the record. [type=value_error, input_value='Deccan Foods invoice INV...sible in the statement.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error",
+          "situation": null,
+          "names_the_customer": false,
+          "situation_chars": 0,
+          "sightings": [
+            {
+              "scenario_id": "rec_0229",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0233",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0237",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Kavery Textiles",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "A payment for an invoice from Kavery Textiles settles to INR 326.83 after processor fee and tax, while the invoice amount is INR 347.00. The net is about 5.8% lower than the invoice, not matching any statutory withholding rate, and the shortfall aligns with Kavery Textiles' negotiated 3.25% rebate.",
+          "names_the_customer": true,
+          "situation_chars": 299,
+          "sightings": [
+            {
+              "scenario_id": "rec_0210",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0215",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0220",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Konark Logistics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Invoice for Konark Logistics expects INR\u202f3,328.00. Bank credit of INR\u202f3,154.08 matches the payment net after processor fee and tax are deducted, and the remaining shortfall equals a 2.65\u202f% negotiated rebate specific to Konark Logistics; no other deductions are present.",
+          "names_the_customer": true,
+          "situation_chars": 269,
+          "sightings": [
+            {
+              "scenario_id": "rec_0213",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0218",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "unmatchable_no_counterpart",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0223",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Nilgiri Exports",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "The customer Nilgiri Exports has a bank credit that matches the payment net after processor fee and tax, but the ledger expects a higher invoice amount, creating a shortfall of about 15\u202f% that is not a round proportion of the invoice. No advance or credit appears in the captured records.",
+          "names_the_customer": true,
+          "situation_chars": 288,
+          "sightings": [
+            {
+              "scenario_id": "rec_0230",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0234",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0238",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Palghat Ceramics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payment settled to INR\u202f1,450.89 after fees and tax matches the NEFT credit, but the invoice for Palghat Ceramics (INV\u20115067) expects INR\u202f1,550.00, leaving a shortfall of INR\u202f99.11 (~6.4% of invoice). The gap is not a round statutory rate.",
+          "names_the_customer": true,
+          "situation_chars": 237,
+          "sightings": [
+            {
+              "scenario_id": "rec_0214",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0219",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0224",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Sundaram Auto Parts",
+          "kind": "negotiated_rebate",
+          "authored": false,
+          "author_error": "ValidationError: 1 validation error for Precedent\nsituation\n  Value error, situation contains the concrete identifier 'order_synth_0233'; a precedent pinned to one past case can never retrieve against a future one. Describe the shape of the case, not the record. [type=value_error, input_value='A payment for order_synt... statutory withholding.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error",
+          "situation": null,
+          "names_the_customer": false,
+          "situation_chars": 0,
+          "sightings": [
+            {
+              "scenario_id": "rec_0211",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0216",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0221",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "tds_short_payment",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Vindhya Chemicals",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "A payment from Vindhya Chemicals settles to a net amount after processor fee and tax that matches the NEFT credit, but the invoice amount is higher; the net is lower by a percentage equal to the customer's negotiated 4.35% rebate plus the fee and tax, resulting in a non\u2011round shortfall.",
+          "names_the_customer": true,
+          "situation_chars": 287,
+          "sightings": [
+            {
+              "scenario_id": "rec_0212",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0217",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0222",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

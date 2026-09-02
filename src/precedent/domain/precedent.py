@@ -36,9 +36,21 @@ ESCALATION_REASON_CODES = frozenset(
     }
 )
 
-#: Razorpay-shaped identifiers. Their presence in `situation` means the precedent has been
-#: written about one specific past case and cannot match a future one.
-_CONCRETE_ID = re.compile(r"\b(pay|order|rfnd|inv)_[A-Za-z0-9]{8,}\b")
+#: Record identifiers. Their presence in `situation` means the precedent has been written
+#: about one specific past case and cannot match a future one.
+#:
+#: The first version required `[A-Za-z0-9]{8,}` after the prefix and so missed every id
+#: containing an underscore — including `order_synth_0233`, the shape this project's own
+#: generator produces. A model authoring a deposit put one straight into a situation and the
+#: validator passed it. A guard that does not catch the ids the system actually mints is not
+#: a guard, so the suffix now allows underscores and hyphens, and `led_`/`exc_`/`res_`/`prec_`
+#: are covered too.
+_CONCRETE_ID = re.compile(
+    r"\b(pay|order|rfnd|inv|led|exc|res|prec|line)_[A-Za-z0-9][A-Za-z0-9_-]{4,}\b"
+)
+
+#: Invoice numbers, which are ids without an underscore prefix to give them away.
+_INVOICE_NUMBER = re.compile(r"\bINV[-\s]?\d{3,}\b", re.IGNORECASE)
 
 #: `amount_signature` is a grouping key ("short_by_2pct_tds"), not a second prose field.
 _AMOUNT_SIGNATURE = re.compile(r"^[a-z0-9]+(_[a-z0-9]+)*$")
@@ -79,7 +91,7 @@ class Precedent(BaseModel):
     @classmethod
     def _situation_must_generalise(cls, value: str) -> str:
         value = value.strip()
-        found = _CONCRETE_ID.search(value)
+        found = _CONCRETE_ID.search(value) or _INVOICE_NUMBER.search(value)
         if found:
             raise ValueError(
                 f"situation contains the concrete identifier {found.group(0)!r}; a precedent "

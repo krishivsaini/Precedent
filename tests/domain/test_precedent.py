@@ -112,3 +112,42 @@ class TestPrecedentRecordRoundTrip:
         assert p.situation in text
         assert "Acme Traders" in text
         assert "short_by_2pct_tds" in text
+
+
+class TestConcreteIdentifiersTheGeneratorActuallyMints:
+    """The first version of this guard required an unbroken alphanumeric run after the
+    prefix, so it missed every id containing an underscore — including `order_synth_0233`,
+    the shape this project's own generator produces. A model authoring a deposit put one
+    into a situation and the validator passed it. A guard that does not catch the ids the
+    system actually mints is not a guard."""
+
+    @pytest.mark.parametrize("identifier", [
+        "order_synth_0233",     # the generator's own shape, missed by the first version
+        "pay_TWTMWlUBiCYWtU",   # Razorpay
+        "order_TWL7gT6zin2oN8",
+        "led_ab12cd34",
+        "prec_seed_0001",
+        "line_9f2a1b3c",
+        "INV-4471",             # an invoice number is an id without a telltale prefix
+        "INV 4471",
+    ])
+    def test_it_is_rejected_in_a_situation(self, identifier):
+        with pytest.raises(ValidationError, match="identifier"):
+            make_precedent(
+                situation=(
+                    f"A payment referenced as {identifier} arrived short of the invoiced "
+                    "amount with no fee or refund explaining the difference at all."
+                )
+            )
+
+    @pytest.mark.parametrize("phrase", [
+        "a customer paying under net_30 terms",
+        "the counterparty is Konark Logistics",
+        "an order reference shared by two entries",
+    ])
+    def test_ordinary_prose_is_not_mistaken_for_an_identifier(self, phrase):
+        # The guard must not fire on the vocabulary a good situation actually uses —
+        # counterparty names especially, which the deposit prompt now requires.
+        make_precedent(
+            situation=f"A reconciliation case where {phrase} and the credit falls short."
+        )

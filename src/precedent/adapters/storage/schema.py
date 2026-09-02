@@ -103,7 +103,11 @@ CREATE TABLE IF NOT EXISTS audit_log (
     id              INTEGER PRIMARY KEY AUTOINCREMENT,
     correlation_id  TEXT NOT NULL,
     stage           TEXT NOT NULL CHECK (stage IN (
-        'detected', 'retrieved', 'decided', 'verified', 'gated', 'acted'
+        'detected', 'retrieved', 'decided', 'verified', 'gated', 'acted',
+        -- Ring 3: writing to the corpus is its own stage, not a kind of 'acted'. It is the
+        -- only stage that changes what the system knows rather than what it did, and a
+        -- corpus write with no audit row is a precedent with no provenance.
+        'deposited'
     )),
     actor           TEXT NOT NULL,
     input_digest    TEXT,

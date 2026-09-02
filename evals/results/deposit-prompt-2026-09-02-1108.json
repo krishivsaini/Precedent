@@ -1,0 +1,1147 @@
+{
+  "run_id": "2026-09-02-1108",
+  "model": "openai/gpt-oss-120b",
+  "what_this_measures": "Whether a deposit prompt authors precedents that can be found and that help. Measured only on the counterparty classes, where the deposited precedent is the only thing that can resolve the case.",
+  "versions": [
+    {
+      "prompt_version": "v1",
+      "customers_scored": 9,
+      "metrics": {
+        "authored_successfully": "7/9",
+        "deposit_retrieval_rate": 0.7778,
+        "resolution_rate_on_later_sightings": 0.5556,
+        "names_the_customer_rate": 1.0,
+        "mean_situation_chars": 296
+      },
+      "per_customer": [
+        {
+          "customer": "Beas Papers",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Beas Papers' invoice expects INR 3,657.00, but the captured payment settles to INR 3,170.83 and the bank credit is also INR 3,170.83, leaving a shortfall of INR 486.17 (\u224813.3%). The gap is not a round percentage of the invoice and no fee, tax, or other deduction appears in the payment or bank line, nor is an advance shown in the current records.",
+          "resolution": "Search for a prior advance posted to Beas Papers; an advance of INR 400.00 (40,000\u202fpaise) was recorded earlier. Apply this advance against the invoice, which together with the settled payment covers the full invoiced amount. Mark the invoice as reconciled and note the advance adjustment. Do not treat the shortfall as a tax or fee error, as the percentage does not match any statutory rate.",
+          "amount_signature": "short_by_non_round_advance",
+          "names_the_customer": true,
+          "situation_chars": 347,
+          "sightings": [
+            {
+              "scenario_id": "rec_0232",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0236",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0240",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Chenab Steel",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Invoice for Chenab Steel expects a gross amount, but the only bank credit received equals the payment net after processor fee and tax and is about 27.5% lower than the invoice. No other deductions appear in the statement, and the shortfall is not a round percentage. An earlier advance from the same customer is not present in the current records.",
+          "resolution": "Apply the previously recorded advance of INR\u202f750.00 from Chenab Steel to the invoice. Subtract the advance from the invoiced total, leaving INR\u202f2,178.00 \u2013 the gross payment amount. After fee and tax the net matches the bank credit of INR\u202f2,120.38, so the invoice is fully settled.",
+          "amount_signature": "invoice_exceeds_net_by_advance",
+          "names_the_customer": true,
+          "situation_chars": 347,
+          "sightings": [
+            {
+              "scenario_id": "rec_0231",
+              "occurrence": 2,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0235",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0239",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Deccan Foods",
+          "kind": "advance_adjusted",
+          "authored": false,
+          "author_error": "ValidationError: 1 validation error for Precedent\nsituation\n  Value error, situation contains the concrete identifier 'INV-1503'; a precedent pinned to one past case can never retrieve against a future one. Describe the shape of the case, not the record. [type=value_error, input_value='Deccan Foods invoice INV...sible in the statement.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error",
+          "situation": null,
+          "resolution": null,
+          "amount_signature": null,
+          "names_the_customer": false,
+          "situation_chars": 0,
+          "sightings": [
+            {
+              "scenario_id": "rec_0229",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0233",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0237",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Kavery Textiles",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "A payment for an invoice from Kavery Textiles settles to INR 326.83 after processor fee and tax, while the invoice amount is INR 347.00. The net is about 5.8% lower than the invoice, not matching any statutory withholding rate, and the shortfall aligns with Kavery Textiles' negotiated 3.25% rebate.",
+          "resolution": "Apply the known 3.25% rebate for Kavery Textiles: invoice 347\u202f\u00d7\u202f(1\u20110.0325)=335.72. Subtract the processor fee (7.81) and tax on fee (1.08) to get 326.83, which matches the bank credit. The case is not a statutory TDS deduction; assuming a statutory rate would be incorrect.",
+          "amount_signature": "short_by_nonstatutory_pct",
+          "names_the_customer": true,
+          "situation_chars": 299,
+          "sightings": [
+            {
+              "scenario_id": "rec_0210",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0215",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0220",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Konark Logistics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Invoice for Konark Logistics expects INR\u202f3,328.00. Bank credit of INR\u202f3,154.08 matches the payment net after processor fee and tax are deducted, and the remaining shortfall equals a 2.65\u202f% negotiated rebate specific to Konark Logistics; no other deductions are present.",
+          "resolution": "We retrieved Konark Logistics\u2019 contract term of a 2.65\u202f% rebate, calculated 2.65\u202f% of the invoiced amount (\u2248INR\u202f88.19), added the known processor fee (INR\u202f75.34) and tax on fee (INR\u202f10.39), and confirmed that invoice\u202f3328\u202f\u2013\u202f(88.19\u202f+\u202f75.34\u202f+\u202f10.39)\u202f=\u202fINR\u202f3,154.08, which matches the NEFT credit. Assuming a statutory TDS rate would be wrong because the percentage does not match any tax rule.",
+          "amount_signature": "short_by_fee_tax_and_2p65pct_rebate",
+          "names_the_customer": true,
+          "situation_chars": 269,
+          "sightings": [
+            {
+              "scenario_id": "rec_0213",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0218",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "unmatchable_no_counterpart",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0223",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Nilgiri Exports",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "The customer Nilgiri Exports has a bank credit that matches the payment net after processor fee and tax, but the ledger expects a higher invoice amount, creating a shortfall of about 15\u202f% that is not a round proportion of the invoice. No advance or credit appears in the captured records.",
+          "resolution": "Identify the \u20b9500 (50,000\u202fpaise) advance previously recorded for Nilgiri Exports, subtract it from the invoice total, and reduce the expected amount to the net settled amount of INR\u202f3,344.12. After applying this advance, the ledger balance equals the bank credit, confirming the reconciliation and avoiding a mistaken withholding or error.",
+          "amount_signature": "short_by_15pct_advance_applied",
+          "names_the_customer": true,
+          "situation_chars": 288,
+          "sightings": [
+            {
+              "scenario_id": "rec_0230",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0234",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0238",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Palghat Ceramics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payment settled to INR\u202f1,450.89 after fees and tax matches the NEFT credit, but the invoice for Palghat Ceramics (INV\u20115067) expects INR\u202f1,550.00, leaving a shortfall of INR\u202f99.11 (~6.4% of invoice). The gap is not a round statutory rate.",
+          "resolution": "Palghat Ceramics\u2019 contract specifies a 3.85\u202f% rebate on invoice totals. Compute the rebate on INR\u202f1,550.00 (\u2248\u202fINR\u202f59.68); subtract it to get INR\u202f1,490.32, then deduct the processor fee (34.65) and tax (4.78) to arrive at INR\u202f1,450.89, which matches the bank credit. Record the payment as fully reconciled after applying the negotiated rebate, not as a missing or statutory deduction.",
+          "amount_signature": "short_by_nonround_pct_negotiated_rebate",
+          "names_the_customer": true,
+          "situation_chars": 237,
+          "sightings": [
+            {
+              "scenario_id": "rec_0214",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0219",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0224",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Sundaram Auto Parts",
+          "kind": "negotiated_rebate",
+          "authored": false,
+          "author_error": "ValidationError: 1 validation error for Precedent\nsituation\n  Value error, situation contains the concrete identifier 'order_synth_0233'; a precedent pinned to one past case can never retrieve against a future one. Describe the shape of the case, not the record. [type=value_error, input_value='A payment for order_synt... statutory withholding.', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.13/v/value_error",
+          "situation": null,
+          "resolution": null,
+          "amount_signature": null,
+          "names_the_customer": false,
+          "situation_chars": 0,
+          "sightings": [
+            {
+              "scenario_id": "rec_0211",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0216",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0221",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": false,
+              "resolved_correctly": false,
+              "said": "tds_short_payment",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Vindhya Chemicals",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "A payment from Vindhya Chemicals settles to a net amount after processor fee and tax that matches the NEFT credit, but the invoice amount is higher; the net is lower by a percentage equal to the customer's negotiated 4.35% rebate plus the fee and tax, resulting in a non\u2011round shortfall.",
+          "resolution": "Apply Vindhya Chemicals' negotiated 4.35% rebate to the invoice amount, then subtract the processor fee and its tax. The computed net matches the bank credit, confirming the payment. The shortfall is not a statutory deduction but is fully explained by the rebate and fee/tax.",
+          "amount_signature": "short_by_rebate_plus_fee_tax",
+          "names_the_customer": true,
+          "situation_chars": 287,
+          "sightings": [
+            {
+              "scenario_id": "rec_0212",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0217",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0222",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prompt_version": "v2",
+      "customers_scored": 9,
+      "metrics": {
+        "authored_successfully": "9/9",
+        "deposit_retrieval_rate": 1.0,
+        "resolution_rate_on_later_sightings": 0.6296,
+        "names_the_customer_rate": 1.0,
+        "mean_situation_chars": 275
+      },
+      "per_customer": [
+        {
+          "customer": "Beas Papers",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Beas Papers' invoice expects a higher amount than the bank credit, which matches the payment net of processor fee and tax; the shortfall is not a round withholding rate and corresponds to a prior advance recorded on the customer's account but absent from the current case.",
+          "resolution": "Reconstruct the gross invoice amount by adding the processor fee and its tax back to the settled net amount; the resulting gross still falls short of the invoiced total by exactly the amount of a previously recorded advance for Beas Papers. Apply the advance as a credit against the invoice, bringing the net due to zero, and mark the case as resolved. This avoids mis\u2011classifying the gap as a rebate or withholding.",
+          "amount_signature": "short_by_prior_advance",
+          "names_the_customer": true,
+          "situation_chars": 272,
+          "sightings": [
+            {
+              "scenario_id": "rec_0232",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0236",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0240",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Chenab Steel",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "For Chenab Steel, the invoice amount exceeds the net of captured payments (after processor fee and tax) and the shortfall matches a previously recorded advance for the same customer, with no refund or credit note present.",
+          "resolution": "Locate the earlier advance recorded for Chenab Steel, subtract it from the invoice amount, verify that the resulting gross matches the captured payment before fees, and confirm that after deducting the processor fee and its tax the net equals the bank credit. Record the advance as an adjustment, which resolves the discrepancy.",
+          "amount_signature": "short_by_prior_advance",
+          "names_the_customer": true,
+          "situation_chars": 221,
+          "sightings": [
+            {
+              "scenario_id": "rec_0231",
+              "occurrence": 2,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0235",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0239",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Deccan Foods",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Deccan Foods settle to the net amount after processor fee and tax, and the bank credit matches that net amount, but the ledger expects a higher amount, with a shortfall of roughly thirteen percent of the invoiced total; there is no refund, credit note, or other matching entry explaining the difference.",
+          "resolution": "Locate the advance previously recorded for Deccan Foods (\u20b9250.00). Add this advance to the net settled amount (after fee and tax) to reconstruct the gross expected on the invoice. The resulting total matches the invoice, confirming that the apparent shortfall is due to the advance, not a withholding or rebate. No other deduction is present.",
+          "amount_signature": "short_by_13pct_advance",
+          "names_the_customer": true,
+          "situation_chars": 317,
+          "sightings": [
+            {
+              "scenario_id": "rec_0229",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0233",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0237",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Kavery Textiles",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "For Kavery Textiles, a payment record lists a gross amount, a processor fee and tax on that fee, and a settled amount that matches a NEFT credit; the corresponding ledger entry expects a higher invoiced total. After removing the disclosed processor fee and tax, the settled amount remains approximately three and a quarter percent lower than the invoice, with no other credit or refund present.",
+          "resolution": "Reconstruct the gross expected amount by dividing the settled amount by (1\u202f\u2212\u202f0.0325) and confirm it matches the invoice; record the 3.25\u202f% difference as a negotiated rebate for Kavery Textiles and adjust the ledger accordingly. The processor fee and tax are already accounted for, so they are excluded from the rebate calculation.",
+          "amount_signature": "short_by_3_25pct_rebate",
+          "names_the_customer": true,
+          "situation_chars": 394,
+          "sightings": [
+            {
+              "scenario_id": "rec_0210",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0215",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0220",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Konark Logistics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Konark Logistics settle to the net amount after processor fee and tax, and the bank credit matches that net amount, but the ledger expects a higher invoiced amount, leaving a shortfall of about five percent that does not correspond to any statutory withholding band and has no associated refund or credit note.",
+          "resolution": "Recognise that Konark Logistics has a negotiated rebate of 2.65% on its invoices. Reconstruct the gross invoice amount by dividing the settled net amount by (1\u202f-\u202f0.0265) and verify it matches the ledger expectation. Record the difference as the agreed rebate, adjust the ledger entry accordingly, and note that no statutory deduction or processor\u2011fee adjustment is required because the bank credit already reflects those.",
+          "amount_signature": "short_by_5pct_no_refund",
+          "names_the_customer": true,
+          "situation_chars": 324,
+          "sightings": [
+            {
+              "scenario_id": "rec_0213",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0218",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0223",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Nilgiri Exports",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Nilgiri Exports settle to the bank credit after processor fee and tax, yet the invoice amount is about fifteen percent higher and there is no refund, credit note, or other deduction visible in the statement.",
+          "resolution": "Locate any prior advance recorded against the invoice, subtract that advance from the invoiced total, and confirm that the resulting amount equals the net payment (which already includes processor fee and tax). The advance accounts for the apparent fifteen\u2011percent shortfall, so no additional deduction is required.",
+          "amount_signature": "short_by_15pct_advance_unrecorded",
+          "names_the_customer": true,
+          "situation_chars": 221,
+          "sightings": [
+            {
+              "scenario_id": "rec_0230",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0234",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0238",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Palghat Ceramics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Palghat Ceramics invoice expects a higher amount than the net payment after processor fee and tax. The bank credit matches the net settlement, and the shortfall equals the customer's negotiated rebate of 3.85%, with no refund or credit note present.",
+          "resolution": "Identified the 3.85% shortfall as Palghat Ceramics' negotiated rebate. Reconstructed the gross invoice amount by dividing the net credit by (1\u202f-\u202f0.0385) and confirmed it matches the invoiced figure. Recorded the rebate as a customer deduction and marked the ledger entry reconciled.",
+          "amount_signature": "short_by_negotiated_rebate",
+          "names_the_customer": true,
+          "situation_chars": 249,
+          "sightings": [
+            {
+              "scenario_id": "rec_0214",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0219",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0224",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Sundaram Auto Parts",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Sundaram Auto Parts arrive with a gross amount that is lower than the invoiced amount by a negotiated rebate of 1.75\u202fpercent; after the standard processor fee and tax on that fee are deducted, the net settlement matches the bank credit, and no other credit or refund is present.",
+          "resolution": "Reconstructed the gross expected amount by adding back the known processor fee and its tax to the net credit, then confirmed that the remaining difference between this gross and the invoice equals the 1.75\u202fpercent rebate agreed with Sundaram Auto Parts; recorded the rebate as the cause of the shortfall.",
+          "amount_signature": "gross_short_by_1_75pct_rebate",
+          "names_the_customer": true,
+          "situation_chars": 292,
+          "sightings": [
+            {
+              "scenario_id": "rec_0211",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0216",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0221",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Vindhya Chemicals",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Vindhya Chemicals, after processor fee and tax, settle to a credit that is short of the invoiced amount by roughly 4.35%, with no refund, credit note or other adjustment recorded.",
+          "resolution": "Reconstruct the gross amount by dividing the settled net by (1\u202f\u2212\u202f0.0435). The computed gross matches the invoice, confirming that Vindhya Chemicals applied their negotiated 4.35\u202f% rebate. Processor fee and tax are already accounted for, so no additional deduction is needed.",
+          "amount_signature": "short_by_4pct_negotiated_rebate",
+          "names_the_customer": true,
+          "situation_chars": 193,
+          "sightings": [
+            {
+              "scenario_id": "rec_0212",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0217",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0222",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "prompt_version": "v3",
+      "customers_scored": 9,
+      "metrics": {
+        "authored_successfully": "9/9",
+        "deposit_retrieval_rate": 1.0,
+        "resolution_rate_on_later_sightings": 0.7778,
+        "names_the_customer_rate": 1.0,
+        "mean_situation_chars": 370
+      },
+      "per_customer": [
+        {
+          "customer": "Beas Papers",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Beas Papers settle to the net amount after processor fee and tax, and the bank credit matches that net amount. The ledger expects a higher amount, creating a shortfall of roughly thirteen percent, a shortfall matching no statutory band, which for this customer is their negotiated advance adjustment. No refund or credit note is present.",
+          "resolution": "Reconstruct the gross invoice amount by adding the processor fee and tax to the settled net amount; the result equals the invoiced total minus the previously recorded advance of forty thousand paise. Apply that advance against the invoice, reducing the expected amount to the settled net, which reconciles the ledger. The common trap of treating the shortfall as a rebate or withholding is avoided because the deduction originates from the advance, not a statutory rate.",
+          "amount_signature": "short_by_13pct_advance",
+          "names_the_customer": true,
+          "situation_chars": 351,
+          "sightings": [
+            {
+              "scenario_id": "rec_0232",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0236",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0240",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Chenab Steel",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Chenab Steel settle to the net amount after processor fee and tax, and the NEFT credit matches that net amount. The ledger expects a higher invoiced total, leaving a shortfall of roughly twenty\u2011seven percent, a proportion that matches no statutory withholding band, which for this customer is a previously paid advance. No refund or credit note is present to explain the difference.",
+          "resolution": "Located the earlier advance recorded for Chenab Steel and applied it against invoice INV\u20113664, reducing the amount due by that fixed advance. After subtracting the advance, the invoiced net equals the settled payment, confirming the reconciliation. This avoids the trap of treating the shortfall as a rebate or withholding, since processor fees and tax are already accounted for.",
+          "amount_signature": "short_by_advance",
+          "names_the_customer": true,
+          "situation_chars": 396,
+          "sightings": [
+            {
+              "scenario_id": "rec_0231",
+              "occurrence": 2,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0235",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0239",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Deccan Foods",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Deccan Foods settle to the net amount after processor fee and tax, matching the NEFT credit, while the invoice expects a higher amount. No refund, credit note, or other deduction appears, and the shortfall does not correspond to any statutory withholding band, which for this customer is their negotiated advance.",
+          "resolution": "Locate the advance record previously posted for Deccan Foods, apply the fixed advance against the invoice, reducing the expected amount to the net settled amount. This explains the shortfall and brings the ledger into balance. The trap of treating the difference as a statutory withholding is avoided because the deduction originates from the customer\u2011provided advance, not from tax law.",
+          "amount_signature": "short_by_fixed_advance",
+          "names_the_customer": true,
+          "situation_chars": 327,
+          "sightings": [
+            {
+              "scenario_id": "rec_0229",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0233",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0237",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Kavery Textiles",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Kavery Textiles settle after processor fee and tax to a net amount that is 3.25\u202f% lower than the invoiced total, a shortfall matching no statutory withholding band, with no refund, credit note, or other ledger entry explaining the difference.",
+          "resolution": "Reconstruct the gross invoice amount by dividing the net settled amount by (1\u202f\u2212\u202f0.0325). The computed gross equals the invoice figure, confirming that the only deduction is the customer's negotiated 3.25\u202f% rebate. Processor fee and tax are already reflected in the net, so they are not part of the shortfall. Do not treat the shortfall as statutory TDS, as the rate does not match any legal band.",
+          "amount_signature": "short_by_3pct_rebate",
+          "names_the_customer": true,
+          "situation_chars": 256,
+          "sightings": [
+            {
+              "scenario_id": "rec_0210",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0215",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0220",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Konark Logistics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Konark Logistics settle to the net amount after processor fee and tax, and the corresponding NEFT credit matches that net. The ledger entry for the same invoice expects a higher amount, leaving a shortfall of roughly five percent with no refund or credit note present. This is a shortfall matching no statutory band, which for this customer is their negotiated rebate of two point six five percent.",
+          "resolution": "Reconciled by recognizing Konark Logistics\u2019 agreed 2.65\u202f% rebate. Calculated the gross amount by dividing the net credit by (1\u202f\u2212\u202f0.0265) and verified it equals the invoiced total, then recorded the rebate as the cause of the shortfall. The processor fee and tax were already accounted for in the net, so they are not the source of the discrepancy.",
+          "amount_signature": "short_by_2_65pct_rebate",
+          "names_the_customer": true,
+          "situation_chars": 412,
+          "sightings": [
+            {
+              "scenario_id": "rec_0213",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0218",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0223",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Nilgiri Exports",
+          "kind": "advance_adjusted",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Nilgiri Exports settle to the net amount after processor fee and tax, and the corresponding NEFT credit matches that net exactly. The ledger entry for the same invoice expects a higher amount, with no refund, credit note, or other adjustment present. This produces a shortfall matching no statutory band, which for this customer is their pre\u2011paid advance applied against the invoice.",
+          "resolution": "Locate any advance record for Nilgiri Exports that predates the invoice; the advance offsets the invoice total. Subtract the advance from the invoiced amount, then compare the resulting figure to the net payment (gross minus processor fee and tax). The two match, confirming the shortfall is due to the advance, not a rebate or withholding. A common mistake would be to treat the difference as a statutory deduction, which would misstate the reconciliation.",
+          "amount_signature": "short_by_prepaid_advance",
+          "names_the_customer": true,
+          "situation_chars": 397,
+          "sightings": [
+            {
+              "scenario_id": "rec_0230",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0234",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0238",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "advance_adjusted",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Palghat Ceramics",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Palghat Ceramics settle to the net amount after processor fee and tax, with no accompanying refund or credit note, and the amount received is short of the invoiced total by a proportion that does not correspond to any statutory withholding band, which for this customer is their negotiated rebate of three point eight five percent.",
+          "resolution": "Recomputed the gross invoice amount by dividing the net credited amount (after processor fee and tax) by (1\u202f\u2212\u202f0.0385); the result matches the invoice total, confirming that Palghat Ceramics applied their 3.85\u202f% negotiated rebate. Recorded the rebate as a customer deduction and marked the ledger entry reconciled. The processor fee and tax were already reflected in the net, so no further adjustment was needed.",
+          "amount_signature": "short_by_3_85pct_negotiated_rebate",
+          "names_the_customer": true,
+          "situation_chars": 345,
+          "sightings": [
+            {
+              "scenario_id": "rec_0214",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0219",
+              "occurrence": 3,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0224",
+              "occurrence": 4,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            }
+          ]
+        },
+        {
+          "customer": "Sundaram Auto Parts",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Sundaram Auto Parts settle to the net amount after processor fee and tax, and the bank credit matches that net amount, but the ledger entry for the corresponding invoice expects a higher amount, creating a shortfall of approximately one and three quarters percent, a shortfall matching no statutory band, which for this customer is their negotiated rebate of one and three quarters percent.",
+          "resolution": "Recomputed the gross invoiced amount by dividing the settled net amount by (1\u20110.0175). The resulting figure matches the ledger\u2019s expected amount, confirming that Sundaram Auto Parts applied a 1.75\u202f% negotiated rebate. Recorded the rebate as a customer deduction and adjusted the reconciliation accordingly. The alternative of treating the shortfall as a statutory withholding (e.g., TDS) was rejected because no statutory band matches the observed percentage and no refund or credit note exists.",
+          "amount_signature": "short_by_1_75pct_negotiated_rebate",
+          "names_the_customer": true,
+          "situation_chars": 404,
+          "sightings": [
+            {
+              "scenario_id": "rec_0211",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0216",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "escalated_low_confidence",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0221",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        },
+        {
+          "customer": "Vindhya Chemicals",
+          "kind": "negotiated_rebate",
+          "authored": true,
+          "author_error": null,
+          "situation": "Payments from Vindhya Chemicals settle to the net amount after processor fee and tax, and the corresponding NEFT credit matches that net exactly. The ledger entry for the same invoice expects a higher gross amount, leaving a shortfall that does not correspond to any statutory withholding band, which for this customer is their negotiated rebate of four point three five percent. No refund or credit note is present to explain the difference.",
+          "resolution": "Reconstructed the gross invoiced amount by dividing the settled net amount by (1\u202f\u2212\u202f0.0435) and verified it equals the ledger expectation; recognized the 4.35\u202f% shortfall as the customer\u2019s agreed rebate and recorded the payment as reconciled under the negotiated rebate rate.",
+          "amount_signature": "short_by_4_35pct_negotiated_rebate",
+          "names_the_customer": true,
+          "situation_chars": 442,
+          "sightings": [
+            {
+              "scenario_id": "rec_0212",
+              "occurrence": 2,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            },
+            {
+              "scenario_id": "rec_0217",
+              "occurrence": 3,
+              "split": "pool",
+              "deposit_retrieved": true,
+              "resolved_correctly": false,
+              "said": "tds_short_payment",
+              "cited_the_deposit": false
+            },
+            {
+              "scenario_id": "rec_0222",
+              "occurrence": 4,
+              "split": "test",
+              "deposit_retrieved": true,
+              "resolved_correctly": true,
+              "said": "negotiated_rebate",
+              "cited_the_deposit": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "significance": {
+    "v2_vs_v1": {
+      "wins": 9,
+      "losses": 7,
+      "p_value": 0.8036,
+      "significant_at_05": false
+    },
+    "v3_vs_v1": {
+      "wins": 10,
+      "losses": 4,
+      "p_value": 0.1796,
+      "significant_at_05": false
+    },
+    "v3_vs_v2": {
+      "wins": 7,
+      "losses": 3,
+      "p_value": 0.3438,
+      "significant_at_05": false
+    }
+  },
+  "caveat": "Authoring success, the absence of rupee amounts, and retrieval are near-deterministic properties of the authored text and can be read directly. The resolution rate cannot: at 27 sightings no pairwise comparison reaches significance, and per-customer variance is high \u2014 the same prompt authors materially different quality for different cases."
+}
