@@ -10,7 +10,7 @@ def result():
 
 class TestScope:
     def test_scores_only_the_pool_exceptions(self, result):
-        assert result["dataset"]["scenarios_scored"] == 62
+        assert result["dataset"]["scenarios_scored"] == 98
 
     def test_runs_against_the_seed_corpus_at_version_zero(self, result):
         assert result["corpus"]["corpus_version"] == 0
@@ -42,6 +42,7 @@ class TestMetrics:
         assert set(bm25["per_class"]) == {
             "netted_settlement", "direct_neft_bypass", "tds_short_payment", "split_payment",
             "refund_netted", "duplicate_payment", "unmatchable",
+            "negotiated_rebate", "advance_adjusted",
         }
 
     def test_the_best_retriever_beats_the_random_control(self, result):
@@ -55,12 +56,32 @@ class TestMetrics:
         # sometimes, and it must be measured rather than assumed.
         assert result["verdict"]["random_control_top_3"] > 0.0
 
-    def test_lexical_retrieval_covers_every_class_at_the_operating_k(self, result):
-        # This is what justifies k=5 downstream, and it is asserted rather than eyeballed
-        # so a corpus or renderer change that breaks it fails the build.
+    #: Resolvable from the evidence, so the seed corpus covers them by design.
+    DERIVABLE = {
+        "netted_settlement", "direct_neft_bypass", "tds_short_payment", "split_payment",
+        "refund_netted", "duplicate_payment", "unmatchable",
+    }
+    #: Counterparty knowledge. The seed corpus deliberately says nothing about these
+    #: customers, so retrieval *must* fail on them at corpus_version 0 — that failure is
+    #: the headroom the learning curve is measured in.
+    COUNTERPARTY = {"negotiated_rebate", "advance_adjusted"}
+
+    def test_lexical_retrieval_covers_every_derivable_class_at_the_operating_k(self, result):
+        # Justifies k=5, asserted rather than eyeballed so a corpus or renderer change
+        # that breaks it fails the build.
         bm25 = next(a for a in result["arms"] if a["retriever"] == "bm25")
-        assert bm25["precedent_class_precision"]["top_5"] == 1.0
-        assert bm25["complete_misses"] == []
+        for kind, counts in bm25["per_class"].items():
+            if kind in self.DERIVABLE:
+                hits, total = counts["top_5"].split("/")
+                assert hits == total, f"{kind}: {counts['top_5']}"
+
+    def test_the_seed_corpus_cannot_resolve_the_counterparty_classes(self, result):
+        # The load-bearing property of Ring 2.5. If a seed precedent could answer these,
+        # they would be derivable after all and the learning curve would measure nothing.
+        bm25 = next(a for a in result["arms"] if a["retriever"] == "bm25")
+        for kind in self.COUNTERPARTY:
+            hits, _total = bm25["per_class"][kind]["top_5"].split("/")
+            assert hits == "0", f"{kind} should be unreachable from seeds, got {hits}"
 
 
 class TestReproducibility:

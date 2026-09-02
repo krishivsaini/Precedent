@@ -56,7 +56,7 @@ SEED = 20260901
 TEST_SET_SIZE = 60  # spec §5: fixed, held-out, never deposited
 
 CLASS_COUNTS = {
-    "clean_match": 108,
+    "clean_match": 72,
     "netted_settlement": 36,
     "direct_neft_bypass": 24,
     "tds_short_payment": 19,
@@ -65,6 +65,12 @@ CLASS_COUNTS = {
     "rounding_delta": 10,
     "duplicate_payment": 7,
     "unmatchable": 10,
+    # Ring 2.5 — counterparty knowledge, not derivable from the case. Sized so every
+    # customer recurs: 4 rebate customers x 4 occurrences, 3 advance customers x 4. The
+    # recurrence is the point — a precedent deposited on one occurrence has to be worth
+    # retrieving on the next, or there is no learning curve to measure.
+    "negotiated_rebate": 20,
+    "advance_adjusted": 16,
 }
 assert sum(CLASS_COUNTS.values()) == 240
 
@@ -93,23 +99,62 @@ def _real_flags(class_name: str, count: int) -> list[bool]:
 
 
 def _assign_pool_or_test(scenarios: list[Scenario], rng: Random) -> list[Scenario]:
-    """Stratified split: each exception class contributes to the test set in proportion
-    to its share of all exceptions, via the largest-remainder method so the total lands
-    on exactly TEST_SET_SIZE."""
+    """Stratified split, with the counterparty classes handled first and by hand.
+
+    For every other class a proportional random split is fine: the cases are independent, so
+    which ones land in the test set does not change what the test set can measure.
+
+    The counterparty classes are not independent — they come in groups that share a customer,
+    and the split has to preserve the structure the learning curve is read from:
+
+    * **Each customer's first sighting goes to the pool.** It is the case nobody can resolve,
+      which a human resolves, and whose resolution is deposited. Put it in the held-out set
+      and there is nothing to deposit *from*.
+    * **Every customer keeps at least one sighting in the test set.** Otherwise that
+      customer's deposited precedent can never be shown to help, and the deposit is
+      unmeasurable. A purely proportional split left two of nine customers with no test
+      sighting at all — invisible, because the class-level counts looked correct.
+
+    The remaining test-set places are then filled proportionally from the other classes.
+    """
     exceptions = [s for s in scenarios if s.is_exception]
-    by_kind: dict[str, list[Scenario]] = defaultdict(list)
+    test_ids: set[str] = set()
+
+    # --- counterparty classes, grouped by customer ---
+    by_customer: dict[str, list[Scenario]] = defaultdict(list)
     for s in exceptions:
+        if s.counterparty:
+            by_customer[s.counterparty].append(s)
+
+    counterparty_ids = set()
+    for customer, sightings in sorted(by_customer.items()):
+        ordered = sorted(sightings, key=lambda s: (s.occurrence_index or 0, s.scenario_id))
+        counterparty_ids.update(s.scenario_id for s in ordered)
+        later = ordered[1:]  # ordered[0] — the first sighting — always stays in the pool
+        if not later:
+            continue
+        # Half the later sightings, at least one, so every customer is represented on both
+        # sides of the split.
+        take = max(1, len(later) // 2)
+        shuffled = later[:]
+        rng.shuffle(shuffled)
+        test_ids.update(s.scenario_id for s in shuffled[:take])
+
+    # --- everything else, proportionally, filling the remaining places ---
+    remaining_slots = TEST_SET_SIZE - len(test_ids)
+    others = [s for s in exceptions if s.scenario_id not in counterparty_ids]
+    by_kind: dict[str, list[Scenario]] = defaultdict(list)
+    for s in others:
         by_kind[s.kind].append(s)
 
-    total = len(exceptions)
-    raw = {kind: len(items) * TEST_SET_SIZE / total for kind, items in by_kind.items()}
+    total = len(others)
+    raw = {kind: len(items) * remaining_slots / total for kind, items in by_kind.items()}
     floor_alloc = {kind: int(v) for kind, v in raw.items()}
-    remainder = TEST_SET_SIZE - sum(floor_alloc.values())
+    remainder = remaining_slots - sum(floor_alloc.values())
     by_fraction = sorted(raw.items(), key=lambda kv: kv[1] - int(kv[1]), reverse=True)
     for kind, _ in by_fraction[:remainder]:
         floor_alloc[kind] += 1
 
-    test_ids: set[str] = set()
     for kind, items in by_kind.items():
         shuffled = items[:]
         rng.shuffle(shuffled)
@@ -225,6 +270,28 @@ def generate_dataset() -> list[Scenario]:
             builders.build_unmatchable(rng, next_scenario_id(), order_id, amount, fee_rate, tax_rate)
         )
 
+    # Counterparty classes. `customer_index` cycles so each customer recurs with the same
+    # terms; the stratified split then puts some of each customer's cases in the pool (where
+    # a resolution may be deposited) and some in the held-out test set (where only a
+    # retrieved precedent can resolve them). That pairing is what makes the learning curve
+    # measurable rather than decorative.
+    for index in range(CLASS_COUNTS["negotiated_rebate"]):
+        scenarios.append(
+            builders.build_negotiated_rebate(
+                rng, next_scenario_id(), next(order_ids), random_amount_paise(rng),
+                index, fee_rate, tax_rate,
+            )
+        )
+
+    for index in range(CLASS_COUNTS["advance_adjusted"]):
+        # Large enough that netting a 250-750 rupee advance leaves a sane positive payment.
+        invoice = random_amount_paise(rng) + 200_000
+        scenarios.append(
+            builders.build_advance_adjusted(
+                rng, next_scenario_id(), next(order_ids), invoice, index, fee_rate, tax_rate,
+            )
+        )
+
     return _assign_pool_or_test(scenarios, rng)
 
 
@@ -247,6 +314,8 @@ def write_dataset(scenarios: list[Scenario]) -> None:
             "notes": s.notes,
             "uses_real_payment": s.uses_real_payment,
             "pool_or_test": s.pool_or_test,
+            "counterparty": s.counterparty,
+            "occurrence_index": s.occurrence_index,
             "payment_ids": [p.payment_id for p in s.payments],
             "bank_line_ids": [b.line_id for b in s.bank_lines],
             "ledger_entry_ids": [l.entry_id for l in s.ledger_entries],

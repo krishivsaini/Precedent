@@ -217,3 +217,111 @@ def build_unmatchable(
         notes="No ledger entry or bank line exists for this payment — no valid counterpart.",
         uses_real_payment=(payment.source == "razorpay"),
     )
+
+
+# ---------------------------------------------------------------------------------------
+# Ring 2.5 — counterparty knowledge. Not derivable from the case.
+#
+# Every class above this line can be worked out from the evidence: test the shortfall
+# against the statutory rates, sum the netted payments, count the payments on an order. The
+# Ring 2 measurements showed the consequence — with tools, the investigation *derives* what
+# a precedent would have *told* it, so the corpus's measured contribution fell to one case.
+#
+# These two cannot be derived at all. The shortfall is a rate no statute produces, or an
+# amount withheld from a transaction that is not in front of the agent. The evidence is
+# genuinely insufficient, and the only thing that resolves it is having seen that
+# counterparty before.
+#
+# The load-bearing property is **repeat counterparties**: each of these customers appears
+# several times with the same convention. The first occurrence cannot be resolved by anyone
+# and must escalate to a human; the resolution deposits a precedent naming that customer;
+# later occurrences are then resolvable by retrieving it. That is the learning curve the
+# spec asks for, and it is not measurable on a dataset where every case is self-contained.
+
+#: Rates no statute produces. Deliberately not 2%, 5% or 10% — a round statutory rate would
+#: let the agent guess correctly without ever having seen the customer, which is exactly the
+#: derivability that makes the rest of the dataset unable to test the thesis.
+NEGOTIATED_RATES = (
+    Decimal("0.0325"), Decimal("0.0175"), Decimal("0.0435"), Decimal("0.0265"),
+    Decimal("0.0385"),
+)
+
+#: Customers with a standing negotiated rebate. Kept small and repeated so a precedent
+#: deposited on one occurrence is worth retrieving on the next.
+REBATE_CUSTOMERS = (
+    "Kavery Textiles", "Sundaram Auto Parts", "Vindhya Chemicals", "Konark Logistics",
+    "Palghat Ceramics",
+)
+
+#: Customers who hold advances against future invoices.
+ADVANCE_CUSTOMERS = ("Deccan Foods", "Nilgiri Exports", "Chenab Steel", "Beas Papers")
+
+
+def build_negotiated_rebate(
+    rng: random.Random, scenario_id: str, order_id: str, invoice_amount_paise: int,
+    customer_index: int, fee_rate: Decimal, tax_rate: Decimal,
+) -> Scenario:
+    """A customer deducts a rebate negotiated with them, at a rate no statute produces.
+
+    Indistinguishable from a withholding case except that the rate is wrong for every
+    statutory band — so an agent reasoning from the evidence alone can see *that* something
+    was deducted but has no way to establish *what*, or whether it was authorised. The
+    correct resolution depends entirely on knowing this customer's terms.
+    """
+    customer = REBATE_CUSTOMERS[customer_index % len(REBATE_CUSTOMERS)]
+    rate = NEGOTIATED_RATES[customer_index % len(NEGOTIATED_RATES)]
+    occurrence = customer_index // len(REBATE_CUSTOMERS) + 1
+    net_amount_paise = net_of_tds_paise(invoice_amount_paise, rate)
+    payment = generate_synthetic_payment(rng, order_id, net_amount_paise, fee_rate, tax_rate)
+    bank_line = generate_bank_line_for_payment(payment, rng, lag_days=(1, 2))
+    ledger_entry = LedgerEntryRecord(
+        entry_id=random_id(rng, "led"), order_id=order_id,
+        expected_amount_paise=invoice_amount_paise,
+        invoice_no=f"INV-{rng.randint(1000, 9999)}", customer_name=customer, terms="net_30",
+    )
+    return Scenario(
+        scenario_id=scenario_id, kind="negotiated_rebate", is_exception=True,
+        payments=[payment], bank_lines=[bank_line], ledger_entries=[ledger_entry],
+        expected_reason_code=ReasonCode.NEGOTIATED_REBATE.value,
+        counterparty=customer, occurrence_index=occurrence,
+        notes=(
+            f"{customer} deducted their negotiated {rate:.2%} rebate. Not a statutory rate; "
+            f"resolvable only from prior knowledge of this customer's terms."
+        ),
+    )
+
+
+def build_advance_adjusted(
+    rng: random.Random, scenario_id: str, order_id: str, invoice_amount_paise: int,
+    customer_index: int, fee_rate: Decimal, tax_rate: Decimal,
+) -> Scenario:
+    """The customer nets an advance they already paid against this invoice.
+
+    The advance belongs to an earlier transaction that is not among this case's records, so
+    the shortfall is an arbitrary absolute amount with no proportional structure and nothing
+    in the case to explain it. It looks exactly like a netted refund, and the only thing
+    that distinguishes them is knowing this customer carries an advance.
+    """
+    customer = ADVANCE_CUSTOMERS[customer_index % len(ADVANCE_CUSTOMERS)]
+    occurrence = customer_index // len(ADVANCE_CUSTOMERS) + 1
+    # A round rupee figure, as an advance would be — and deliberately not a percentage of
+    # the invoice, so no rate hypothesis can reproduce it.
+    advance_paise = (25_000, 50_000, 75_000, 40_000)[customer_index % 4]
+    paid_paise = invoice_amount_paise - advance_paise
+    payment = generate_synthetic_payment(rng, order_id, paid_paise, fee_rate, tax_rate)
+    bank_line = generate_bank_line_for_payment(payment, rng, lag_days=(1, 2))
+    ledger_entry = LedgerEntryRecord(
+        entry_id=random_id(rng, "led"), order_id=order_id,
+        expected_amount_paise=invoice_amount_paise,
+        invoice_no=f"INV-{rng.randint(1000, 9999)}", customer_name=customer, terms="net_30",
+    )
+    return Scenario(
+        scenario_id=scenario_id, kind="advance_adjusted", is_exception=True,
+        payments=[payment], bank_lines=[bank_line], ledger_entries=[ledger_entry],
+        expected_reason_code=ReasonCode.ADVANCE_ADJUSTED.value,
+        counterparty=customer, occurrence_index=occurrence,
+        notes=(
+            f"{customer} netted a {advance_paise} paise advance paid earlier against this "
+            f"invoice. The advance is not among this case's records."
+        ),
+    )

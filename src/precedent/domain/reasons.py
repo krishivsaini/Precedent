@@ -22,6 +22,20 @@ class ReasonCode(str, Enum):
     SPLIT_PAYMENT = "split_payment"
     REFUND_NETTED = "refund_netted"
 
+    # Counterparty knowledge — NOT derivable from the case (Ring 2.5).
+    #
+    # Every class above can be worked out from the evidence in front of the agent: a round
+    # percentage can be tested for, a netted sum can be computed. That is why the Ring 2
+    # measurements found the investigation tools substituting for the precedent corpus —
+    # a precedent could only ever tell the agent what it could have derived.
+    #
+    # These two cannot be derived. The shortfall is a rate no statute produces, or an
+    # amount held from an earlier transaction: nothing in the case says so. The only way to
+    # resolve one is to have seen that counterparty before, which is precisely the knowledge
+    # a deposited precedent carries and a tool cannot manufacture.
+    NEGOTIATED_REBATE = "negotiated_rebate"
+    ADVANCE_ADJUSTED = "advance_adjusted"
+
     # Rejections — a match must NOT be made
     DUPLICATE_PAYMENT_REJECTED = "duplicate_payment_rejected"
 

@@ -22,3 +22,13 @@ class Scenario:
     notes: str = ""
     uses_real_payment: bool = False
     pool_or_test: str | None = None  # "pool" | "test" | None (non-exceptions aren't split)
+
+    #: Counterparty classes only. The customer whose standing arrangement decides this case,
+    #: and which sighting of them this is (1 = first ever).
+    #:
+    #: The learning curve is unreadable without these. A first sighting *must* escalate — no
+    #: precedent about that customer can exist yet, and resolving it would mean the agent
+    #: guessed. A later sighting *should* resolve, but only once a precedent has been
+    #: deposited. Scoring both together averages the two into a number that shows neither.
+    counterparty: str | None = None
+    occurrence_index: int | None = None

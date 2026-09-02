@@ -21,6 +21,12 @@ class LoadedScenario:
     notes: str
     uses_real_payment: bool
     pool_or_test: str | None
+    #: Counterparty classes only. Which customer's standing arrangement decides the case,
+    #: and which sighting of them this is. A first sighting must escalate — no precedent
+    #: about that customer can exist yet — so scoring first and repeat sightings together
+    #: averages two different questions into a number that answers neither.
+    counterparty: str | None
+    occurrence_index: int | None
     payments: list[PaymentRecord]
     bank_lines: list[BankLineRecord]
     ledger_entries: list[LedgerEntryRecord]
@@ -47,6 +53,9 @@ def load_dataset() -> list[LoadedScenario]:
                     notes=row["notes"],
                     uses_real_payment=row["uses_real_payment"],
                     pool_or_test=row["pool_or_test"],
+            # `.get` so a gold file written before these fields existed still loads.
+            counterparty=row.get("counterparty"),
+            occurrence_index=row.get("occurrence_index"),
                     payments=[payments_by_id[pid] for pid in row["payment_ids"]],
                     bank_lines=[bank_lines_by_id[lid] for lid in row["bank_line_ids"]],
                     ledger_entries=[ledger_entries_by_id[eid] for eid in row["ledger_entry_ids"]],

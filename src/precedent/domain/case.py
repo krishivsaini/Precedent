@@ -146,6 +146,18 @@ class ReconciliationCase:
         if self.ledger_entries and not self.payments and not credits:
             notes.append("An invoice is open with neither a payment nor a credit against it.")
 
+        # The counterparty, named. For most classes this is noise; for the counterparty
+        # classes (negotiated_rebate, advance_adjusted) it is the *only* discriminating
+        # evidence there is, because the shortfall itself is indistinguishable from a
+        # refund. A precedent deposited about this customer can only be retrieved if the
+        # query says who the customer is.
+        #
+        # This is a fact read off the ledger entry, not a label: it names who, never what
+        # kind of case it is.
+        counterparties = sorted({e.customer_name for e in self.ledger_entries if e.customer_name})
+        if counterparties:
+            notes.append(f"The counterparty on this invoice is {', '.join(counterparties)}.")
+
         # Two deductions operate at different levels and must never be conflated — the
         # mistake the `tds_and_psp_fee_stacked` seed precedent exists to warn about, and
         # which an earlier version of this method made:

@@ -83,6 +83,7 @@ CREATE TABLE IF NOT EXISTS precedents (
     reason_code                 TEXT NOT NULL CHECK (reason_code IN (
         'exact_match', 'tolerance_rounding', 'date_window_timing', 'netted_settlement',
         'direct_neft_bypass', 'tds_short_payment', 'split_payment', 'refund_netted',
+        'negotiated_rebate', 'advance_adjusted',
         'duplicate_payment_rejected', 'unmatchable_no_counterpart',
         'escalated_low_confidence', 'escalated_verify_failed',
         'escalated_parse_failure', 'escalated_model_unavailable'

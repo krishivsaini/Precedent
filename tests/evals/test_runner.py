@@ -73,4 +73,4 @@ class TestBaselineRulesAlone:
     def test_exception_list_is_not_empty_and_covers_every_unresolved_record(self):
         result = run_baseline_rules_alone()
         assert len(result["exception_list"]) == result["dataset"]["exceptions"]
-        assert len(result["exception_list"]) == 122
+        assert len(result["exception_list"]) == 158

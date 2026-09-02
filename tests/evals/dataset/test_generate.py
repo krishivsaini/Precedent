@@ -1,3 +1,4 @@
+from decimal import Decimal
 from collections import Counter
 
 from evals.dataset.convert import to_domain_bank_line, to_domain_ledger_entry, to_domain_payment
@@ -90,3 +91,68 @@ class TestGenerateDataset:
             else:
                 assert result.matches == [], f"{s.scenario_id} ({s.kind}) matched but shouldn't have"
             assert len(result.exceptions) > 0, f"{s.scenario_id} produced no exception record"
+
+
+class TestCounterpartyStructure:
+    """The counterparty classes (Ring 2.5) exist to make the learning curve measurable, and
+    that only works if the split preserves their structure. These properties are the
+    difference between a curve that measures something and one that cannot."""
+
+    def scenarios(self):
+        from evals.dataset.generate import generate_dataset
+
+        return [s for s in generate_dataset() if s.counterparty]
+
+    def test_every_counterparty_case_records_who_and_which_sighting(self):
+        assert all(s.occurrence_index and s.counterparty for s in self.scenarios())
+
+    def test_every_customer_recurs(self):
+        # A customer seen once can never demonstrate that depositing their precedent helped.
+        from collections import Counter
+
+        counts = Counter(s.counterparty for s in self.scenarios())
+        assert counts and all(n >= 2 for n in counts.values()), counts
+
+    def test_each_customers_first_sighting_is_in_the_pool(self):
+        # It is the case nobody can resolve, that a human resolves, and whose resolution is
+        # deposited. Held out, there would be nothing to deposit *from*.
+        firsts = [s for s in self.scenarios() if s.occurrence_index == 1]
+        assert firsts
+        assert all(s.pool_or_test == "pool" for s in firsts)
+
+    def test_every_customer_keeps_a_sighting_in_the_test_set(self):
+        # Otherwise that customer's deposit can never be shown to help. A purely
+        # proportional split left two of nine customers with no test sighting at all —
+        # invisible, because the class-level counts looked correct.
+        from collections import defaultdict
+
+        by_customer = defaultdict(set)
+        for s in self.scenarios():
+            by_customer[s.counterparty].add(s.pool_or_test)
+        for customer, sides in by_customer.items():
+            assert "test" in sides, f"{customer} has no held-out sighting"
+            assert "pool" in sides, f"{customer} has no pool sighting"
+
+    def test_the_rebate_rates_are_not_statutory(self):
+        # A round statutory rate would let the agent guess correctly without ever having
+        # seen the customer — the exact derivability that makes the rest of the dataset
+        # unable to test the thesis.
+        from evals.dataset.builders import NEGOTIATED_RATES
+
+        statutory = {Decimal("0.01"), Decimal("0.02"), Decimal("0.05"), Decimal("0.10")}
+        assert not (set(NEGOTIATED_RATES) & statutory)
+
+    def test_the_advance_is_not_a_proportion_of_the_invoice(self):
+        # If it were, a rate hypothesis could reproduce it and the case would be derivable.
+        for scenario in self.scenarios():
+            if scenario.kind != "advance_adjusted":
+                continue
+            invoice = scenario.ledger_entries[0].expected_amount_paise
+            shortfall = invoice - scenario.payments[0].amount_paise
+            rate = Decimal(shortfall) / Decimal(invoice)
+            for candidate in (Decimal("0.01"), Decimal("0.02"), Decimal("0.05"),
+                              Decimal("0.075"), Decimal("0.10"), Decimal("0.20")):
+                assert abs(rate - candidate) > Decimal("0.0015"), (
+                    f"{scenario.scenario_id}: shortfall is {rate:.4f} of the invoice, close "
+                    f"enough to {candidate} that a rate hypothesis would reproduce it"
+                )
