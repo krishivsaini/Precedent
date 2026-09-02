@@ -379,3 +379,77 @@ numbers cannot be quoted selectively: the more flattering one is the earlier and
 **The general lesson:** a verifier that checks a *necessary* condition and treats it as
 *sufficient* is worse than no verifier, because it launders a wrong answer as a checked one.
 Arithmetic closure is necessary for `exact_match` and nowhere near sufficient.
+
+## 2026-09-02 — A prompt "improvement" that improved nothing, and nearly shipped
+
+**What broke:** deposit prompt v1 authored precedents carrying concrete rupee amounts, one
+case's order id, and — in one instance — a rebate rate with the processor's fee folded into
+it, recording 3.25% as "about 5.8%". Wrong knowledge, deposited permanently.
+
+v2 fixed every one of those. Authoring success 7/9 → 9/9, rupee amounts in situations 4/9 →
+0/9, deposit retrieval 78% → 100%, and the headline resolution rate rose 56% → 63%.
+
+**That last number is the failure.** Paired exact McNemar over the same 27 sightings: 9W-7L,
+**p = 0.80**. Noise. Underneath it, two customers that v1 resolved 3/3 had collapsed to 0/3 —
+a real regression, invisible in an aggregate that moved the right way.
+
+**How it was caught:** reading the authored text rather than the metric. Every v2 failure was
+`escalated_low_confidence`, never a wrong answer — the agent recognised the case and could not
+get confident. The cause was an over-correction in v2's own instructions. Its situations became
+clean observations that named nothing:
+
+> ...the settled amount remains approximately three and a quarter percent lower than the invoice
+
+against v1's, on the same customer, which resolved 3/3:
+
+> ...the shortfall aligns with Kavery Textiles' negotiated 3.25% rebate
+
+Both retrieve. Only one tells the reader **what they have found**. "State the observable
+signature, not the conclusion" is right for *finding* a precedent and wrong for *believing* it,
+and v2 pushed it until the situation carried no claim at all. v3 keeps v2's bans and restores
+the claim: recognisable first, named second. 9/9 authored, 100% retrieved, 78% resolved.
+
+**A second, smaller trap inside the first.** The eval recorded only the `situation`, so the
+regression was nearly misdiagnosed as a `resolution` problem. The resolutions were fine
+throughout and named the right rate. The two halves fail independently and have opposite
+remedies, so both are now recorded.
+
+**What is and is not established, stated because the temptation is to quote the 78%.**
+Authoring success, the absence of amounts, and retrieval are near-deterministic properties of
+the text and can be read directly. The resolution lead cannot: v3 over v1 is 10W-4L at
+**p = 0.18** on 27 sightings, and per-customer variance is high — Chenab Steel is 3/3 under v1
+and 1/3 under v3. v3 is adopted on the criteria that are established, not on the headline.
+
+**The general lesson, and the reason spec §4 asks for prompt versions with numbers attached:**
+a prompt change that fixes exactly what it targeted can still make the system no better, and an
+aggregate moving in the intended direction is the easiest possible thing to mistake for
+evidence. Without the per-case breakdown, v2 ships.
+
+## 2026-09-02 — The gate approved cases nobody was asked about, and swallowed empty approvals
+
+**What broke:** two defects in the `interrupt` gate, both found by writing the tests the plan
+demanded rather than the ones that would pass.
+
+**1. Escalated cases stopped at the gate.** `finalize` emits both the auto-resolved proposal
+*and* the low-confidence escalation, and the edge `finalize -> gate` did not distinguish them.
+So a case the system had explicitly routed to a human blocked at a second human step, waiting
+for an approval nobody knew to give. Fixed with a conditional edge: only a non-escalated
+proposal reaches the gate.
+
+**2. An empty resume was silently ignored.** LangGraph treats a falsy `Command(resume=...)`
+value as *no resume at all* — the graph pauses again and `invoke` returns a state that looks
+acted-on. The node-level validation could never fire, because the node never ran. At a gate
+whose entire purpose is a durable human decision, the difference between "your approval was
+rejected" and "your approval vanished" is the whole point, so validation moved to
+`resume_gate`, which fails loudly before invoking. A correction carrying no
+`corrected_reason_code` is refused there too: it would deposit the agent's original answer
+under the label of a human correction, which is the worst of both.
+
+**On proving durability.** Spec §7 justifies `interrupt` as surviving a process restart, and
+the plan says a design note is not proof. The test therefore **starts a second Python
+interpreter**: the first pauses a case at the gate and exits, the second — which never ran the
+graph — reads the pending decision off disk and resumes it. The second process is given a
+`ScriptedLLM` with *no queued responses*, so if resuming re-ran any model call it would raise;
+a clean resume proves the work was restored rather than recomputed. `MemorySaver` cannot do
+this, which is why `durable_graph()` uses `SqliteSaver`, and a control test asserts the
+in-memory checkpointer indeed loses the paused case.

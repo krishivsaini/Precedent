@@ -307,7 +307,74 @@ customer name generalises to that customer's future cases; a payment id generali
 one from a confirmed resolution through the deposit prompt, and an LLM-written precedent may be
 materially worse. Nothing here measures that.
 
-*The learning curve across corpus snapshots lands here as Ring 3 completes.*
+### Ring 3 — the learning curve
+
+The held-out 60-exception test set, replayed unchanged against the corpus at five sizes. The
+test set is never deposited; each point is the same questions against more accumulated
+knowledge.
+
+| Deposits | Corpus | Resolved | Random control | Counterparty subset | Escalated | Precedent precision |
+|---|---|---|---|---|---|---|
+| 0 | 42 | 81.7% | 75.0% | **0.0%** | 13.3% | 94.4% |
+| 25 | 67 | 85.0% | 68.3% | 44.4% | 15.0% | 97.3% |
+| 50 | 92 | 81.7% | 71.7% | 44.4% | 18.3% | 97.8% |
+| 75 | 117 | 88.3% | 66.7% | 55.6% | 8.3% | 100.0% |
+| **98** | **140** | **95.0%** | **66.7%** | **88.9%** | **5.0%** | **100.0%** |
+
+Paired exact McNemar, first snapshot to last, over the same 60 cases:
+
+| Comparison | | p | |
+|---|---|---|---|
+| Headline | 9W–1L | 0.021 | **significant** |
+| Counterparty subset | 8W–0L | 0.0078 | **significant** |
+| Random control | 6W–11L | 0.33 | not significant, and **downward** |
+
+**The control is what makes this evidence rather than a number that went up.** It draws the
+same *k* precedents from the same growing corpus, differing only in whether they are relevant.
+It does not rise with the treatment — it *falls*, from 75.0% to 66.7%. A larger corpus of
+irrelevant precedents is actively worse than a small one, because there is more to be
+distracted by. That closes off the prompt-length explanation: the gain comes from relevance,
+not from having more text in the prompt.
+
+**The effect lives where the headroom is.** Seven of the nine exception classes are derivable
+from the evidence and already sit at 98–100% with no corpus at all (Ring 2), so the headline
+has little room to move and most of its 13-point rise is the counterparty subset pulling it
+up. That subset goes **0/9 → 8/9**. This is the one part of the dataset where a precedent
+cannot be replaced by an investigation tool, and it is the part that moved.
+
+Escalation fell 13.3% → 5.0% while accuracy rose — spec §6's stated expectation, and the
+combination that matters: a system that resolved more by escalating less *and* getting more
+right, rather than by becoming more willing to guess. Precedent precision rose 94.4% → 100%.
+
+**Where the gain actually came from, case by case.** Of the nine cases that flipped from wrong
+to right between the first snapshot and the last, **eight are counterparty cases**. The 51
+derivable test cases moved by exactly **+0**: ninety-eight deposits did nothing for
+five-sixths of the test set. One case regressed — a `tds_short_payment` that was correct with
+no corpus at all escalated at 98 deposits, the same distraction effect the falling control
+measures, leaking into the treatment arm.
+
+That makes this a narrower claim than the headline, and a more useful one. It is not "a
+precedent corpus improves reconciliation". It is:
+
+> A precedent corpus improves resolution **only for knowledge that cannot be derived from the
+> case in front of the agent.** Where the answer is computable — a round withholding rate, a
+> netted sum, two payments on one order — an investigation tool derives it and the corpus adds
+> nothing, or very slightly distracts.
+
+That is the same conclusion Ring 2 reached from the opposite direction, when the tools
+collapsed the measured value of retrieval to one case. Ring 3 confirms it with the sign
+reversed: give the system knowledge it *cannot* derive, and the corpus is worth 0/9 → 8/9.
+
+**And the counterparty task is a lookup.** "This customer deducts 2.65%" is real institutional
+knowledge and exactly what a precedent corpus should carry, but recalling a counterparty's
+terms is not deep generalisation, and the 88.9% should not be read as one.
+
+**What this is not.** The human is simulated by the gold label: every one of the 98 pool
+resolutions is treated as confirmed at the correct reason code. A real operator would reject
+some, and each rejection is a precedent that never exists — so this curve is an **upper bound**
+on what deposits can achieve, not a forecast. The 50-deposit point sitting below the 25-deposit
+point is a reminder of the noise floor on 60 cases; the endpoints are what carry the p-values,
+not the shape in between.
 
 ## 6. Limits
 

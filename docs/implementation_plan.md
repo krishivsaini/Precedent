@@ -15,11 +15,11 @@ that introduces a float for a monetary value is a bug, not a style issue.
 | **0** — deterministic baseline | ✅ **complete** | ✅ **met** — rules-only baseline committed at 49.2%, before any LLM code exists |
 | **1** — precedent retrieval + kill criterion | ✅ **complete** | ✅ **PASS** — grounded 100% vs zero-shot 85.5% vs random control 93.5% |
 | **2** — LangGraph investigation graph | ✅ **complete** | ✅ **met** — grounded 100% through both chain and graph, no regression |
-| **3** — deposit loop, gate, learning curve | ⬜ next | ⚠️ two blockers below: snapshot scale, and a saturated pool set |
+| **3** — deposit loop, gate, learning curve | 🟨 **3.1, 3.3–3.5 complete** | ✅ **curve committed** — 81.7% → 95.0% (p=0.021), counterparty 0/9 → 8/9 (p=0.0078), control *falls* |
 | **4** — calibration | ⬜ | |
 | **5** — bounded remediation | ⬜ | |
 
-**Current state:** 475 tests passing. 240-record dataset generated and committed. Rules-only
+**Current state:** 550 tests passing. 240-record dataset generated and committed. Rules-only
 baseline and the retrieval eval are both in `evals/results/`. Deferred from Ring 0 by explicit
 decision: live webhook delivery over a public tunnel (signature verification and dedupe are tested
 against fixture bytes instead).
@@ -31,17 +31,25 @@ both ran out of free-tier quota mid-run; see FAILURES.md. `evals/.cache/` makes 
 a re-run free, which is what lets spec §6's "re-run before any claim of improvement" actually be
 followed.
 
-> ⚠️ **Blocker 2 — the pool set is saturated.** After Ring 2 all three arms score 98–100% on the
-> 62 pool exceptions, so the learning curve cannot be measured there: there is no headroom for a
-> growing corpus to show an effect. Ring 3 must measure the curve on the **held-out test set**,
-> and demonstrating that deposits help at all may need harder cases than this dataset contains.
-> Decide before building 3.4, not after the curve comes out flat.
+**Snapshot scale — decided.** The spec's replay protocol asks for corpus snapshots at
+0/50/100/150/200 deposited precedents. The corpus cannot exceed **140** (42 hand-written seeds
+plus 98 depositable pool exceptions, one precedent per resolution), so 150 and 200 are
+arithmetically unreachable — a contradiction in the source spec, not in this build; even at the
+spec's own ~70-pool/~40-seed sizing the ceiling was ~110. **Rescaled to
+`0 / 25 / 50 / 75 / 98`**: five points as the spec intends, at quarters of the depositable pool,
+with the last being everything available rather than a round number that happens to fit. Recorded
+in `evals/replay.py` beside the constant.
 
-> ⚠️ **Blocker 1 — decision needed before Ring 3.4.** The spec's replay protocol calls for corpus snapshots at
-> 0/50/100/150/200 deposited precedents, but the corpus cannot exceed **102** (40 seed + 62
-> depositable pool exceptions, one precedent per resolution). 150 and 200 are unreachable — this is
-> a contradiction in the source spec, not in this build; even at the spec's own ~70-pool/~40-seed
-> sizing the ceiling is ~110. Recommended: rescale to **0/25/50/75/100**. See FR-9.1.
+> ⚠️ **Open — the pool set is saturated for the derivable classes.** All three arms score 98-100%
+> on the seven classes that can be worked out from the evidence, so no growing corpus can show an
+> effect there. The learning curve is measured on the **counterparty classes**, where the seed
+> corpus reaches 0/15 and 0/12 at k=5 and only a deposit can help. That is 36 cases across nine
+> customers, each with its first sighting in the pool and at least one in the held-out test set.
+
+> ⚠️ **Open — the deposit prompt is unproven.** Ring 2.5 demonstrated the effect with a precedent
+> written by hand. An LLM-authored one may be materially worse, and the prompt has already been
+> wrong once for exactly this class of knowledge. 3.3 must measure authored-vs-hand-written
+> before the curve is trusted.
 
 ---
 
