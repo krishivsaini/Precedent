@@ -14,12 +14,12 @@ that introduces a float for a monetary value is a bug, not a style issue.
 |---|---|---|
 | **0** — deterministic baseline | ✅ **complete** | ✅ **met** — rules-only baseline committed at 49.2%, before any LLM code exists |
 | **1** — precedent retrieval + kill criterion | ✅ **complete** | ✅ **PASS** — grounded 100% vs zero-shot 85.5% vs random control 93.5% |
-| **2** — LangGraph investigation graph | ⬜ next | must not regress against Ring 1's grounded arm |
-| **3** — deposit loop, gate, learning curve | ⬜ | ⚠️ blocked on the snapshot-scale decision below |
+| **2** — LangGraph investigation graph | ✅ **complete** | ✅ **met** — grounded 100% through both chain and graph, no regression |
+| **3** — deposit loop, gate, learning curve | ⬜ next | ⚠️ two blockers below: snapshot scale, and a saturated pool set |
 | **4** — calibration | ⬜ | |
 | **5** — bounded remediation | ⬜ | |
 
-**Current state:** 384 tests passing. 240-record dataset generated and committed. Rules-only
+**Current state:** 475 tests passing. 240-record dataset generated and committed. Rules-only
 baseline and the retrieval eval are both in `evals/results/`. Deferred from Ring 0 by explicit
 decision: live webhook delivery over a public tunnel (signature verification and dedupe are tested
 against fixture bytes instead).
@@ -31,7 +31,13 @@ both ran out of free-tier quota mid-run; see FAILURES.md. `evals/.cache/` makes 
 a re-run free, which is what lets spec §6's "re-run before any claim of improvement" actually be
 followed.
 
-> ⚠️ **Decision needed before Ring 3.4.** The spec's replay protocol calls for corpus snapshots at
+> ⚠️ **Blocker 2 — the pool set is saturated.** After Ring 2 all three arms score 98–100% on the
+> 62 pool exceptions, so the learning curve cannot be measured there: there is no headroom for a
+> growing corpus to show an effect. Ring 3 must measure the curve on the **held-out test set**,
+> and demonstrating that deposits help at all may need harder cases than this dataset contains.
+> Decide before building 3.4, not after the curve comes out flat.
+
+> ⚠️ **Blocker 1 — decision needed before Ring 3.4.** The spec's replay protocol calls for corpus snapshots at
 > 0/50/100/150/200 deposited precedents, but the corpus cannot exceed **102** (40 seed + 62
 > depositable pool exceptions, one precedent per resolution). 150 and 200 are unreachable — this is
 > a contradiction in the source spec, not in this build; even at the spec's own ~70-pool/~40-seed
@@ -180,21 +186,40 @@ write a result degraded by provider outages, and a response cache that makes re-
 **Gate:** re-measure against Ring 1's ablation. The full graph should not regress relative to the
 simple grounded prompt; if it does, that's a finding to report, not to hide.
 
-### 2.1 — Graph skeleton
+**Result: gate met, and a finding that matters more than the gate.** Grounded scores 100.0%
+through both the Ring 1 chain and the Ring 2 graph — no regression. But the graph lifted the
+*ungrounded* arms to within one case of it:
+
+| Arm | Ring 1 chain | Ring 2 graph |
+|---|---|---|
+| Zero-shot | 85.5% | **98.4%** |
+| Random control | 93.5% | **98.4%** |
+| Grounded | 100.0% | 100.0% |
+
+Grounding beat zero-shot by 14.5pp at p=0.0039 in Ring 1; in Ring 2 it beats it by 1.6pp — one
+case — at p=1.0. **No comparison is significant any more.** Two causes, both real: the tools let
+the agent *derive* what a precedent would have *told* it, and a verifier fix found in the
+zero-shot arm's errors lifted that arm from 88.7% to 98.4%. The fix helped the baseline, not the
+treatment — the honest direction, and the reason both rings' numbers must be read together.
+
+This is a ceiling effect, not evidence against retrieval: at 98–100% with 62 cases, no
+comparison *could* reach significance. See [`ARCHITECTURE.md`](ARCHITECTURE.md) §5.
+
+### 2.1 — Graph skeleton ✅
 - `graph/state.py`, `graph/nodes.py`, `graph/investigation.py` — one function per node in spec §7,
   wired with the `verify → revise (max 2) → verify` cycle and the three-way `route`.
 
-### 2.2 — Investigation tools
+### 2.2 — Investigation tools ✅
 - The six tools bound to `investigate`, capped at 5 calls. Each is a thin wrapper over the storage
   and domain layers built in Ring 0 — **no new business logic inside a tool**. In particular,
   netted-group reasoning must call `matching.is_netted_group_match`, not reimplement it.
 
-### 2.3 — Structured output & verification
+### 2.3 — Structured output & verification ✅
 - `propose_resolution` returns a Pydantic-validated object; reject and retry on schema violation.
 - `verify` checks arithmetic closure to the paise (reusing `domain/money.py`, including the
   net-vs-gross distinction in FR-2.8) and whether cited precedents actually apply.
 
-### 2.4 — Fallback discipline
+### 2.4 — Fallback discipline ✅
 - Every LLM call site has an explicit fallback to escalation with a reason code on parse failure,
   low confidence, or model unavailability. **Test each fallback path directly** — do not rely on it
   firing by accident during a demo.

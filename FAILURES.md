@@ -345,3 +345,37 @@ is used.
 **What changed:** the ablation now computes paired exact McNemar between every pair of arms and an
 explicit effect decomposition, both written into every result file, and the verdict carries a
 caveat pointing at them. Point estimates alone are how a four-case margin becomes a claim.
+
+## 2026-09-02 — `verify` passed a wrong answer because the arithmetic closed
+
+**What broke:** the Ring 2 graph's `verify` node checked that a proposal's arithmetic closes to
+the paise. For `exact_match` it compared what the payments settle to against what the bank
+credited. On a **split payment** those two figures agree exactly — one payment, one credit — so
+`exact_match` passed verification while leaving a second invoice open on the same order. The
+customer has paid in full and is then chased for the remainder.
+
+Five of the six false resolutions in the graph run's zero-shot arm were exactly this, proposed at
+0.85–0.95 confidence: ₹34,063 of value at risk, all of it waved through by a verifier that was
+working as written.
+
+**How it was caught:** reading the `false_resolutions` list in the result file rather than
+stopping at the headline rate. The arm's accuracy had *improved* over Ring 1 (85.5% → 88.7%)
+while its false-resolution cost *rose* (₹24,845 → ₹34,063) — accuracy and cost moving in
+opposite directions is the signal worth chasing, and it is only visible because spec §6 insists
+the cost be reported in rupees beside the rate.
+
+**What changed:** `verify` now rejects `exact_match` whenever more than one ledger entry is open
+on the order. This is a definitional rule — an exact match is one payment against one invoice —
+not a threshold fitted to the observed failures. Zero-shot went 88.7% → 98.4% and its
+false-resolution cost ₹34,063 → ₹0, at a cost of six new model calls, the rest replayed from
+cache.
+
+**The uncomfortable part, recorded deliberately.** The fix was found by inspecting the
+*ungrounded* arm's mistakes and it disproportionately helped the *ungrounded* arm. It took the
+measured advantage of retrieval from 14.5 points (p=0.0039) down to 1.6 points (p=1.0). Making
+the baseline stronger is the honest direction to be wrong in, but it means the Ring 1 and Ring 2
+numbers cannot be quoted selectively: the more flattering one is the earlier and weaker one.
+
+**The general lesson:** a verifier that checks a *necessary* condition and treats it as
+*sufficient* is worse than no verifier, because it launders a wrong answer as a checked one.
+Arithmetic closure is necessary for `exact_match` and nowhere near sufficient.

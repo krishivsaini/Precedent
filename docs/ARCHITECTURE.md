@@ -216,6 +216,97 @@ and fusing its noisier ranking drags the result down. The ablation therefore run
 claim that hybrid retrieval helps stays unmade until a real embedding model can test it. *k* = 5 is
 the operating point because that is where lexical retrieval covers every exception class.
 
+### Ring 2 — the investigation graph, and what it did to the case for retrieval
+
+> **These numbers were measured on the 122-exception dataset, before Ring 2.5 added the
+> counterparty classes.** They are committed as they were taken and are *not* comparable with
+> runs against the current 158-exception dataset — the population changed. Each result file
+> records the case count it scored, so the two can always be told apart. Ring 2.5 exists
+> because of what these numbers showed, so re-running them against the dataset they caused
+> would be circular; the honest record is the one that prompted the change.
+
+**Gate: met.** The graph must not regress against Ring 1's grounded arm. It does not — grounded
+scores 100.0% through both. But the gate is the least interesting thing this ring produced.
+
+| Arm | Ring 1 chain | Ring 2 graph | False-resolution cost, graph |
+|---|---|---|---|
+| Zero-shot | 85.5% | **98.4%** | ₹0 |
+| Random control | 93.5% | **98.4%** | ₹0 |
+| Retrieval-grounded | 100.0% | 100.0% | ₹0 |
+
+**The graph made the precedent corpus almost redundant on this dataset.** In Ring 1, grounding
+beat zero-shot by 14.5 points at p = 0.0039. In Ring 2 it beats it by 1.6 points — a single
+case — at p = 1.0. Nothing here is statistically significant any more.
+
+Two mechanisms account for that, and both are real rather than artefacts:
+
+1. **The tools substitute for precedents.** An agent that can call `compute_expected_amount`
+   with a candidate rate, or ask the deterministic matcher whether a group nets, can *derive*
+   what a precedent would have *told* it. That is why the random control climbed to within one
+   case of the grounded arm: with tools, having the right precedent stops mattering much.
+2. **A stronger verifier lifted the weakest arm most.** Mid-ring, the zero-shot arm's errors
+   showed five of six false resolutions were split payments called `exact_match` at 0.85–0.95
+   confidence — the single payment settles to the credit exactly, so the arithmetic check
+   passed while a second invoice was left open. Adding the rule that an exact match matches
+   *one* invoice took zero-shot from 88.7% to 98.4% and its false-resolution cost from ₹34,063
+   to ₹0.
+
+That second point deserves to be stated against interest: **the fix was found by looking at the
+ungrounded arm's mistakes, and it disproportionately helped the ungrounded arm.** It made the
+baseline stronger and the treatment's advantage smaller. That is the opposite direction from
+cherry-picking, and it is why the Ring 1 and Ring 2 numbers should be read together rather than
+the more flattering one being quoted.
+
+**What this does not show.** It does not show that a precedent corpus is worthless. Every arm is
+now at 98–100% on the pool set, which is a ceiling: with 62 cases and at most one disagreement
+between arms, no comparison *could* reach significance. The honest reading is that **this
+dataset is too easy for this configuration**, not that retrieval does not work. A dataset
+calibrated to make a rules engine score 49% turns out to be nearly saturated by a 120B model
+with six tools and a deterministic verifier.
+
+The consequence was concrete enough to act on immediately, and Ring 2.5 did.
+
+### Ring 2.5 — exception classes that a tool cannot derive
+
+Every class in the original dataset is *derivable from the evidence in front of the agent*: a
+round percentage can be tested for, a netted sum computed, duplicate payments counted. So a
+precedent could only ever tell the agent what it could have worked out — which is why, once the
+tools existed, the corpus stopped mattering. The thesis was unmeasurable on that dataset **by
+construction**, not by bad luck.
+
+Two classes were added where the evidence is genuinely insufficient:
+
+- **`negotiated_rebate`** — a customer deducts a rate agreed with them specifically (2.65%,
+  3.25%, 4.35%…). Deliberately never a statutory rate: a round one would let the agent guess
+  correctly without ever having seen the customer, reintroducing the derivability that caused
+  the problem.
+- **`advance_adjusted`** — the shortfall is an advance the customer paid on an earlier
+  transaction that is not among this case's records.
+
+Nine customers, thirty-six cases, each customer recurring. Each customer's **first sighting is
+in the pool** — the case nobody can resolve, that a human resolves, and whose resolution is
+deposited — and each keeps **at least one sighting in the held-out test set**, where the value
+of that deposit is measured. A purely proportional split left two of nine customers with no
+test sighting at all, which the class-level counts hid completely.
+
+**Measured, with a hand-authored precedent standing in for a Ring 3 deposit:**
+
+| Corpus state | Correct |
+|---|---|
+| Seed corpus only | **0 / 6** — five escalate honestly, one false accept at 0.93 confidence |
+| A deposit written generically ("this counterparty") | 1 / 5 |
+| A deposit **naming the counterparty** | **4 / 5** |
+
+That is the effect the project claims and previously could not demonstrate. It also exposed a
+defect in `prompts/deposit/v1.md`, which told the author to "describe the shape of the case, not
+the record" — advice that destroys retrievability for knowledge *about a customer*, because the
+query contains a name and the precedent did not. The prompt now carves that out explicitly: a
+customer name generalises to that customer's future cases; a payment id generalises to nothing.
+
+**What this still does not prove.** The precedent above was written by hand. Ring 3 has to author
+one from a confirmed resolution through the deposit prompt, and an LLM-written precedent may be
+materially worse. Nothing here measures that.
+
 *The learning curve across corpus snapshots lands here as Ring 3 completes.*
 
 ## 6. Limits
@@ -233,6 +324,10 @@ Known and stated up front, not discovered by a reviewer:
   Ring 4 sets it from a calibration curve.
 - **No drift monitoring.** Nothing detects the corpus degrading or the exception mix shifting over
   time.
+- **After Ring 2, no arm's advantage over another is statistically significant.** All three sit
+  at 98–100% on the pool set. The precedent corpus's measured marginal contribution is one case.
+  This is a ceiling effect rather than evidence against retrieval, but it means the project's
+  central claim is currently **unproven on this dataset** rather than demonstrated.
 - **The grounded arm scores 100% on the pool, which leaves no headroom there.** Ring 3's learning
   curve cannot be measured on the pool set — it is saturated — so the curve has to come from the
   held-out test set. A dataset calibrated to make a rules engine score 49% turns out not to be
