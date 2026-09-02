@@ -5,9 +5,12 @@ classify_kind → retrieve_precedents → investigate → propose_resolution →
                                                           ↑                 │
                                                         revise ←────────────┤ fail (max 2)
                                                                             │
-                                            finalize ←───────────────────── ┘ pass
+                          gate [interrupt] ← finalize ←──────────────────── ┘ pass
                                             escalate ←──── verify failed twice
 ```
+
+`gate` is optional at build time: the ablation runs without it, because an eval that stopped
+for a human on every case would measure nothing. Ring 3 turns it on.
 
 **Why a graph rather than the Ring 1 chain.** The honest answer is that the cycle is the only
 part a chain cannot express: `verify → revise → verify` needs to route back to a node it has
@@ -35,6 +38,7 @@ from precedent.domain.confidence import DEFAULT_AUTO_RESOLVE_THRESHOLD
 from precedent.graph.nodes import (
     classify_kind,
     escalate,
+    gate,
     make_finalize,
     make_investigate,
     make_propose_resolution,
@@ -54,8 +58,19 @@ def build_investigation_graph(
     threshold: float = DEFAULT_AUTO_RESOLVE_THRESHOLD,
     workspace_factory=CaseWorkspace,
     checkpointer=None,
+    with_gate: bool = False,
 ):
-    """Compile the graph. `checkpointer` defaults to an in-memory saver."""
+    """Compile the graph.
+
+    `with_gate=True` inserts the human `interrupt` between `finalize` and the end. It is off
+    by default because the ablation must run unattended — a graph that stops for a human on
+    every case measures nothing.
+
+    `checkpointer` defaults to an in-memory saver, which is fine for an eval and **useless
+    for the gate**: a paused resolution held only in memory does not survive the restart that
+    spec §7 claims it survives. Pass a `SqliteSaver` when the gate is on; `durable_graph()`
+    does exactly that.
+    """
     graph = StateGraph(InvestigationState)
 
     graph.add_node("classify_kind", classify_kind)
@@ -66,6 +81,8 @@ def build_investigation_graph(
     graph.add_node("revise", make_propose_resolution(llm, revising=True))
     graph.add_node("finalize", make_finalize(threshold))
     graph.add_node("escalate", escalate)
+    if with_gate:
+        graph.add_node("gate", gate)
 
     graph.add_edge(START, "classify_kind")
     graph.add_edge("classify_kind", "retrieve_precedents")
@@ -81,7 +98,19 @@ def build_investigation_graph(
     )
     graph.add_edge("revise", "verify")
 
-    graph.add_edge("finalize", END)
+    if with_gate:
+        # Only an auto-resolved proposal reaches the gate. `finalize` also emits the
+        # low-confidence escalation, and that case has already been routed to a human by
+        # definition — sending it through the gate as well would ask the same question
+        # twice, and would block on an approval nobody was waiting to give.
+        graph.add_conditional_edges(
+            "finalize",
+            lambda state: "gate" if not state.get("escalated") else "done",
+            {"gate": "gate", "done": END},
+        )
+        graph.add_edge("gate", END)
+    else:
+        graph.add_edge("finalize", END)
     graph.add_edge("escalate", END)
 
     return graph.compile(checkpointer=checkpointer or MemorySaver())
@@ -142,6 +171,80 @@ def run_investigation(
             ),
         ),
         final.get("trace", []),
+    )
+
+
+def durable_graph(
+    llm: LLMClient,
+    checkpoint_path: str,
+    retriever: Retriever | None = None,
+    k: int = 5,
+    threshold: float = DEFAULT_AUTO_RESOLVE_THRESHOLD,
+):
+    """A gated graph whose paused state is on disk, not in memory.
+
+    Returns `(compiled_graph, checkpointer_context)`. The caller must keep the context open
+    for the lifetime of the graph — `SqliteSaver.from_conn_string` is a context manager, and
+    closing it closes the connection the checkpoints live in.
+
+    This is the only configuration in which spec §7's durability claim is true. Anything
+    using the default `MemorySaver` loses a paused resolution the moment the process ends.
+    """
+    from langgraph.checkpoint.sqlite import SqliteSaver
+
+    context = SqliteSaver.from_conn_string(checkpoint_path)
+    checkpointer = context.__enter__()
+    checkpointer.setup()
+    compiled = build_investigation_graph(
+        llm, retriever, k, threshold, checkpointer=checkpointer, with_gate=True
+    )
+    return compiled, context
+
+
+def pending_gate(compiled, case_id: str) -> dict | None:
+    """What the graph is waiting for on this case, or None if it is not waiting.
+
+    Reads the checkpoint rather than any in-process state, so it answers correctly in a
+    process that never ran the graph — which is what makes an approval API possible.
+    """
+    snapshot = compiled.get_state({"configurable": {"thread_id": case_id}})
+    interrupts = getattr(snapshot, "interrupts", None) or ()
+    if not interrupts:
+        return None
+    return interrupts[0].value
+
+
+#: The only decisions a human may return from the gate.
+HUMAN_ACTIONS = frozenset({"confirmed", "corrected", "rejected"})
+
+
+def resume_gate(compiled, case_id: str, decision: dict) -> dict:
+    """Resume a paused case with the human's decision. Returns the final state.
+
+    Validated here rather than only in the node, because LangGraph treats an empty or falsy
+    resume value as *no resume at all*: the graph silently pauses again and the caller gets
+    back a state that looks like it was acted on. Failing loudly at the boundary is the
+    difference between "your approval was rejected" and "your approval vanished".
+    """
+    from langgraph.types import Command
+
+    if not isinstance(decision, dict) or not decision:
+        raise ValueError(
+            "the gate must be resumed with a non-empty decision object; an empty resume is "
+            "silently ignored by the graph and would leave the case still pending"
+        )
+    action = decision.get("human_action")
+    if action not in HUMAN_ACTIONS:
+        raise ValueError(
+            f"human_action must be one of {sorted(HUMAN_ACTIONS)}; got {action!r}"
+        )
+    if action == "corrected" and not decision.get("corrected_reason_code"):
+        # A correction with nothing corrected would deposit the agent's original answer
+        # under the label of a human correction — the worst of both.
+        raise ValueError("a corrected decision must carry corrected_reason_code")
+
+    return compiled.invoke(
+        Command(resume=decision), {"configurable": {"thread_id": case_id}}
     )
 
 

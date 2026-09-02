@@ -25,6 +25,8 @@ from precedent.adapters.retrieval.base import Retriever
 from precedent.domain.confidence import DEFAULT_AUTO_RESOLVE_THRESHOLD
 from precedent.domain.money import ROUNDING_TOLERANCE_PAISE
 from precedent.domain.reasons import ReasonCode
+from langgraph.types import interrupt
+
 from precedent.graph.state import (
     MAX_REVISIONS,
     MAX_TOOL_CALLS,
@@ -390,6 +392,64 @@ def make_finalize(threshold: float = DEFAULT_AUTO_RESOLVE_THRESHOLD):
         }
 
     return finalize
+
+
+# --------------------------------------------------------------------------------------
+# gate — the durable human checkpoint (spec §7)
+
+
+def gate(state: InvestigationState) -> dict:
+    """Pause for a human, and survive a restart while paused.
+
+    `interrupt` is what spec §7 justifies to the panel: "a durable human gate on a
+    state-changing action, with checkpointed state so a paused resolution survives a process
+    restart. A chain gives neither." That claim is only worth making if it is true, so
+    `tests/graph/test_gate.py` kills the interpreter mid-pause and resumes in a fresh one.
+
+    The value returned by `interrupt` is whatever the caller resumes with — a `Command(resume=
+    {...})` carrying the human's decision. On the first pass through, `interrupt` raises
+    internally and the graph halts here; on resume, the same call returns that payload.
+
+    Nothing is committed before this point. The gate is the boundary between a proposal and
+    an action, and the deposit that follows it is the only thing that writes to the corpus.
+    """
+    proposal = state.get("proposal")
+    decision = interrupt(
+        {
+            "case_id": state["case"].case_id,
+            "proposed_reason_code": proposal.reason_code.value if proposal else None,
+            "confidence": proposal.confidence if proposal else 0.0,
+            "rationale": proposal.rationale if proposal else "",
+            "cited_precedent_ids": list(proposal.cited_precedent_ids) if proposal else [],
+            "case_summary": state["case"].summarize(),
+        }
+    )
+
+    if not isinstance(decision, dict):
+        raise ValueError(
+            f"the gate must be resumed with a decision object; got {type(decision).__name__}"
+        )
+    action = decision.get("human_action", "")
+    if action not in {"confirmed", "corrected", "rejected"}:
+        # An unrecognised decision must not be treated as approval. Falling through to
+        # "confirmed" here would let a malformed resume write to the corpus.
+        raise ValueError(
+            f"human_action must be confirmed, corrected or rejected; got {action!r}"
+        )
+
+    update: dict = {
+        "human_action": action,
+        "correction_note": (decision or {}).get("correction_note", ""),
+        "trace": traced("gate", f"human {action}"),
+    }
+    corrected = (decision or {}).get("corrected_reason_code")
+    if action == "corrected" and corrected:
+        # The corrected answer replaces the proposal's, because it is the corrected version
+        # that gets deposited (spec §7) — depositing the agent's original would teach it the
+        # mistake it just made.
+        update["corrected_reason_code"] = corrected
+        update["reason_code"] = ReasonCode(corrected)
+    return update
 
 
 def escalate(state: InvestigationState) -> dict:

@@ -74,6 +74,11 @@ class InvestigationState(TypedDict, total=False):
     verified: bool
     verification_notes: list[str]
 
+    # gate — the human decision (Ring 3.1)
+    human_action: str        # "confirmed" | "corrected" | "rejected"
+    correction_note: str
+    corrected_reason_code: str
+
     # route → terminal
     reason_code: ReasonCode
     confidence: float
