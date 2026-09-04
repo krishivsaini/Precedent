@@ -113,10 +113,12 @@ class TestSelfContained:
         return build_report()
 
     def test_it_loads_from_a_clone_with_no_network(self, report):
-        # No external stylesheet, script or image: the report must open offline.
-        assert "http://" not in report
-        assert "https://" not in report
-        assert not re.search(r"<(script|link|img)\b", report)
+        # No external stylesheet, script or image: the report must open offline. Checked by
+        # what would *fetch* rather than by the string "http" — the embedded chart carries
+        # an SVG xmlns, which is a namespace identifier and is never loaded.
+        assert not re.search(r'\b(src|href|xlink:href)\s*=', report)
+        assert "url(" not in report
+        assert not re.search(r"<(script|link|img|image|use)\b", report)
 
     def test_it_says_how_to_regenerate_itself(self, report):
         assert "evals.report" in report

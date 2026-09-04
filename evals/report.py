@@ -23,6 +23,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from evals.chart import render_curve_svg
+
 RESULTS_DIR = Path(__file__).parent / "results"
 OUTPUT = RESULTS_DIR / "report.html"
 
@@ -43,7 +45,7 @@ def esc(value) -> str:
     return html.escape(str(value))
 
 
-def curve_section(curve: dict) -> str:
+def curve_section(curve: dict, rules_baseline: float | None = None) -> str:
     if not curve:
         return "<p class='missing'>No learning-curve result committed yet.</p>"
 
@@ -106,6 +108,12 @@ def curve_section(curve: dict) -> str:
     <p>The held-out test set of {curve['test_set']['size']} exceptions, replayed unchanged
     against the corpus at five sizes. <strong>The test set is never deposited</strong> — each
     point is the same questions against more accumulated knowledge.</p>
+
+    <figure>{render_curve_svg(curve, rules_baseline)}
+      <figcaption class="note">Drawn from the same result file as the table below, so the
+      line and the number cannot disagree. The control is drawn at the same weight as the
+      treatment: it is the line that decides whether the other one means anything.</figcaption>
+    </figure>
 
     <table>
       <thead><tr><th>Deposits</th><th>Corpus</th><th>Resolved</th>
@@ -265,6 +273,8 @@ result file; none is typed in. Regenerate rather than edit. -->
   .callout h3 {{ margin-top: 0; }}
   .caveats li {{ margin-bottom: .5rem; }}
   .note {{ color: #6b7280; font-size: .88rem; }}
+  figure {{ margin: 1.2rem 0; }}
+  figcaption {{ margin-top: .4rem; }}
   .missing {{ color: #9a6a00; }}
   footer {{ margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #e6e3dd;
             color: #6b7280; font-size: .85rem; }}
@@ -284,7 +294,7 @@ JSON; none is transcribed. Regenerating this page is a reproducibility check.</p
   every one was a counterparty case, and every case that regressed was a derivable one.</p>
 </div>
 
-{curve_section(curve)}
+{curve_section(curve, rules_rate)}
 {ablation_section(chain, graph)}
 {retrieval_section(retrieval)}
 {deposit_section(deposit)}
