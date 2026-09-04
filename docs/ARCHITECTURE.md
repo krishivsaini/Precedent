@@ -156,156 +156,54 @@ The runner independently re-derives each scenario's outcome from the matcher and
 against the gold label. If the dataset and the matcher ever disagree, the run fails loudly instead
 of quietly producing metrics built on sand.
 
-### Ring 1 — the kill criterion
+### Rings 1–2 — the kill criterion, and what tools do to it
 
-The premise the whole project rests on is that a corpus of retrieved precedents makes the agent
-better. Ring 1 was built to try to falsify that before anything was built on top of it.
+Re-measured on `nvidia/nemotron-3-super-120b-a12b` against the current 194-exception dataset,
+so these numbers sit on the same footing as the learning curve below. Three arms over the 134
+pool exceptions, same model, same prompt, same *k*=5, corpus of 42 seed precedents. Only the
+contents of the precedent block differ.
 
-Three arms over the same 62 pool exceptions, the same model, the same prompt, the same *k* = 5.
-The only thing that varies is which precedents go into the prompt.
-`openai/gpt-oss-120b` via NVIDIA NIM, temperature 0, corpus of 42 hand-written seed precedents.
+| Engine | Zero-shot | Random control | Retrieval-grounded | Value at risk (grounded) |
+|---|---|---|---|---|
+| Ring 1 chain | 29.1% | 43.3% | 52.2% | ₹155,631 |
+| **Ring 2 graph** | **48.5%** | **48.5%** | **58.2%** | **₹123,680** |
 
-| Arm | Resolved | Escalated | False resolutions | Value at risk | Precedent precision |
-|---|---|---|---|---|---|
-| Zero-shot (no precedents) | 85.5% | 8.1% | 4 | ₹24,845 | — |
-| Random-precedent control | 93.5% | 0.0% | 4 | ₹17,158 | 87.9% |
-| **Retrieval-grounded** | **100.0%** | **0.0%** | **0** | **₹0** | **99.0%** |
+**Ring 2's gate — the graph must not regress against the chain — is met with room to spare:**
+grounded goes 52.2% → 58.2% and value at risk falls by ₹32,000. The original measurement had
+both engines at 100% on an easier dataset, where "no regression" was the only thing the gate
+could say. With headroom, it says something.
 
-**Verdict: PASS.** Grounding beats zero-shot and beats the random control. Ring 2 proceeds.
+**The interesting number is what the tools do to the *control*.** The gain over zero-shot
+decomposes into an effect of having precedents at all and an effect of their relevance:
 
-**But the headline overstates what retrieval buys, and the control is what shows it.** The random
-arm carries the same prompt shape and the same five precedents, differing only in whether they are
-relevant. So the +14.5 point gain over zero-shot splits in two:
+| Engine | From having precedents at all | From their relevance |
+|---|---|---|
+| chain | **+14.2pp** | +9.0pp |
+| graph | **+0.0pp** | **+9.7pp** |
 
-- **+8.1 points from having precedents at all** — format, priming, worked examples of the reasoning
-  style. Nothing to do with retrieval.
-- **+6.5 points from those precedents being the right ones.** This is retrieval's actual
-  contribution: a little under half the total.
+On the chain, a *random* precedent is worth 14 points — format, priming, a worked example of
+the reasoning style, none of it to do with retrieval. On the graph that effect vanishes
+entirely: the control lands on exactly zero-shot's rate, 48.5% against 48.5%, 7W–7L at p=1.0.
+The investigation tools already supply whatever a random precedent was supplying, so what
+survives is pure relevance — and it survives at essentially the same size across both engines,
++9.0 and +9.7 points.
 
-Reporting +14.5 as the value of retrieval would over-claim by more than a factor of two. This is
-exactly what spec §6 built the random control to catch, and it caught it here.
+Both grounded comparisons on the graph are significant (15W–2L, p=0.0023 against each of
+zero-shot and the control). That is the claim Ring 1 could not make: there, relevance was
++6.5pp at p=0.125, and the honest verdict was "a direction, not a demonstrated effect".
 
-**One leg does not reach significance.** The arms answer the same cases, so the comparisons are
-paired (exact McNemar on discordant pairs):
+**The cost side, which the headline hides.** Grounding roughly halves escalation on the graph
+(29.8% → 8.2%) and converts those escalations into *both* correct answers and expensive wrong
+ones. Outright errors rise 21.6% → 33.6% and value at risk rises ₹76,646 → ₹123,680. On spec
+§6's own framing — the false-resolution cost is "the number that gets someone fired" — that
+trade is not self-evidently good. It is the strongest argument for Ring 4: the confidence
+threshold that decides when to escalate is still a placeholder `0.8` that nothing set from
+data.
 
-| Comparison | Discordant | p | |
-|---|---|---|---|
-| Grounded vs zero-shot | 9W–0L | 0.0039 | significant |
-| Grounded vs random control | 4W–0L | 0.1250 | **not significant** |
-| Random control vs zero-shot | 8W–3L | 0.2266 | not significant |
-
-Grounding beating zero-shot is solid. Grounding beating *random* grounding — the stricter and more
-interesting claim — is directionally consistent and never once loses a case, but at n = 62 a
-four-case margin cannot be separated from noise at conventional thresholds. It is a direction, not
-yet a demonstrated effect. The honest statement is that the kill criterion is passed on the
-evidence available and the relevance effect needs more cases to confirm.
-
-**Retrieval quality, measured separately** (no LLM involved), against the same 62 exceptions:
-
-| Retriever | top-1 | top-3 | top-5 |
-|---|---|---|---|
-| BM25 | 45.2% | 90.3% | **100%** |
-| Dense (hashing embedder) | 45.2% | 45.2% | 61.3% |
-| Hybrid (RRF) | 45.2% | 61.3% | 90.3% |
-| Random control | 11.3% | 21.0% | 46.8% |
-
-Spec §6 asks this comparison to "justify the hybrid choice with data". On the current embedder the
-data refuses to: **hybrid is worse than BM25 alone.** The credential-free `HashingEmbedder` is
-feature hashing over surface tokens, so it is a second lexical retriever wearing different clothes,
-and fusing its noisier ranking drags the result down. The ablation therefore runs BM25, and the
-claim that hybrid retrieval helps stays unmade until a real embedding model can test it. *k* = 5 is
-the operating point because that is where lexical retrieval covers every exception class.
-
-### Ring 2 — the investigation graph, and what it did to the case for retrieval
-
-> **These numbers were measured on the 122-exception dataset, before Ring 2.5 added the
-> counterparty classes.** They are committed as they were taken and are *not* comparable with
-> runs against the current 158-exception dataset — the population changed. Each result file
-> records the case count it scored, so the two can always be told apart. Ring 2.5 exists
-> because of what these numbers showed, so re-running them against the dataset they caused
-> would be circular; the honest record is the one that prompted the change.
-
-**Gate: met.** The graph must not regress against Ring 1's grounded arm. It does not — grounded
-scores 100.0% through both. But the gate is the least interesting thing this ring produced.
-
-| Arm | Ring 1 chain | Ring 2 graph | False-resolution cost, graph |
-|---|---|---|---|
-| Zero-shot | 85.5% | **98.4%** | ₹0 |
-| Random control | 93.5% | **98.4%** | ₹0 |
-| Retrieval-grounded | 100.0% | 100.0% | ₹0 |
-
-**The graph made the precedent corpus almost redundant on this dataset.** In Ring 1, grounding
-beat zero-shot by 14.5 points at p = 0.0039. In Ring 2 it beats it by 1.6 points — a single
-case — at p = 1.0. Nothing here is statistically significant any more.
-
-Two mechanisms account for that, and both are real rather than artefacts:
-
-1. **The tools substitute for precedents.** An agent that can call `compute_expected_amount`
-   with a candidate rate, or ask the deterministic matcher whether a group nets, can *derive*
-   what a precedent would have *told* it. That is why the random control climbed to within one
-   case of the grounded arm: with tools, having the right precedent stops mattering much.
-2. **A stronger verifier lifted the weakest arm most.** Mid-ring, the zero-shot arm's errors
-   showed five of six false resolutions were split payments called `exact_match` at 0.85–0.95
-   confidence — the single payment settles to the credit exactly, so the arithmetic check
-   passed while a second invoice was left open. Adding the rule that an exact match matches
-   *one* invoice took zero-shot from 88.7% to 98.4% and its false-resolution cost from ₹34,063
-   to ₹0.
-
-That second point deserves to be stated against interest: **the fix was found by looking at the
-ungrounded arm's mistakes, and it disproportionately helped the ungrounded arm.** It made the
-baseline stronger and the treatment's advantage smaller. That is the opposite direction from
-cherry-picking, and it is why the Ring 1 and Ring 2 numbers should be read together rather than
-the more flattering one being quoted.
-
-**What this does not show.** It does not show that a precedent corpus is worthless. Every arm is
-now at 98–100% on the pool set, which is a ceiling: with 62 cases and at most one disagreement
-between arms, no comparison *could* reach significance. The honest reading is that **this
-dataset is too easy for this configuration**, not that retrieval does not work. A dataset
-calibrated to make a rules engine score 49% turns out to be nearly saturated by a 120B model
-with six tools and a deterministic verifier.
-
-The consequence was concrete enough to act on immediately, and Ring 2.5 did.
-
-### Ring 2.5 — exception classes that a tool cannot derive
-
-Every class in the original dataset is *derivable from the evidence in front of the agent*: a
-round percentage can be tested for, a netted sum computed, duplicate payments counted. So a
-precedent could only ever tell the agent what it could have worked out — which is why, once the
-tools existed, the corpus stopped mattering. The thesis was unmeasurable on that dataset **by
-construction**, not by bad luck.
-
-Two classes were added where the evidence is genuinely insufficient:
-
-- **`negotiated_rebate`** — a customer deducts a rate agreed with them specifically (2.65%,
-  3.25%, 4.35%…). Deliberately never a statutory rate: a round one would let the agent guess
-  correctly without ever having seen the customer, reintroducing the derivability that caused
-  the problem.
-- **`advance_adjusted`** — the shortfall is an advance the customer paid on an earlier
-  transaction that is not among this case's records.
-
-Nine customers, thirty-six cases, each customer recurring. Each customer's **first sighting is
-in the pool** — the case nobody can resolve, that a human resolves, and whose resolution is
-deposited — and each keeps **at least one sighting in the held-out test set**, where the value
-of that deposit is measured. A purely proportional split left two of nine customers with no
-test sighting at all, which the class-level counts hid completely.
-
-**Measured, with a hand-authored precedent standing in for a Ring 3 deposit:**
-
-| Corpus state | Correct |
-|---|---|
-| Seed corpus only | **0 / 6** — five escalate honestly, one false accept at 0.93 confidence |
-| A deposit written generically ("this counterparty") | 1 / 5 |
-| A deposit **naming the counterparty** | **4 / 5** |
-
-That is the effect the project claims and previously could not demonstrate. It also exposed a
-defect in `prompts/deposit/v1.md`, which told the author to "describe the shape of the case, not
-the record" — advice that destroys retrievability for knowledge *about a customer*, because the
-query contains a name and the precedent did not. The prompt now carves that out explicitly: a
-customer name generalises to that customer's future cases; a payment id generalises to nothing.
-
-**What this still does not prove.** The precedent above was written by hand. Ring 3 has to author
-one from a confirmed resolution through the deposit prompt, and an LLM-written precedent may be
-materially worse. Nothing here measures that.
+**Retrieval quality, measured alone** (no model involved), on the same 134 pool exceptions:
+BM25 reaches 53.7% top-3 against the random control's 12.7%, with all seven derivable classes
+fully covered at k=5 and the two counterparty classes at **0/30 and 0/24** — unreachable from
+seeds by construction, which is the headroom the learning curve is measured in.
 
 ### Ring 3 — the learning curve
 
