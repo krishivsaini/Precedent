@@ -4,6 +4,7 @@ from fastapi import FastAPI
 
 from precedent.adapters.storage.db import connect, init_db
 from precedent.api.approvals import router as approvals_router
+from precedent.api.ui import router as ui_router
 from precedent.api.webhooks import router as webhooks_router
 
 
@@ -29,6 +30,7 @@ def create_app(db_path: str = "precedent.db") -> FastAPI:
     app.state.db_path = db_path
     app.include_router(webhooks_router)
     app.include_router(approvals_router)
+    app.include_router(ui_router)
     return app
 
 
