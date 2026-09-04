@@ -31,7 +31,7 @@ result file; none is typed in. Regenerate rather than edit. -->
 </style>
 
 <h1>Precedent — eval report</h1>
-<p class="sub">Generated 2026-09-02 18:23 UTC from committed result files. Every figure is read from
+<p class="sub">Generated 2026-09-04 15:33 UTC from committed result files. Every figure is read from
 JSON; none is transcribed. Regenerating this page is a reproducibility check.</p>
 
 <div class="callout">
@@ -40,7 +40,7 @@ JSON; none is transcribed. Regenerating this page is a reproducibility check.</p
   from the case in front of the agent</strong>. Where the answer is computable — a round
   withholding rate, a netted sum, two payments on one order — an investigation tool derives it
   and the corpus adds nothing. Of the nine held-out cases that improved as the corpus grew,
-  eight were counterparty cases; the 51 derivable cases moved by zero.</p>
+  every one was a counterparty case, and every case that regressed was a derivable one.</p>
 </div>
 
 
@@ -53,27 +53,24 @@ JSON; none is transcribed. Regenerating this page is a reproducibility check.</p
       <thead><tr><th>Deposits</th><th>Corpus</th><th>Resolved</th>
       <th>Random control</th><th>Counterparty subset</th><th>Escalated</th>
       <th>Precedent precision</th></tr></thead>
-      <tbody><tr><td>0</td><td>42</td><td class='num strong'>81.7%</td><td class='num control'>75.0%</td><td class='num strong'>0.0%</td><td class='num'>13.3%</td><td class='num'>94.4%</td></tr><tr><td>25</td><td>67</td><td class='num strong'>85.0%</td><td class='num control'>68.3%</td><td class='num strong'>44.4%</td><td class='num'>15.0%</td><td class='num'>97.3%</td></tr><tr><td>50</td><td>92</td><td class='num strong'>81.7%</td><td class='num control'>71.7%</td><td class='num strong'>44.4%</td><td class='num'>18.3%</td><td class='num'>97.8%</td></tr><tr><td>75</td><td>117</td><td class='num strong'>88.3%</td><td class='num control'>66.7%</td><td class='num strong'>55.6%</td><td class='num'>8.3%</td><td class='num'>100.0%</td></tr><tr><td>98</td><td>140</td><td class='num strong'>95.0%</td><td class='num control'>66.7%</td><td class='num strong'>88.9%</td><td class='num'>5.0%</td><td class='num'>100.0%</td></tr></tbody>
+      <tbody><tr><td>0</td><td>42</td><td class='num strong'>70.0%</td><td class='num control'>56.7%</td><td class='num strong'>0.0%</td><td class='num'>8.3%</td><td class='num'>81.8%</td></tr><tr><td>33</td><td>70</td><td class='num strong'>78.3%</td><td class='num control'>58.3%</td><td class='num strong'>50.0%</td><td class='num'>18.3%</td><td class='num'>98.9%</td></tr><tr><td>67</td><td>96</td><td class='num strong'>81.7%</td><td class='num control'>66.7%</td><td class='num strong'>66.7%</td><td class='num'>18.3%</td><td class='num'>100.0%</td></tr><tr><td>100</td><td>121</td><td class='num strong'>86.7%</td><td class='num control'>60.0%</td><td class='num strong'>72.2%</td><td class='num'>10.0%</td><td class='num'>96.5%</td></tr><tr><td>134</td><td>151</td><td class='num strong'>86.7%</td><td class='num control'>61.7%</td><td class='num strong'>83.3%</td><td class='num'>13.3%</td><td class='num'>100.0%</td></tr></tbody>
     </table>
 
     <div class="callout">
       <h3>The control is what makes this evidence</h3>
       <p>The random-precedent control draws the same <em>k</em> precedents from the same
-      growing corpus, differing only in whether they are relevant. It does not rise with the
-      treatment — it <strong>falls, 75.0% to
-      66.7%</strong>. A larger corpus of irrelevant
-      precedents is worse than a small one, because there is more to be distracted by. That
-      closes off the explanation that the gain is simply more text in the prompt.</p>
+      growing corpus, differing only in whether they are relevant — so it does not move — 56.7% to 61.7%, indistinguishable from noise across a corpus that more than tripled.
+      Whatever lifts the treatment arm, it is not the presence of more text in the prompt.</p>
     </div>
 
     <h3>Paired significance, first snapshot to last</h3>
     <table>
       <thead><tr><th>Comparison</th><th>Discordant</th><th>p (exact McNemar)</th><th></th></tr></thead>
-      <tbody><tr><td>headline first to last</td><td class='num'>9W–1L</td><td class='num'>0.02148</td><td class='yes'>significant</td></tr><tr><td>control first to last</td><td class='num'>6W–11L</td><td class='num'>0.33231</td><td class='no'>not significant</td></tr><tr><td>counterparty first to last</td><td class='num'>8W–0L</td><td class='num'>0.00781</td><td class='yes'>significant</td></tr></tbody>
+      <tbody><tr><td>headline first to last</td><td class='num'>15W–5L</td><td class='num'>0.04139</td><td class='yes'>significant</td></tr><tr><td>control first to last</td><td class='num'>10W–7L</td><td class='num'>0.62906</td><td class='no'>not significant</td></tr><tr><td>counterparty first to last</td><td class='num'>15W–0L</td><td class='num'>0.00006</td><td class='yes'>significant</td></tr></tbody>
     </table>
 
     <h3>What the curve does not say</h3>
-    <ul class="caveats"><li>The human is simulated by the gold label: every pool resolution is treated as confirmed at the correct reason code. A real operator would reject some, and each rejection is a precedent that never exists — so this curve is an upper bound on what deposits can achieve.</li><li>Seven of nine exception classes are derivable from the evidence and already sit at 98-100% with no corpus at all, so the headline rate has little room to move. The counterparty subset is the part with headroom and is reported separately.</li><li>Precedent precision is approximated by reason-code agreement. A precedent of the right class can still be the wrong precedent.</li></ul>
+    <ul class="caveats"><li>A simulated reviewer confirms the agent when it is right, corrects it when it is wrong, and rejects 15% of cases outright. The rejection rate is a stated assumption, not a measurement.</li><li>Seven of nine exception classes are derivable from the evidence and already sit at 98-100% with no corpus at all, so the headline rate has little room to move. The counterparty subset is the part with headroom and is reported separately.</li><li>Precedent precision is approximated by reason-code agreement. A precedent of the right class can still be the wrong precedent.</li></ul>
     
 
     <h2>Ring 1–2 ablation</h2>
@@ -102,7 +99,7 @@ JSON; none is transcribed. Regenerating this page is a reproducibility check.</p
     failure. Scored on the pool exceptions only.</p>
     <table>
       <thead><tr><th>Retriever</th><th>top-1</th><th>top-3</th><th>top-5</th></tr></thead>
-      <tbody><tr><td>bm25</td><td class='num'>32.6%</td><td class='num'>65.3%</td><td class='num'>72.5%</td></tr><tr><td>dense</td><td class='num'>29.6%</td><td class='num'>41.8%</td><td class='num'>43.9%</td></tr><tr><td>hybrid</td><td class='num'>35.7%</td><td class='num'>43.9%</td><td class='num'>72.5%</td></tr><tr><td>random_control</td><td class='num'>8.2%</td><td class='num'>15.3%</td><td class='num'>33.7%</td></tr></tbody>
+      <tbody><tr><td>bm25</td><td class='num'>26.9%</td><td class='num'>53.7%</td><td class='num'>59.7%</td></tr><tr><td>dense</td><td class='num'>25.4%</td><td class='num'>34.3%</td><td class='num'>35.8%</td></tr><tr><td>hybrid</td><td class='num'>26.1%</td><td class='num'>35.8%</td><td class='num'>58.2%</td></tr><tr><td>random_control</td><td class='num'>6.7%</td><td class='num'>12.7%</td><td class='num'>28.4%</td></tr></tbody>
     </table>
     <p class="note">Feature hashing over surface tokens. Cannot relate &#x27;withholding&#x27; to &#x27;TDS&#x27;. The dense and hybrid arms below are therefore lower bounds; a real embedding model is required before any claim that hybrid beats lexical.</p>
     
@@ -126,6 +123,6 @@ score zero there. That is the floor the agent has to beat.</p>
 
 <footer>
   Sources: learning-curve, ablation (chain), ablation (graph), retrieval, deposit-prompt, rules baseline. Model:
-  <code>openai/gpt-oss-120b</code>.
+  <code>nvidia/nemotron-3-super-120b-a12b</code>.
   Regenerate with <code>uv run python -m evals.report</code>.
 </footer>

@@ -56,7 +56,7 @@ SEED = 20260901
 TEST_SET_SIZE = 60  # spec §5: fixed, held-out, never deposited
 
 CLASS_COUNTS = {
-    "clean_match": 72,
+    "clean_match": 36,
     "netted_settlement": 36,
     "direct_neft_bypass": 24,
     "tds_short_payment": 19,
@@ -69,8 +69,8 @@ CLASS_COUNTS = {
     # customer recurs: 4 rebate customers x 4 occurrences, 3 advance customers x 4. The
     # recurrence is the point — a precedent deposited on one occurrence has to be worth
     # retrieving on the next, or there is no learning curve to measure.
-    "negotiated_rebate": 20,
-    "advance_adjusted": 16,
+    "negotiated_rebate": 40,
+    "advance_adjusted": 32,
 }
 assert sum(CLASS_COUNTS.values()) == 240
 

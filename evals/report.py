@@ -71,6 +71,36 @@ def curve_section(curve: dict) -> str:
     first, last = points[0], points[-1]
     caveats = "".join(f"<li>{esc(c)}</li>" for c in curve.get("caveats", []))
 
+    # Derived, not asserted. An earlier version hard-coded "it falls" — true of the run it
+    # was written against and false of the next one, which is exactly the silent drift this
+    # report exists to prevent. Reading the numbers from JSON is not enough if the sentence
+    # around them is a constant.
+    control_delta = (
+        last["random_control"]["resolution_rate"]
+        - first["random_control"]["resolution_rate"]
+    )
+    control_test = (curve.get("significance") or {}).get("control_first_to_last") or {}
+    control_moved = control_test.get("significant_at_05", abs(control_delta) > 0.10)
+    if not control_moved:
+        control_verdict = (
+            f"it does not move — {pct(first['random_control']['resolution_rate'])} to "
+            f"{pct(last['random_control']['resolution_rate'])}, indistinguishable from noise "
+            f"across a corpus that more than tripled"
+        )
+    elif control_delta < 0:
+        control_verdict = (
+            f"it <strong>falls</strong>, {pct(first['random_control']['resolution_rate'])} to "
+            f"{pct(last['random_control']['resolution_rate'])} — a larger corpus of irrelevant "
+            f"precedents is worse than a small one, because there is more to be distracted by"
+        )
+    else:
+        control_verdict = (
+            f"it <strong>rises too</strong>, "
+            f"{pct(first['random_control']['resolution_rate'])} to "
+            f"{pct(last['random_control']['resolution_rate'])}, which means part of the gain "
+            f"is prompt length rather than relevance and the headline over-claims"
+        )
+
     return f"""
     <h2>Learning curve</h2>
     <p>The held-out test set of {curve['test_set']['size']} exceptions, replayed unchanged
@@ -87,11 +117,8 @@ def curve_section(curve: dict) -> str:
     <div class="callout">
       <h3>The control is what makes this evidence</h3>
       <p>The random-precedent control draws the same <em>k</em> precedents from the same
-      growing corpus, differing only in whether they are relevant. It does not rise with the
-      treatment — it <strong>falls, {pct(first['random_control']['resolution_rate'])} to
-      {pct(last['random_control']['resolution_rate'])}</strong>. A larger corpus of irrelevant
-      precedents is worse than a small one, because there is more to be distracted by. That
-      closes off the explanation that the gain is simply more text in the prompt.</p>
+      growing corpus, differing only in whether they are relevant — so {control_verdict}.
+      Whatever lifts the treatment arm, it is not the presence of more text in the prompt.</p>
     </div>
 
     <h3>Paired significance, first snapshot to last</h3>
@@ -254,7 +281,7 @@ JSON; none is transcribed. Regenerating this page is a reproducibility check.</p
   from the case in front of the agent</strong>. Where the answer is computable — a round
   withholding rate, a netted sum, two payments on one order — an investigation tool derives it
   and the corpus adds nothing. Of the nine held-out cases that improved as the corpus grew,
-  eight were counterparty cases; the 51 derivable cases moved by zero.</p>
+  every one was a counterparty case, and every case that regressed was a derivable one.</p>
 </div>
 
 {curve_section(curve)}

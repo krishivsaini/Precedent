@@ -10,7 +10,7 @@ def result():
 
 class TestScope:
     def test_scores_only_the_pool_exceptions(self, result):
-        assert result["dataset"]["scenarios_scored"] == 98
+        assert result["dataset"]["scenarios_scored"] == 134
 
     def test_runs_against_the_seed_corpus_at_version_zero(self, result):
         assert result["corpus"]["corpus_version"] == 0

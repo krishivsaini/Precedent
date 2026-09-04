@@ -1,0 +1,5750 @@
+{
+  "run_id": "2026-09-04T14:43:31Z",
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "settings": {
+    "k": 5,
+    "snapshots": [
+      0,
+      33,
+      67,
+      100,
+      134
+    ],
+    "deposit_order_seed": 20260902
+  },
+  "deposit_sequence": {
+    "attempted": 134,
+    "authored": 109,
+    "failed": 25,
+    "human_actions": {
+      "confirmed": 66,
+      "corrected": 44,
+      "rejected": 24
+    },
+    "reviewer": {
+      "simulated": true,
+      "rejection_rate": 0.15
+    }
+  },
+  "test_set": {
+    "size": 60,
+    "never_deposited": true
+  },
+  "caveats": [
+    "A simulated reviewer confirms the agent when it is right, corrects it when it is wrong, and rejects 15% of cases outright. The rejection rate is a stated assumption, not a measurement.",
+    "Seven of nine exception classes are derivable from the evidence and already sit at 98-100% with no corpus at all, so the headline rate has little room to move. The counterparty subset is the part with headroom and is reported separately.",
+    "Precedent precision is approximated by reason-code agreement. A precedent of the right class can still be the wrong precedent."
+  ],
+  "curve": [
+    {
+      "deposits": 0,
+      "corpus_size": 42,
+      "retrieved": {
+        "resolution_rate": 0.7,
+        "escalation_rate": 0.0833,
+        "counterparty_resolution_rate": 0.0,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.8182,
+        "citations_made": 88,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 88,
+            "applied": 72,
+            "precision": 0.8182
+          },
+          "confirmed": {
+            "cited": 0,
+            "applied": 0,
+            "precision": null
+          },
+          "corrected": {
+            "cited": 0,
+            "applied": 0,
+            "precision": null
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          }
+        ]
+      },
+      "random_control": {
+        "resolution_rate": 0.5667,
+        "escalation_rate": 0.2333,
+        "counterparty_resolution_rate": 0.0,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.7083,
+        "citations_made": 24,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 24,
+            "applied": 17,
+            "precision": 0.7083
+          },
+          "confirmed": {
+            "cited": 0,
+            "applied": 0,
+            "precision": null
+          },
+          "corrected": {
+            "cited": 0,
+            "applied": 0,
+            "precision": null
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_parse_failure",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          }
+        ]
+      }
+    },
+    {
+      "deposits": 33,
+      "corpus_size": 70,
+      "retrieved": {
+        "resolution_rate": 0.7833,
+        "escalation_rate": 0.1833,
+        "counterparty_resolution_rate": 0.5,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.9891,
+        "citations_made": 92,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 29,
+            "applied": 29,
+            "precision": 1.0
+          },
+          "confirmed": {
+            "cited": 49,
+            "applied": 49,
+            "precision": 1.0
+          },
+          "corrected": {
+            "cited": 14,
+            "applied": 13,
+            "precision": 0.9286
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "negotiated_rebate",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          }
+        ]
+      },
+      "random_control": {
+        "resolution_rate": 0.5833,
+        "escalation_rate": 0.35,
+        "counterparty_resolution_rate": 0.1111,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.7826,
+        "citations_made": 23,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 3,
+            "applied": 3,
+            "precision": 1.0
+          },
+          "confirmed": {
+            "cited": 13,
+            "applied": 12,
+            "precision": 0.9231
+          },
+          "corrected": {
+            "cited": 7,
+            "applied": 3,
+            "precision": 0.4286
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "netted_settlement",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "date_window_timing",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "advance_adjusted",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "advance_adjusted",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          }
+        ]
+      }
+    },
+    {
+      "deposits": 67,
+      "corpus_size": 96,
+      "retrieved": {
+        "resolution_rate": 0.8167,
+        "escalation_rate": 0.1833,
+        "counterparty_resolution_rate": 0.6667,
+        "counterparty_cases": 18,
+        "precedent_precision": 1.0,
+        "citations_made": 91,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 25,
+            "applied": 25,
+            "precision": 1.0
+          },
+          "confirmed": {
+            "cited": 48,
+            "applied": 48,
+            "precision": 1.0
+          },
+          "corrected": {
+            "cited": 18,
+            "applied": 18,
+            "precision": 1.0
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          }
+        ]
+      },
+      "random_control": {
+        "resolution_rate": 0.6667,
+        "escalation_rate": 0.2833,
+        "counterparty_resolution_rate": 0.2778,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.9259,
+        "citations_made": 27,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 0,
+            "applied": 0,
+            "precision": null
+          },
+          "confirmed": {
+            "cited": 17,
+            "applied": 17,
+            "precision": 1.0
+          },
+          "corrected": {
+            "cited": 10,
+            "applied": 8,
+            "precision": 0.8
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_parse_failure",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "refund_netted",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "date_window_timing",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "advance_adjusted",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          }
+        ]
+      }
+    },
+    {
+      "deposits": 100,
+      "corpus_size": 121,
+      "retrieved": {
+        "resolution_rate": 0.8667,
+        "escalation_rate": 0.1,
+        "counterparty_resolution_rate": 0.7222,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.9649,
+        "citations_made": 114,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 15,
+            "applied": 15,
+            "precision": 1.0
+          },
+          "confirmed": {
+            "cited": 70,
+            "applied": 69,
+            "precision": 0.9857
+          },
+          "corrected": {
+            "cited": 29,
+            "applied": 26,
+            "precision": 0.8966
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "netted_settlement",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "advance_adjusted",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_parse_failure",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          }
+        ]
+      },
+      "random_control": {
+        "resolution_rate": 0.6,
+        "escalation_rate": 0.35,
+        "counterparty_resolution_rate": 0.1111,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.8636,
+        "citations_made": 44,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 0,
+            "applied": 0,
+            "precision": null
+          },
+          "confirmed": {
+            "cited": 41,
+            "applied": 35,
+            "precision": 0.8537
+          },
+          "corrected": {
+            "cited": 3,
+            "applied": 3,
+            "precision": 1.0
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "netted_settlement",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "netted_settlement",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "unmatchable_no_counterpart",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          }
+        ]
+      }
+    },
+    {
+      "deposits": 134,
+      "corpus_size": 151,
+      "retrieved": {
+        "resolution_rate": 0.8667,
+        "escalation_rate": 0.1333,
+        "counterparty_resolution_rate": 0.8333,
+        "counterparty_cases": 18,
+        "precedent_precision": 1.0,
+        "citations_made": 111,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 14,
+            "applied": 14,
+            "precision": 1.0
+          },
+          "confirmed": {
+            "cited": 62,
+            "applied": 62,
+            "precision": 1.0
+          },
+          "corrected": {
+            "cited": 35,
+            "applied": 35,
+            "precision": 1.0
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "escalated_parse_failure",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "negotiated_rebate",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "escalated_parse_failure",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          }
+        ]
+      },
+      "random_control": {
+        "resolution_rate": 0.6167,
+        "escalation_rate": 0.2667,
+        "counterparty_resolution_rate": 0.1111,
+        "counterparty_cases": 18,
+        "precedent_precision": 0.8929,
+        "citations_made": 28,
+        "precision_by_deposit_origin": {
+          "seed": {
+            "cited": 1,
+            "applied": 0,
+            "precision": 0.0
+          },
+          "confirmed": {
+            "cited": 22,
+            "applied": 22,
+            "precision": 1.0
+          },
+          "corrected": {
+            "cited": 5,
+            "applied": 3,
+            "precision": 0.6
+          }
+        },
+        "per_case": [
+          {
+            "scenario_id": "rec_0047",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0049",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0051",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0056",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0057",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0059",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0064",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0065",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0069",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0070",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0072",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0079",
+            "kind": "netted_settlement",
+            "counterparty": null,
+            "gold": "netted_settlement",
+            "said": "netted_settlement",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0084",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0087",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0088",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0089",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0090",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0098",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0101",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0102",
+            "kind": "direct_neft_bypass",
+            "counterparty": null,
+            "gold": "direct_neft_bypass",
+            "said": "direct_neft_bypass",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0108",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0113",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0115",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0116",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0118",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0122",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0124",
+            "kind": "tds_short_payment",
+            "counterparty": null,
+            "gold": "tds_short_payment",
+            "said": "tds_short_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0128",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "split_payment",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0129",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0134",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0136",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0139",
+            "kind": "split_payment",
+            "counterparty": null,
+            "gold": "split_payment",
+            "said": "escalated_verify_failed",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0142",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0143",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0144",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0145",
+            "kind": "refund_netted",
+            "counterparty": null,
+            "gold": "refund_netted",
+            "said": "refund_netted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0152",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0155",
+            "kind": "duplicate_payment",
+            "counterparty": null,
+            "gold": "duplicate_payment_rejected",
+            "said": "duplicate_payment_rejected",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0163",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0166",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0167",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0168",
+            "kind": "unmatchable",
+            "counterparty": null,
+            "gold": "unmatchable_no_counterpart",
+            "said": "unmatchable_no_counterpart",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0180",
+            "kind": "negotiated_rebate",
+            "counterparty": "Sundaram Auto Parts",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0184",
+            "kind": "negotiated_rebate",
+            "counterparty": "Aravalli Cement",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0185",
+            "kind": "negotiated_rebate",
+            "counterparty": "Cauvery Granites",
+            "gold": "negotiated_rebate",
+            "said": "advance_adjusted",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0189",
+            "kind": "negotiated_rebate",
+            "counterparty": "Kavery Textiles",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0191",
+            "kind": "negotiated_rebate",
+            "counterparty": "Vindhya Chemicals",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0192",
+            "kind": "negotiated_rebate",
+            "counterparty": "Konark Logistics",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0193",
+            "kind": "negotiated_rebate",
+            "counterparty": "Palghat Ceramics",
+            "gold": "negotiated_rebate",
+            "said": "advance_adjusted",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0196",
+            "kind": "negotiated_rebate",
+            "counterparty": "Marwar Packaging",
+            "gold": "negotiated_rebate",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0198",
+            "kind": "negotiated_rebate",
+            "counterparty": "Hampi Ironworks",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0207",
+            "kind": "negotiated_rebate",
+            "counterparty": "Zuari Agrochem",
+            "gold": "negotiated_rebate",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0222",
+            "kind": "advance_adjusted",
+            "counterparty": "Satpura Timber",
+            "gold": "advance_adjusted",
+            "said": "tds_short_payment",
+            "correct": false,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0223",
+            "kind": "advance_adjusted",
+            "counterparty": "Gomti Dairy",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0226",
+            "kind": "advance_adjusted",
+            "counterparty": "Nilgiri Exports",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0232",
+            "kind": "advance_adjusted",
+            "counterparty": "Rann Salt",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0233",
+            "kind": "advance_adjusted",
+            "counterparty": "Deccan Foods",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          },
+          {
+            "scenario_id": "rec_0235",
+            "kind": "advance_adjusted",
+            "counterparty": "Chenab Steel",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0236",
+            "kind": "advance_adjusted",
+            "counterparty": "Beas Papers",
+            "gold": "advance_adjusted",
+            "said": "advance_adjusted",
+            "correct": true,
+            "escalated": false
+          },
+          {
+            "scenario_id": "rec_0237",
+            "kind": "advance_adjusted",
+            "counterparty": "Coromandel Spices",
+            "gold": "advance_adjusted",
+            "said": "escalated_low_confidence",
+            "correct": false,
+            "escalated": true
+          }
+        ]
+      }
+    }
+  ],
+  "significance": {
+    "headline_first_to_last": {
+      "wins": 15,
+      "losses": 5,
+      "p_value": 0.04139,
+      "significant_at_05": true
+    },
+    "control_first_to_last": {
+      "wins": 10,
+      "losses": 7,
+      "p_value": 0.62906,
+      "significant_at_05": false
+    },
+    "counterparty_first_to_last": {
+      "wins": 15,
+      "losses": 0,
+      "p_value": 6e-05,
+      "significant_at_05": true
+    }
+  }
+}

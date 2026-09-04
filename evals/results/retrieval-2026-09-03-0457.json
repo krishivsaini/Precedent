@@ -1,0 +1,3794 @@
+{
+  "run_id": "2026-09-03T04:57:43Z",
+  "what_this_measures": "Whether the corpus surfaces a precedent of the case's own class. Proxy for precedent precision; no LLM involved.",
+  "corpus": {
+    "size": 42,
+    "corpus_version": 0,
+    "composition": "hand-written seed corpus only \u2014 no deposited precedents yet"
+  },
+  "dataset": {
+    "scenarios_scored": 134,
+    "split": "pool exceptions only; the 60 test exceptions are untouched"
+  },
+  "embedder": {
+    "name": "HashingEmbedder",
+    "semantic": false,
+    "caveat": "Feature hashing over surface tokens. Cannot relate 'withholding' to 'TDS'. The dense and hybrid arms below are therefore lower bounds; a real embedding model is required before any claim that hybrid beats lexical."
+  },
+  "arms": [
+    {
+      "retriever": "bm25",
+      "precedent_class_precision": {
+        "top_1": 0.2687,
+        "top_3": 0.5373,
+        "top_5": 0.597
+      },
+      "per_class": {
+        "advance_adjusted": {
+          "top_1": "0/24",
+          "top_3": "0/24",
+          "top_5": "0/24",
+          "top_3_rate": 0.0
+        },
+        "direct_neft_bypass": {
+          "top_1": "16/16",
+          "top_3": "16/16",
+          "top_5": "16/16",
+          "top_3_rate": 1.0
+        },
+        "duplicate_payment": {
+          "top_1": "5/5",
+          "top_3": "5/5",
+          "top_5": "5/5",
+          "top_3_rate": 1.0
+        },
+        "negotiated_rebate": {
+          "top_1": "0/30",
+          "top_3": "0/30",
+          "top_5": "0/30",
+          "top_3_rate": 0.0
+        },
+        "netted_settlement": {
+          "top_1": "0/24",
+          "top_3": "24/24",
+          "top_5": "24/24",
+          "top_3_rate": 1.0
+        },
+        "refund_netted": {
+          "top_1": "0/8",
+          "top_3": "0/8",
+          "top_5": "8/8",
+          "top_3_rate": 0.0
+        },
+        "split_payment": {
+          "top_1": "9/9",
+          "top_3": "9/9",
+          "top_5": "9/9",
+          "top_3_rate": 1.0
+        },
+        "tds_short_payment": {
+          "top_1": "0/12",
+          "top_3": "12/12",
+          "top_5": "12/12",
+          "top_3_rate": 1.0
+        },
+        "unmatchable": {
+          "top_1": "6/6",
+          "top_3": "6/6",
+          "top_5": "6/6",
+          "top_3_rate": 1.0
+        }
+      },
+      "complete_misses": [
+        {
+          "scenario_id": "rec_0169",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0170",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0171",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0172",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0173",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0174",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "netted_settlement",
+            "tds_short_payment",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0175",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0176",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0177",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0178",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0179",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0181",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0182",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0183",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0186",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0187",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0188",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0190",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0194",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0195",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0197",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0199",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0200",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0201",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0202",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0203",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0204",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0205",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0206",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0208",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0209",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0210",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0211",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0212",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0213",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0214",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0215",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0216",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0217",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0218",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0219",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0220",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0221",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0224",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0225",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0227",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0228",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0229",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0230",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0231",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0234",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0238",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0239",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0240",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        }
+      ]
+    },
+    {
+      "retriever": "dense",
+      "precedent_class_precision": {
+        "top_1": 0.2537,
+        "top_3": 0.3433,
+        "top_5": 0.3582
+      },
+      "per_class": {
+        "advance_adjusted": {
+          "top_1": "0/24",
+          "top_3": "0/24",
+          "top_5": "0/24",
+          "top_3_rate": 0.0
+        },
+        "direct_neft_bypass": {
+          "top_1": "15/16",
+          "top_3": "16/16",
+          "top_5": "16/16",
+          "top_3_rate": 1.0
+        },
+        "duplicate_payment": {
+          "top_1": "0/5",
+          "top_3": "5/5",
+          "top_5": "5/5",
+          "top_3_rate": 1.0
+        },
+        "negotiated_rebate": {
+          "top_1": "0/30",
+          "top_3": "0/30",
+          "top_5": "0/30",
+          "top_3_rate": 0.0
+        },
+        "netted_settlement": {
+          "top_1": "0/24",
+          "top_3": "0/24",
+          "top_5": "0/24",
+          "top_3_rate": 0.0
+        },
+        "refund_netted": {
+          "top_1": "0/8",
+          "top_3": "0/8",
+          "top_5": "0/8",
+          "top_3_rate": 0.0
+        },
+        "split_payment": {
+          "top_1": "9/9",
+          "top_3": "9/9",
+          "top_5": "9/9",
+          "top_3_rate": 1.0
+        },
+        "tds_short_payment": {
+          "top_1": "4/12",
+          "top_3": "10/12",
+          "top_5": "12/12",
+          "top_3_rate": 0.8333
+        },
+        "unmatchable": {
+          "top_1": "6/6",
+          "top_3": "6/6",
+          "top_5": "6/6",
+          "top_3_rate": 1.0
+        }
+      },
+      "complete_misses": [
+        {
+          "scenario_id": "rec_0048",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "unmatchable_no_counterpart",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0050",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0052",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "direct_neft_bypass",
+            "unmatchable_no_counterpart"
+          ]
+        },
+        {
+          "scenario_id": "rec_0053",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0054",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0055",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0058",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0060",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "direct_neft_bypass",
+            "duplicate_payment_rejected",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0061",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0062",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0063",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "unmatchable_no_counterpart",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0066",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "duplicate_payment_rejected",
+            "exact_match",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0067",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "unmatchable_no_counterpart",
+            "split_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0068",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "duplicate_payment_rejected",
+            "exact_match",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0071",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "unmatchable_no_counterpart",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0073",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0074",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0075",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0076",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0077",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "direct_neft_bypass",
+            "unmatchable_no_counterpart"
+          ]
+        },
+        {
+          "scenario_id": "rec_0078",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0080",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "split_payment",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0081",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0082",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0140",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment",
+            "unmatchable_no_counterpart"
+          ]
+        },
+        {
+          "scenario_id": "rec_0141",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "unmatchable_no_counterpart",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0146",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "unmatchable_no_counterpart",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0147",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment",
+            "unmatchable_no_counterpart"
+          ]
+        },
+        {
+          "scenario_id": "rec_0148",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "tds_short_payment",
+            "unmatchable_no_counterpart",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0149",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment",
+            "unmatchable_no_counterpart"
+          ]
+        },
+        {
+          "scenario_id": "rec_0150",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "direct_neft_bypass",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0151",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment",
+            "unmatchable_no_counterpart"
+          ]
+        },
+        {
+          "scenario_id": "rec_0169",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0170",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0171",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "direct_neft_bypass",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0172",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "tds_short_payment",
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0173",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0174",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "tds_short_payment",
+            "netted_settlement",
+            "exact_match",
+            "direct_neft_bypass",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0175",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0176",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0177",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0178",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0179",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0181",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "direct_neft_bypass",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0182",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "tds_short_payment",
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0183",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0186",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0187",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0188",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0190",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0194",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0195",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0197",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0199",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0200",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0201",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "direct_neft_bypass",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0202",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "tds_short_payment",
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0203",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0204",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0205",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0206",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "duplicate_payment_rejected",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0208",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0209",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0210",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0211",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0212",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0213",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0214",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0215",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "date_window_timing"
+          ]
+        },
+        {
+          "scenario_id": "rec_0216",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "direct_neft_bypass",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0217",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0218",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0219",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0220",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0221",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0224",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "direct_neft_bypass",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0225",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0227",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0228",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0229",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0230",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0231",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "date_window_timing"
+          ]
+        },
+        {
+          "scenario_id": "rec_0234",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0238",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "duplicate_payment_rejected"
+          ]
+        },
+        {
+          "scenario_id": "rec_0239",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "direct_neft_bypass",
+            "tolerance_rounding",
+            "exact_match",
+            "tds_short_payment",
+            "date_window_timing"
+          ]
+        },
+        {
+          "scenario_id": "rec_0240",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "direct_neft_bypass",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        }
+      ]
+    },
+    {
+      "retriever": "hybrid",
+      "precedent_class_precision": {
+        "top_1": 0.2612,
+        "top_3": 0.3582,
+        "top_5": 0.5821
+      },
+      "per_class": {
+        "advance_adjusted": {
+          "top_1": "0/24",
+          "top_3": "0/24",
+          "top_5": "0/24",
+          "top_3_rate": 0.0
+        },
+        "direct_neft_bypass": {
+          "top_1": "16/16",
+          "top_3": "16/16",
+          "top_5": "16/16",
+          "top_3_rate": 1.0
+        },
+        "duplicate_payment": {
+          "top_1": "0/5",
+          "top_3": "5/5",
+          "top_5": "5/5",
+          "top_3_rate": 1.0
+        },
+        "negotiated_rebate": {
+          "top_1": "0/30",
+          "top_3": "0/30",
+          "top_5": "0/30",
+          "top_3_rate": 0.0
+        },
+        "netted_settlement": {
+          "top_1": "0/24",
+          "top_3": "0/24",
+          "top_5": "24/24",
+          "top_3_rate": 0.0
+        },
+        "refund_netted": {
+          "top_1": "0/8",
+          "top_3": "0/8",
+          "top_5": "6/8",
+          "top_3_rate": 0.0
+        },
+        "split_payment": {
+          "top_1": "9/9",
+          "top_3": "9/9",
+          "top_5": "9/9",
+          "top_3_rate": 1.0
+        },
+        "tds_short_payment": {
+          "top_1": "4/12",
+          "top_3": "12/12",
+          "top_5": "12/12",
+          "top_3_rate": 1.0
+        },
+        "unmatchable": {
+          "top_1": "6/6",
+          "top_3": "6/6",
+          "top_5": "6/6",
+          "top_3_rate": 1.0
+        }
+      },
+      "complete_misses": [
+        {
+          "scenario_id": "rec_0141",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0146",
+          "kind": "refund_netted",
+          "expected_reason_code": "refund_netted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment",
+            "direct_neft_bypass",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0169",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0170",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0171",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0172",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "tds_short_payment",
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0173",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0174",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "netted_settlement",
+            "tds_short_payment",
+            "exact_match",
+            "tds_short_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0175",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0176",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0177",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0178",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0179",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0181",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0182",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "tds_short_payment",
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0183",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0186",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0187",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0188",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0190",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0194",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0195",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0197",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0199",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0200",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0201",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0202",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "tds_short_payment",
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0203",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0204",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0205",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0206",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0208",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0209",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0210",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0211",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0212",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0213",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0214",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0215",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0216",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0217",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0218",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0219",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0220",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0221",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0224",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0225",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0227",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0228",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0229",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0230",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0231",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0234",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "split_payment",
+            "tds_short_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0238",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "split_payment"
+          ]
+        },
+        {
+          "scenario_id": "rec_0239",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0240",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "exact_match",
+            "split_payment",
+            "tds_short_payment",
+            "tolerance_rounding",
+            "tds_short_payment"
+          ]
+        }
+      ]
+    },
+    {
+      "retriever": "random_control",
+      "precedent_class_precision": {
+        "top_1": 0.0672,
+        "top_3": 0.1269,
+        "top_5": 0.2836
+      },
+      "per_class": {
+        "advance_adjusted": {
+          "top_1": "0/24",
+          "top_3": "0/24",
+          "top_5": "0/24",
+          "top_3_rate": 0.0
+        },
+        "direct_neft_bypass": {
+          "top_1": "0/16",
+          "top_3": "0/16",
+          "top_5": "16/16",
+          "top_3_rate": 0.0
+        },
+        "duplicate_payment": {
+          "top_1": "0/5",
+          "top_3": "0/5",
+          "top_5": "5/5",
+          "top_3_rate": 0.0
+        },
+        "negotiated_rebate": {
+          "top_1": "0/30",
+          "top_3": "0/30",
+          "top_5": "0/30",
+          "top_3_rate": 0.0
+        },
+        "netted_settlement": {
+          "top_1": "0/24",
+          "top_3": "0/24",
+          "top_5": "0/24",
+          "top_3_rate": 0.0
+        },
+        "refund_netted": {
+          "top_1": "0/8",
+          "top_3": "8/8",
+          "top_5": "8/8",
+          "top_3_rate": 1.0
+        },
+        "split_payment": {
+          "top_1": "9/9",
+          "top_3": "9/9",
+          "top_5": "9/9",
+          "top_3_rate": 1.0
+        },
+        "tds_short_payment": {
+          "top_1": "0/12",
+          "top_3": "0/12",
+          "top_5": "0/12",
+          "top_3_rate": 0.0
+        },
+        "unmatchable": {
+          "top_1": "0/6",
+          "top_3": "0/6",
+          "top_5": "0/6",
+          "top_3_rate": 0.0
+        }
+      },
+      "complete_misses": [
+        {
+          "scenario_id": "rec_0048",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0050",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0052",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0053",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0054",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0055",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0058",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0060",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0061",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0062",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0063",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0066",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0067",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0068",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0071",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0073",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0074",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0075",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0076",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0077",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0078",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0080",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0081",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0082",
+          "kind": "netted_settlement",
+          "expected_reason_code": "netted_settlement",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0107",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0109",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0110",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0111",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0112",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0114",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0117",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0119",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0120",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0121",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0123",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0125",
+          "kind": "tds_short_payment",
+          "expected_reason_code": "tds_short_payment",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0159",
+          "kind": "unmatchable",
+          "expected_reason_code": "unmatchable_no_counterpart",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0160",
+          "kind": "unmatchable",
+          "expected_reason_code": "unmatchable_no_counterpart",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0161",
+          "kind": "unmatchable",
+          "expected_reason_code": "unmatchable_no_counterpart",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0162",
+          "kind": "unmatchable",
+          "expected_reason_code": "unmatchable_no_counterpart",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0164",
+          "kind": "unmatchable",
+          "expected_reason_code": "unmatchable_no_counterpart",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0165",
+          "kind": "unmatchable",
+          "expected_reason_code": "unmatchable_no_counterpart",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0169",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0170",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0171",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0172",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0173",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0174",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0175",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0176",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0177",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0178",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0179",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0181",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0182",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0183",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0186",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0187",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0188",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0190",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0194",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0195",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0197",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0199",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0200",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0201",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0202",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0203",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0204",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0205",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0206",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0208",
+          "kind": "negotiated_rebate",
+          "expected_reason_code": "negotiated_rebate",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0209",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0210",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0211",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0212",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0213",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0214",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0215",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0216",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0217",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0218",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0219",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0220",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0221",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0224",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0225",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0227",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0228",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0229",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0230",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0231",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0234",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0238",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0239",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        },
+        {
+          "scenario_id": "rec_0240",
+          "kind": "advance_adjusted",
+          "expected_reason_code": "advance_adjusted",
+          "retrieved_reason_codes": [
+            "split_payment",
+            "exact_match",
+            "refund_netted",
+            "duplicate_payment_rejected",
+            "direct_neft_bypass"
+          ]
+        }
+      ]
+    }
+  ],
+  "verdict": {
+    "best_retriever": "bm25",
+    "best_top_3": 0.5373,
+    "random_control_top_3": 0.1269,
+    "beats_random_control": true
+  }
+}

@@ -70,14 +70,26 @@ class TestItLeadsWithTheLimitations:
         for point in curve["curve"]:
             assert f"{point['random_control']['resolution_rate']:.1%}" in report
 
-    def test_it_states_that_the_control_falls(self, report):
-        # The single most important sentence in the report: it is what rules out the
-        # prompt-length explanation for the curve.
-        assert "falls" in report
+    def test_the_control_verdict_matches_the_committed_numbers(self, report):
+        # The sentence that rules out the prompt-length explanation must be *derived*. An
+        # earlier version hard-coded "it falls" — true of one run and false of the next,
+        # which is precisely the silent drift this report exists to prevent.
+        curve = latest("learning-curve-*.json")
+        points = curve["curve"]
+        delta = (points[-1]["random_control"]["resolution_rate"]
+                 - points[0]["random_control"]["resolution_rate"])
+        moved = (curve["significance"]["control_first_to_last"]["significant_at_05"]
+                 or abs(delta) > 0.10)
+        if not moved:
+            assert "does not move" in report
+        elif delta < 0:
+            assert "falls" in report
+        else:
+            assert "rises too" in report
 
     def test_it_states_the_narrow_form_of_the_claim(self, report):
         assert "cannot be derived" in report
-        assert "51 derivable cases moved by zero" in report
+        assert "every case that regressed was a derivable one" in report
 
     def test_every_caveat_from_the_result_file_is_carried_through(self, report):
         curve = latest("learning-curve-*.json")

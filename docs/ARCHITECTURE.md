@@ -310,71 +310,77 @@ materially worse. Nothing here measures that.
 ### Ring 3 — the learning curve
 
 The held-out 60-exception test set, replayed unchanged against the corpus at five sizes. The
-test set is never deposited; each point is the same questions against more accumulated
-knowledge.
+test set is never deposited. A **simulated reviewer** works each pool case the way an operator
+would: confirming when the agent is right, correcting when it is wrong, resolving escalations,
+and rejecting 15% outright. Of 134 pool exceptions that produced 66 confirmations, 44
+corrections and 24 rejections — **109 precedents, not 134**, because a corpus that grows one
+precedent per case is the best case the mechanism can possibly have.
+
+`nvidia/nemotron-3-super-120b-a12b`, k=5, 18 counterparty cases in the held-out set.
 
 | Deposits | Corpus | Resolved | Random control | Counterparty subset | Escalated | Precedent precision |
 |---|---|---|---|---|---|---|
-| 0 | 42 | 81.7% | 75.0% | **0.0%** | 13.3% | 94.4% |
-| 25 | 67 | 85.0% | 68.3% | 44.4% | 15.0% | 97.3% |
-| 50 | 92 | 81.7% | 71.7% | 44.4% | 18.3% | 97.8% |
-| 75 | 117 | 88.3% | 66.7% | 55.6% | 8.3% | 100.0% |
-| **98** | **140** | **95.0%** | **66.7%** | **88.9%** | **5.0%** | **100.0%** |
+| 0 | 42 | 70.0% | 56.7% | **0.0%** | 8.3% | 81.8% |
+| 33 | 70 | 78.3% | 58.3% | 50.0% | 18.3% | 98.9% |
+| 67 | 96 | 81.7% | 66.7% | 66.7% | 18.3% | 100.0% |
+| 100 | 121 | 86.7% | 60.0% | 72.2% | 10.0% | 96.5% |
+| **134** | **151** | **86.7%** | **61.7%** | **83.3%** | 13.3% | 100.0% |
 
 Paired exact McNemar, first snapshot to last, over the same 60 cases:
 
 | Comparison | | p | |
 |---|---|---|---|
-| Headline | 9W–1L | 0.021 | **significant** |
-| Counterparty subset | 8W–0L | 0.0078 | **significant** |
-| Random control | 6W–11L | 0.33 | not significant, and **downward** |
+| Headline | 15W–5L | 0.041 | **significant** |
+| Counterparty subset | 15W–0L | **0.00006** | **significant** |
+| Random control | 10W–7L | 0.63 | not significant — flat |
 
-**The control is what makes this evidence rather than a number that went up.** It draws the
-same *k* precedents from the same growing corpus, differing only in whether they are relevant.
-It does not rise with the treatment — it *falls*, from 75.0% to 66.7%. A larger corpus of
-irrelevant precedents is actively worse than a small one, because there is more to be
-distracted by. That closes off the prompt-length explanation: the gain comes from relevance,
-not from having more text in the prompt.
+**The control stays flat while the treatment rises.** It draws the same *k* precedents from
+the same growing corpus, differing only in relevance, and moves from 56.7% to 61.7% —
+indistinguishable from noise across a corpus that more than tripled. Whatever lifts the
+treatment arm is not the presence of more text in the prompt.
 
-**The effect lives where the headroom is.** Seven of the nine exception classes are derivable
-from the evidence and already sit at 98–100% with no corpus at all (Ring 2), so the headline
-has little room to move and most of its 13-point rise is the counterparty subset pulling it
-up. That subset goes **0/9 → 8/9**. This is the one part of the dataset where a precedent
-cannot be replaced by an investigation tool, and it is the part that moved.
+**Every gain is a counterparty case; every loss is a derivable one.** The decomposition is
+exact:
 
-Escalation fell 13.3% → 5.0% while accuracy rose — spec §6's stated expectation, and the
-combination that matters: a system that resolved more by escalating less *and* getting more
-right, rather than by becoming more willing to guess. Precedent precision rose 94.4% → 100%.
+| | gained | lost | net |
+|---|---|---|---|
+| Counterparty (18 cases) | 15 | 0 | **+15** |
+| Derivable (42 cases) | 0 | 5 | **−5** |
 
-**Where the gain actually came from, case by case.** Of the nine cases that flipped from wrong
-to right between the first snapshot and the last, **eight are counterparty cases**. The 51
-derivable test cases moved by exactly **+0**: ninety-eight deposits did nothing for
-five-sixths of the test set. One case regressed — a `tds_short_payment` that was correct with
-no corpus at all escalated at 98 deposits, the same distraction effect the falling control
-measures, leaking into the treatment arm.
+So the corpus is worth +15 where the answer cannot be worked out from the case, and costs −5
+where it can — four `tds_short_payment` and one `direct_neft_bypass` that were correct against
+the seed corpus alone and are wrong against a corpus of 151. That is the same distraction the
+control measures, and it is a real price rather than a rounding error: **a third of the gross
+gain is spent on cases the corpus should never have been consulted for.**
 
-That makes this a narrower claim than the headline, and a more useful one. It is not "a
-precedent corpus improves reconciliation". It is:
+The honest form of the claim, then:
 
 > A precedent corpus improves resolution **only for knowledge that cannot be derived from the
-> case in front of the agent.** Where the answer is computable — a round withholding rate, a
-> netted sum, two payments on one order — an investigation tool derives it and the corpus adds
-> nothing, or very slightly distracts.
+> case in front of the agent** — and mildly degrades the cases that can be. Where the answer is
+> computable, an investigation tool derives it and the corpus is a distraction.
 
-That is the same conclusion Ring 2 reached from the opposite direction, when the tools
-collapsed the measured value of retrieval to one case. Ring 3 confirms it with the sign
-reversed: give the system knowledge it *cannot* derive, and the corpus is worth 0/9 → 8/9.
+Escalation did not fall monotonically (8.3% → 13.3%, peaking at 18.3%), which is worth noting
+against the spec's expectation that it should decline: the system became more accurate without
+becoming more willing to answer.
 
-**And the counterparty task is a lookup.** "This customer deducts 2.65%" is real institutional
-knowledge and exactly what a precedent corpus should carry, but recalling a counterparty's
-terms is not deep generalisation, and the 88.9% should not be read as one.
+**What the precedent-precision breakdown cannot tell us.** Spec §7 asserts that a corrected
+resolution is the higher-value precedent. With 44 corrections and 66 confirmations in the
+corpus that is finally checkable — and the measurement is saturated: seed, confirmed and
+corrected precedents all score 100% precision at the last snapshot. Corrections are cited 35
+times against confirmations' 62, roughly in proportion to their share of the corpus. **The
+claim is neither supported nor refuted here.** The proxy (agreement between the cited
+precedent's reason code and the case's) is too coarse to separate them, and saying so is
+better than reading a tie as agreement.
 
-**What this is not.** The human is simulated by the gold label: every one of the 98 pool
-resolutions is treated as confirmed at the correct reason code. A real operator would reject
-some, and each rejection is a precedent that never exists — so this curve is an **upper bound**
-on what deposits can achieve, not a forecast. The 50-deposit point sitting below the 25-deposit
-point is a reminder of the noise floor on 60 cases; the endpoints are what carry the p-values,
-not the shape in between.
+**Still not a forecast.** The 15% rejection rate is a stated assumption with no data behind
+it; the reviewer always corrects to the right answer, where a real one would sometimes be
+wrong; and the counterparty task is recall of a customer's standing terms, which is genuine
+institutional knowledge but not deep generalisation.
+
+**Model provenance.** These numbers come from `nemotron-3-super-120b-a12b`. Every result
+committed before 2026-09-03 came from `openai/gpt-oss-120b`, which reached end of life at
+08:00 UTC that day — mid-run. Those results stand as the record of what was measured and are
+**not comparable** with these.
 
 ## 6. Limits
 
@@ -389,6 +395,11 @@ Known and stated up front, not discovered by a reviewer:
   organically observed one.
 - **Thresholds are not yet calibrated.** The confidence threshold is a placeholder constant until
   Ring 4 sets it from a calibration curve.
+- **Retrieval score is not a relevance signal.** BM25 ranks well (90% same-class at top-3) but
+  its scores do not separate relevant precedents from irrelevant ones — measured, not assumed:
+  other-class hits sit *closer* to the top score than same-class hits do. So there is no
+  score-based way to suppress precedents that do not apply, and every case pays the token cost
+  of *k* precedents whether or not any of them help. See FAILURES.md.
 - **No drift monitoring.** Nothing detects the corpus degrading or the exception mix shifting over
   time.
 - **After Ring 2, no arm's advantage over another is statistically significant.** All three sit

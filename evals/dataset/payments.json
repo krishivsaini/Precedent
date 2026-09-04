@@ -360,366 +360,6 @@
     "tax_paise": 401
   },
   {
-    "payment_id": "pay_8d95c2dafa52",
-    "order_id": "order_synth_0027",
-    "amount_paise": 41600,
-    "captured_at": "2026-06-28T16:19:16+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 967,
-    "tax_paise": 133
-  },
-  {
-    "payment_id": "pay_b169e1d20cda",
-    "order_id": "order_synth_0028",
-    "amount_paise": 299100,
-    "captured_at": "2026-08-08T08:08:01+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 6955,
-    "tax_paise": 959
-  },
-  {
-    "payment_id": "pay_6c25e7a7bc2e",
-    "order_id": "order_synth_0029",
-    "amount_paise": 73300,
-    "captured_at": "2026-07-07T09:14:44+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1704,
-    "tax_paise": 235
-  },
-  {
-    "payment_id": "pay_3c2eb0ae9297",
-    "order_id": "order_synth_0030",
-    "amount_paise": 249800,
-    "captured_at": "2026-08-17T18:31:23+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5809,
-    "tax_paise": 801
-  },
-  {
-    "payment_id": "pay_abcffef33df1",
-    "order_id": "order_synth_0031",
-    "amount_paise": 66400,
-    "captured_at": "2026-06-18T07:31:07+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1544,
-    "tax_paise": 213
-  },
-  {
-    "payment_id": "pay_c14454dd02d9",
-    "order_id": "order_synth_0032",
-    "amount_paise": 185800,
-    "captured_at": "2026-07-17T12:08:07+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4320,
-    "tax_paise": 596
-  },
-  {
-    "payment_id": "pay_e9a8db8e5b7f",
-    "order_id": "order_synth_0033",
-    "amount_paise": 494300,
-    "captured_at": "2026-07-24T13:30:59+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 11494,
-    "tax_paise": 1585
-  },
-  {
-    "payment_id": "pay_0b35bfc2a18f",
-    "order_id": "order_synth_0034",
-    "amount_paise": 181700,
-    "captured_at": "2026-06-28T04:05:07+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4225,
-    "tax_paise": 582
-  },
-  {
-    "payment_id": "pay_67ea5efb4101",
-    "order_id": "order_synth_0035",
-    "amount_paise": 180900,
-    "captured_at": "2026-07-18T12:54:22+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4206,
-    "tax_paise": 580
-  },
-  {
-    "payment_id": "pay_b72ef1608647",
-    "order_id": "order_synth_0036",
-    "amount_paise": 13100,
-    "captured_at": "2026-08-01T08:23:11+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 305,
-    "tax_paise": 42
-  },
-  {
-    "payment_id": "pay_03d0ce3d49c4",
-    "order_id": "order_synth_0037",
-    "amount_paise": 23800,
-    "captured_at": "2026-07-19T15:07:52+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 553,
-    "tax_paise": 76
-  },
-  {
-    "payment_id": "pay_91dfe6a9f19e",
-    "order_id": "order_synth_0038",
-    "amount_paise": 30400,
-    "captured_at": "2026-07-20T06:30:58+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 707,
-    "tax_paise": 97
-  },
-  {
-    "payment_id": "pay_dddaa0958464",
-    "order_id": "order_synth_0039",
-    "amount_paise": 13000,
-    "captured_at": "2026-08-20T10:34:02+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 302,
-    "tax_paise": 42
-  },
-  {
-    "payment_id": "pay_e044d67dd7ad",
-    "order_id": "order_synth_0040",
-    "amount_paise": 33300,
-    "captured_at": "2026-08-03T19:53:26+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 774,
-    "tax_paise": 107
-  },
-  {
-    "payment_id": "pay_c725e2b91c1f",
-    "order_id": "order_synth_0041",
-    "amount_paise": 23700,
-    "captured_at": "2026-07-14T10:13:02+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 551,
-    "tax_paise": 76
-  },
-  {
-    "payment_id": "pay_bb69045dcb8f",
-    "order_id": "order_synth_0042",
-    "amount_paise": 281500,
-    "captured_at": "2026-08-06T10:43:59+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 6546,
-    "tax_paise": 902
-  },
-  {
-    "payment_id": "pay_d50329f30683",
-    "order_id": "order_synth_0043",
-    "amount_paise": 158900,
-    "captured_at": "2026-07-16T23:05:09+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3695,
-    "tax_paise": 509
-  },
-  {
-    "payment_id": "pay_a3df9f6e1eba",
-    "order_id": "order_synth_0044",
-    "amount_paise": 57900,
-    "captured_at": "2026-08-20T01:08:33+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1346,
-    "tax_paise": 186
-  },
-  {
-    "payment_id": "pay_b1bfbbe5873f",
-    "order_id": "order_synth_0045",
-    "amount_paise": 461400,
-    "captured_at": "2026-08-30T14:49:02+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 10729,
-    "tax_paise": 1479
-  },
-  {
-    "payment_id": "pay_76ce89182bef",
-    "order_id": "order_synth_0046",
-    "amount_paise": 20300,
-    "captured_at": "2026-08-20T03:22:29+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 472,
-    "tax_paise": 65
-  },
-  {
-    "payment_id": "pay_115d33cda287",
-    "order_id": "order_synth_0047",
-    "amount_paise": 213000,
-    "captured_at": "2026-08-10T16:44:02+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4953,
-    "tax_paise": 683
-  },
-  {
-    "payment_id": "pay_39b315e69bd1",
-    "order_id": "order_synth_0048",
-    "amount_paise": 374800,
-    "captured_at": "2026-08-11T11:36:37+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 8715,
-    "tax_paise": 1201
-  },
-  {
-    "payment_id": "pay_fcb0d1e1fe58",
-    "order_id": "order_synth_0049",
-    "amount_paise": 17200,
-    "captured_at": "2026-07-20T05:54:19+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 400,
-    "tax_paise": 55
-  },
-  {
-    "payment_id": "pay_94fd5adbd25c",
-    "order_id": "order_synth_0050",
-    "amount_paise": 263400,
-    "captured_at": "2026-08-30T13:16:12+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 6125,
-    "tax_paise": 844
-  },
-  {
-    "payment_id": "pay_15b8cb1e19e0",
-    "order_id": "order_synth_0051",
-    "amount_paise": 482900,
-    "captured_at": "2026-08-24T09:35:40+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 11229,
-    "tax_paise": 1548
-  },
-  {
-    "payment_id": "pay_501452dda4ec",
-    "order_id": "order_synth_0052",
-    "amount_paise": 147400,
-    "captured_at": "2026-07-08T17:51:27+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3427,
-    "tax_paise": 472
-  },
-  {
-    "payment_id": "pay_59dd2268f154",
-    "order_id": "order_synth_0053",
-    "amount_paise": 133100,
-    "captured_at": "2026-08-27T01:12:53+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3095,
-    "tax_paise": 427
-  },
-  {
-    "payment_id": "pay_ffc5d0c1b36a",
-    "order_id": "order_synth_0054",
-    "amount_paise": 146600,
-    "captured_at": "2026-06-28T08:18:11+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3409,
-    "tax_paise": 470
-  },
-  {
-    "payment_id": "pay_b347f5e2f2ac",
-    "order_id": "order_synth_0055",
-    "amount_paise": 107900,
-    "captured_at": "2026-08-29T08:08:38+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2509,
-    "tax_paise": 346
-  },
-  {
-    "payment_id": "pay_661735b12ad1",
-    "order_id": "order_synth_0056",
-    "amount_paise": 136900,
-    "captured_at": "2026-08-18T20:24:56+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3183,
-    "tax_paise": 439
-  },
-  {
-    "payment_id": "pay_e9daaeae86df",
-    "order_id": "order_synth_0057",
-    "amount_paise": 105800,
-    "captured_at": "2026-09-01T06:15:06+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2460,
-    "tax_paise": 339
-  },
-  {
-    "payment_id": "pay_6bcc355505fd",
-    "order_id": "order_synth_0058",
-    "amount_paise": 235800,
-    "captured_at": "2026-08-10T01:09:12+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5483,
-    "tax_paise": 756
-  },
-  {
-    "payment_id": "pay_b44072764591",
-    "order_id": "order_synth_0059",
-    "amount_paise": 475400,
-    "captured_at": "2026-07-01T19:43:51+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 11054,
-    "tax_paise": 1524
-  },
-  {
-    "payment_id": "pay_23bc662e3795",
-    "order_id": "order_synth_0060",
-    "amount_paise": 164500,
-    "captured_at": "2026-08-25T08:26:01+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3825,
-    "tax_paise": 527
-  },
-  {
-    "payment_id": "pay_078f91fb9ef1",
-    "order_id": "order_synth_0061",
-    "amount_paise": 252900,
-    "captured_at": "2026-08-16T20:37:25+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5881,
-    "tax_paise": 811
-  },
-  {
-    "payment_id": "pay_b761b867973e",
-    "order_id": "order_synth_0062",
-    "amount_paise": 93700,
-    "captured_at": "2026-07-24T15:39:52+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2179,
-    "tax_paise": 300
-  },
-  {
     "payment_id": "pay_TWTjncNT2qR2RM",
     "order_id": "order_TWTjgYr70FSGkP",
     "amount_paise": 182700,
@@ -760,8 +400,398 @@
     "tax_paise": 1052
   },
   {
-    "payment_id": "pay_25211dc291ce",
+    "payment_id": "pay_68ad3fa27119",
+    "order_id": "order_synth_0027",
+    "amount_paise": 317600,
+    "captured_at": "2026-08-07T06:56:31+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7385,
+    "tax_paise": 1018
+  },
+  {
+    "payment_id": "pay_73b7da98d66b",
+    "order_id": "order_synth_0028",
+    "amount_paise": 312500,
+    "captured_at": "2026-08-16T19:54:01+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7267,
+    "tax_paise": 1002
+  },
+  {
+    "payment_id": "pay_00e234dde4fc",
+    "order_id": "order_synth_0029",
+    "amount_paise": 441000,
+    "captured_at": "2026-06-30T20:57:12+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 10255,
+    "tax_paise": 1414
+  },
+  {
+    "payment_id": "pay_4d744ebd3164",
+    "order_id": "order_synth_0030",
+    "amount_paise": 64200,
+    "captured_at": "2026-07-24T00:27:27+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1493,
+    "tax_paise": 206
+  },
+  {
+    "payment_id": "pay_4a13de292831",
+    "order_id": "order_synth_0031",
+    "amount_paise": 386800,
+    "captured_at": "2026-08-27T18:42:08+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 8994,
+    "tax_paise": 1240
+  },
+  {
+    "payment_id": "pay_e861012902f7",
+    "order_id": "order_synth_0032",
+    "amount_paise": 45500,
+    "captured_at": "2026-07-14T23:18:20+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1058,
+    "tax_paise": 146
+  },
+  {
+    "payment_id": "pay_03a123c7d7c0",
+    "order_id": "order_synth_0033",
+    "amount_paise": 199400,
+    "captured_at": "2026-08-24T08:58:24+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4637,
+    "tax_paise": 639
+  },
+  {
+    "payment_id": "pay_a15a1f5ab29f",
+    "order_id": "order_synth_0034",
+    "amount_paise": 43100,
+    "captured_at": "2026-07-23T03:44:28+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1002,
+    "tax_paise": 138
+  },
+  {
+    "payment_id": "pay_66e32cf1550e",
+    "order_id": "order_synth_0035",
+    "amount_paise": 300200,
+    "captured_at": "2026-06-21T12:27:34+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6981,
+    "tax_paise": 962
+  },
+  {
+    "payment_id": "pay_71fefbd6c9a2",
+    "order_id": "order_synth_0036",
+    "amount_paise": 25000,
+    "captured_at": "2026-07-28T14:12:14+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 581,
+    "tax_paise": 80
+  },
+  {
+    "payment_id": "pay_dddaa0958464",
+    "order_id": "order_synth_0037",
+    "amount_paise": 13000,
+    "captured_at": "2026-08-20T10:34:02+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 302,
+    "tax_paise": 42
+  },
+  {
+    "payment_id": "pay_033be5f4f75e",
+    "order_id": "order_synth_0038",
+    "amount_paise": 296300,
+    "captured_at": "2026-07-29T13:59:43+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6890,
+    "tax_paise": 950
+  },
+  {
+    "payment_id": "pay_a81e7324f94e",
+    "order_id": "order_synth_0039",
+    "amount_paise": 164200,
+    "captured_at": "2026-07-05T07:35:27+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3818,
+    "tax_paise": 526
+  },
+  {
+    "payment_id": "pay_cf460d7794a7",
+    "order_id": "order_synth_0040",
+    "amount_paise": 486600,
+    "captured_at": "2026-07-28T10:50:03+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11315,
+    "tax_paise": 1560
+  },
+  {
+    "payment_id": "pay_ef18d5032f0f",
+    "order_id": "order_synth_0041",
+    "amount_paise": 267000,
+    "captured_at": "2026-07-16T23:05:09+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6209,
+    "tax_paise": 856
+  },
+  {
+    "payment_id": "pay_5faf2975eebb",
+    "order_id": "order_synth_0042",
+    "amount_paise": 25800,
+    "captured_at": "2026-08-09T19:49:03+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 600,
+    "tax_paise": 83
+  },
+  {
+    "payment_id": "pay_05eaf28344f1",
+    "order_id": "order_synth_0043",
+    "amount_paise": 484200,
+    "captured_at": "2026-07-11T00:43:16+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11259,
+    "tax_paise": 1552
+  },
+  {
+    "payment_id": "pay_a75387159118",
+    "order_id": "order_synth_0044",
+    "amount_paise": 421600,
+    "captured_at": "2026-09-01T22:14:59+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9803,
+    "tax_paise": 1351
+  },
+  {
+    "payment_id": "pay_76ce89182bef",
+    "order_id": "order_synth_0045",
+    "amount_paise": 20300,
+    "captured_at": "2026-08-20T03:22:29+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 472,
+    "tax_paise": 65
+  },
+  {
+    "payment_id": "pay_20d00a18a4ad",
+    "order_id": "order_synth_0046",
+    "amount_paise": 23500,
+    "captured_at": "2026-07-09T03:06:53+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 546,
+    "tax_paise": 75
+  },
+  {
+    "payment_id": "pay_bc76eac0b37c",
+    "order_id": "order_synth_0047",
+    "amount_paise": 18500,
+    "captured_at": "2026-07-23T19:49:31+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 430,
+    "tax_paise": 59
+  },
+  {
+    "payment_id": "pay_e3bfd25c5ada",
+    "order_id": "order_synth_0048",
+    "amount_paise": 226100,
+    "captured_at": "2026-07-27T14:15:28+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5257,
+    "tax_paise": 725
+  },
+  {
+    "payment_id": "pay_04c494fd4d07",
+    "order_id": "order_synth_0049",
+    "amount_paise": 28000,
+    "captured_at": "2026-07-17T08:19:48+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 651,
+    "tax_paise": 90
+  },
+  {
+    "payment_id": "pay_d60bc7f878a7",
+    "order_id": "order_synth_0050",
+    "amount_paise": 28800,
+    "captured_at": "2026-07-10T12:00:14+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 670,
+    "tax_paise": 92
+  },
+  {
+    "payment_id": "pay_15b8cb1e19e0",
+    "order_id": "order_synth_0051",
+    "amount_paise": 482900,
+    "captured_at": "2026-08-24T09:35:40+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11229,
+    "tax_paise": 1548
+  },
+  {
+    "payment_id": "pay_b3d3dc9f844e",
+    "order_id": "order_synth_0052",
+    "amount_paise": 427200,
+    "captured_at": "2026-08-21T07:33:54+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9934,
+    "tax_paise": 1370
+  },
+  {
+    "payment_id": "pay_59dd2268f154",
+    "order_id": "order_synth_0053",
+    "amount_paise": 133100,
+    "captured_at": "2026-08-27T01:12:53+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3095,
+    "tax_paise": 427
+  },
+  {
+    "payment_id": "pay_c63dd075336e",
+    "order_id": "order_synth_0054",
+    "amount_paise": 122800,
+    "captured_at": "2026-07-13T14:24:17+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2855,
+    "tax_paise": 394
+  },
+  {
+    "payment_id": "pay_b347f5e2f2ac",
+    "order_id": "order_synth_0055",
+    "amount_paise": 107900,
+    "captured_at": "2026-08-29T08:08:38+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2509,
+    "tax_paise": 346
+  },
+  {
+    "payment_id": "pay_d8c69a7c679d",
+    "order_id": "order_synth_0056",
+    "amount_paise": 300500,
+    "captured_at": "2026-08-05T05:41:42+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6988,
+    "tax_paise": 963
+  },
+  {
+    "payment_id": "pay_aeae45fa48af",
+    "order_id": "order_synth_0057",
+    "amount_paise": 113600,
+    "captured_at": "2026-09-01T06:15:06+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2642,
+    "tax_paise": 364
+  },
+  {
+    "payment_id": "pay_a54ef599c4f1",
+    "order_id": "order_synth_0058",
+    "amount_paise": 479300,
+    "captured_at": "2026-08-10T01:09:12+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11145,
+    "tax_paise": 1537
+  },
+  {
+    "payment_id": "pay_87d7147dd1d4",
+    "order_id": "order_synth_0059",
+    "amount_paise": 494600,
+    "captured_at": "2026-07-15T05:23:18+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11501,
+    "tax_paise": 1586
+  },
+  {
+    "payment_id": "pay_662e8f4dd8c3",
+    "order_id": "order_synth_0060",
+    "amount_paise": 132400,
+    "captured_at": "2026-08-15T02:00:59+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3079,
+    "tax_paise": 424
+  },
+  {
+    "payment_id": "pay_8e6cd66189c1",
+    "order_id": "order_synth_0061",
+    "amount_paise": 30300,
+    "captured_at": "2026-07-20T03:07:00+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 705,
+    "tax_paise": 97
+  },
+  {
+    "payment_id": "pay_b761b867973e",
+    "order_id": "order_synth_0062",
+    "amount_paise": 93700,
+    "captured_at": "2026-07-24T15:39:52+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2179,
+    "tax_paise": 300
+  },
+  {
+    "payment_id": "pay_0aecef229779",
     "order_id": "order_synth_0063",
+    "amount_paise": 322600,
+    "captured_at": "2026-07-21T04:03:43+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7501,
+    "tax_paise": 1034
+  },
+  {
+    "payment_id": "pay_48b5849d8d45",
+    "order_id": "order_synth_0064",
+    "amount_paise": 192000,
+    "captured_at": "2026-07-18T20:45:34+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4465,
+    "tax_paise": 616
+  },
+  {
+    "payment_id": "pay_05d014f6dcf0",
+    "order_id": "order_synth_0065",
+    "amount_paise": 25200,
+    "captured_at": "2026-06-18T20:44:28+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 586,
+    "tax_paise": 81
+  },
+  {
+    "payment_id": "pay_25211dc291ce",
+    "order_id": "order_synth_0066",
     "amount_paise": 55500,
     "captured_at": "2026-08-25T00:50:27+00:00",
     "status": "captured",
@@ -770,28 +800,38 @@
     "tax_paise": 178
   },
   {
-    "payment_id": "pay_e32c745b7fd6",
-    "order_id": "order_synth_0064",
-    "amount_paise": 336200,
-    "captured_at": "2026-07-31T06:27:25+00:00",
+    "payment_id": "pay_b8e01bc0ded5",
+    "order_id": "order_synth_0067",
+    "amount_paise": 44300,
+    "captured_at": "2026-06-21T21:14:48+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 7818,
-    "tax_paise": 1078
+    "fee_paise": 1030,
+    "tax_paise": 142
   },
   {
-    "payment_id": "pay_a766fa2e2e63",
-    "order_id": "order_synth_0065",
-    "amount_paise": 13700,
-    "captured_at": "2026-08-01T09:33:19+00:00",
+    "payment_id": "pay_89ca6167e1b4",
+    "order_id": "order_synth_0068",
+    "amount_paise": 469400,
+    "captured_at": "2026-07-21T16:32:54+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 319,
-    "tax_paise": 44
+    "fee_paise": 10915,
+    "tax_paise": 1505
+  },
+  {
+    "payment_id": "pay_a9bef896e6d6",
+    "order_id": "order_synth_0069",
+    "amount_paise": 18100,
+    "captured_at": "2026-07-13T05:32:27+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 421,
+    "tax_paise": 58
   },
   {
     "payment_id": "pay_9a9a65d2d937",
-    "order_id": "order_synth_0066",
+    "order_id": "order_synth_0070",
     "amount_paise": 172700,
     "captured_at": "2026-08-17T09:08:00+00:00",
     "status": "captured",
@@ -800,58 +840,68 @@
     "tax_paise": 554
   },
   {
-    "payment_id": "pay_be030b16c804",
-    "order_id": "order_synth_0067",
-    "amount_paise": 411900,
+    "payment_id": "pay_b311bb602f36",
+    "order_id": "order_synth_0071",
+    "amount_paise": 47900,
     "captured_at": "2026-08-12T20:51:14+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 9578,
-    "tax_paise": 1320
+    "fee_paise": 1114,
+    "tax_paise": 154
   },
   {
-    "payment_id": "pay_1cdb8cf411c3",
-    "order_id": "order_synth_0068",
-    "amount_paise": 251300,
-    "captured_at": "2026-07-16T13:09:24+00:00",
+    "payment_id": "pay_cfb4ad517d79",
+    "order_id": "order_synth_0072",
+    "amount_paise": 58500,
+    "captured_at": "2026-07-14T18:40:40+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 5843,
-    "tax_paise": 806
+    "fee_paise": 1360,
+    "tax_paise": 187
   },
   {
-    "payment_id": "pay_5463cde8776f",
-    "order_id": "order_synth_0069",
-    "amount_paise": 17900,
-    "captured_at": "2026-07-15T02:42:12+00:00",
+    "payment_id": "pay_80d39db78d32",
+    "order_id": "order_synth_0073",
+    "amount_paise": 42100,
+    "captured_at": "2026-08-16T20:02:48+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 416,
-    "tax_paise": 57
+    "fee_paise": 979,
+    "tax_paise": 135
   },
   {
-    "payment_id": "pay_a8bc1bc72594",
-    "order_id": "order_synth_0070",
-    "amount_paise": 135100,
-    "captured_at": "2026-07-02T12:17:08+00:00",
+    "payment_id": "pay_61eded96a5b0",
+    "order_id": "order_synth_0074",
+    "amount_paise": 65100,
+    "captured_at": "2026-07-10T03:57:02+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 3141,
-    "tax_paise": 433
+    "fee_paise": 1514,
+    "tax_paise": 209
   },
   {
-    "payment_id": "pay_a1fc19bfb612",
-    "order_id": "order_synth_0071",
-    "amount_paise": 37700,
-    "captured_at": "2026-07-11T13:22:37+00:00",
+    "payment_id": "pay_35b456627277",
+    "order_id": "order_synth_0075",
+    "amount_paise": 397700,
+    "captured_at": "2026-06-24T03:39:43+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 877,
-    "tax_paise": 121
+    "fee_paise": 9248,
+    "tax_paise": 1275
+  },
+  {
+    "payment_id": "pay_7f9ea3a7134b",
+    "order_id": "order_synth_0076",
+    "amount_paise": 139800,
+    "captured_at": "2026-06-22T17:56:24+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3251,
+    "tax_paise": 448
   },
   {
     "payment_id": "pay_85e895cb9fee",
-    "order_id": "order_synth_0072",
+    "order_id": "order_synth_0077",
     "amount_paise": 141900,
     "captured_at": "2026-08-17T09:59:46+00:00",
     "status": "captured",
@@ -860,118 +910,108 @@
     "tax_paise": 455
   },
   {
-    "payment_id": "pay_9eb1cdbcd315",
-    "order_id": "order_synth_0073",
-    "amount_paise": 246400,
-    "captured_at": "2026-08-09T11:19:29+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5730,
-    "tax_paise": 790
-  },
-  {
-    "payment_id": "pay_f2d7509b0e59",
-    "order_id": "order_synth_0074",
-    "amount_paise": 88900,
-    "captured_at": "2026-08-21T12:06:33+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2067,
-    "tax_paise": 285
-  },
-  {
-    "payment_id": "pay_85064156e5f5",
-    "order_id": "order_synth_0075",
-    "amount_paise": 114000,
-    "captured_at": "2026-07-04T18:40:14+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2651,
-    "tax_paise": 365
-  },
-  {
-    "payment_id": "pay_253d2f039427",
-    "order_id": "order_synth_0076",
-    "amount_paise": 48900,
-    "captured_at": "2026-08-02T09:56:47+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1137,
-    "tax_paise": 157
-  },
-  {
-    "payment_id": "pay_f27c11a86df0",
-    "order_id": "order_synth_0077",
-    "amount_paise": 19900,
-    "captured_at": "2026-08-21T04:48:41+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 463,
-    "tax_paise": 64
-  },
-  {
-    "payment_id": "pay_529698b11072",
+    "payment_id": "pay_39bc50cb3378",
     "order_id": "order_synth_0078",
-    "amount_paise": 409100,
-    "captured_at": "2026-07-14T11:58:31+00:00",
+    "amount_paise": 21400,
+    "captured_at": "2026-07-02T06:56:48+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 9513,
-    "tax_paise": 1312
+    "fee_paise": 498,
+    "tax_paise": 69
   },
   {
-    "payment_id": "pay_59f57a52c3dc",
+    "payment_id": "pay_552417f8c5d5",
     "order_id": "order_synth_0079",
-    "amount_paise": 102500,
-    "captured_at": "2026-08-26T08:49:54+00:00",
+    "amount_paise": 178200,
+    "captured_at": "2026-07-12T11:24:32+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 2383,
-    "tax_paise": 329
+    "fee_paise": 4144,
+    "tax_paise": 571
   },
   {
-    "payment_id": "pay_5bb56620504e",
+    "payment_id": "pay_3c116cf5a278",
     "order_id": "order_synth_0080",
-    "amount_paise": 123800,
-    "captured_at": "2026-07-08T23:49:10+00:00",
+    "amount_paise": 18600,
+    "captured_at": "2026-08-09T05:17:46+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 2879,
-    "tax_paise": 397
+    "fee_paise": 433,
+    "tax_paise": 60
   },
   {
-    "payment_id": "pay_f736d4086611",
+    "payment_id": "pay_e1c609421242",
     "order_id": "order_synth_0081",
-    "amount_paise": 97200,
-    "captured_at": "2026-07-12T22:13:25+00:00",
+    "amount_paise": 23800,
+    "captured_at": "2026-08-07T02:30:40+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 2260,
-    "tax_paise": 312
+    "fee_paise": 553,
+    "tax_paise": 76
   },
   {
-    "payment_id": "pay_c77e1c9900c9",
+    "payment_id": "pay_2dacd6c37ed7",
     "order_id": "order_synth_0082",
-    "amount_paise": 150300,
-    "captured_at": "2026-08-13T22:36:40+00:00",
+    "amount_paise": 16600,
+    "captured_at": "2026-07-16T09:33:22+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 3495,
-    "tax_paise": 482
+    "fee_paise": 386,
+    "tax_paise": 53
   },
   {
-    "payment_id": "pay_48a07f4f47fa",
+    "payment_id": "pay_3e190c31e285",
     "order_id": "order_synth_0083",
-    "amount_paise": 42400,
+    "amount_paise": 121800,
+    "captured_at": "2026-08-27T16:50:21+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2832,
+    "tax_paise": 390
+  },
+  {
+    "payment_id": "pay_7afa4531ac54",
+    "order_id": "order_synth_0084",
+    "amount_paise": 433600,
+    "captured_at": "2026-07-23T15:54:35+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 10082,
+    "tax_paise": 1390
+  },
+  {
+    "payment_id": "pay_10344c74e581",
+    "order_id": "order_synth_0085",
+    "amount_paise": 174900,
+    "captured_at": "2026-08-24T14:49:06+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4067,
+    "tax_paise": 561
+  },
+  {
+    "payment_id": "pay_3d89ecf66410",
+    "order_id": "order_synth_0086",
+    "amount_paise": 478400,
+    "captured_at": "2026-08-14T20:49:39+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11124,
+    "tax_paise": 1534
+  },
+  {
+    "payment_id": "pay_ccd548a07b8d",
+    "order_id": "order_synth_0087",
+    "amount_paise": 403500,
     "captured_at": "2026-08-19T12:29:43+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 986,
-    "tax_paise": 136
+    "fee_paise": 9383,
+    "tax_paise": 1294
   },
   {
     "payment_id": "pay_bc3969112f18",
-    "order_id": "order_synth_0084",
+    "order_id": "order_synth_0088",
     "amount_paise": 26600,
     "captured_at": "2026-08-15T08:55:06+00:00",
     "status": "captured",
@@ -980,98 +1020,98 @@
     "tax_paise": 85
   },
   {
-    "payment_id": "pay_03068d813f54",
-    "order_id": "order_synth_0085",
-    "amount_paise": 267100,
-    "captured_at": "2026-07-26T01:47:46+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 6211,
-    "tax_paise": 856
-  },
-  {
-    "payment_id": "pay_17572487c621",
-    "order_id": "order_synth_0086",
-    "amount_paise": 38800,
-    "captured_at": "2026-06-27T22:32:00+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 902,
-    "tax_paise": 124
-  },
-  {
-    "payment_id": "pay_4dc6bc01f959",
-    "order_id": "order_synth_0087",
-    "amount_paise": 16200,
-    "captured_at": "2026-07-27T19:03:22+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 377,
-    "tax_paise": 52
-  },
-  {
-    "payment_id": "pay_81979c49a21e",
-    "order_id": "order_synth_0088",
-    "amount_paise": 45700,
-    "captured_at": "2026-07-11T01:51:02+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1063,
-    "tax_paise": 147
-  },
-  {
-    "payment_id": "pay_71d02b0ca694",
+    "payment_id": "pay_54cc0b179ec2",
     "order_id": "order_synth_0089",
-    "amount_paise": 207600,
-    "captured_at": "2026-07-27T13:13:45+00:00",
+    "amount_paise": 134700,
+    "captured_at": "2026-08-11T20:07:30+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 4827,
-    "tax_paise": 665
+    "fee_paise": 3132,
+    "tax_paise": 432
   },
   {
-    "payment_id": "pay_cde286370023",
+    "payment_id": "pay_1b100ca15cb2",
     "order_id": "order_synth_0090",
-    "amount_paise": 108500,
-    "captured_at": "2026-06-24T10:39:50+00:00",
+    "amount_paise": 24900,
+    "captured_at": "2026-06-21T05:11:43+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 2523,
-    "tax_paise": 348
+    "fee_paise": 579,
+    "tax_paise": 80
   },
   {
-    "payment_id": "pay_ddc2af5a178e",
+    "payment_id": "pay_56a19e704314",
     "order_id": "order_synth_0091",
-    "amount_paise": 493100,
-    "captured_at": "2026-07-20T21:30:35+00:00",
+    "amount_paise": 36500,
+    "captured_at": "2026-08-28T16:07:26+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 11466,
-    "tax_paise": 1581
+    "fee_paise": 849,
+    "tax_paise": 117
   },
   {
-    "payment_id": "pay_34b5b4e27700",
+    "payment_id": "pay_6878dd9d2b1b",
     "order_id": "order_synth_0092",
-    "amount_paise": 409500,
-    "captured_at": "2026-08-08T01:47:19+00:00",
+    "amount_paise": 407200,
+    "captured_at": "2026-08-26T04:15:21+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 9522,
-    "tax_paise": 1313
+    "fee_paise": 9469,
+    "tax_paise": 1305
   },
   {
-    "payment_id": "pay_431a56767c9b",
+    "payment_id": "pay_cfcb28d8252a",
     "order_id": "order_synth_0093",
-    "amount_paise": 99600,
+    "amount_paise": 229600,
+    "captured_at": "2026-08-13T18:14:53+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5339,
+    "tax_paise": 736
+  },
+  {
+    "payment_id": "pay_974d8b8d5394",
+    "order_id": "order_synth_0094",
+    "amount_paise": 112800,
+    "captured_at": "2026-06-18T00:41:20+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2623,
+    "tax_paise": 362
+  },
+  {
+    "payment_id": "pay_ce801543126d",
+    "order_id": "order_synth_0095",
+    "amount_paise": 48300,
+    "captured_at": "2026-07-04T19:18:22+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1123,
+    "tax_paise": 155
+  },
+  {
+    "payment_id": "pay_d34baf331a67",
+    "order_id": "order_synth_0096",
+    "amount_paise": 489800,
+    "captured_at": "2026-07-17T17:16:43+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11389,
+    "tax_paise": 1570
+  },
+  {
+    "payment_id": "pay_ebfc431afe0c",
+    "order_id": "order_synth_0097",
+    "amount_paise": 27100,
     "captured_at": "2026-07-19T13:52:45+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 2316,
-    "tax_paise": 319
+    "fee_paise": 630,
+    "tax_paise": 87
   },
   {
     "payment_id": "pay_fece8f0d21e1",
-    "order_id": "order_synth_0094",
+    "order_id": "order_synth_0098",
     "amount_paise": 106200,
     "captured_at": "2026-08-07T06:16:16+00:00",
     "status": "captured",
@@ -1080,28 +1120,38 @@
     "tax_paise": 340
   },
   {
-    "payment_id": "pay_c37518edeaf4",
-    "order_id": "order_synth_0095",
-    "amount_paise": 22700,
-    "captured_at": "2026-07-09T11:24:00+00:00",
+    "payment_id": "pay_c982c562de79",
+    "order_id": "order_synth_0099",
+    "amount_paise": 38100,
+    "captured_at": "2026-07-30T08:23:54+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 528,
-    "tax_paise": 73
+    "fee_paise": 886,
+    "tax_paise": 122
   },
   {
-    "payment_id": "pay_034cf4e50038",
-    "order_id": "order_synth_0096",
-    "amount_paise": 48900,
-    "captured_at": "2026-06-21T10:31:29+00:00",
+    "payment_id": "pay_407cee149039",
+    "order_id": "order_synth_0100",
+    "amount_paise": 67900,
+    "captured_at": "2026-08-20T15:26:54+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1137,
-    "tax_paise": 157
+    "fee_paise": 1579,
+    "tax_paise": 218
+  },
+  {
+    "payment_id": "pay_2ec7fe3e7f35",
+    "order_id": "order_synth_0101",
+    "amount_paise": 187400,
+    "captured_at": "2026-06-29T21:23:36+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4358,
+    "tax_paise": 601
   },
   {
     "payment_id": "pay_7ad3ac1d8cd5",
-    "order_id": "order_synth_0097",
+    "order_id": "order_synth_0102",
     "amount_paise": 199900,
     "captured_at": "2026-08-27T07:51:13+00:00",
     "status": "captured",
@@ -1111,7 +1161,7 @@
   },
   {
     "payment_id": "pay_44846c9f19a1",
-    "order_id": "order_synth_0098",
+    "order_id": "order_synth_0103",
     "amount_paise": 280800,
     "captured_at": "2026-08-07T02:58:19+00:00",
     "status": "captured",
@@ -1120,28 +1170,28 @@
     "tax_paise": 900
   },
   {
-    "payment_id": "pay_c8f20a79ab7d",
-    "order_id": "order_synth_0099",
-    "amount_paise": 274900,
-    "captured_at": "2026-07-08T01:03:48+00:00",
+    "payment_id": "pay_cca2b0841cd1",
+    "order_id": "order_synth_0104",
+    "amount_paise": 120100,
+    "captured_at": "2026-07-09T13:52:45+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 6392,
-    "tax_paise": 881
+    "fee_paise": 2793,
+    "tax_paise": 385
   },
   {
-    "payment_id": "pay_d52261136fd0",
-    "order_id": "order_synth_0100",
-    "amount_paise": 34200,
+    "payment_id": "pay_611379877e3d",
+    "order_id": "order_synth_0105",
+    "amount_paise": 11400,
     "captured_at": "2026-06-30T20:10:21+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 795,
-    "tax_paise": 110
+    "fee_paise": 265,
+    "tax_paise": 37
   },
   {
     "payment_id": "pay_6357cef0d865",
-    "order_id": "order_synth_0101",
+    "order_id": "order_synth_0106",
     "amount_paise": 169000,
     "captured_at": "2026-07-13T10:21:42+00:00",
     "status": "captured",
@@ -1150,28 +1200,28 @@
     "tax_paise": 542
   },
   {
-    "payment_id": "pay_5b3ef8e8e9d0",
-    "order_id": "order_synth_0102",
-    "amount_paise": 158800,
-    "captured_at": "2026-07-31T03:51:55+00:00",
+    "payment_id": "pay_994c3ceb6526",
+    "order_id": "order_synth_0107",
+    "amount_paise": 71600,
+    "captured_at": "2026-08-27T02:13:09+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 3693,
-    "tax_paise": 509
+    "fee_paise": 1665,
+    "tax_paise": 230
   },
   {
-    "payment_id": "pay_0f9a0b412320",
-    "order_id": "order_synth_0103",
-    "amount_paise": 40500,
-    "captured_at": "2026-07-22T06:15:07+00:00",
+    "payment_id": "pay_d9e5526f4a2a",
+    "order_id": "order_synth_0108",
+    "amount_paise": 499600,
+    "captured_at": "2026-08-11T17:35:32+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 942,
-    "tax_paise": 130
+    "fee_paise": 11617,
+    "tax_paise": 1602
   },
   {
     "payment_id": "pay_fc12767eacee",
-    "order_id": "order_synth_0104",
+    "order_id": "order_synth_0109",
     "amount_paise": 167000,
     "captured_at": "2026-06-29T12:42:33+00:00",
     "status": "captured",
@@ -1181,7 +1231,7 @@
   },
   {
     "payment_id": "pay_adffb75d4be3",
-    "order_id": "order_synth_0105",
+    "order_id": "order_synth_0110",
     "amount_paise": 22400,
     "captured_at": "2026-07-14T07:31:44+00:00",
     "status": "captured",
@@ -1191,7 +1241,7 @@
   },
   {
     "payment_id": "pay_9eb8e30ff47e",
-    "order_id": "order_synth_0106",
+    "order_id": "order_synth_0111",
     "amount_paise": 148100,
     "captured_at": "2026-06-20T18:28:44+00:00",
     "status": "captured",
@@ -1201,7 +1251,7 @@
   },
   {
     "payment_id": "pay_ac439b239bc1",
-    "order_id": "order_synth_0107",
+    "order_id": "order_synth_0112",
     "amount_paise": 48000,
     "captured_at": "2026-07-03T05:00:06+00:00",
     "status": "captured",
@@ -1211,7 +1261,7 @@
   },
   {
     "payment_id": "pay_1e9c77b6b3da",
-    "order_id": "order_synth_0108",
+    "order_id": "order_synth_0113",
     "amount_paise": 187100,
     "captured_at": "2026-08-21T09:14:04+00:00",
     "status": "captured",
@@ -1221,7 +1271,7 @@
   },
   {
     "payment_id": "pay_b31471a20aeb",
-    "order_id": "order_synth_0109",
+    "order_id": "order_synth_0114",
     "amount_paise": 255200,
     "captured_at": "2026-08-04T20:27:30+00:00",
     "status": "captured",
@@ -1231,7 +1281,7 @@
   },
   {
     "payment_id": "pay_dea30cc373bd",
-    "order_id": "order_synth_0110",
+    "order_id": "order_synth_0115",
     "amount_paise": 175900,
     "captured_at": "2026-07-22T22:42:54+00:00",
     "status": "captured",
@@ -1241,7 +1291,7 @@
   },
   {
     "payment_id": "pay_36738082e007",
-    "order_id": "order_synth_0111",
+    "order_id": "order_synth_0116",
     "amount_paise": 26800,
     "captured_at": "2026-06-22T20:17:45+00:00",
     "status": "captured",
@@ -1251,7 +1301,7 @@
   },
   {
     "payment_id": "pay_3b9b7029a6a6",
-    "order_id": "order_synth_0112",
+    "order_id": "order_synth_0117",
     "amount_paise": 199400,
     "captured_at": "2026-08-21T02:53:26+00:00",
     "status": "captured",
@@ -1261,403 +1311,13 @@
   },
   {
     "payment_id": "pay_28d13826bf31",
-    "order_id": "order_synth_0113",
+    "order_id": "order_synth_0118",
     "amount_paise": 167300,
     "captured_at": "2026-08-29T23:08:32+00:00",
     "status": "captured",
     "source": "synthetic",
     "fee_paise": 3890,
     "tax_paise": 536
-  },
-  {
-    "payment_id": "pay_1ed660385a9f",
-    "order_id": "order_synth_0114",
-    "amount_paise": 254000,
-    "captured_at": "2026-07-29T16:17:11+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5906,
-    "tax_paise": 814
-  },
-  {
-    "payment_id": "pay_7b77f6cc8bf3",
-    "order_id": "order_synth_0115",
-    "amount_paise": 28000,
-    "captured_at": "2026-08-16T05:59:03+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 651,
-    "tax_paise": 90
-  },
-  {
-    "payment_id": "pay_18e4a4ff2803",
-    "order_id": "order_synth_0116",
-    "amount_paise": 227200,
-    "captured_at": "2026-08-30T16:11:42+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5283,
-    "tax_paise": 728
-  },
-  {
-    "payment_id": "pay_6db493ae4438",
-    "order_id": "order_synth_0117",
-    "amount_paise": 387700,
-    "captured_at": "2026-08-25T16:01:55+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9015,
-    "tax_paise": 1243
-  },
-  {
-    "payment_id": "pay_23ed534d2be4",
-    "order_id": "order_synth_0118",
-    "amount_paise": 147000,
-    "captured_at": "2026-08-21T11:49:34+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3418,
-    "tax_paise": 471
-  },
-  {
-    "payment_id": "pay_d24d3de9a830",
-    "order_id": "order_synth_0119",
-    "amount_paise": 498400,
-    "captured_at": "2026-08-05T02:11:19+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 11589,
-    "tax_paise": 1598
-  },
-  {
-    "payment_id": "pay_3b16a7231e1f",
-    "order_id": "order_synth_0120",
-    "amount_paise": 432000,
-    "captured_at": "2026-08-12T17:28:17+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 10045,
-    "tax_paise": 1385
-  },
-  {
-    "payment_id": "pay_d894a037c07f",
-    "order_id": "order_synth_0121",
-    "amount_paise": 12900,
-    "captured_at": "2026-07-17T20:31:48+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 300,
-    "tax_paise": 41
-  },
-  {
-    "payment_id": "pay_b104e0e233e6",
-    "order_id": "order_synth_0122",
-    "amount_paise": 79100,
-    "captured_at": "2026-08-11T18:42:57+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1839,
-    "tax_paise": 254
-  },
-  {
-    "payment_id": "pay_39c7ba953c6b",
-    "order_id": "order_synth_0123",
-    "amount_paise": 48500,
-    "captured_at": "2026-06-21T09:22:12+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1128,
-    "tax_paise": 156
-  },
-  {
-    "payment_id": "pay_dcdbf67cba47",
-    "order_id": "order_synth_0124",
-    "amount_paise": 68500,
-    "captured_at": "2026-08-16T12:34:19+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1593,
-    "tax_paise": 220
-  },
-  {
-    "payment_id": "pay_356bfc3f57fc",
-    "order_id": "order_synth_0125",
-    "amount_paise": 16700,
-    "captured_at": "2026-08-15T16:45:21+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 388,
-    "tax_paise": 53
-  },
-  {
-    "payment_id": "pay_20ec575cad77",
-    "order_id": "order_synth_0126",
-    "amount_paise": 419800,
-    "captured_at": "2026-08-24T18:20:37+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9762,
-    "tax_paise": 1346
-  },
-  {
-    "payment_id": "pay_91ec7f9a5105",
-    "order_id": "order_synth_0127",
-    "amount_paise": 437400,
-    "captured_at": "2026-08-21T14:50:23+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 10171,
-    "tax_paise": 1402
-  },
-  {
-    "payment_id": "pay_b0d0f630826b",
-    "order_id": "order_synth_0128",
-    "amount_paise": 420100,
-    "captured_at": "2026-08-12T05:05:50+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9769,
-    "tax_paise": 1347
-  },
-  {
-    "payment_id": "pay_8496683d7e8e",
-    "order_id": "order_synth_0129",
-    "amount_paise": 17100,
-    "captured_at": "2026-08-23T19:29:16+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 398,
-    "tax_paise": 55
-  },
-  {
-    "payment_id": "pay_6dd2823ae50a",
-    "order_id": "order_synth_0130",
-    "amount_paise": 33300,
-    "captured_at": "2026-06-27T00:40:09+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 774,
-    "tax_paise": 107
-  },
-  {
-    "payment_id": "pay_f6740419491c",
-    "order_id": "order_synth_0131",
-    "amount_paise": 37600,
-    "captured_at": "2026-07-06T02:56:39+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 874,
-    "tax_paise": 120
-  },
-  {
-    "payment_id": "pay_7cf12926af2e",
-    "order_id": "order_synth_0132",
-    "amount_paise": 11100,
-    "captured_at": "2026-08-03T18:45:23+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 258,
-    "tax_paise": 36
-  },
-  {
-    "payment_id": "pay_7bd71982cb54",
-    "order_id": "order_synth_0133",
-    "amount_paise": 418500,
-    "captured_at": "2026-07-28T23:29:10+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9731,
-    "tax_paise": 1342
-  },
-  {
-    "payment_id": "pay_532d63b046fa",
-    "order_id": "order_synth_0134",
-    "amount_paise": 172100,
-    "captured_at": "2026-07-08T07:38:24+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4002,
-    "tax_paise": 552
-  },
-  {
-    "payment_id": "pay_a221f8387b83",
-    "order_id": "order_synth_0135",
-    "amount_paise": 61600,
-    "captured_at": "2026-06-28T09:26:29+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1432,
-    "tax_paise": 197
-  },
-  {
-    "payment_id": "pay_d02961a31448",
-    "order_id": "order_synth_0136",
-    "amount_paise": 17100,
-    "captured_at": "2026-08-08T07:03:30+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 398,
-    "tax_paise": 55
-  },
-  {
-    "payment_id": "pay_5cd00b0a4d7c",
-    "order_id": "order_synth_0137",
-    "amount_paise": 88200,
-    "captured_at": "2026-06-24T09:09:38+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2051,
-    "tax_paise": 283
-  },
-  {
-    "payment_id": "pay_0e62bfea186b",
-    "order_id": "order_synth_0138",
-    "amount_paise": 124100,
-    "captured_at": "2026-08-29T05:59:55+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2886,
-    "tax_paise": 398
-  },
-  {
-    "payment_id": "pay_f6e4c13cd45a",
-    "order_id": "order_synth_0139",
-    "amount_paise": 24400,
-    "captured_at": "2026-07-05T09:47:33+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 567,
-    "tax_paise": 78
-  },
-  {
-    "payment_id": "pay_01ea76e4f497",
-    "order_id": "order_synth_0140",
-    "amount_paise": 264000,
-    "captured_at": "2026-09-01T04:16:20+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 6139,
-    "tax_paise": 846
-  },
-  {
-    "payment_id": "pay_0d4432c1fa5e",
-    "order_id": "order_synth_0141",
-    "amount_paise": 103100,
-    "captured_at": "2026-06-29T12:46:50+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2397,
-    "tax_paise": 330
-  },
-  {
-    "payment_id": "pay_8e38a9216c7b",
-    "order_id": "order_synth_0142",
-    "amount_paise": 276300,
-    "captured_at": "2026-08-22T19:15:52+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 6425,
-    "tax_paise": 886
-  },
-  {
-    "payment_id": "pay_5807eb39cfd8",
-    "order_id": "order_synth_0143",
-    "amount_paise": 25000,
-    "captured_at": "2026-07-24T08:12:56+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 581,
-    "tax_paise": 80
-  },
-  {
-    "payment_id": "pay_4a15ac0c3eae",
-    "order_id": "order_synth_0144",
-    "amount_paise": 15700,
-    "captured_at": "2026-08-18T06:22:53+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 365,
-    "tax_paise": 50
-  },
-  {
-    "payment_id": "pay_928b5cd23347",
-    "order_id": "order_synth_0145",
-    "amount_paise": 179800,
-    "captured_at": "2026-08-28T01:24:18+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4181,
-    "tax_paise": 576
-  },
-  {
-    "payment_id": "pay_d108362adc7d",
-    "order_id": "order_synth_0146",
-    "amount_paise": 161400,
-    "captured_at": "2026-08-19T18:32:50+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3753,
-    "tax_paise": 517
-  },
-  {
-    "payment_id": "pay_591c05d18a8a",
-    "order_id": "order_synth_0147",
-    "amount_paise": 169200,
-    "captured_at": "2026-07-26T06:20:45+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3934,
-    "tax_paise": 542
-  },
-  {
-    "payment_id": "pay_bf2a71b6536e",
-    "order_id": "order_synth_0148",
-    "amount_paise": 44300,
-    "captured_at": "2026-08-17T23:24:47+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1030,
-    "tax_paise": 142
-  },
-  {
-    "payment_id": "pay_fb72df0a4619",
-    "order_id": "order_synth_0149",
-    "amount_paise": 37400,
-    "captured_at": "2026-09-01T19:27:13+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 870,
-    "tax_paise": 120
-  },
-  {
-    "payment_id": "pay_4de6ff693b52",
-    "order_id": "order_synth_0150",
-    "amount_paise": 321100,
-    "captured_at": "2026-07-04T06:12:26+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 7467,
-    "tax_paise": 1029
-  },
-  {
-    "payment_id": "pay_017156f074f3",
-    "order_id": "order_synth_0151",
-    "amount_paise": 38500,
-    "captured_at": "2026-07-16T22:36:10+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 895,
-    "tax_paise": 123
-  },
-  {
-    "payment_id": "pay_536026ef5ff3",
-    "order_id": "order_synth_0152",
-    "amount_paise": 38200,
-    "captured_at": "2026-08-31T00:44:09+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 888,
-    "tax_paise": 122
   },
   {
     "payment_id": "pay_TWTlodGNIG7UwP",
@@ -1700,294 +1360,294 @@
     "tax_paise": 794
   },
   {
-    "payment_id": "pay_1b552835a264",
-    "order_id": "order_synth_0177",
-    "amount_paise": 484414,
-    "captured_at": "2026-07-15T15:19:08+00:00",
+    "payment_id": "pay_c3662cb3b26a",
+    "order_id": "order_synth_0143",
+    "amount_paise": 164444,
+    "captured_at": "2026-07-11T18:02:56+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 11264,
-    "tax_paise": 1553
+    "fee_paise": 3824,
+    "tax_paise": 527
   },
   {
-    "payment_id": "pay_e1550dbdd377",
-    "order_id": "order_synth_0178",
-    "amount_paise": 49882,
-    "captured_at": "2026-06-18T00:04:46+00:00",
+    "payment_id": "pay_9bb4f6cc5611",
+    "order_id": "order_synth_0144",
+    "amount_paise": 55260,
+    "captured_at": "2026-08-29T05:59:55+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1160,
-    "tax_paise": 160
+    "fee_paise": 1285,
+    "tax_paise": 177
   },
   {
-    "payment_id": "pay_622533483c7b",
-    "order_id": "order_synth_0179",
-    "amount_paise": 335454,
-    "captured_at": "2026-08-18T16:36:06+00:00",
+    "payment_id": "pay_d703c08c76c0",
+    "order_id": "order_synth_0145",
+    "amount_paise": 164052,
+    "captured_at": "2026-07-18T05:46:30+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 7800,
-    "tax_paise": 1075
+    "fee_paise": 3815,
+    "tax_paise": 526
   },
   {
-    "payment_id": "pay_aeb08f81dd28",
-    "order_id": "order_synth_0180",
-    "amount_paise": 317618,
-    "captured_at": "2026-06-21T04:06:02+00:00",
+    "payment_id": "pay_76e428191200",
+    "order_id": "order_synth_0146",
+    "amount_paise": 185122,
+    "captured_at": "2026-09-01T00:06:54+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 7386,
-    "tax_paise": 1018
+    "fee_paise": 4305,
+    "tax_paise": 594
   },
   {
-    "payment_id": "pay_33d1d78a5f5b",
-    "order_id": "order_synth_0181",
-    "amount_paise": 21960,
-    "captured_at": "2026-08-23T21:59:55+00:00",
+    "payment_id": "pay_7f16fa5c2432",
+    "order_id": "order_synth_0147",
+    "amount_paise": 44394,
+    "captured_at": "2026-08-22T06:39:18+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 511,
-    "tax_paise": 70
+    "fee_paise": 1032,
+    "tax_paise": 142
   },
   {
-    "payment_id": "pay_bcfc4d54ea42",
-    "order_id": "order_synth_0182",
-    "amount_paise": 386010,
-    "captured_at": "2026-07-22T21:04:08+00:00",
+    "payment_id": "pay_154abc05a210",
+    "order_id": "order_synth_0148",
+    "amount_paise": 418852,
+    "captured_at": "2026-06-26T08:57:21+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 8976,
-    "tax_paise": 1237
+    "fee_paise": 9740,
+    "tax_paise": 1343
   },
   {
-    "payment_id": "pay_2f270fb9ac02",
-    "order_id": "order_synth_0183",
-    "amount_paise": 225720,
-    "captured_at": "2026-07-10T19:27:57+00:00",
+    "payment_id": "pay_4d4cee82976c",
+    "order_id": "order_synth_0149",
+    "amount_paise": 237454,
+    "captured_at": "2026-08-21T10:44:30+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 5249,
-    "tax_paise": 724
+    "fee_paise": 5522,
+    "tax_paise": 761
   },
   {
-    "payment_id": "pay_69f1af8a8037",
-    "order_id": "order_synth_0184",
-    "amount_paise": 376380,
-    "captured_at": "2026-08-25T22:03:24+00:00",
+    "payment_id": "pay_928b5cd23347",
+    "order_id": "order_synth_0150",
+    "amount_paise": 176204,
+    "captured_at": "2026-08-28T01:24:18+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 8752,
-    "tax_paise": 1207
+    "fee_paise": 4097,
+    "tax_paise": 565
   },
   {
-    "payment_id": "pay_849570369045",
-    "order_id": "order_synth_0185",
-    "amount_paise": 169246,
-    "captured_at": "2026-08-04T11:26:57+00:00",
+    "payment_id": "pay_dcfdbb5c4fbb",
+    "order_id": "order_synth_0151",
+    "amount_paise": 391050,
+    "captured_at": "2026-07-08T19:49:42+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 3935,
-    "tax_paise": 542
+    "fee_paise": 9093,
+    "tax_paise": 1254
   },
   {
-    "payment_id": "pay_47a006bb5ca2",
-    "order_id": "order_synth_0186",
-    "amount_paise": 36270,
-    "captured_at": "2026-08-08T16:18:38+00:00",
+    "payment_id": "pay_2c9e4b13b8e1",
+    "order_id": "order_synth_0152",
+    "amount_paise": 178458,
+    "captured_at": "2026-08-09T16:10:20+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 843,
-    "tax_paise": 116
+    "fee_paise": 4150,
+    "tax_paise": 572
   },
   {
-    "payment_id": "pay_c8e61d3a5b54",
-    "order_id": "order_synth_0187",
-    "amount_paise": 165690,
-    "captured_at": "2026-06-20T08:52:24+00:00",
+    "payment_id": "pay_22e2246560fc",
+    "order_id": "order_synth_0153",
+    "amount_paise": 16954,
+    "captured_at": "2026-07-06T20:28:47+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 3853,
+    "fee_paise": 394,
+    "tax_paise": 54
+  },
+  {
+    "payment_id": "pay_4bce86aec9f4",
+    "order_id": "order_synth_0154",
+    "amount_paise": 410326,
+    "captured_at": "2026-07-25T22:25:55+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9541,
+    "tax_paise": 1315
+  },
+  {
+    "payment_id": "pay_39a4d5b0360b",
+    "order_id": "order_synth_0155",
+    "amount_paise": 302820,
+    "captured_at": "2026-08-06T05:00:32+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7041,
+    "tax_paise": 971
+  },
+  {
+    "payment_id": "pay_021e5360cfbb",
+    "order_id": "order_synth_0156",
+    "amount_paise": 256858,
+    "captured_at": "2026-08-30T21:18:02+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5973,
+    "tax_paise": 823
+  },
+  {
+    "payment_id": "pay_bcab212fb0a0",
+    "order_id": "order_synth_0157",
+    "amount_paise": 83300,
+    "captured_at": "2026-06-18T17:56:18+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1937,
+    "tax_paise": 267
+  },
+  {
+    "payment_id": "pay_96830c3c3a67",
+    "order_id": "order_synth_0158",
+    "amount_paise": 267200,
+    "captured_at": "2026-08-13T18:16:50+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6213,
+    "tax_paise": 857
+  },
+  {
+    "payment_id": "pay_396ce60080e7",
+    "order_id": "order_synth_0159",
+    "amount_paise": 539300,
+    "captured_at": "2026-07-30T19:31:26+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 12540,
+    "tax_paise": 1729
+  },
+  {
+    "payment_id": "pay_8f7ba3889b19",
+    "order_id": "order_synth_0160",
+    "amount_paise": 562100,
+    "captured_at": "2026-08-22T09:00:38+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 13071,
+    "tax_paise": 1802
+  },
+  {
+    "payment_id": "pay_33f9b8fc4c81",
+    "order_id": "order_synth_0161",
+    "amount_paise": 164100,
+    "captured_at": "2026-07-27T16:19:12+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3816,
+    "tax_paise": 526
+  },
+  {
+    "payment_id": "pay_b996198daa8a",
+    "order_id": "order_synth_0162",
+    "amount_paise": 51900,
+    "captured_at": "2026-08-05T20:05:03+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1207,
+    "tax_paise": 166
+  },
+  {
+    "payment_id": "pay_7fa30eca8259",
+    "order_id": "order_synth_0163",
+    "amount_paise": 416500,
+    "captured_at": "2026-08-05T11:15:57+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9685,
+    "tax_paise": 1335
+  },
+  {
+    "payment_id": "pay_0edb7bb83828",
+    "order_id": "order_synth_0164",
+    "amount_paise": 68200,
+    "captured_at": "2026-07-14T17:29:41+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1586,
+    "tax_paise": 219
+  },
+  {
+    "payment_id": "pay_1f758179d3a1",
+    "order_id": "order_synth_0165",
+    "amount_paise": 165800,
+    "captured_at": "2026-08-08T19:20:41+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3855,
     "tax_paise": 531
   },
   {
-    "payment_id": "pay_e162ab36f5e0",
-    "order_id": "order_synth_0188",
-    "amount_paise": 52528,
-    "captured_at": "2026-08-24T18:20:08+00:00",
+    "payment_id": "pay_2eae63430c56",
+    "order_id": "order_synth_0166",
+    "amount_paise": 212400,
+    "captured_at": "2026-07-23T00:27:48+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1221,
-    "tax_paise": 168
+    "fee_paise": 4939,
+    "tax_paise": 681
   },
   {
-    "payment_id": "pay_95c3e1795586",
-    "order_id": "order_synth_0189",
-    "amount_paise": 392940,
-    "captured_at": "2026-08-24T00:08:43+00:00",
+    "payment_id": "pay_42ee0e0bfa19",
+    "order_id": "order_synth_0167",
+    "amount_paise": 449400,
+    "captured_at": "2026-08-08T23:16:55+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 9137,
-    "tax_paise": 1260
+    "fee_paise": 10450,
+    "tax_paise": 1441
   },
   {
-    "payment_id": "pay_5524af4f44a4",
-    "order_id": "order_synth_0190",
-    "amount_paise": 12510,
-    "captured_at": "2026-08-15T06:11:36+00:00",
+    "payment_id": "pay_201008e02547",
+    "order_id": "order_synth_0168",
+    "amount_paise": 390200,
+    "captured_at": "2026-08-06T01:57:55+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 291,
-    "tax_paise": 40
+    "fee_paise": 9073,
+    "tax_paise": 1251
   },
   {
-    "payment_id": "pay_54868b651677",
-    "order_id": "order_synth_0191",
-    "amount_paise": 432866,
-    "captured_at": "2026-07-04T05:58:12+00:00",
+    "payment_id": "pay_542f4fcabc33",
+    "order_id": "order_synth_0169",
+    "amount_paise": 422500,
+    "captured_at": "2026-08-02T03:13:46+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 10065,
-    "tax_paise": 1388
+    "fee_paise": 9824,
+    "tax_paise": 1354
   },
   {
-    "payment_id": "pay_64ccaaef6bbc",
-    "order_id": "order_synth_0192",
-    "amount_paise": 505700,
-    "captured_at": "2026-08-08T23:56:37+00:00",
+    "payment_id": "pay_9fd85b0b5d74",
+    "order_id": "order_synth_0170",
+    "amount_paise": 349100,
+    "captured_at": "2026-08-12T02:46:01+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 11759,
-    "tax_paise": 1621
+    "fee_paise": 8118,
+    "tax_paise": 1119
   },
   {
-    "payment_id": "pay_d400ec14e72a",
-    "order_id": "order_synth_0193",
-    "amount_paise": 233600,
-    "captured_at": "2026-07-11T15:21:04+00:00",
+    "payment_id": "pay_dc544b5fde62",
+    "order_id": "order_synth_0171",
+    "amount_paise": 573000,
+    "captured_at": "2026-08-06T10:29:26+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 5432,
-    "tax_paise": 749
-  },
-  {
-    "payment_id": "pay_d9c54e6e5130",
-    "order_id": "order_synth_0194",
-    "amount_paise": 502600,
-    "captured_at": "2026-07-26T18:11:12+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 11687,
-    "tax_paise": 1611
-  },
-  {
-    "payment_id": "pay_ef384c912d36",
-    "order_id": "order_synth_0195",
-    "amount_paise": 34500,
-    "captured_at": "2026-08-11T22:41:47+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 802,
-    "tax_paise": 111
-  },
-  {
-    "payment_id": "pay_bff5397ae00d",
-    "order_id": "order_synth_0196",
-    "amount_paise": 202600,
-    "captured_at": "2026-06-24T07:12:15+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4711,
-    "tax_paise": 649
-  },
-  {
-    "payment_id": "pay_8bb9b8041b84",
-    "order_id": "order_synth_0197",
-    "amount_paise": 298300,
-    "captured_at": "2026-06-24T16:37:06+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 6936,
-    "tax_paise": 956
-  },
-  {
-    "payment_id": "pay_1f75297aafe9",
-    "order_id": "order_synth_0198",
-    "amount_paise": 860200,
-    "captured_at": "2026-07-01T22:50:51+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 20002,
-    "tax_paise": 2758
-  },
-  {
-    "payment_id": "pay_994499e2795b",
-    "order_id": "order_synth_0199",
-    "amount_paise": 86300,
-    "captured_at": "2026-08-20T05:42:06+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2007,
-    "tax_paise": 277
-  },
-  {
-    "payment_id": "pay_570bd02bed40",
-    "order_id": "order_synth_0200",
-    "amount_paise": 514400,
-    "captured_at": "2026-07-30T18:28:07+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 11961,
-    "tax_paise": 1649
-  },
-  {
-    "payment_id": "pay_72724f3d30f5",
-    "order_id": "order_synth_0201",
-    "amount_paise": 84300,
-    "captured_at": "2026-06-22T22:24:44+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1960,
-    "tax_paise": 270
-  },
-  {
-    "payment_id": "pay_12745f2b03ae",
-    "order_id": "order_synth_0202",
-    "amount_paise": 436500,
-    "captured_at": "2026-08-30T05:06:02+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 10150,
-    "tax_paise": 1399
-  },
-  {
-    "payment_id": "pay_ec380e49f751",
-    "order_id": "order_synth_0203",
-    "amount_paise": 50300,
-    "captured_at": "2026-07-06T14:56:52+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1170,
-    "tax_paise": 161
-  },
-  {
-    "payment_id": "pay_63c3ecb5312a",
-    "order_id": "order_synth_0204",
-    "amount_paise": 514500,
-    "captured_at": "2026-06-30T16:11:42+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 11964,
-    "tax_paise": 1649
-  },
-  {
-    "payment_id": "pay_76fba8528f1c",
-    "order_id": "order_synth_0205",
-    "amount_paise": 336700,
-    "captured_at": "2026-07-03T07:48:17+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 7829,
-    "tax_paise": 1079
+    "fee_paise": 13324,
+    "tax_paise": 1837
   },
   {
     "payment_id": "pay_TWToKPjPY4ZaCX",
@@ -2020,588 +1680,988 @@
     "tax_paise": 1386
   },
   {
-    "payment_id": "pay_5101f0ffa6d8",
-    "order_id": "order_synth_0206",
-    "amount_paise": 171700,
-    "captured_at": "2026-07-28T06:11:19+00:00",
+    "payment_id": "pay_0dbd015acd10",
+    "order_id": "order_synth_0172",
+    "amount_paise": 28500,
+    "captured_at": "2026-06-18T00:04:46+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 3993,
-    "tax_paise": 550
+    "fee_paise": 663,
+    "tax_paise": 91
   },
   {
-    "payment_id": "pay_91c0b167152f",
-    "order_id": "order_synth_0207",
-    "amount_paise": 57900,
-    "captured_at": "2026-08-14T21:35:04+00:00",
+    "payment_id": "pay_334859087262",
+    "order_id": "order_synth_0173",
+    "amount_paise": 38600,
+    "captured_at": "2026-07-14T04:11:34+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1346,
-    "tax_paise": 186
+    "fee_paise": 898,
+    "tax_paise": 124
   },
   {
-    "payment_id": "pay_8973b6fcb0b6",
-    "order_id": "order_synth_0208",
-    "amount_paise": 64800,
-    "captured_at": "2026-07-18T20:44:17+00:00",
+    "payment_id": "pay_243be44f99fe",
+    "order_id": "order_synth_0174",
+    "amount_paise": 397600,
+    "captured_at": "2026-08-07T23:55:15+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1507,
-    "tax_paise": 208
+    "fee_paise": 9245,
+    "tax_paise": 1275
   },
   {
-    "payment_id": "pay_5e8d60e8f69b",
-    "order_id": "order_synth_0209",
-    "amount_paise": 151600,
-    "captured_at": "2026-07-27T05:48:12+00:00",
+    "payment_id": "pay_a2b31f7dbdc7",
+    "order_id": "order_synth_0175",
+    "amount_paise": 216700,
+    "captured_at": "2026-06-23T12:57:01+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 3525,
-    "tax_paise": 486
+    "fee_paise": 5039,
+    "tax_paise": 695
   },
   {
-    "payment_id": "pay_cec7389757d3",
-    "order_id": "order_synth_0210",
-    "amount_paise": 53700,
-    "captured_at": "2026-07-11T23:52:00+00:00",
+    "payment_id": "pay_7400265c6c21",
+    "order_id": "order_synth_0176",
+    "amount_paise": 31200,
+    "captured_at": "2026-08-22T18:11:10+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1249,
-    "tax_paise": 172
+    "fee_paise": 725,
+    "tax_paise": 100
   },
   {
-    "payment_id": "pay_eeeb628ff7cb",
-    "order_id": "order_synth_0211",
-    "amount_paise": 52400,
-    "captured_at": "2026-08-16T18:35:08+00:00",
+    "payment_id": "pay_ff8762a53fe6",
+    "order_id": "order_synth_0177",
+    "amount_paise": 457900,
+    "captured_at": "2026-08-18T02:53:55+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1218,
-    "tax_paise": 168
+    "fee_paise": 10648,
+    "tax_paise": 1468
   },
   {
-    "payment_id": "pay_3043d13e5769",
-    "order_id": "order_synth_0212",
-    "amount_paise": 34100,
-    "captured_at": "2026-08-18T07:32:54+00:00",
+    "payment_id": "pay_bc23cddbe57b",
+    "order_id": "order_synth_0178",
+    "amount_paise": 31200,
+    "captured_at": "2026-06-25T03:13:21+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 793,
-    "tax_paise": 109
+    "fee_paise": 725,
+    "tax_paise": 100
   },
   {
-    "payment_id": "pay_9317c46d1021",
-    "order_id": "order_synth_0213",
-    "amount_paise": 484000,
-    "captured_at": "2026-06-22T14:02:18+00:00",
+    "payment_id": "pay_8877f9b9c1a0",
+    "order_id": "order_synth_0179",
+    "amount_paise": 181000,
+    "captured_at": "2026-07-11T02:15:23+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 11254,
-    "tax_paise": 1552
-  },
-  {
-    "payment_id": "pay_50ecff94d98f",
-    "order_id": "order_synth_0214",
-    "amount_paise": 65100,
-    "captured_at": "2026-06-18T13:17:58+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1514,
-    "tax_paise": 209
-  },
-  {
-    "payment_id": "pay_644a73320c1e",
-    "order_id": "order_synth_0215",
-    "amount_paise": 95600,
-    "captured_at": "2026-07-04T04:14:49+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2223,
-    "tax_paise": 306
-  },
-  {
-    "payment_id": "pay_82ebe0523323",
-    "order_id": "order_synth_0215",
-    "amount_paise": 95600,
-    "captured_at": "2026-07-04T04:21:49+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2223,
-    "tax_paise": 306
-  },
-  {
-    "payment_id": "pay_50c20e5729bf",
-    "order_id": "order_synth_0216",
-    "amount_paise": 408000,
-    "captured_at": "2026-07-21T07:07:03+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9487,
-    "tax_paise": 1308
-  },
-  {
-    "payment_id": "pay_5b01a90d2504",
-    "order_id": "order_synth_0216",
-    "amount_paise": 408000,
-    "captured_at": "2026-07-21T07:14:03+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9487,
-    "tax_paise": 1308
-  },
-  {
-    "payment_id": "pay_dc401d7e31b3",
-    "order_id": "order_synth_0217",
-    "amount_paise": 22600,
-    "captured_at": "2026-07-21T09:36:44+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 526,
-    "tax_paise": 73
-  },
-  {
-    "payment_id": "pay_adda6fe4dbb9",
-    "order_id": "order_synth_0217",
-    "amount_paise": 22600,
-    "captured_at": "2026-07-21T09:43:44+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 526,
-    "tax_paise": 73
-  },
-  {
-    "payment_id": "pay_50c72250c087",
-    "order_id": "order_synth_0218",
-    "amount_paise": 245200,
-    "captured_at": "2026-08-05T02:28:11+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5702,
-    "tax_paise": 786
-  },
-  {
-    "payment_id": "pay_502f472d9967",
-    "order_id": "order_synth_0218",
-    "amount_paise": 245200,
-    "captured_at": "2026-08-05T02:35:11+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 5702,
-    "tax_paise": 786
-  },
-  {
-    "payment_id": "pay_0f8112ce1078",
-    "order_id": "order_synth_0219",
-    "amount_paise": 180500,
-    "captured_at": "2026-07-31T09:23:16+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4197,
-    "tax_paise": 579
-  },
-  {
-    "payment_id": "pay_a37b3df1e42f",
-    "order_id": "order_synth_0219",
-    "amount_paise": 180500,
-    "captured_at": "2026-07-31T09:30:16+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4197,
-    "tax_paise": 579
-  },
-  {
-    "payment_id": "pay_dda54c2bf7b0",
-    "order_id": "order_synth_0220",
-    "amount_paise": 127900,
-    "captured_at": "2026-08-12T09:49:13+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2974,
-    "tax_paise": 410
-  },
-  {
-    "payment_id": "pay_55e89b64a3e0",
-    "order_id": "order_synth_0220",
-    "amount_paise": 127900,
-    "captured_at": "2026-08-12T09:56:13+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2974,
-    "tax_paise": 410
-  },
-  {
-    "payment_id": "pay_4f15e0972075",
-    "order_id": "order_synth_0221",
-    "amount_paise": 151800,
-    "captured_at": "2026-07-17T03:47:05+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3530,
-    "tax_paise": 487
-  },
-  {
-    "payment_id": "pay_084f0dea8799",
-    "order_id": "order_synth_0221",
-    "amount_paise": 151800,
-    "captured_at": "2026-07-17T03:54:05+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3530,
-    "tax_paise": 487
-  },
-  {
-    "payment_id": "pay_856671c9e108",
-    "order_id": "order_synth_0222",
-    "amount_paise": 110400,
-    "captured_at": "2026-07-08T10:37:54+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2567,
-    "tax_paise": 354
-  },
-  {
-    "payment_id": "pay_37b70715ee00",
-    "order_id": "order_synth_0223",
-    "amount_paise": 106100,
-    "captured_at": "2026-08-28T11:53:03+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2467,
-    "tax_paise": 340
-  },
-  {
-    "payment_id": "pay_be751651b212",
-    "order_id": "order_synth_0224",
-    "amount_paise": 40600,
-    "captured_at": "2026-08-14T12:06:53+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 944,
-    "tax_paise": 130
-  },
-  {
-    "payment_id": "pay_4be74ad679f6",
-    "order_id": "order_synth_0225",
-    "amount_paise": 10700,
-    "captured_at": "2026-06-20T06:34:40+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 249,
-    "tax_paise": 34
-  },
-  {
-    "payment_id": "pay_bc8636fd9f98",
-    "order_id": "order_synth_0226",
-    "amount_paise": 448200,
-    "captured_at": "2026-08-25T16:34:54+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 10422,
-    "tax_paise": 1437
-  },
-  {
-    "payment_id": "pay_aae8c98cdcc1",
-    "order_id": "order_synth_0227",
-    "amount_paise": 22600,
-    "captured_at": "2026-07-03T13:06:53+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 526,
-    "tax_paise": 73
-  },
-  {
-    "payment_id": "pay_87668f512831",
-    "order_id": "order_synth_0228",
-    "amount_paise": 378200,
-    "captured_at": "2026-07-23T14:36:24+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 8794,
-    "tax_paise": 1212
-  },
-  {
-    "payment_id": "pay_0fb7e630c8f3",
-    "order_id": "order_synth_0229",
-    "amount_paise": 434600,
-    "captured_at": "2026-08-16T16:38:46+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 10106,
-    "tax_paise": 1393
-  },
-  {
-    "payment_id": "pay_2580a533e04a",
-    "order_id": "order_synth_0230",
-    "amount_paise": 399600,
-    "captured_at": "2026-06-20T22:05:40+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9292,
-    "tax_paise": 1281
-  },
-  {
-    "payment_id": "pay_2bdfbe116800",
-    "order_id": "order_synth_0231",
-    "amount_paise": 95800,
-    "captured_at": "2026-06-30T14:30:37+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2228,
-    "tax_paise": 307
-  },
-  {
-    "payment_id": "pay_ba9a783eaaf3",
-    "order_id": "order_synth_0232",
-    "amount_paise": 33572,
-    "captured_at": "2026-07-26T19:14:09+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 781,
-    "tax_paise": 108
-  },
-  {
-    "payment_id": "pay_373a2c19df6b",
-    "order_id": "order_synth_0233",
-    "amount_paise": 123304,
-    "captured_at": "2026-08-23T19:19:19+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2867,
-    "tax_paise": 395
-  },
-  {
-    "payment_id": "pay_521dd5c9d0a0",
-    "order_id": "order_synth_0234",
-    "amount_paise": 69442,
-    "captured_at": "2026-08-29T20:08:42+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 1615,
-    "tax_paise": 223
-  },
-  {
-    "payment_id": "pay_171a98cbdadd",
-    "order_id": "order_synth_0235",
-    "amount_paise": 323981,
-    "captured_at": "2026-06-25T16:21:36+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 7534,
-    "tax_paise": 1039
-  },
-  {
-    "payment_id": "pay_83d99e01a5f4",
-    "order_id": "order_synth_0236",
-    "amount_paise": 149032,
-    "captured_at": "2026-07-09T04:58:17+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3465,
-    "tax_paise": 478
-  },
-  {
-    "payment_id": "pay_9d4e334df025",
-    "order_id": "order_synth_0237",
-    "amount_paise": 36765,
-    "captured_at": "2026-07-29T09:22:03+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 855,
-    "tax_paise": 118
-  },
-  {
-    "payment_id": "pay_8fb993514031",
-    "order_id": "order_synth_0238",
-    "amount_paise": 90979,
-    "captured_at": "2026-07-06T06:41:58+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 2116,
-    "tax_paise": 292
-  },
-  {
-    "payment_id": "pay_eeb72008933b",
-    "order_id": "order_synth_0239",
-    "amount_paise": 406417,
-    "captured_at": "2026-06-30T13:52:38+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 9450,
-    "tax_paise": 1303
-  },
-  {
-    "payment_id": "pay_618d3308f174",
-    "order_id": "order_synth_0240",
-    "amount_paise": 165398,
-    "captured_at": "2026-06-20T15:24:58+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3846,
-    "tax_paise": 530
-  },
-  {
-    "payment_id": "pay_1efb9869219d",
-    "order_id": "order_synth_0241",
-    "amount_paise": 181820,
-    "captured_at": "2026-06-25T21:27:14+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4228,
-    "tax_paise": 583
-  },
-  {
-    "payment_id": "pay_96fc93cf4e3f",
-    "order_id": "order_synth_0242",
-    "amount_paise": 35314,
-    "captured_at": "2026-07-26T06:32:27+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 821,
-    "tax_paise": 113
-  },
-  {
-    "payment_id": "pay_8300468201b9",
-    "order_id": "order_synth_0243",
-    "amount_paise": 143838,
-    "captured_at": "2026-07-22T06:11:38+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3345,
-    "tax_paise": 461
-  },
-  {
-    "payment_id": "pay_3055f1a73298",
-    "order_id": "order_synth_0244",
-    "amount_paise": 169300,
-    "captured_at": "2026-07-12T12:33:04+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 3937,
-    "tax_paise": 543
-  },
-  {
-    "payment_id": "pay_234b1699722f",
-    "order_id": "order_synth_0245",
-    "amount_paise": 181071,
-    "captured_at": "2026-08-09T11:45:10+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4210,
+    "fee_paise": 4209,
     "tax_paise": 580
   },
   {
-    "payment_id": "pay_a7dfb3365bce",
-    "order_id": "order_synth_0246",
-    "amount_paise": 43460,
-    "captured_at": "2026-08-18T14:46:03+00:00",
+    "payment_id": "pay_1339d9b65e9d",
+    "order_id": "order_synth_0180",
+    "amount_paise": 177600,
+    "captured_at": "2026-07-10T21:50:20+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 1011,
-    "tax_paise": 139
+    "fee_paise": 4130,
+    "tax_paise": 569
   },
   {
-    "payment_id": "pay_0d57e5cd889e",
-    "order_id": "order_synth_0247",
-    "amount_paise": 363393,
-    "captured_at": "2026-07-30T09:55:01+00:00",
+    "payment_id": "pay_75fa4ad5466a",
+    "order_id": "order_synth_0181",
+    "amount_paise": 168600,
+    "captured_at": "2026-08-24T20:21:19+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 8450,
-    "tax_paise": 1165
+    "fee_paise": 3920,
+    "tax_paise": 540
   },
   {
-    "payment_id": "pay_0470a86a57f6",
-    "order_id": "order_synth_0248",
-    "amount_paise": 176064,
-    "captured_at": "2026-08-06T03:12:55+00:00",
+    "payment_id": "pay_d95954515bfd",
+    "order_id": "order_synth_0181",
+    "amount_paise": 168600,
+    "captured_at": "2026-08-24T20:28:19+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 4094,
+    "fee_paise": 3920,
+    "tax_paise": 540
+  },
+  {
+    "payment_id": "pay_00791a2d8d72",
+    "order_id": "order_synth_0182",
+    "amount_paise": 32800,
+    "captured_at": "2026-07-22T14:33:46+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 763,
+    "tax_paise": 105
+  },
+  {
+    "payment_id": "pay_d307c1a17f5e",
+    "order_id": "order_synth_0182",
+    "amount_paise": 32800,
+    "captured_at": "2026-07-22T14:40:46+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 763,
+    "tax_paise": 105
+  },
+  {
+    "payment_id": "pay_c47fe611c464",
+    "order_id": "order_synth_0183",
+    "amount_paise": 485300,
+    "captured_at": "2026-08-01T14:48:33+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11285,
+    "tax_paise": 1556
+  },
+  {
+    "payment_id": "pay_17239c15bf33",
+    "order_id": "order_synth_0183",
+    "amount_paise": 485300,
+    "captured_at": "2026-08-01T14:55:33+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11285,
+    "tax_paise": 1556
+  },
+  {
+    "payment_id": "pay_111be162b507",
+    "order_id": "order_synth_0184",
+    "amount_paise": 44100,
+    "captured_at": "2026-06-29T07:39:03+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1025,
+    "tax_paise": 141
+  },
+  {
+    "payment_id": "pay_601930ab9699",
+    "order_id": "order_synth_0184",
+    "amount_paise": 44100,
+    "captured_at": "2026-06-29T07:46:03+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1025,
+    "tax_paise": 141
+  },
+  {
+    "payment_id": "pay_193827c7abd9",
+    "order_id": "order_synth_0185",
+    "amount_paise": 366200,
+    "captured_at": "2026-06-27T13:02:05+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 8515,
+    "tax_paise": 1174
+  },
+  {
+    "payment_id": "pay_e0d11bbd7d2d",
+    "order_id": "order_synth_0185",
+    "amount_paise": 366200,
+    "captured_at": "2026-06-27T13:09:05+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 8515,
+    "tax_paise": 1174
+  },
+  {
+    "payment_id": "pay_0d053c780553",
+    "order_id": "order_synth_0186",
+    "amount_paise": 28600,
+    "captured_at": "2026-08-16T23:51:38+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 665,
+    "tax_paise": 92
+  },
+  {
+    "payment_id": "pay_10f14e0dbb02",
+    "order_id": "order_synth_0186",
+    "amount_paise": 28600,
+    "captured_at": "2026-08-16T23:58:38+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 665,
+    "tax_paise": 92
+  },
+  {
+    "payment_id": "pay_b0cb63932cec",
+    "order_id": "order_synth_0187",
+    "amount_paise": 455500,
+    "captured_at": "2026-08-23T11:39:31+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 10592,
+    "tax_paise": 1460
+  },
+  {
+    "payment_id": "pay_a5704dbbef91",
+    "order_id": "order_synth_0187",
+    "amount_paise": 455500,
+    "captured_at": "2026-08-23T11:46:31+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 10592,
+    "tax_paise": 1460
+  },
+  {
+    "payment_id": "pay_568fd7bb3f82",
+    "order_id": "order_synth_0188",
+    "amount_paise": 165300,
+    "captured_at": "2026-06-18T23:27:02+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3844,
+    "tax_paise": 530
+  },
+  {
+    "payment_id": "pay_16ed1742f971",
+    "order_id": "order_synth_0189",
+    "amount_paise": 409200,
+    "captured_at": "2026-08-02T14:16:12+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9515,
+    "tax_paise": 1312
+  },
+  {
+    "payment_id": "pay_73f96bf03ba2",
+    "order_id": "order_synth_0190",
+    "amount_paise": 367000,
+    "captured_at": "2026-08-25T11:48:15+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 8534,
+    "tax_paise": 1177
+  },
+  {
+    "payment_id": "pay_ab03b13f814d",
+    "order_id": "order_synth_0191",
+    "amount_paise": 389700,
+    "captured_at": "2026-06-22T20:48:04+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9062,
+    "tax_paise": 1249
+  },
+  {
+    "payment_id": "pay_6c563ad2d704",
+    "order_id": "order_synth_0192",
+    "amount_paise": 169800,
+    "captured_at": "2026-07-22T13:24:14+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3948,
+    "tax_paise": 544
+  },
+  {
+    "payment_id": "pay_d9c54e6e5130",
+    "order_id": "order_synth_0193",
+    "amount_paise": 377400,
+    "captured_at": "2026-07-26T18:11:12+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 8776,
+    "tax_paise": 1210
+  },
+  {
+    "payment_id": "pay_53ca2c78fd7b",
+    "order_id": "order_synth_0194",
+    "amount_paise": 30200,
+    "captured_at": "2026-08-26T01:38:34+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 702,
+    "tax_paise": 97
+  },
+  {
+    "payment_id": "pay_08fd583c5ce4",
+    "order_id": "order_synth_0195",
+    "amount_paise": 17300,
+    "captured_at": "2026-08-05T05:52:12+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 402,
+    "tax_paise": 55
+  },
+  {
+    "payment_id": "pay_2ba0ef389884",
+    "order_id": "order_synth_0196",
+    "amount_paise": 25200,
+    "captured_at": "2026-06-22T08:47:40+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 586,
+    "tax_paise": 81
+  },
+  {
+    "payment_id": "pay_7a8e7f247da6",
+    "order_id": "order_synth_0197",
+    "amount_paise": 405000,
+    "captured_at": "2026-08-21T12:09:02+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9417,
+    "tax_paise": 1298
+  },
+  {
+    "payment_id": "pay_a908ffc08b19",
+    "order_id": "order_synth_0198",
+    "amount_paise": 15480,
+    "captured_at": "2026-06-24T15:22:05+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 360,
+    "tax_paise": 50
+  },
+  {
+    "payment_id": "pay_b572729bcd1b",
+    "order_id": "order_synth_0199",
+    "amount_paise": 175867,
+    "captured_at": "2026-08-05T08:59:29+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4089,
     "tax_paise": 564
   },
   {
-    "payment_id": "pay_f626e040c3d8",
+    "payment_id": "pay_b664cd096c52",
+    "order_id": "order_synth_0200",
+    "amount_paise": 43521,
+    "captured_at": "2026-08-16T19:52:18+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1012,
+    "tax_paise": 140
+  },
+  {
+    "payment_id": "pay_b7d5cddf4ff1",
+    "order_id": "order_synth_0201",
+    "amount_paise": 173867,
+    "captured_at": "2026-07-30T12:13:43+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4043,
+    "tax_paise": 557
+  },
+  {
+    "payment_id": "pay_4bf0e5b85821",
+    "order_id": "order_synth_0202",
+    "amount_paise": 407484,
+    "captured_at": "2026-07-02T12:12:14+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9475,
+    "tax_paise": 1306
+  },
+  {
+    "payment_id": "pay_19e0994455e1",
+    "order_id": "order_synth_0203",
+    "amount_paise": 436509,
+    "captured_at": "2026-08-12T14:55:23+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 10150,
+    "tax_paise": 1399
+  },
+  {
+    "payment_id": "pay_aca8cdf07837",
+    "order_id": "order_synth_0204",
+    "amount_paise": 239077,
+    "captured_at": "2026-08-10T22:36:32+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5559,
+    "tax_paise": 766
+  },
+  {
+    "payment_id": "pay_2d547b4b9c8a",
+    "order_id": "order_synth_0205",
+    "amount_paise": 42023,
+    "captured_at": "2026-08-14T13:51:59+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 977,
+    "tax_paise": 135
+  },
+  {
+    "payment_id": "pay_8f2472726128",
+    "order_id": "order_synth_0206",
+    "amount_paise": 25302,
+    "captured_at": "2026-08-11T23:44:52+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 588,
+    "tax_paise": 81
+  },
+  {
+    "payment_id": "pay_20a6bf79e8fa",
+    "order_id": "order_synth_0207",
+    "amount_paise": 232340,
+    "captured_at": "2026-07-18T23:55:32+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5403,
+    "tax_paise": 745
+  },
+  {
+    "payment_id": "pay_aa76d2e53c2c",
+    "order_id": "order_synth_0208",
+    "amount_paise": 370552,
+    "captured_at": "2026-07-23T19:47:14+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 8616,
+    "tax_paise": 1188
+  },
+  {
+    "payment_id": "pay_0659b007f707",
+    "order_id": "order_synth_0209",
+    "amount_paise": 131557,
+    "captured_at": "2026-08-20T15:30:14+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3059,
+    "tax_paise": 422
+  },
+  {
+    "payment_id": "pay_ecb5ae619f84",
+    "order_id": "order_synth_0210",
+    "amount_paise": 409765,
+    "captured_at": "2026-07-14T18:03:49+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9528,
+    "tax_paise": 1314
+  },
+  {
+    "payment_id": "pay_acd4b5e53d3c",
+    "order_id": "order_synth_0211",
+    "amount_paise": 125484,
+    "captured_at": "2026-07-25T15:39:02+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2918,
+    "tax_paise": 402
+  },
+  {
+    "payment_id": "pay_dd43ea598f23",
+    "order_id": "order_synth_0212",
+    "amount_paise": 15384,
+    "captured_at": "2026-08-25T22:19:50+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 358,
+    "tax_paise": 49
+  },
+  {
+    "payment_id": "pay_e91070bce5ea",
+    "order_id": "order_synth_0213",
+    "amount_paise": 59688,
+    "captured_at": "2026-07-08T01:36:45+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1388,
+    "tax_paise": 191
+  },
+  {
+    "payment_id": "pay_eeb04c6bc813",
+    "order_id": "order_synth_0214",
+    "amount_paise": 29146,
+    "captured_at": "2026-06-21T06:21:28+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 678,
+    "tax_paise": 93
+  },
+  {
+    "payment_id": "pay_7b08bdf3829b",
+    "order_id": "order_synth_0215",
+    "amount_paise": 82201,
+    "captured_at": "2026-06-20T02:38:03+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1911,
+    "tax_paise": 263
+  },
+  {
+    "payment_id": "pay_fe356900bcd5",
+    "order_id": "order_synth_0216",
+    "amount_paise": 402464,
+    "captured_at": "2026-08-24T23:04:27+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9358,
+    "tax_paise": 1290
+  },
+  {
+    "payment_id": "pay_419b91d0bf7f",
+    "order_id": "order_synth_0217",
+    "amount_paise": 330970,
+    "captured_at": "2026-07-30T12:16:30+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7696,
+    "tax_paise": 1061
+  },
+  {
+    "payment_id": "pay_8d6a80c3a494",
+    "order_id": "order_synth_0218",
+    "amount_paise": 79819,
+    "captured_at": "2026-06-21T21:45:08+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1856,
+    "tax_paise": 256
+  },
+  {
+    "payment_id": "pay_dc0b13dd1f45",
+    "order_id": "order_synth_0219",
+    "amount_paise": 256727,
+    "captured_at": "2026-07-02T17:36:41+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5970,
+    "tax_paise": 823
+  },
+  {
+    "payment_id": "pay_dc5134b14e67",
+    "order_id": "order_synth_0220",
+    "amount_paise": 212630,
+    "captured_at": "2026-08-26T11:26:45+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4944,
+    "tax_paise": 682
+  },
+  {
+    "payment_id": "pay_336c6b752f93",
+    "order_id": "order_synth_0221",
+    "amount_paise": 13045,
+    "captured_at": "2026-06-26T18:02:40+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 303,
+    "tax_paise": 42
+  },
+  {
+    "payment_id": "pay_e849f373e01d",
+    "order_id": "order_synth_0222",
+    "amount_paise": 168647,
+    "captured_at": "2026-07-05T05:18:41+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 3922,
+    "tax_paise": 541
+  },
+  {
+    "payment_id": "pay_1c3dc40c3bd6",
+    "order_id": "order_synth_0223",
+    "amount_paise": 262825,
+    "captured_at": "2026-08-01T01:35:31+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6111,
+    "tax_paise": 842
+  },
+  {
+    "payment_id": "pay_8306c840adc0",
+    "order_id": "order_synth_0224",
+    "amount_paise": 416242,
+    "captured_at": "2026-06-26T22:59:06+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9679,
+    "tax_paise": 1334
+  },
+  {
+    "payment_id": "pay_0e578210aecf",
+    "order_id": "order_synth_0225",
+    "amount_paise": 484765,
+    "captured_at": "2026-07-23T12:09:35+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 11272,
+    "tax_paise": 1554
+  },
+  {
+    "payment_id": "pay_cd348e32fb94",
+    "order_id": "order_synth_0226",
+    "amount_paise": 13488,
+    "captured_at": "2026-06-22T22:20:53+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 314,
+    "tax_paise": 43
+  },
+  {
+    "payment_id": "pay_6fe443963c44",
+    "order_id": "order_synth_0227",
+    "amount_paise": 322152,
+    "captured_at": "2026-08-14T01:08:21+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7491,
+    "tax_paise": 1033
+  },
+  {
+    "payment_id": "pay_50c72250c087",
+    "order_id": "order_synth_0228",
+    "amount_paise": 237231,
+    "captured_at": "2026-08-05T02:28:11+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5516,
+    "tax_paise": 760
+  },
+  {
+    "payment_id": "pay_e1dfdc317e58",
+    "order_id": "order_synth_0229",
+    "amount_paise": 84691,
+    "captured_at": "2026-08-20T12:33:00+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 1969,
+    "tax_paise": 271
+  },
+  {
+    "payment_id": "pay_f1bba37b99e2",
+    "order_id": "order_synth_0230",
+    "amount_paise": 95076,
+    "captured_at": "2026-08-17T08:11:26+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2211,
+    "tax_paise": 305
+  },
+  {
+    "payment_id": "pay_b789dda507bf",
+    "order_id": "order_synth_0231",
+    "amount_paise": 107864,
+    "captured_at": "2026-08-12T09:49:13+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2508,
+    "tax_paise": 346
+  },
+  {
+    "payment_id": "pay_bf45619fb2a4",
+    "order_id": "order_synth_0232",
+    "amount_paise": 234510,
+    "captured_at": "2026-06-30T11:14:50+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5453,
+    "tax_paise": 752
+  },
+  {
+    "payment_id": "pay_6cc622f63841",
+    "order_id": "order_synth_0233",
+    "amount_paise": 38259,
+    "captured_at": "2026-07-29T09:13:37+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 890,
+    "tax_paise": 123
+  },
+  {
+    "payment_id": "pay_37b70715ee00",
+    "order_id": "order_synth_0234",
+    "amount_paise": 101060,
+    "captured_at": "2026-08-28T11:53:03+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2350,
+    "tax_paise": 324
+  },
+  {
+    "payment_id": "pay_f18e3c801a08",
+    "order_id": "order_synth_0235",
+    "amount_paise": 326185,
+    "captured_at": "2026-08-30T10:38:36+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7585,
+    "tax_paise": 1046
+  },
+  {
+    "payment_id": "pay_7497d7532724",
+    "order_id": "order_synth_0236",
+    "amount_paise": 219150,
+    "captured_at": "2026-08-02T09:01:54+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5096,
+    "tax_paise": 703
+  },
+  {
+    "payment_id": "pay_92b98d7f03a4",
+    "order_id": "order_synth_0237",
+    "amount_paise": 126522,
+    "captured_at": "2026-08-25T04:34:54+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 2942,
+    "tax_paise": 406
+  },
+  {
+    "payment_id": "pay_7fa32bdf4ff5",
+    "order_id": "order_synth_0238",
+    "amount_paise": 221900,
+    "captured_at": "2026-07-12T08:03:21+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5160,
+    "tax_paise": 711
+  },
+  {
+    "payment_id": "pay_99c258ef3ef6",
+    "order_id": "order_synth_0239",
+    "amount_paise": 625300,
+    "captured_at": "2026-07-13T16:29:38+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 14540,
+    "tax_paise": 2005
+  },
+  {
+    "payment_id": "pay_7d254a3ea1c6",
+    "order_id": "order_synth_0240",
+    "amount_paise": 563800,
+    "captured_at": "2026-08-16T03:27:41+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 13110,
+    "tax_paise": 1807
+  },
+  {
+    "payment_id": "pay_f32da66ce6e9",
+    "order_id": "order_synth_0241",
+    "amount_paise": 209400,
+    "captured_at": "2026-06-20T14:44:57+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4869,
+    "tax_paise": 671
+  },
+  {
+    "payment_id": "pay_514b821b4679",
+    "order_id": "order_synth_0242",
+    "amount_paise": 637700,
+    "captured_at": "2026-07-03T03:48:55+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 14828,
+    "tax_paise": 2044
+  },
+  {
+    "payment_id": "pay_91590a557e9c",
+    "order_id": "order_synth_0243",
+    "amount_paise": 213900,
+    "captured_at": "2026-06-19T23:19:44+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4974,
+    "tax_paise": 686
+  },
+  {
+    "payment_id": "pay_7ca441ddc2c1",
+    "order_id": "order_synth_0244",
+    "amount_paise": 421200,
+    "captured_at": "2026-07-23T04:39:18+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 9794,
+    "tax_paise": 1350
+  },
+  {
+    "payment_id": "pay_da2d726ae56e",
+    "order_id": "order_synth_0245",
+    "amount_paise": 574800,
+    "captured_at": "2026-08-09T05:55:19+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 13366,
+    "tax_paise": 1843
+  },
+  {
+    "payment_id": "pay_1d8ddb313225",
+    "order_id": "order_synth_0246",
+    "amount_paise": 301900,
+    "captured_at": "2026-07-07T13:17:21+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7020,
+    "tax_paise": 968
+  },
+  {
+    "payment_id": "pay_0ce8d1f290ce",
+    "order_id": "order_synth_0247",
+    "amount_paise": 194800,
+    "captured_at": "2026-08-24T10:25:49+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4530,
+    "tax_paise": 625
+  },
+  {
+    "payment_id": "pay_0e9723445af6",
+    "order_id": "order_synth_0248",
+    "amount_paise": 240800,
+    "captured_at": "2026-08-24T08:01:09+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5599,
+    "tax_paise": 772
+  },
+  {
+    "payment_id": "pay_32719be2b70c",
     "order_id": "order_synth_0249",
-    "amount_paise": 383078,
-    "captured_at": "2026-07-19T12:44:10+00:00",
+    "amount_paise": 293700,
+    "captured_at": "2026-07-10T17:09:51+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 8908,
-    "tax_paise": 1228
+    "fee_paise": 6829,
+    "tax_paise": 941
   },
   {
-    "payment_id": "pay_50b9a3aeaf42",
+    "payment_id": "pay_6fd14ef1df01",
     "order_id": "order_synth_0250",
-    "amount_paise": 229746,
-    "captured_at": "2026-07-16T03:15:20+00:00",
+    "amount_paise": 242200,
+    "captured_at": "2026-07-28T22:36:10+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 5342,
-    "tax_paise": 736
+    "fee_paise": 5632,
+    "tax_paise": 776
   },
   {
-    "payment_id": "pay_e74fadbd33fd",
+    "payment_id": "pay_d182afcb3381",
     "order_id": "order_synth_0251",
-    "amount_paise": 172397,
-    "captured_at": "2026-06-28T13:54:15+00:00",
+    "amount_paise": 506100,
+    "captured_at": "2026-07-28T20:20:28+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 4009,
-    "tax_paise": 553
+    "fee_paise": 11768,
+    "tax_paise": 1622
   },
   {
-    "payment_id": "pay_43dc63c5d4c4",
+    "payment_id": "pay_2f14a9f5477b",
     "order_id": "order_synth_0252",
-    "amount_paise": 215400,
-    "captured_at": "2026-08-08T04:07:43+00:00",
+    "amount_paise": 155200,
+    "captured_at": "2026-07-22T03:09:29+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 5009,
-    "tax_paise": 691
+    "fee_paise": 3609,
+    "tax_paise": 498
   },
   {
-    "payment_id": "pay_99e3a5474b08",
+    "payment_id": "pay_f799bd34452a",
     "order_id": "order_synth_0253",
-    "amount_paise": 343500,
-    "captured_at": "2026-06-28T06:50:31+00:00",
+    "amount_paise": 246800,
+    "captured_at": "2026-07-08T02:53:33+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 7987,
-    "tax_paise": 1101
+    "fee_paise": 5739,
+    "tax_paise": 791
   },
   {
-    "payment_id": "pay_3f9628efc20d",
+    "payment_id": "pay_2f7b665ad2f2",
     "order_id": "order_synth_0254",
-    "amount_paise": 217800,
-    "captured_at": "2026-07-06T17:44:52+00:00",
+    "amount_paise": 280600,
+    "captured_at": "2026-07-16T09:22:51+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 5064,
-    "tax_paise": 698
+    "fee_paise": 6525,
+    "tax_paise": 900
   },
   {
-    "payment_id": "pay_7492394a6b5e",
+    "payment_id": "pay_24b8f86a51a9",
     "order_id": "order_synth_0255",
-    "amount_paise": 325700,
-    "captured_at": "2026-07-10T10:02:08+00:00",
+    "amount_paise": 187000,
+    "captured_at": "2026-08-15T11:44:28+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 7573,
-    "tax_paise": 1044
+    "fee_paise": 4348,
+    "tax_paise": 599
   },
   {
-    "payment_id": "pay_f371abd45a5a",
+    "payment_id": "pay_0dedcd7a4037",
     "order_id": "order_synth_0256",
-    "amount_paise": 281600,
+    "amount_paise": 295800,
+    "captured_at": "2026-06-24T09:34:45+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6878,
+    "tax_paise": 948
+  },
+  {
+    "payment_id": "pay_e59d34493d32",
+    "order_id": "order_synth_0257",
+    "amount_paise": 228200,
+    "captured_at": "2026-08-22T14:44:31+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5306,
+    "tax_paise": 732
+  },
+  {
+    "payment_id": "pay_fae8e5db3c6d",
+    "order_id": "order_synth_0258",
+    "amount_paise": 322200,
+    "captured_at": "2026-08-01T08:01:42+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 7492,
+    "tax_paise": 1033
+  },
+  {
+    "payment_id": "pay_c7431363a4d9",
+    "order_id": "order_synth_0259",
+    "amount_paise": 202000,
+    "captured_at": "2026-08-29T13:22:36+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 4697,
+    "tax_paise": 648
+  },
+  {
+    "payment_id": "pay_6a95ce10ef4b",
+    "order_id": "order_synth_0260",
+    "amount_paise": 245600,
+    "captured_at": "2026-07-21T07:38:13+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 5711,
+    "tax_paise": 787
+  },
+  {
+    "payment_id": "pay_6d87f8e738c7",
+    "order_id": "order_synth_0261",
+    "amount_paise": 299200,
+    "captured_at": "2026-08-12T10:13:50+00:00",
+    "status": "captured",
+    "source": "synthetic",
+    "fee_paise": 6957,
+    "tax_paise": 959
+  },
+  {
+    "payment_id": "pay_46fd53f9ad0c",
+    "order_id": "order_synth_0262",
+    "amount_paise": 280200,
     "captured_at": "2026-07-15T14:13:09+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 6548,
-    "tax_paise": 903
+    "fee_paise": 6515,
+    "tax_paise": 898
   },
   {
     "payment_id": "pay_bdee95db576d",
-    "order_id": "order_synth_0257",
+    "order_id": "order_synth_0263",
     "amount_paise": 175300,
     "captured_at": "2026-08-22T11:59:38+00:00",
     "status": "captured",
@@ -2611,17 +2671,17 @@
   },
   {
     "payment_id": "pay_91ec0e415d59",
-    "order_id": "order_synth_0258",
-    "amount_paise": 306000,
+    "order_id": "order_synth_0264",
+    "amount_paise": 303000,
     "captured_at": "2026-08-25T00:51:35+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 7115,
-    "tax_paise": 981
+    "fee_paise": 7046,
+    "tax_paise": 971
   },
   {
     "payment_id": "pay_66876bbef5af",
-    "order_id": "order_synth_0259",
+    "order_id": "order_synth_0265",
     "amount_paise": 227600,
     "captured_at": "2026-07-05T22:28:50+00:00",
     "status": "captured",
@@ -2631,82 +2691,42 @@
   },
   {
     "payment_id": "pay_b51ef060abe6",
-    "order_id": "order_synth_0260",
-    "amount_paise": 581500,
+    "order_id": "order_synth_0266",
+    "amount_paise": 543000,
     "captured_at": "2026-08-29T17:00:17+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 13522,
-    "tax_paise": 1864
+    "fee_paise": 12626,
+    "tax_paise": 1741
   },
   {
     "payment_id": "pay_0a3b46eb61ea",
-    "order_id": "order_synth_0261",
-    "amount_paise": 366500,
+    "order_id": "order_synth_0267",
+    "amount_paise": 381500,
     "captured_at": "2026-07-25T21:40:00+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 8522,
-    "tax_paise": 1175
+    "fee_paise": 8871,
+    "tax_paise": 1223
   },
   {
     "payment_id": "pay_353506437d54",
-    "order_id": "order_synth_0262",
-    "amount_paise": 220200,
+    "order_id": "order_synth_0268",
+    "amount_paise": 205200,
     "captured_at": "2026-08-16T14:35:45+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 5120,
-    "tax_paise": 706
+    "fee_paise": 4772,
+    "tax_paise": 658
   },
   {
     "payment_id": "pay_bf3fd85a3182",
-    "order_id": "order_synth_0263",
-    "amount_paise": 324500,
+    "order_id": "order_synth_0269",
+    "amount_paise": 309500,
     "captured_at": "2026-08-30T09:20:49+00:00",
     "status": "captured",
     "source": "synthetic",
-    "fee_paise": 7546,
-    "tax_paise": 1040
-  },
-  {
-    "payment_id": "pay_315d7f1ca8c8",
-    "order_id": "order_synth_0264",
-    "amount_paise": 324300,
-    "captured_at": "2026-06-29T11:17:00+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 7541,
-    "tax_paise": 1040
-  },
-  {
-    "payment_id": "pay_ed565a78755a",
-    "order_id": "order_synth_0265",
-    "amount_paise": 175500,
-    "captured_at": "2026-07-16T06:13:14+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 4081,
-    "tax_paise": 563
-  },
-  {
-    "payment_id": "pay_b0543a9368d0",
-    "order_id": "order_synth_0266",
-    "amount_paise": 372300,
-    "captured_at": "2026-08-29T21:48:45+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 8657,
-    "tax_paise": 1193
-  },
-  {
-    "payment_id": "pay_5feb3c30bdff",
-    "order_id": "order_synth_0267",
-    "amount_paise": 596400,
-    "captured_at": "2026-07-30T14:03:33+00:00",
-    "status": "captured",
-    "source": "synthetic",
-    "fee_paise": 13868,
-    "tax_paise": 1912
+    "fee_paise": 7197,
+    "tax_paise": 992
   }
 ]

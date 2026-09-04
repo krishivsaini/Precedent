@@ -453,3 +453,97 @@ graph — reads the pending decision off disk and resumes it. The second process
 a clean resume proves the work was restored rather than recomputed. `MemorySaver` cannot do
 this, which is why `durable_graph()` uses `SqliteSaver`, and a control test asserts the
 in-memory checkpointer indeed loses the paused case.
+
+## 2026-09-03 — A relevance floor that the data refused
+
+**The idea:** the learning curve showed one regression — a `tds_short_payment` case correct
+with no corpus at all that escalated at 98 deposits — and 51 of 60 test cases where the corpus
+contributed nothing while still costing ~1,300 tokens each in injected precedents. Both point
+at the same fix: stop injecting precedents that do not apply. A relevance floor on the
+retriever's score looked obvious.
+
+**What the measurement said.** Across 490 retrieved hits over the 98 pool exceptions:
+
+| | n | median score | median ratio to top hit |
+|---|---|---|---|
+| same-class hits | 159 | 12.02 | 0.80 |
+| other-class hits | 331 | 10.68 | **0.89** |
+
+BM25 score does not separate relevant precedents from irrelevant ones. Other-class hits sit
+*closer* to the top score than same-class hits do. A floor at half the top score keeps 100% of
+same-class hits and still 96% of other-class; pushed to 0.6 it starts discarding good hits
+(145/159) faster than bad ones (303/331). Filtering on score would throw away signal and noise
+in equal measure.
+
+**What changed: nothing, deliberately.** The feature was not built. BM25 *ranks* well — top-3
+same-class is 90% — but its scores are not a usable relevance signal, and the two facts are
+easy to conflate because ranking quality is the number usually reported.
+
+**The lesson worth keeping.** "Filter out the low-scoring results" is a plausible enough
+optimisation that it would have been reviewed and merged without anyone asking for the
+distribution. It would have cut tokens, left accuracy roughly unchanged for a while, and
+quietly removed correct precedents at a rate nobody was measuring. The cheap check — plot the
+score distribution for hits that turned out relevant against those that did not — took one
+query and refused the whole idea.
+
+## 2026-09-03 — An outage that looked exactly like corpus poisoning
+
+**What broke:** the first realistic learning curve came back looking like a catastrophe:
+
+```
+ deposits  corpus  resolved  control  counterparty  escalated
+        0      42     70.0%    63.3%          0.0%      23.3%
+       33      69     71.7%    61.7%         22.2%      28.3%
+       67      96     85.0%    63.3%         61.1%      15.0%
+      100     121     35.0%     0.0%          0.0%      65.0%
+      134     151      3.3%     0.0%          0.0%      96.7%
+```
+
+Read as a result, it is a dramatic one: the corpus helps up to 67 deposits and then poisons
+itself, collapsing to 3.3%. That is a publishable-sounding finding, and it is entirely false.
+39 of 60 cases at 100 deposits and 58 of 60 at 134 never reached the model at all.
+
+**The cause was misdiagnosed, and the misdiagnosis is the more useful half of this entry.**
+The first conclusion drawn here — written into this file with some confidence — was that the
+provider's daily quota had run out, because that had happened twice before on other providers
+and the symptom is identical: `escalated_model_unavailable` on most of a batch. It was wrong.
+`openai/gpt-oss-120b` reached **end of life at 2026-09-03T08:00:00Z**, forty-odd minutes into
+the run, and the provider began returning HTTP 410 Gone.
+
+The two causes present the same way and call for opposite responses. A quota is transient and
+self-healing: wait for the reset and re-run. An end-of-life is permanent: waiting accomplishes
+nothing, and the fix is to choose another model and re-run everything, because the response
+cache is keyed on model and none of it carries over. Acting on the wrong one would have meant
+waiting a day for a reset that was never coming.
+
+What distinguished them was one probe the next morning, which returned 410 rather than 429.
+The lesson is narrow and worth stating: *"the model is unavailable" is a symptom, not a
+diagnosis*, and the retry logic in this project already draws exactly this distinction between
+transient and permanent failures at the HTTP layer. The eval-level reasoning did not, and
+inherited none of it.
+
+**Why this was worse than the earlier rate-limit failure.** A single bad number invites
+suspicion. A *shape* does not: a curve that rises and then collapses looks like a mechanism,
+and the obvious mechanism — a corpus growing large enough to drown the relevant precedent —
+is one this project had already documented as a real risk. Everything about it was plausible
+except that it happened.
+
+**How it was caught:** the random control at *exactly* 0.0%, twice. No system behaviour
+produces exactly zero on 60 cases; that is what an absent provider looks like. Nothing should
+depend on someone noticing that.
+
+**What changed:** the default model moved to `nvidia/nemotron-3-super-120b-a12b`, and every
+result committed before 2026-09-03 is recorded as having come from the retired model — those
+numbers stand as what was measured, but are not comparable with anything produced after.
+
+And `ReplayAborted` — the same circuit breaker the ablation has carried since
+Ring 2, which aborts a snapshot when more than 15% of cases cannot reach the model and writes
+no curve at all. **The replay never had it.** It was built for the ablation, and the replay,
+which produces the more important artifact, was written later without it.
+
+**The lesson, which is not about rate limits.** A safeguard that exists in one harness and not
+another is a safeguard the project does not have. Ring 2 recorded the insight — "the eval
+harness cannot distinguish the system failing from the measurement failing" — implemented it
+in one place, and then wrote the headline eval without it. The tests now cover both, including
+that a genuine escalation (arithmetic that does not close) is not confused with an
+unreachable provider, because conflating those would make the breaker fire on real results.

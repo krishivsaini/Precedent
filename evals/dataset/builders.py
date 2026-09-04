@@ -243,18 +243,23 @@ def build_unmatchable(
 #: derivability that makes the rest of the dataset unable to test the thesis.
 NEGOTIATED_RATES = (
     Decimal("0.0325"), Decimal("0.0175"), Decimal("0.0435"), Decimal("0.0265"),
-    Decimal("0.0385"),
+    Decimal("0.0385"), Decimal("0.0215"), Decimal("0.0475"), Decimal("0.0295"),
+    Decimal("0.0155"), Decimal("0.0415"),
 )
 
 #: Customers with a standing negotiated rebate. Kept small and repeated so a precedent
 #: deposited on one occurrence is worth retrieving on the next.
 REBATE_CUSTOMERS = (
     "Kavery Textiles", "Sundaram Auto Parts", "Vindhya Chemicals", "Konark Logistics",
-    "Palghat Ceramics",
+    "Palghat Ceramics", "Aravalli Cement", "Cauvery Granites", "Marwar Packaging",
+    "Zuari Agrochem", "Hampi Ironworks",
 )
 
 #: Customers who hold advances against future invoices.
-ADVANCE_CUSTOMERS = ("Deccan Foods", "Nilgiri Exports", "Chenab Steel", "Beas Papers")
+ADVANCE_CUSTOMERS = (
+    "Deccan Foods", "Nilgiri Exports", "Chenab Steel", "Beas Papers",
+    "Coromandel Spices", "Satpura Timber", "Gomti Dairy", "Rann Salt",
+)
 
 
 def build_negotiated_rebate(
@@ -291,6 +296,30 @@ def build_negotiated_rebate(
     )
 
 
+#: Rates a proportional-deduction hypothesis would test. An advance must not resemble one.
+_ROUND_RATES = (
+    Decimal("0.01"), Decimal("0.02"), Decimal("0.05"),
+    Decimal("0.075"), Decimal("0.10"), Decimal("0.20"),
+)
+_RATE_TOLERANCE = Decimal("0.004")
+
+
+def _advance_clear_of_round_rates(advance_paise: int, invoice_paise: int) -> int:
+    """Nudge an advance until it is not mistakable for a percentage deduction.
+
+    Steps in whole rupees so the result still looks like an advance rather than a computed
+    figure, and walks upward deterministically so the dataset stays reproducible.
+    """
+    for step in range(0, 40):
+        candidate = advance_paise + step * 500
+        if candidate >= invoice_paise:
+            break
+        rate = Decimal(candidate) / Decimal(invoice_paise)
+        if all(abs(rate - r) > _RATE_TOLERANCE for r in _ROUND_RATES):
+            return candidate
+    return advance_paise
+
+
 def build_advance_adjusted(
     rng: random.Random, scenario_id: str, order_id: str, invoice_amount_paise: int,
     customer_index: int, fee_rate: Decimal, tax_rate: Decimal,
@@ -304,9 +333,19 @@ def build_advance_adjusted(
     """
     customer = ADVANCE_CUSTOMERS[customer_index % len(ADVANCE_CUSTOMERS)]
     occurrence = customer_index // len(ADVANCE_CUSTOMERS) + 1
-    # A round rupee figure, as an advance would be — and deliberately not a percentage of
+    # A round rupee figure, as an advance would be — and deliberately *not* a proportion of
     # the invoice, so no rate hypothesis can reproduce it.
-    advance_paise = (25_000, 50_000, 75_000, 40_000)[customer_index % 4]
+    #
+    # The customer's standing advance is fixed but the invoice is drawn at random, so the
+    # ratio between them is not: four cases in an earlier generation landed within a
+    # rounding tolerance of 7.5% or 10%, which would have made them solvable by testing
+    # rates and quietly defeated the entire point of the class. Caught by the invariant
+    # test, not by inspection. The advance is now nudged in whole-rupee steps until it is
+    # clear of every round rate — deterministic, and it keeps the round-sum character.
+    advance_paise = (
+        25_000, 50_000, 75_000, 40_000, 60_000, 35_000, 90_000, 55_000
+    )[customer_index % 8]
+    advance_paise = _advance_clear_of_round_rates(advance_paise, invoice_amount_paise)
     paid_paise = invoice_amount_paise - advance_paise
     payment = generate_synthetic_payment(rng, order_id, paid_paise, fee_rate, tax_rate)
     bank_line = generate_bank_line_for_payment(payment, rng, lag_days=(1, 2))

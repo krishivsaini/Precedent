@@ -23,16 +23,21 @@ from precedent.config import nvidia_api_key
 
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 
-#: Chosen by probing, not from the catalogue. NIM lists 82 models to this key, but most of
-#: the large ones do not actually serve: `meta/llama-3.3-70b-instruct` returns 410 Gone,
-#: `llama-3.1-nemotron-ultra-253b` and `qwen3-235b` return 404, and the deepseek endpoints
-#: time out. This one answers in about two seconds and honours the JSON response format.
-#: `nvidia/nemotron-3-super-120b-a12b` also works, at roughly 2.5x the latency.
+#: `openai/gpt-oss-120b` produced every result committed up to 2026-09-03 and reached end of
+#: life at 08:00 UTC that day, mid-run. Results from it stay committed as the record of what
+#: was measured, but are not comparable with anything produced after — a provider can retire
+#: the model under a running eval, which is a failure mode no amount of caching prevents.
+#:
+#: Chosen by probing, not from the catalogue. NIM lists 82 models to this key and most of the
+#: large ones do not serve: `meta/llama-3.3-70b-instruct` and now `openai/gpt-oss-120b` return
+#: 410 Gone, `llama-3.1-nemotron-ultra-253b` and `qwen3-235b` return 404, the deepseek
+#: endpoints time out. This one answers in under a second — faster than the model it replaced
+#: — and honours the JSON response format. `openai/gpt-oss-20b` also works, more slowly.
 #:
 #: `list_models()` reports what the key can reach, but reaching is not serving — probe with
 #: a real request before trusting a default. The Gemini path burned a run discovering that
 #: `gemini-2.5-flash` was still listed while returning 404 to new users.
-DEFAULT_MODEL = "openai/gpt-oss-120b"
+DEFAULT_MODEL = "nvidia/nemotron-3-super-120b-a12b"
 
 
 class NvidiaClient(OpenAICompatibleClient):
