@@ -1,0 +1,229 @@
+{
+  "run_id": "2026-09-04T17:51:08Z",
+  "what_this_measures": "Whether stated confidence predicts correctness, and what auto-resolve threshold the observed outcomes justify.",
+  "cases_scored": 804,
+  "reliability_all_arms": [
+    {
+      "stated_confidence": 0.8,
+      "n": 14,
+      "observed_accuracy": 0.1429,
+      "gap": -0.6571
+    },
+    {
+      "stated_confidence": 0.85,
+      "n": 39,
+      "observed_accuracy": 0.2051,
+      "gap": -0.6449
+    },
+    {
+      "stated_confidence": 0.9,
+      "n": 171,
+      "observed_accuracy": 0.655,
+      "gap": -0.245
+    },
+    {
+      "stated_confidence": 0.95,
+      "n": 385,
+      "observed_accuracy": 0.6312,
+      "gap": -0.3188
+    },
+    {
+      "stated_confidence": 1.0,
+      "n": 35,
+      "observed_accuracy": 0.2857,
+      "gap": -0.7143
+    }
+  ],
+  "reliability_graph_grounded": [
+    {
+      "stated_confidence": 0.8,
+      "n": 2,
+      "observed_accuracy": 0.0,
+      "gap": -0.8
+    },
+    {
+      "stated_confidence": 0.85,
+      "n": 7,
+      "observed_accuracy": 0.1429,
+      "gap": -0.7071
+    },
+    {
+      "stated_confidence": 0.9,
+      "n": 42,
+      "observed_accuracy": 0.7381,
+      "gap": -0.1619
+    },
+    {
+      "stated_confidence": 0.95,
+      "n": 71,
+      "observed_accuracy": 0.6338,
+      "gap": -0.3162
+    },
+    {
+      "stated_confidence": 1.0,
+      "n": 1,
+      "observed_accuracy": 1.0,
+      "gap": 0.0
+    }
+  ],
+  "sweep_graph_grounded": [
+    {
+      "threshold": 0.5,
+      "resolution_rate": 0.5821,
+      "escalation_rate": 0.0821,
+      "error_rate": 0.3358,
+      "false_resolution_cost_inr": 123680.0
+    },
+    {
+      "threshold": 0.7,
+      "resolution_rate": 0.5821,
+      "escalation_rate": 0.0821,
+      "error_rate": 0.3358,
+      "false_resolution_cost_inr": 123680.0
+    },
+    {
+      "threshold": 0.8,
+      "resolution_rate": 0.5821,
+      "escalation_rate": 0.0821,
+      "error_rate": 0.3358,
+      "false_resolution_cost_inr": 123680.0
+    },
+    {
+      "threshold": 0.85,
+      "resolution_rate": 0.5821,
+      "escalation_rate": 0.097,
+      "error_rate": 0.3209,
+      "false_resolution_cost_inr": 118573.0
+    },
+    {
+      "threshold": 0.88,
+      "resolution_rate": 0.5746,
+      "escalation_rate": 0.1493,
+      "error_rate": 0.2761,
+      "false_resolution_cost_inr": 109220.0
+    },
+    {
+      "threshold": 0.9,
+      "resolution_rate": 0.5746,
+      "escalation_rate": 0.1716,
+      "error_rate": 0.2537,
+      "false_resolution_cost_inr": 99941.0
+    },
+    {
+      "threshold": 0.92,
+      "resolution_rate": 0.5149,
+      "escalation_rate": 0.2612,
+      "error_rate": 0.2239,
+      "false_resolution_cost_inr": 88670.0
+    },
+    {
+      "threshold": 0.95,
+      "resolution_rate": 0.3134,
+      "escalation_rate": 0.4925,
+      "error_rate": 0.194,
+      "false_resolution_cost_inr": 75247.0
+    },
+    {
+      "threshold": 0.99,
+      "resolution_rate": 0.0,
+      "escalation_rate": 1.0,
+      "error_rate": 0.0,
+      "false_resolution_cost_inr": 0.0
+    }
+  ],
+  "recommendation": {
+    "recommended": 0.9,
+    "baseline": 0.8,
+    "resolution_given_up_pp": 0.75,
+    "exposure_saved_inr": 23739.0,
+    "why": "gives up 0.75pp of resolution rate to remove INR 23,739 of exposure",
+    "free_improvement": {
+      "threshold": 0.85,
+      "resolution_rate": 0.5821,
+      "escalation_rate": 0.097,
+      "error_rate": 0.3209,
+      "false_resolution_cost_inr": 118573.0,
+      "resolution_given_up_pp": 0.0,
+      "exposure_saved_inr": 5107.0,
+      "inr_saved_per_pp": null
+    },
+    "best_value_for_money": {
+      "threshold": 0.9,
+      "resolution_rate": 0.5746,
+      "escalation_rate": 0.1716,
+      "error_rate": 0.2537,
+      "false_resolution_cost_inr": 99941.0,
+      "resolution_given_up_pp": 0.75,
+      "exposure_saved_inr": 23739.0,
+      "inr_saved_per_pp": 31652.0
+    },
+    "judgement": "Where a cutoff that costs coverage removes more than twice the exposure of the free one, it is preferred: in reconciliation a false accept is the failure that matters and a point of coverage is cheap against it. That is a judgement about this domain, not something the numbers decide on their own.",
+    "candidates": [
+      {
+        "threshold": 0.85,
+        "resolution_rate": 0.5821,
+        "escalation_rate": 0.097,
+        "error_rate": 0.3209,
+        "false_resolution_cost_inr": 118573.0,
+        "resolution_given_up_pp": 0.0,
+        "exposure_saved_inr": 5107.0,
+        "inr_saved_per_pp": null
+      },
+      {
+        "threshold": 0.88,
+        "resolution_rate": 0.5746,
+        "escalation_rate": 0.1493,
+        "error_rate": 0.2761,
+        "false_resolution_cost_inr": 109220.0,
+        "resolution_given_up_pp": 0.75,
+        "exposure_saved_inr": 14460.0,
+        "inr_saved_per_pp": 19280.0
+      },
+      {
+        "threshold": 0.9,
+        "resolution_rate": 0.5746,
+        "escalation_rate": 0.1716,
+        "error_rate": 0.2537,
+        "false_resolution_cost_inr": 99941.0,
+        "resolution_given_up_pp": 0.75,
+        "exposure_saved_inr": 23739.0,
+        "inr_saved_per_pp": 31652.0
+      },
+      {
+        "threshold": 0.92,
+        "resolution_rate": 0.5149,
+        "escalation_rate": 0.2612,
+        "error_rate": 0.2239,
+        "false_resolution_cost_inr": 88670.0,
+        "resolution_given_up_pp": 6.72,
+        "exposure_saved_inr": 35010.0,
+        "inr_saved_per_pp": 5209.82
+      },
+      {
+        "threshold": 0.95,
+        "resolution_rate": 0.3134,
+        "escalation_rate": 0.4925,
+        "error_rate": 0.194,
+        "false_resolution_cost_inr": 75247.0,
+        "resolution_given_up_pp": 26.87,
+        "exposure_saved_inr": 48433.0,
+        "inr_saved_per_pp": 1802.49
+      },
+      {
+        "threshold": 0.99,
+        "resolution_rate": 0.0,
+        "escalation_rate": 1.0,
+        "error_rate": 0.0,
+        "false_resolution_cost_inr": 0.0,
+        "resolution_given_up_pp": 58.21,
+        "exposure_saved_inr": 123680.0,
+        "inr_saved_per_pp": 2124.72
+      }
+    ]
+  },
+  "caveats": [
+    "The sweep is counterfactual over pool exceptions the ablation already scored, so a threshold chosen here is chosen on data the system has seen.",
+    "A threshold calibrated on one model is not evidence about another. Re-derive it when the model or the prompt changes.",
+    "Escalated cases are excluded from reliability: the agent declined to answer, so there is no confidence claim to check."
+  ]
+}

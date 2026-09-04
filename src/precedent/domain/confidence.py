@@ -1,12 +1,27 @@
 """Confidence thresholds and calibration bins.
 
-These are placeholder constants for Ring 0-3 (spec §12, §9 Ring 0.1) — Ring 4 replaces
-`DEFAULT_AUTO_RESOLVE_THRESHOLD` with a value set from the calibration curve rather than
-a guess, and reports the precision/coverage tradeoff of that operating point.
+`DEFAULT_AUTO_RESOLVE_THRESHOLD` was a placeholder 0.8 through Rings 0-3 and is now set from
+measured outcomes (`evals/calibration.py`, Ring 4).
 """
 
-# Placeholder for Ring 0-3. Ring 4 sets this from the calibration curve (spec §9 Ring 4).
-DEFAULT_AUTO_RESOLVE_THRESHOLD = 0.8
+#: Set from the threshold sweep in `evals/results/calibration-*.json`, not chosen.
+#:
+#: Against the 0.8 placeholder, on the graph's grounded arm over 134 pool exceptions, 0.90
+#: gives up **0.75 percentage points** of resolution rate — one case — and removes
+#: **INR 23,739** of false-resolution exposure, a 19% cut in the number spec §6 calls "the
+#: number that gets someone fired". 0.85 is free but removes only INR 5,107; past 0.90 the
+#: trade turns sharply (0.92 costs 6pp for INR 11k more).
+#:
+#: Preferring the priced cutoff over the free one is a judgement about this domain rather
+#: than something the numbers settle: in reconciliation a false accept is the failure that
+#: matters and a point of coverage is cheap against it.
+#:
+#: **This number is not portable.** The agent is badly miscalibrated and non-monotonically so
+#: — it is right 69.6% of the time when it says 0.90 and only 39.4% when it says 0.95, so its
+#: most confident answers are among its least reliable. A cutoff fitted to that shape is
+#: evidence about this model and this prompt and nothing else. Re-derive it when either
+#: changes; `evals/calibration.py` does so from committed results without a new run.
+DEFAULT_AUTO_RESOLVE_THRESHOLD = 0.90
 
 _DEFAULT_BIN_COUNT = 10
 

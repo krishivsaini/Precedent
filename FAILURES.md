@@ -547,3 +547,51 @@ harness cannot distinguish the system failing from the measurement failing" — 
 in one place, and then wrote the headline eval without it. The tests now cover both, including
 that a genuine escalation (arithmetic that does not close) is not confused with an
 unreachable provider, because conflating those would make the breaker fire on real results.
+
+## 2026-09-04 — A calibration table that was labelled one bin too low
+
+**What broke:** the first reliability table from `evals/calibration.py` read:
+
+```
+  stated      n   observed      gap
+    0.80     52      17.3%   -62.7%
+    0.85     87      52.9%   -32.1%
+    0.90    401      69.6%   -20.4%
+    0.95    104      39.4%   -55.6%
+```
+
+and supported a striking claim: the agent is *most* reliable at 0.90 and much worse at 0.95,
+so its highest-confidence answers are among its least trustworthy.
+
+The claim was true in shape and wrong in every label. Bins were computed as
+`confidence // bin_width`, and in floating point `0.90 // 0.05` is **17, not 18** — 0.9/0.05
+evaluates to 17.999999999999996. Every confidence landing exactly on a bin edge was filed one
+bin too low, and for a model that emits round numbers that is nearly all of them. The row
+labelled 0.90 was the 0.95 cohort.
+
+**Corrected:**
+
+```
+  stated      n   observed      gap
+    0.80     14      14.3%   -65.7%
+    0.85     39      20.5%   -64.5%
+    0.90    171      65.5%   -24.5%
+    0.95    385      63.1%   -31.9%
+    1.00     35      28.6%   -71.4%
+```
+
+The real finding is sharper than the wrong one: 0.90 and 0.95 are comparable and mediocre
+(~64%), everything below 0.90 is near-worthless (14-20%), and **a stated confidence of 1.00 is
+anti-predictive** — right 28.6% of the time, worse than every bin beneath it. The model says
+"certain" when it is confabulating.
+
+**How it was caught:** a unit test asserting a 0.9 confidence lands in the 0.9 bin, written
+because the numbers looked odd rather than because the bug was suspected. The threshold sweep
+was unaffected — it compares raw confidences and never bins — so the recommendation of 0.90
+stood, which is exactly why the mislabelling could have survived: the number that mattered was
+right while the table explaining it was not.
+
+**The lesson:** floating-point binning is a well-known trap and this code walked into it while
+being careful about much subtler things. Integer arithmetic on the bin index rather than
+division on the value; and a boundary test for every histogram, because an off-by-one in
+labelling produces a plausible table rather than an error.
