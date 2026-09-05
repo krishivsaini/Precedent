@@ -11,6 +11,7 @@ from precedent.api.remediation import router as remediation_router
 from precedent.api.remediation_ui import router as remediation_ui_router
 from precedent.api.ui import router as ui_router
 from precedent.api.webhooks import router as webhooks_router
+from precedent.api.write_key import install as install_write_key
 
 
 def create_app(db_path: str = "precedent.db") -> FastAPI:
@@ -52,6 +53,9 @@ def create_app(db_path: str = "precedent.db") -> FastAPI:
     app.include_router(knowledge_router)
     app.include_router(remediation_ui_router)
     app.include_router(deliveries_router)
+    # Last, so it wraps every route above it. Inert unless PRECEDENT_WRITE_KEY
+    # is set, which is why a clone and the test suite never meet it.
+    install_write_key(app)
     return app
 
 

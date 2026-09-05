@@ -158,6 +158,26 @@ had not replicated. That is a fine trade for a demo and a bad one for anything r
 
 ---
 
+## Keeping a public demo from being spent
+
+`PRECEDENT_WRITE_KEY` gates every state-changing request. Reads are untouched — the queue, a
+case, the corpus, the measurement and the delivery log stay open, because the argument is the
+product. Only writes need the key, because on a public URL a single POST spends model credits,
+writes into a corpus that later cases are resolved from, and can reach a refund gate.
+
+Set it, then open `https://<service-url>/unlock?key=<the key>` once in the browser you demo
+from. The key is exchanged for an HttpOnly cookie and the URL redirects to `/`, so it does not
+sit in the address bar waiting to appear in a screenshot.
+
+It is **not authentication** — `product_design.md` §6 scopes that out and this does not put it
+back. There are no accounts and no identity; everyone holding the key is the same anonymous
+operator. Unset means off, so a clone and the test suite never meet it.
+
+The Razorpay webhook is exempt: it verifies an HMAC over the raw body, which is a stronger
+check than this one and the only one Razorpay can satisfy.
+
+---
+
 ## Running the image anywhere
 
 The same image serves every environment; the entrypoint branches on what is configured.
@@ -185,6 +205,7 @@ docker run -p 8080:8080 -e LITESTREAM_REPLICA_URL=s3://bucket/precedent preceden
 | `PRECEDENT_SEED_ON_EMPTY` | `0` | only ever acts on a genuinely absent database |
 | `PORT` | `8080` | |
 | `NVIDIA_API_KEY` / `GROQ_API_KEY` | *(unset)* | required for Confirm and Correct; see above |
+| `PRECEDENT_WRITE_KEY` | *(unset)* | gates state-changing requests; unset means off |
 
 ### Why seeding is guarded on the file not existing
 

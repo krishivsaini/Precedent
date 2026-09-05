@@ -47,3 +47,9 @@ services:
       # confirmation rather than banking a review with nothing in the corpus behind it.
       - key: NVIDIA_API_KEY
         sync: false
+      # Optional, and off unless set. A public URL where one POST spends model credits and
+      # writes into a corpus that later cases are resolved from needs something between it
+      # and a crawler following forms. Reads stay open; only state changes are gated. Set it
+      # in the dashboard, then open /unlock?key=... once in the browser you demo from.
+      - key: PRECEDENT_WRITE_KEY
+        sync: false
