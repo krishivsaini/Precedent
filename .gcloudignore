@@ -1,0 +1,20 @@
+# What Cloud Build receives. Written explicitly rather than left to gcloud's inference from
+# .gitignore, so a later edit to .gitignore cannot quietly change what gets uploaded to a
+# build — including whether `.env` does.
+.env
+*.db
+*.sqlite
+*.sqlite3
+
+.git/
+.gitignore
+.venv/
+.pytest_cache/
+**/__pycache__/
+*.pyc
+*.egg-info/
+
+site/
+evals/.cache/
+docs/
+tests/

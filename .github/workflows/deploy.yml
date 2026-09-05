@@ -1,0 +1,69 @@
+# Two halves, deployed independently.
+#
+# The showcase is a static page rebuilt from `evals/results/`; the API is a container with a
+# database behind it. They are separate jobs on purpose — republishing the page after a new
+# eval run should not restart the service, and shipping an API fix should not need the eval
+# results to have changed.
+#
+# Required repository secrets:
+#   CLOUDFLARE_API_TOKEN       Pages -> Edit permission
+#   CLOUDFLARE_ACCOUNT_ID
+#   GCP_PROJECT_ID
+#   GCP_SA_KEY                 JSON key for a deployer service account. Workload Identity
+#                              Federation is the better credential if you set it up — swap
+#                              `credentials_json` for `workload_identity_provider`.
+#   PRECEDENT_APP_URL          The Cloud Run URL, so the page can link to the live screen.
+
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  # One instance, one writer, one deploy. Overlapping Cloud Run rollouts of a single-instance
+  # SQLite service are the one race this pipeline can actually cause.
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  site:
+    name: showcase -> Cloudflare Pages
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # No `setup-python`, no install step: build_site.py is standard library only, which is
+      # what keeps this job at a few seconds and the Pages dashboard build command a one-liner.
+      - name: Build
+        env:
+          PRECEDENT_APP_URL: ${{ secrets.PRECEDENT_APP_URL }}
+        run: python3 scripts/build_site.py
+
+      - name: Publish
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site --project-name=precedent
+
+  api:
+    name: api -> Cloud Run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - uses: google-github-actions/setup-gcloud@v2
+
+      # The provisioning steps in deploy/cloudrun.sh (bucket, service account, secrets) are
+      # idempotent, so CI runs the same script a human runs. Secret *values* are never passed
+      # here: with the env vars unset, the script leaves each existing secret version alone.
+      - name: Deploy
+        env:
+          PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+        run: ./deploy/cloudrun.sh

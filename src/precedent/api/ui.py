@@ -29,6 +29,8 @@ dressing it as an app would misrepresent what the reviewer is being asked to do.
 """
 
 import html
+import json
+from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -51,6 +53,29 @@ from precedent.domain.case import ReconciliationCase, format_paise
 from precedent.domain.confidence import DEFAULT_AUTO_RESOLVE_THRESHOLD
 
 router = APIRouter(tags=["ui"])
+
+#: Committed eval results, read straight off disk. The screens that report numbers read the
+#: same JSON the eval wrote, so a figure on the page cannot drift from the run that produced
+#: it — the same rule `evals/report.py` is built on.
+RESULTS_DIR = Path(__file__).resolve().parents[3] / "evals" / "results"
+
+
+def latest_result(pattern: str) -> dict | None:
+    matches = sorted(RESULTS_DIR.glob(pattern))
+    if not matches:
+        return None
+    try:
+        return json.loads(matches[-1].read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return None
+
+
+NAV = (
+    ("/", "Queue"),
+    ("/learns", "How it learns"),
+    ("/corpus", "Corpus"),
+    ("/result", "Does it work"),
+)
 
 REASON_CHOICES = (
     "exact_match", "tolerance_rounding", "date_window_timing", "netted_settlement",
@@ -103,6 +128,45 @@ header.masthead {
 .masthead a { color: var(--ink); text-decoration: none; }
 .masthead a:hover { text-decoration: underline; }
 .masthead .count { color: var(--muted); font-size: .92rem; }
+.masthead nav { display: flex; gap: 1.35rem; flex: 1; margin-left: .6rem; flex-wrap: wrap; }
+.masthead nav a { color: var(--muted); font-size: .95rem; padding-bottom: .15rem; }
+.masthead nav a.on { color: var(--ink); font-weight: 600;
+                     box-shadow: inset 0 -2px 0 var(--ink); }
+.masthead nav a:hover { color: var(--ink); text-decoration: none; }
+
+/* --- headline figure: used once, on the result screen --- */
+.headline { display: grid; grid-template-columns: auto 1fr; gap: 0 1.6rem;
+            align-items: baseline; margin: .2rem 0 .3rem; }
+.headline .big { font-size: 4.1rem; line-height: 1; font-weight: 600;
+                 font-variant-numeric: tabular-nums lining; letter-spacing: -.02em; }
+.headline .from { color: var(--muted); font-size: 1.02rem; max-width: 26rem; }
+.claim { font-size: 1.12rem; line-height: 1.5; max-width: 40rem; margin: 1.6rem 0 0;
+         padding-left: 1.1rem; border-left: 3px solid var(--ink); }
+.figures { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+           gap: 1.6rem 2.2rem; margin: 2rem 0 .5rem; }
+.figures div { border-top: 1px solid var(--ink); padding-top: .55rem; }
+.figures .n { font-size: 1.5rem; font-variant-numeric: tabular-nums lining;
+              font-weight: 600; display: block; }
+.figures .l { color: var(--muted); font-size: .89rem; }
+
+/* --- before / after --- */
+.beforeafter { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.4rem;
+               align-items: start; margin: .6rem 0 0; }
+.beforeafter > div + div { border-left: 1px solid var(--rule); padding-left: 2.4rem; }
+.stamp { font-weight: 600; margin: 0 0 .15rem; }
+.stamp.no { color: var(--debit); }
+.stamp.yes { color: var(--credit); }
+.beforeafter .when { color: var(--muted); font-size: .89rem; margin: 0 0 .8rem; }
+.arrow { text-align: center; color: var(--muted); margin: 1.6rem 0; font-size: .95rem; }
+
+/* --- corpus --- */
+.corpus-filters { display: flex; gap: 1.1rem; flex-wrap: wrap; align-items: baseline;
+                  margin: 0 0 1.2rem; font-size: .93rem; }
+.corpus-filters a { color: var(--muted); }
+.corpus-filters a.on { color: var(--ink); font-weight: 600; }
+.pill { font-size: .78rem; color: var(--muted); border: 1px solid var(--rule);
+        padding: .06rem .4rem; border-radius: 2px; white-space: nowrap; }
+.pill.new { color: var(--credit); border-color: var(--credit); }
 
 h1 { font-size: 2.1rem; line-height: 1.15; margin: 0 0 .25rem; font-weight: 600;
      letter-spacing: -.012em; }
@@ -215,10 +279,13 @@ table.queue a:hover { text-decoration: underline; }
 """
 
 
-def page(title: str, body: str, waiting: int | None = None) -> HTMLResponse:
-    count = (
-        f'<span class="count">{waiting} waiting</span>' if waiting is not None else ""
+def page(title: str, body: str, here: str = "", waiting: int | None = None) -> HTMLResponse:
+    """One shell for every screen, so the demo is a single app rather than a set of pages."""
+    links = "".join(
+        '<a href="%s"%s>%s</a>' % (href, ' class="on"' if href == here else "", esc(label))
+        for href, label in NAV
     )
+    count = f'<span class="count">{waiting} waiting</span>' if waiting is not None else ""
     return HTMLResponse(
         "<!doctype html><html lang='en'><meta charset='utf-8'>"
         "<meta name='viewport' content='width=device-width,initial-scale=1'>"
@@ -226,7 +293,7 @@ def page(title: str, body: str, waiting: int | None = None) -> HTMLResponse:
         "<body><div class='sheet'>"
         "<header class='masthead'>"
         "<span class='name'><a href='/'>Precedent</a></span>"
-        f"{count}</header>"
+        f'<nav>{links}</nav>{count}</header>'
         f"{body}</div>"
     )
 

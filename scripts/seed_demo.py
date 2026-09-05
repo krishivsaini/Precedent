@@ -8,6 +8,7 @@ the screen displays is the same data every number in `evals/results/` was comput
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -30,7 +31,10 @@ from precedent.domain.case import ReconciliationCase
 
 from precedent.domain.case import format_paise  # noqa: E402
 
-DB = "precedent.db"
+#: Same variable the app reads, so seeding a deployed container cannot populate a different
+#: file from the one it will serve. Still destructive by design (see `main`) — the container
+#: entrypoint calls this only when there is no database yet.
+DB = os.environ.get("PRECEDENT_DB_PATH", "precedent.db")
 
 
 def _rationale(case, scenario) -> str:

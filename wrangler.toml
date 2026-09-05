@@ -1,0 +1,13 @@
+# Cloudflare Pages. The showcase is fully static — `scripts/build_site.py` reads the
+# committed eval results and writes `site/`, which is all that ships. No functions, no
+# bindings, no origin: the page has to load in a hotel wifi dead zone, and the cheapest way
+# to guarantee that is to have nothing behind it.
+#
+#   python3 scripts/build_site.py && npx wrangler pages deploy
+#
+# The build needs no dependencies at all — `build_site.py` is standard library only — so the
+# Pages dashboard build command is the same line, with no install step in front of it.
+
+name = "precedent"
+pages_build_output_dir = "site"
+compatibility_date = "2026-09-05"
