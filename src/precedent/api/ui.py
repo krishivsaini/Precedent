@@ -77,6 +77,7 @@ NAV = (
     ("/", "Queue"),
     ("/corpus", "Corpus"),
     ("/refunds", "Refunds"),
+    ("/deliveries", "Deliveries"),
     ("/learns", "How it learns"),
     ("/result", "Does it work"),
 )

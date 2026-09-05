@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from precedent.adapters.storage.db import connect, init_db
 from precedent.api.approvals import router as approvals_router
+from precedent.api.deliveries import router as deliveries_router
 from precedent.api.knowledge import router as knowledge_router
 from precedent.api.remediation import router as remediation_router
 from precedent.api.remediation_ui import router as remediation_ui_router
@@ -50,6 +51,7 @@ def create_app(db_path: str = "precedent.db") -> FastAPI:
     app.include_router(ui_router)
     app.include_router(knowledge_router)
     app.include_router(remediation_ui_router)
+    app.include_router(deliveries_router)
     return app
 
 
