@@ -70,9 +70,12 @@ gcloud storage buckets add-iam-policy-binding "gs://${BUCKET}" \
 
 say "Secrets"
 # Razorpay's three are required — webhooks/verify_webhook_signature cannot check a delivery
-# without the webhook secret, and an unverified delivery is not evidence of anything. The
-# model keys are not read by the API at request time; they are here so the container can also
-# run the batch entry points.
+# without the webhook secret, and an unverified delivery is not evidence of anything.
+#
+# The model key is required too, and for a sharper reason: confirming a resolution authors a
+# precedent, so the approval gate calls a model *in the request path*. Without a key the gate
+# refuses every confirmation rather than banking a review with nothing in the corpus behind
+# it — correct behaviour, and a dead demo. See `api/ui.py::decide`.
 put_secret() {
   local name="$1" value="${2:-}"
   if ! gcloud secrets describe "$name" >/dev/null 2>&1; then
@@ -98,6 +101,7 @@ put_secret() {
 put_secret razorpay-key-id         "${RAZORPAY_KEY_ID:-}"
 put_secret razorpay-key-secret     "${RAZORPAY_KEY_SECRET:-}"
 put_secret razorpay-webhook-secret "${RAZORPAY_WEBHOOK_SECRET:-}"
+put_secret nvidia-api-key           "${NVIDIA_API_KEY:-}"
 
 say "Building and deploying"
 gcloud run deploy "$SERVICE" \
@@ -109,10 +113,10 @@ gcloud run deploy "$SERVICE" \
   --max-instances=1 \
   --min-instances="$MIN_INSTANCES" \
   --no-cpu-throttling \
-  --timeout=60s \
+  --timeout=120s \
   --allow-unauthenticated \
   --set-env-vars="PRECEDENT_DB_PATH=/data/precedent.db,LITESTREAM_REPLICA_URL=gcs://${BUCKET}/precedent,PRECEDENT_SEED_ON_EMPTY=${SEED_ON_EMPTY}" \
-  --set-secrets="RAZORPAY_KEY_ID=razorpay-key-id:latest,RAZORPAY_KEY_SECRET=razorpay-key-secret:latest,RAZORPAY_WEBHOOK_SECRET=razorpay-webhook-secret:latest"
+  --set-secrets="RAZORPAY_KEY_ID=razorpay-key-id:latest,RAZORPAY_KEY_SECRET=razorpay-key-secret:latest,RAZORPAY_WEBHOOK_SECRET=razorpay-webhook-secret:latest,NVIDIA_API_KEY=nvidia-api-key:latest"
 
 URL="$(gcloud run services describe "$SERVICE" --region="$REGION" --format='value(status.url)')"
 

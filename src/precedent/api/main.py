@@ -5,7 +5,9 @@ from fastapi import FastAPI
 
 from precedent.adapters.storage.db import connect, init_db
 from precedent.api.approvals import router as approvals_router
+from precedent.api.knowledge import router as knowledge_router
 from precedent.api.remediation import router as remediation_router
+from precedent.api.remediation_ui import router as remediation_ui_router
 from precedent.api.ui import router as ui_router
 from precedent.api.webhooks import router as webhooks_router
 
@@ -43,7 +45,11 @@ def create_app(db_path: str = "precedent.db") -> FastAPI:
     app.include_router(webhooks_router)
     app.include_router(approvals_router)
     app.include_router(remediation_router)
+    # The HTML routers go last: their paths are the broadest, and a JSON route must
+    # never be shadowed by a screen that happens to share a prefix.
     app.include_router(ui_router)
+    app.include_router(knowledge_router)
+    app.include_router(remediation_ui_router)
     return app
 
 

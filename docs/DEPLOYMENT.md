@@ -5,7 +5,21 @@ Two halves, deployed independently.
 | | What it is | Where it runs | What it costs |
 |---|---|---|---|
 | **Showcase** — `site/` | One static page, generated from `evals/results/` | Cloudflare Pages | free |
-| **API + approval screen** — `src/precedent/api/` | FastAPI, SQLite, Razorpay webhook receiver | Google Cloud Run | ~$10–15/mo |
+| **The app** — `src/precedent/api/` | FastAPI, SQLite, both gates, Razorpay webhooks | Google Cloud Run | ~$10–15/mo |
+
+The app is six screens behind one shell:
+
+| Route | |
+|---|---|
+| `/` | The queue — exceptions the agent would not settle alone |
+| `/exceptions/{id}` | The case: tie-out, cited precedents, proposal, **both gates** |
+| `/corpus` | Every precedent, split by whether a human wrote it or the system did |
+| `/refunds` | The remediation ceiling and every refund proposed against it |
+| `/learns` | Why a corpus beats a better prompt, on the classes where it must |
+| `/result` | The measurement, read from `evals/results/` at request time |
+
+`/remediation` stays the JSON API. The screen is at `/refunds` because two routes on one path
+means the one registered first silently wins.
 
 The split is not arbitrary. The showcase must load with no server, no database, and no cold
 start, and every figure on it is read at build time from the JSON the eval harness wrote — so
@@ -13,6 +27,22 @@ it stays true whether or not a backend is up. The approval screen is the opposit
 running system, it writes, and what it writes is the corpus.
 
 ---
+
+## The gate calls a model, in the request path
+
+Confirming a resolution **authors a precedent** — that is the loop the whole project exists
+to close, and `usecases/deposit.py::record_and_deposit` owns one transaction spanning the
+review and the deposit. So the approval gate makes an LLM call while the reviewer waits, and
+the service needs `NVIDIA_API_KEY` (or `GROQ_API_KEY`) to function.
+
+Without a key the gate **refuses every confirmation** rather than banking a review with
+nothing in the corpus behind it. That is deliberate: the two states the design forbids are a
+precedent whose resolution was never reviewed, and a review with no precedent behind it. A
+loud refusal is cheaper than a silent inconsistency in the corpus. Reject still works — it
+deposits nothing by definition.
+
+The same atomicity means a model outage loses the decision too, and the screen says so and
+asks for a retry. The Cloud Run timeout is 120s to leave room for the call.
 
 ## The one constraint that shapes everything
 
@@ -55,6 +85,30 @@ by SHA-256. The hash is computed from the script it just generated, so it cannot
 
 ---
 
+## Backend — Render (the no-billing-account path)
+
+Cloud Run below is the better home for this service. It needs a Google Cloud **billing
+account**, which an AI-Studio-created project does not have — `gcloud services enable` fails
+with `UREQ_PROJECT_BILLING_NOT_FOUND` until one exists. Render's free tier needs no card.
+
+1. [dashboard.render.com](https://dashboard.render.com) → **New → Blueprint**
+2. Connect `krishivsaini/Precedent`; Render reads [`render.yaml`](../render.yaml)
+3. It prompts once for the four secrets (`sync: false` keeps them out of the repo):
+   `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, `RAZORPAY_WEBHOOK_SECRET`, `NVIDIA_API_KEY`
+4. Apply. First build takes a few minutes; afterwards every push to `main` redeploys.
+
+### What the free tier costs
+
+| | |
+|---|---|
+| Sleeps after ~15 min idle | ~50s cold start on the next hit. Razorpay retries on non-2xx, so a webhook landing on a cold instance still arrives. |
+| No persistent disk | `/data` is container-local. `PRECEDENT_SEED_ON_EMPTY=1` reseeds the demo corpus on boot, so the app is always populated — but **the corpus does not accumulate across restarts**, which is the one claim this project makes. |
+
+To make it accumulate, set `LITESTREAM_REPLICA_URL` to any S3-compatible bucket. The
+entrypoint replicates instead of reseeding, with no image change.
+
+---
+
 ## Backend — Google Cloud Run
 
 ### Once
@@ -67,7 +121,8 @@ PROJECT_ID=your-project ./deploy/cloudrun.sh
 
 The script is idempotent — it is also the redeploy command. It enables the APIs, creates the
 versioned bucket, creates a runtime service account scoped to that one bucket, uploads the
-three Razorpay secrets to Secret Manager, builds the image with Cloud Build, and deploys.
+Razorpay secrets and the model key to Secret Manager, builds the image with Cloud Build, and
+deploys.
 
 Re-running **without** the env vars exported leaves existing secret versions untouched, so a
 routine redeploy can never blank a live secret.
@@ -129,6 +184,7 @@ docker run -p 8080:8080 -e LITESTREAM_REPLICA_URL=s3://bucket/precedent preceden
 | `LITESTREAM_REPLICA_URL` | *(unset)* | unset ⇒ no replication, and the entrypoint runs uvicorn directly |
 | `PRECEDENT_SEED_ON_EMPTY` | `0` | only ever acts on a genuinely absent database |
 | `PORT` | `8080` | |
+| `NVIDIA_API_KEY` / `GROQ_API_KEY` | *(unset)* | required for Confirm and Correct; see above |
 
 ### Why seeding is guarded on the file not existing
 
@@ -151,3 +207,9 @@ Checked against the built image, not asserted:
 - **the durability loop end to end**: write a decision, destroy the container, start a fresh
   one — Litestream restores the database, the decision is still there, and the seed correctly
   does *not* re-run
+- **the learning loop end to end, against a live model**: confirming a case authored a real
+  precedent (`prec_0001`, corpus_version 1, `derived_from_resolution=res_0001`), which then
+  appeared under "Authored by operation" on `/corpus` and was cited back on the case screen
+- **the ceiling actually withholds the button**: a ₹328 duplicate refund exceeds the ₹250
+  per-call cap, so `/exceptions/{id}` renders the reason and offers no Approve control at all
+- with no model key configured, a confirmation is refused and `human_action` stays `NULL`

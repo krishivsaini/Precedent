@@ -47,10 +47,13 @@ from precedent.adapters.storage.repositories import (
     PrecedentsRepository,
     ResolutionsRepository,
 )
+from precedent.adapters.llm.base import LLMUnavailable
 from precedent.api.approvals import _now
 from precedent.api.deps import get_connection
 from precedent.domain.case import ReconciliationCase, format_paise
 from precedent.domain.confidence import DEFAULT_AUTO_RESOLVE_THRESHOLD
+from precedent.domain.reasons import ReasonCode
+from precedent.usecases.deposit import DepositRefused, record_and_deposit
 
 router = APIRouter(tags=["ui"])
 
@@ -72,8 +75,9 @@ def latest_result(pattern: str) -> dict | None:
 
 NAV = (
     ("/", "Queue"),
-    ("/learns", "How it learns"),
     ("/corpus", "Corpus"),
+    ("/refunds", "Refunds"),
+    ("/learns", "How it learns"),
     ("/result", "Does it work"),
 )
 
@@ -448,6 +452,49 @@ def _flag(resolution) -> str:
     return ""
 
 
+#: Confirm and Correct deposit; Reject deliberately does not. Mirrors
+#: `usecases.deposit.DEPOSITING_ACTIONS` — restated here because this module decides whether
+#: a model is *required* before it offers the button, which is a UI question, not a use-case one.
+DEPOSITING = frozenset({"confirmed", "corrected"})
+
+
+def depositing_llm():
+    """The model that authors precedents, or `None` when none is configured.
+
+    Returns `None` instead of raising so the *gate* can explain the situation once, rather
+    than every case screen failing with a 500 that tells the reviewer nothing.
+
+    Vendor order mirrors `evals/ablation.py`: the committed results in this repo were
+    measured on NVIDIA NIM, so it is tried first and the running system does what the
+    published curve describes. Exposed as a dependency so tests override it instead of
+    reaching the network.
+    """
+    from precedent.config import groq_api_key, nvidia_api_key
+
+    if nvidia_api_key():
+        from precedent.adapters.llm.nvidia import DEFAULT_MODEL, NvidiaClient
+        return NvidiaClient(model=DEFAULT_MODEL)
+    if groq_api_key():
+        from precedent.adapters.llm.groq import DEFAULT_MODEL, GroqClient
+        return GroqClient(model=DEFAULT_MODEL)
+    return None
+
+
+def _reason_code_or_none(raw: str) -> ReasonCode | None:
+    try:
+        return ReasonCode(raw)
+    except ValueError:
+        return None
+
+
+def _deposited_precedent(conn, resolution_id: str):
+    row = conn.execute(
+        "SELECT precedent_id FROM precedents WHERE derived_from_resolution = ?",
+        (resolution_id,),
+    ).fetchone()
+    return row["precedent_id"] if row else None
+
+
 @router.get("/", response_class=HTMLResponse)
 def queue(conn=Depends(get_connection)):
     rows = conn.execute(
@@ -528,13 +575,24 @@ def detail(resolution_id: str, conn=Depends(get_connection)):
 
     decided = ""
     if resolution.human_action:
-        deposited = resolution.human_action in {"confirmed", "corrected"}
+        # Reports what is actually in the corpus, not what the action implies. The two can
+        # differ — a decision recorded before the deposit path was wired leaves no precedent
+        # — and a screen that asserted the deposit regardless would be the one place in this
+        # system claiming something it had not checked.
+        written = _deposited_precedent(conn, resolution.resolution_id)
+        if written:
+            wrote = (f'<a href="/corpus">Precedent {esc(written)}</a> was written from it '
+                     f'and is now in the corpus, where it will be retrieved on future cases '
+                     f'that look like this one.')
+        elif resolution.human_action == "rejected":
+            wrote = "Nothing was added to the corpus, which is what rejecting means."
+        else:
+            wrote = ("No precedent stands in the corpus for this decision — the review was "
+                     "recorded without one.")
         decided = f"""
         <div class="flag done">
           <h3>You {esc(resolution.human_action)} this</h3>
-          <p>{"A precedent was written from it and is now in the corpus."
-              if deposited else "Nothing was added to the corpus."}
-          Recorded as {esc(resolution.resolution_id)}.</p>
+          <p>{wrote} Recorded as {esc(resolution.resolution_id)}.</p>
         </div>"""
 
     trustworthy = _draft_is_trustworthy(resolution)
@@ -579,6 +637,12 @@ def detail(resolution_id: str, conn=Depends(get_connection)):
         '<button name="human_action" value="confirmed">Confirm anyway</button>'
     )
 
+    # Imported here rather than at module scope: `remediation_ui` imports this module's
+    # shell (`page`, `esc`, `rupees`), so a top-level import either way would be circular.
+    from precedent.api.remediation_ui import second_gate
+
+    money_gate = second_gate(conn, resolution)
+
     gate = "" if resolution.human_action else f"""
     <div class="gate">
       <p class="stakes">{stakes}</p>
@@ -615,6 +679,7 @@ def detail(resolution_id: str, conn=Depends(get_connection)):
       <p class="rationale">{esc(resolution.rationale)}</p>
     </div>
     {gate}
+    {money_gate}
     <a class="back" href="/">Back to the queue</a>""")
 
 
@@ -625,33 +690,125 @@ def decide(
     corrected_reason_code: str = Form(""),
     correction_note: str = Form(""),
     conn=Depends(get_connection),
+    llm=Depends(depositing_llm),
 ):
-    """Record the decision, then redirect so a refresh cannot re-submit it.
+    """Record the decision *and* deposit the precedent it produces, then redirect.
+
+    **The deposit is the point.** Recording the review without authoring a precedent would
+    leave the corpus unable to grow from operation, which is the one claim this project
+    makes. `record_and_deposit` owns a single transaction spanning both, so the two states
+    the system must never reach — a precedent whose resolution was never reviewed, a review
+    with no precedent behind it — are unreachable rather than merely unlikely (FR-7.5).
+
+    That atomicity has a visible consequence: if the model is unavailable, the decision does
+    not record either. Retrying is the right response, and the screen says so. The
+    alternative — banking the review and deferring the deposit — trades a loud failure for a
+    silent inconsistency in the corpus, which is the more expensive of the two by a long way.
 
     Validation is repeated from `api/approvals.py` rather than delegated, because on a screen
-    a form post that silently does nothing is worse than an error — and a correction with no
-    corrected code would deposit the agent's own answer labelled as a human correction.
+    a form post that silently does nothing is worse than an error.
     """
+    back = f'<p><a class="back" href="/exceptions/{esc(resolution_id)}">Back to the case</a></p>'
+
     if human_action not in {"confirmed", "corrected", "rejected"}:
         return page("Not recorded", f"""
         <h1>That action was not recorded</h1>
-        <p class="standfirst">Only confirm, correct and reject are available.</p>
-        <p><a class="back" href="/exceptions/{esc(resolution_id)}">Back to the case</a></p>""")
+        <p class="standfirst">Only confirm, correct and reject are available.</p>{back}""")
+
+    resolutions = ResolutionsRepository(conn)
+    resolution = resolutions.get(resolution_id)
+    if resolution is None:
+        return page("Not found", f"""
+        <h1>No such case</h1>
+        <p class="standfirst">Nothing here matches {esc(resolution_id)}.</p>
+        <p><a class="back" href="/">Back to the queue</a></p>""")
+
+    # Guarding here rather than trusting the hidden gate: the form is gone once a case is
+    # decided, but a stale tab, a back button, or a double submit all reach this handler.
+    # `api/approvals.py` answers 409 for the same reason — a second decision would author a
+    # second precedent with no review behind it.
+    if resolution.human_action is not None:
+        return page("Already decided", f"""
+        <h1>This case was already {esc(resolution.human_action)}</h1>
+        <p class="standfirst">A resolution is decided once.</p>
+        <p class="note">Recording a second decision would write another precedent from the
+        same case, with no review of its own behind it.</p>{back}""")
+
     if human_action == "corrected" and not corrected_reason_code:
         return page("Correction incomplete", f"""
         <h1>Choose what it should have been</h1>
         <p class="standfirst">A correction needs the right answer attached.</p>
         <p class="note">Without one, the agent&rsquo;s own answer would be written into the
-        corpus labelled as your correction — the worst of both.</p>
-        <p><a class="back" href="/exceptions/{esc(resolution_id)}">Back to the case</a></p>""")
+        corpus labelled as your correction — the worst of both.</p>{back}""")
 
-    ResolutionsRepository(conn).record_human_action(
-        resolution_id=resolution_id,
-        human_action=human_action,
-        corrected_payload=(
-            {"reason_code": corrected_reason_code, "note": correction_note}
-            if human_action == "corrected" else None
-        ),
-        resolved_at=_now(),
-    )
+    exception = ExceptionsRepository(conn).get(resolution.exception_id)
+    raw_code = corrected_reason_code or (exception.kind if exception else "")
+    reason_code = _reason_code_or_none(raw_code)
+
+    if human_action in DEPOSITING and reason_code is None:
+        # The agent's own class is not always a storable reason code — the dataset's
+        # `duplicate_payment` and `unmatchable` have no `ReasonCode` member. Refusing beats
+        # coercing: a precedent filed under a code the corpus cannot retrieve on is worse
+        # than no precedent, and correcting it is one field away.
+        return page("Needs a reason code", f"""
+        <h1>This case has no storable reason code</h1>
+        <p class="standfirst">The agent classified it as
+        <code>{esc(raw_code)}</code>, which is not one of the codes the corpus files
+        precedents under.</p>
+        <p class="note">Use <em>Correct it instead</em> and pick the code it should carry.
+        A precedent filed under a code nothing retrieves on would be written and never
+        found.</p>{back}""")
+
+    if human_action in DEPOSITING and llm is None:
+        return page("No model configured", f"""
+        <h1>Nothing can be deposited</h1>
+        <p class="standfirst">Confirming writes a precedent, and authoring one needs a
+        model. None is configured.</p>
+        <p class="note">Set <code>NVIDIA_API_KEY</code> or <code>GROQ_API_KEY</code> and try
+        again. The decision was <strong>not</strong> recorded — banking the review now would
+        leave a reviewed case with nothing in the corpus behind it, which is exactly the
+        inconsistency the gate exists to prevent.</p>{back}""")
+
+    case = _case_for(conn, exception.member_refs if exception else [])
+    try:
+        outcome = record_and_deposit(
+            conn,
+            llm=llm,
+            case=case,
+            resolution_id=resolution_id,
+            # Unused on the `rejected` path, which returns before authoring — so an
+            # unparseable class must not block the one action whose purpose is to say
+            # "this is wrong".
+            reason_code=reason_code or ReasonCode.UNMATCHABLE_NO_COUNTERPART,
+            resolution_narrative=resolution.rationale or "",
+            human_action=human_action,
+            corrected_payload=(
+                {"reason_code": corrected_reason_code, "note": correction_note}
+                if human_action == "corrected" else None
+            ),
+            correction_note=correction_note,
+            now=_now(),
+        )
+    except LLMUnavailable:
+        return page("Model unavailable", f"""
+        <h1>The model could not be reached</h1>
+        <p class="standfirst">Your decision was not recorded, and nothing was written to the
+        corpus.</p>
+        <p class="note">This is an outage, not a judgement about the case. The review and
+        the deposit are one transaction on purpose, so a failed deposit cannot leave a
+        reviewed case with nothing behind it. Try again.</p>{back}""")
+    except DepositRefused as exc:
+        return page("Deposit refused", f"""
+        <h1>That decision was not written</h1>
+        <p class="standfirst">{esc(str(exc))}</p>
+        <p class="note">Policy refused the deposit, so nothing was recorded.</p>{back}""")
+
+    if human_action in DEPOSITING and not outcome.deposited:
+        # Authoring came back empty without raising. Say so rather than redirecting to a
+        # screen that would claim a precedent exists.
+        return page("Nothing deposited", f"""
+        <h1>The decision recorded, but no precedent was written</h1>
+        <p class="standfirst">{esc(outcome.reason or "The model returned nothing usable.")}</p>
+        <p class="note">The corpus did not grow from this case.</p>{back}""")
+
     return RedirectResponse(f"/exceptions/{resolution_id}", status_code=303)

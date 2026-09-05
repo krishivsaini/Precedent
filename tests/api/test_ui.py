@@ -6,11 +6,13 @@ verdict, that the prominent action matches the warning above it, and that a mone
 never prints a raw paise figure.
 """
 
+import json
 import re
 
 import pytest
 from fastapi.testclient import TestClient
 
+from precedent.adapters.llm.scripted import ScriptedLLM
 from precedent.adapters.storage.db import connect, init_db
 from precedent.adapters.storage.records import (
     BankLineRecord,
@@ -29,12 +31,32 @@ from precedent.adapters.storage.repositories import (
     ResolutionsRepository,
 )
 from precedent.api.main import create_app
+from precedent.api.ui import depositing_llm
 
 NOW = "2026-09-03T09:00:00+00:00"
 
 
+#: What the deposit model is scripted to return. The reason code is overridden from the
+#: confirmed resolution inside `author_precedent`, so the value here is deliberately not the
+#: one the assertions depend on.
+AUTHORED = json.dumps({
+    "situation": (
+        "Payments from this counterparty arrive short of the invoice by a proportion "
+        "matching no statutory withholding band, with no refund or fee explaining it."
+    ),
+    "resolution": (
+        "The counterparty settles under a negotiated rebate agreed in their supply "
+        "contract. Reconstruct the invoice from the receipt and close it in full."
+    ),
+    "reason_code": "negotiated_rebate",
+    "entities": ["Coral Textiles"],
+    "amount_signature": "rebate_coral",
+    "confidence_at_deposit": 0.93,
+})
+
+
 def seed(db, *, confidence=0.94, verified=True, rationale="the credit ties out",
-         human_action=None):
+         human_action=None, llm=None):
     conn = connect(str(db))
     init_db(conn)
     PaymentsRepository(conn).insert(PaymentRecord(
@@ -51,7 +73,7 @@ def seed(db, *, confidence=0.94, verified=True, rationale="the credit ties out",
         invoice_no="INV-5672", customer_name="Coral Textiles", terms="net_30",
     ))
     PrecedentsRepository(conn).insert(PrecedentRecord(
-        precedent_id="prec_0001",
+        precedent_id="prec_seed_0001",
         situation="A payment falls short of the invoice by a round percentage with no fee "
                   "or refund explaining the gap.",
         resolution="Reconstruct the gross invoice from the net receipt and match at gross.",
@@ -67,15 +89,31 @@ def seed(db, *, confidence=0.94, verified=True, rationale="the credit ties out",
     ResolutionsRepository(conn).insert(ResolutionRecord(
         resolution_id="res_1", exception_id="exc_1", proposed_by="agent",
         confidence=confidence, rationale=rationale,
-        cited_precedents=["prec_0001"], verified=verified,
+        cited_precedents=["prec_seed_0001"], verified=verified,
     ))
     if human_action:
         ResolutionsRepository(conn).record_human_action(
             resolution_id="res_1", human_action=human_action, resolved_at=NOW,
         )
+        if human_action in {"confirmed", "corrected"}:
+            # A decision that deposits leaves a precedent behind it. Seeding the action
+            # without one would model a state the gate is built to make unreachable, and the
+            # screen reports what is actually in the corpus rather than what the action implies.
+            PrecedentsRepository(conn).insert(PrecedentRecord(
+                precedent_id="prec_0001", situation="A payment falls short of the invoice "
+                "by a proportion no statutory band explains.",
+                resolution="Close it under the counterparty's negotiated rebate.",
+                reason_code="negotiated_rebate", entities=["Coral Textiles"],
+                amount_signature="rebate_coral", confidence_at_deposit=0.93,
+                deposited_at=NOW, corpus_version=1, derived_from_resolution="res_1",
+            ))
     conn.commit()
     conn.close()
-    return TestClient(create_app(db_path=str(db)))
+    app = create_app(db_path=str(db))
+    # Never the network. The gate authors a precedent through this dependency, and a test
+    # that reached a real vendor would be neither deterministic nor runnable from a clone.
+    app.dependency_overrides[depositing_llm] = lambda: llm or ScriptedLLM([AUTHORED] * 4)
+    return TestClient(app)
 
 
 @pytest.fixture
