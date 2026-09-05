@@ -1,11 +1,22 @@
-# Two halves, deployed independently.
+# Two halves, deployed independently — and **manual on purpose**.
 #
 # The showcase is a static page rebuilt from `evals/results/`; the API is a container with a
 # database behind it. They are separate jobs on purpose — republishing the page after a new
 # eval run should not restart the service, and shipping an API fix should not need the eval
 # results to have changed.
 #
-# Required repository secrets:
+# **Why this does not run on push.** Both halves already deploy themselves from git, from the
+# platforms they actually live on: Render watches the repo (`render.yaml`,
+# `autoDeployTrigger: commit`) and Cloudflare Pages builds from its own dashboard-connected
+# repo. Firing this workflow on every push therefore re-deployed nothing that was not already
+# deploying, while failing on credentials it had no reason to hold — a red X on every commit
+# for work that had already succeeded elsewhere.
+#
+# It stays here as the credentialed path for the setup `docs/DEPLOYMENT.md` calls the better
+# home for this service: Cloud Run with a real disk and Litestream replication, once a Google
+# billing account exists. Run it from the Actions tab, or with `gh workflow run deploy`.
+#
+# Required repository secrets (only when you actually dispatch it):
 #   CLOUDFLARE_API_TOKEN       Pages -> Edit permission
 #   CLOUDFLARE_ACCOUNT_ID
 #   GCP_PROJECT_ID
@@ -17,8 +28,6 @@
 name: deploy
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
