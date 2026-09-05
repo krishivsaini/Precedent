@@ -595,3 +595,58 @@ right while the table explaining it was not.
 being careful about much subtler things. Integer arithmetic on the bin index rather than
 division on the value; and a boundary test for every histogram, because an off-by-one in
 labelling produces a plausible table rather than an error.
+
+---
+
+## The reservation the API rolled back
+
+Ring 5's refund path writes a "reservation" row *before* calling Razorpay, so that a call
+whose outcome is never learned leaves evidence: an `approved` row with no refund id, still
+holding its amount against the spending ceiling until a human reconciles it. The whole point
+is to survive the bad case.
+
+It did not survive the bad case. `api.deps.get_connection` scopes a transaction to the HTTP
+request and rolls it back on any exception — so a refund that timed out raised, and the
+rollback took the reservation down with it. A refund may have gone out, and the only record
+that it was ever attempted was discarded on the way to returning the error.
+
+**How it was caught:** four API-level tests written *before* the fix, asserting that a row
+survives a `RefundUnavailable`, a `RefundConflict`, and a `RefundRejected`. All four failed
+with `0 == 1`. Unit tests over the usecase passed throughout — they held the connection
+themselves and never exercised the request boundary, so the bug lived exactly in the seam
+between two layers that were each correct alone.
+
+**Fixed** by committing inside `usecases/remediate.py` at the two points where durability is
+the mechanism rather than a convenience: after writing the reservation, and after recording
+each terminal outcome. This is the only place in the codebase that commits for itself, and
+the docstring says why.
+
+**The lesson:** "write it down before you do the risky thing" is not implemented by writing
+it down. It is implemented by writing it down *and making it durable*, and in a framework
+with request-scoped transactions those are different actions. Test the failure path at the
+layer that owns the transaction, not the layer that owns the logic.
+
+---
+
+## A refusal that could never be reconsidered
+
+`remediations.idempotency_key` was declared `TEXT NOT NULL UNIQUE`, which reads as obviously
+correct: the key is derived from the intent, so one intent gets one row.
+
+Running `scripts/fire_remediation.py` against the live API showed what that actually meant.
+The script's first case demonstrates the default ceiling *refusing* a refund — which writes a
+`refused` row, which claimed the key. The second case, approving the same refund under a
+widened ceiling, was then rejected as a duplicate. **An operator who declined a refund could
+never approve it afterwards, and neither could anyone else.** The `no` was permanent.
+
+**Fixed** with a partial unique index: the key is claimed only by rows where a request may
+actually have reached Razorpay (`approved`, `executed`). A `refused` row sent nothing and a
+`failed` row was refused outright, so neither holds the key.
+
+**How it was caught:** by running the thing, not by reading it. Twenty-six passing unit tests
+did not cover it, because every one of them tested a single decision and the bug needs two —
+a no followed by a yes. The live script hit it on its second call.
+
+**The lesson:** `UNIQUE` encodes a claim about *when* a thing is unique, and the interesting
+half of that claim is usually the exception. An idempotency key should be held exactly as long
+as money might have moved, and not one state longer.

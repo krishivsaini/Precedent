@@ -95,8 +95,20 @@ Stated plainly, because it is easy to overclaim:
 - **Webhooks** have a real dedupe key. `x-razorpay-event-id` is the primary key of
   `webhook_events`; delivery is `INSERT OR IGNORE`, acked 200, and processed from storage
   afterwards — never off the wire.
-- **Refunds** have real native support via the `X-Refund-Idempotency` header (min 10 chars, 409 on
-  conflict). Not yet exercised — refund *creation* is Ring 5.
+- **Refunds** have real native support via the `X-Refund-Idempotency` header. Exercised in Ring 5,
+  and the behaviour below is measured against the live test-mode API rather than read off the docs:
+
+  | request | result |
+  | --- | --- |
+  | first call with the header | `200`, new `rfnd_` id |
+  | same key, byte-identical body | `200`, **the same `rfnd_` id** — a true replay |
+  | same key, different amount | `409 Conflict` |
+  | no header at all | `200`, **a second refund every time** |
+  | key shorter than 10 characters | `400`, `input_validation_failed` |
+
+  Two consequences. The header is the only thing between a retry and a double refund, so the
+  key is *derived* from the intent (`domain/remediation.py`) rather than generated — a process
+  that crashes after sending and retries with a fresh random key refunds twice.
 - **Orders and Payments have no native idempotency header at all.** This is self-enforced with a
   unique `receipt` plus the `idempotency` table. It is not the same guarantee and is not described
   as one.
@@ -105,6 +117,40 @@ A note on `INSERT OR IGNORE`: SQLite applies it to CHECK violations exactly as i
 duplicate-key conflicts — silently, with `rowcount` 0 and no exception. A malformed `event_type`
 was therefore indistinguishable from a harmless replay, so the repository validates `event_type`
 explicitly before inserting. The CHECK constraint remains as defence in depth for direct writers.
+
+### Refund creation bypasses the Razorpay SDK
+
+The second consequence of the table above, and the one that shaped the code. Spec §4 requires
+handling `409 Conflict` explicitly, and **the SDK cannot express it**: `razorpay.Client.request`
+reads `response.status_code` only to decide 2xx-or-not, then selects the exception class from the
+*body's* `error.code`. The 409 and the 400 both carry `"code": "BAD_REQUEST_ERROR"`, so both
+arrive as `BadRequestError` with nothing to separate them.
+
+"You reused a key for a different request" and "your key is malformed" need opposite responses —
+stop and reconcile, versus fix and retry — so `adapters/razorpay/refunds.py` talks to
+`POST /v1/payments/{id}/refund` over plain HTTP, where the status line survives. Order creation
+and payment fetch stay on the SDK: they have no idempotency semantics to lose.
+
+Ring 0 left this unimplemented with a note that the header wiring had to be verified against a
+live account before being relied on. It was, and the verification changed the design — which is
+the argument for having deferred it rather than guessing.
+
+### Two gates, because they are two different questions
+
+The resolution gate asks *is this the right explanation?* The remediation gate asks *should we
+move this money?* They are separate endpoints, separate tables, and separate approvals: a
+confirmed resolution authorises nothing, and a reviewer who accepts a diagnosis is free to refuse
+the refund that follows from it. Collapsing them would make agreeing with the agent into an
+instruction to pay.
+
+The spending ceiling behind the second gate is three limits, not one — a count, a total, and a
+per-call cap — because each catches what the others let through: a loop firing one small refund
+repeatedly, many individually-reasonable refunds, and a single misplaced decimal. It is computed
+from the `remediations` table on every check, never from a counter, so a restart cannot widen it.
+
+`remediations` is a deliberate addition to spec §4's schema. A ceiling on money has to be
+recomputable from storage, and `audit_log` records that something was acted on but carries no
+paise column — a ceiling derived from it could only count events, not rupees.
 
 ### The webhook receiver always acks
 
@@ -280,6 +326,37 @@ committed before 2026-09-03 came from `openai/gpt-oss-120b`, which reached end o
 08:00 UTC that day — mid-run. Those results stand as the record of what was measured and are
 **not comparable** with these.
 
+### Ring 4 — the threshold, priced
+
+The placeholder 0.8 became 0.90, and the change is traceable to
+`evals/results/calibration-*.json` rather than to judgement about what sounds safe. Against the
+placeholder, on the grounded graph arm over 134 pool exceptions, 0.90 gives up **0.75 percentage
+points** of resolution rate — one case — and removes **₹23,739** of false-resolution exposure, a
+19% cut in the number spec §6 calls "the number that gets someone fired".
+
+0.85 is free but removes only ₹5,107; past 0.90 the trade turns sharply, with 0.92 costing 6pp for
+₹11k more. Preferring the priced cutoff over the free one is a judgement about this domain — in
+reconciliation a false accept is the failure that matters and a point of coverage is cheap against
+it — and the report says so rather than presenting it as what the numbers decided.
+
+The full sweep is a standing section of the eval report, including the reliability table that
+makes the system look worst.
+
+### Ring 5 — one real refund, and the two limits it ran into
+
+`rfnd_TYLGPnBwDurta9`, ₹3,836.00, processed against a real test-mode payment through the
+remediation gate. Three things were demonstrated in one run, in this order:
+
+1. **The default ceiling refused it** — ₹3,836 against a ₹250 per-call cap. Nothing was sent.
+2. **A deliberately widened ceiling let it through**, and the widening is printed rather than
+   silent.
+3. **The same intent, replayed, returned the original refund id** with no second call. Confirmed
+   against the API itself and not merely against our own table: the payment carries exactly one
+   refund, for two `execute_remediation` calls.
+
+Both defects Ring 5 produced are in FAILURES.md. Neither was found by reading the code: one took
+an API-level test of the failure path, the other took running the script against the live account.
+
 ## 6. Limits
 
 Known and stated up front, not discovered by a reviewer:
@@ -291,8 +368,15 @@ Known and stated up front, not discovered by a reviewer:
   answer is known because the scenario was deliberately built to have it. That makes the labels
   reliable but also means the exception mix reflects the spec's chosen distribution, not an
   organically observed one.
-- **Thresholds are not yet calibrated.** The confidence threshold is a placeholder constant until
-  Ring 4 sets it from a calibration curve.
+- **The agent is badly miscalibrated, and non-monotonically.** Ring 4 set the threshold from
+  measured outcomes rather than intuition, but the curve it was fitted to is not a curve: the
+  agent is right 73.8% of the time when it says 0.90 and 63.4% when it says 0.95, so its most
+  confident answers are among its least reliable, and a stated 1.00 is anti-predictive across all
+  arms. The 0.90 operating point is therefore evidence about **this model and this prompt** and
+  nothing else — re-derive it whenever either changes.
+- **Remediation has been fired exactly once.** One real test-mode refund, on a staged duplicate.
+  The ceiling, the stopping rule and the 409 path are covered by tests, but the live evidence is a
+  single call — enough to prove the wiring, not enough to characterise it.
 - **Retrieval score is not a relevance signal.** BM25 ranks well (90% same-class at top-3) but
   its scores do not separate relevant precedents from irrelevant ones — measured, not assumed:
   other-class hits sit *closer* to the top score than same-class hits do. So there is no

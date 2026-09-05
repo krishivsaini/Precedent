@@ -26,6 +26,7 @@ from precedent.adapters.storage.records import (
     LedgerEntryRecord,
     PaymentRecord,
     PrecedentRecord,
+    RemediationRecord,
     ResolutionRecord,
     WebhookEventRecord,
 )
@@ -302,6 +303,86 @@ class AuditLogRepository:
         return [_row_to_audit_log(row) for row in rows]
 
 
+class RemediationsRepository:
+    def __init__(self, conn: sqlite3.Connection):
+        self._conn = conn
+
+    def insert(self, record: RemediationRecord) -> None:
+        self._conn.execute(
+            """
+            INSERT INTO remediations
+                (remediation_id, resolution_id, payment_id, amount_paise, idempotency_key,
+                 refund_id, status, approved_by, reason, correlation_id, created_at,
+                 executed_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
+            (
+                record.remediation_id, record.resolution_id, record.payment_id,
+                record.amount_paise, record.idempotency_key, record.refund_id,
+                record.status, record.approved_by, record.reason, record.correlation_id,
+                record.created_at, record.executed_at,
+            ),
+        )
+
+    def get(self, remediation_id: str) -> RemediationRecord | None:
+        row = self._conn.execute(
+            "SELECT * FROM remediations WHERE remediation_id = ?", (remediation_id,)
+        ).fetchone()
+        return _row_to_remediation(row) if row else None
+
+    def get_by_idempotency_key(self, key: str) -> RemediationRecord | None:
+        """The live claim on this key, if any: a retry of the same intent derives the same
+        key and is recognised here, before a request is sent. The `X-Refund-Idempotency`
+        header is the backstop for the window between sending and recording.
+
+        Only 'approved' and 'executed' rows count, matching `idx_remediations_live_key` —
+        a refusal sent nothing and must not block a later approval of the same intent.
+        """
+        row = self._conn.execute(
+            "SELECT * FROM remediations WHERE idempotency_key = ? "
+            "AND status IN ('approved', 'executed') LIMIT 1",
+            (key,),
+        ).fetchone()
+        return _row_to_remediation(row) if row else None
+
+    def list_by_resolution(self, resolution_id: str) -> list[RemediationRecord]:
+        rows = self._conn.execute(
+            "SELECT * FROM remediations WHERE resolution_id = ? ORDER BY created_at",
+            (resolution_id,),
+        ).fetchall()
+        return [_row_to_remediation(row) for row in rows]
+
+    def mark_executed(self, remediation_id: str, refund_id: str, executed_at: str) -> None:
+        self._conn.execute(
+            "UPDATE remediations SET status = 'executed', refund_id = ?, executed_at = ? "
+            "WHERE remediation_id = ?",
+            (refund_id, executed_at, remediation_id),
+        )
+
+    def mark_failed(self, remediation_id: str, reason: str) -> None:
+        """Terminal failure — the request was *refused*, so no money moved and the
+        reservation is released. Never use this for a timeout: an unknown outcome must stay
+        'approved' and keep holding its amount against the ceiling."""
+        self._conn.execute(
+            "UPDATE remediations SET status = 'failed', reason = ? WHERE remediation_id = ?",
+            (reason, remediation_id),
+        )
+
+    def usage(self) -> tuple[int, int]:
+        """`(refund_count, total_paise)` counted against the ceiling.
+
+        Counts 'approved' alongside 'executed'. An approved-but-unconfirmed row is a refund
+        that may have landed, and budget released on a maybe is budget that can be spent
+        twice. 'failed' and 'refused' rows are excluded because for those the API told us,
+        in so many words, that nothing happened.
+        """
+        row = self._conn.execute(
+            "SELECT COUNT(*) AS n, COALESCE(SUM(amount_paise), 0) AS total "
+            "FROM remediations WHERE status IN ('approved', 'executed')"
+        ).fetchone()
+        return int(row["n"]), int(row["total"])
+
+
 class IdempotencyRepository:
     def __init__(self, conn: sqlite3.Connection):
         self._conn = conn
@@ -387,6 +468,17 @@ def _row_to_audit_log(row: sqlite3.Row) -> AuditLogRecord:
         actor=row["actor"], input_digest=row["input_digest"], output_digest=row["output_digest"],
         model=row["model"], latency_ms=row["latency_ms"], tokens=row["tokens"],
         reason=row["reason"], created_at=row["created_at"],
+    )
+
+
+def _row_to_remediation(row: sqlite3.Row) -> RemediationRecord:
+    return RemediationRecord(
+        remediation_id=row["remediation_id"], resolution_id=row["resolution_id"],
+        payment_id=row["payment_id"], amount_paise=row["amount_paise"],
+        idempotency_key=row["idempotency_key"], refund_id=row["refund_id"],
+        status=row["status"], approved_by=row["approved_by"], reason=row["reason"],
+        correlation_id=row["correlation_id"], created_at=row["created_at"],
+        executed_at=row["executed_at"],
     )
 
 

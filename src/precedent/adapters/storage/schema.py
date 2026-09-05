@@ -119,6 +119,37 @@ CREATE TABLE IF NOT EXISTS audit_log (
     created_at      TEXT NOT NULL
 );
 
+-- Ring 5. Not in spec §4's schema, and added deliberately rather than by drift: the
+-- remediation ceiling is a limit on *money*, and it has to be recomputable from storage
+-- after a restart. `audit_log` records that something was acted on but carries no paise
+-- column, so a ceiling derived from it could only ever count events, not rupees.
+--
+-- `status = 'approved'` means reserved-but-unconfirmed, and reserved amounts count against
+-- the ceiling. A refund whose call times out leaves this row at 'approved' forever, which
+-- holds the money against the limit permanently until a human reconciles it. That is the
+-- intended behaviour: the alternative releases budget for a refund that may well have landed.
+CREATE TABLE IF NOT EXISTS remediations (
+    remediation_id  TEXT PRIMARY KEY,
+    resolution_id   TEXT NOT NULL REFERENCES resolutions(resolution_id),
+    payment_id      TEXT NOT NULL,
+    amount_paise    INTEGER NOT NULL CHECK (
+        typeof(amount_paise) = 'integer' AND amount_paise > 0
+    ),
+    -- The local half of idempotency. Uniqueness is enforced by a *partial* index below
+    -- rather than here, because the key must be held exactly while money might have moved
+    -- and not a moment longer.
+    idempotency_key TEXT NOT NULL,
+    refund_id       TEXT,
+    status          TEXT NOT NULL CHECK (
+        status IN ('approved', 'executed', 'refused', 'failed')
+    ),
+    approved_by     TEXT NOT NULL DEFAULT '',
+    reason          TEXT NOT NULL DEFAULT '',
+    correlation_id  TEXT NOT NULL,
+    created_at      TEXT NOT NULL,
+    executed_at     TEXT
+);
+
 CREATE TABLE IF NOT EXISTS idempotency (
     key             TEXT PRIMARY KEY,
     request_digest  TEXT NOT NULL,
@@ -131,4 +162,16 @@ CREATE INDEX IF NOT EXISTS idx_precedents_corpus_version ON precedents(corpus_ve
 CREATE INDEX IF NOT EXISTS idx_audit_log_correlation_id ON audit_log(correlation_id);
 CREATE INDEX IF NOT EXISTS idx_ledger_entries_order_id ON ledger_entries(order_id);
 CREATE INDEX IF NOT EXISTS idx_payments_order_id ON payments(order_id);
+-- Partial, and the partiality is the point. A key is claimed only by rows where a request
+-- may have reached Razorpay ('approved' = sent, outcome unknown; 'executed' = it landed).
+--
+-- A 'refused' row never sent anything, so it must not burn the key: an operator who
+-- declines a refund and later approves it — or widens the ceiling and retries — would
+-- otherwise be blocked forever by their own earlier no. A plain UNIQUE column did exactly
+-- that, discovered by running `scripts/fire_remediation.py` rather than by reading it.
+-- 'failed' is the same case: the API refused the request outright, so nothing moved.
+CREATE UNIQUE INDEX IF NOT EXISTS idx_remediations_live_key
+    ON remediations(idempotency_key) WHERE status IN ('approved', 'executed');
+CREATE INDEX IF NOT EXISTS idx_remediations_status ON remediations(status);
+CREATE INDEX IF NOT EXISTS idx_remediations_resolution_id ON remediations(resolution_id);
 """

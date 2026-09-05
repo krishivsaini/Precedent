@@ -108,6 +108,22 @@ class AuditLogRecord:
 
 
 @dataclass(frozen=True)
+class RemediationRecord:
+    remediation_id: str
+    resolution_id: str
+    payment_id: str
+    amount_paise: int
+    idempotency_key: str
+    status: str
+    correlation_id: str
+    created_at: str
+    refund_id: str | None = None
+    approved_by: str = ""
+    reason: str = ""
+    executed_at: str | None = None
+
+
+@dataclass(frozen=True)
 class IdempotencyRecord:
     key: str
     request_digest: str

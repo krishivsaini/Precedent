@@ -1,0 +1,49 @@
+{
+  "run_id": "2026-09-05T11:39:18.493867+00:00",
+  "what_this_demonstrates": "A real Razorpay test-mode refund fired through the remediation gate, the default ceiling refusing the same refund, and an idempotent replay. The duplicate-payment exception is staged over two real captures.",
+  "payment_id": "pay_TWToKPjPY4ZaCX",
+  "amount_paise": 383600,
+  "idempotency_key": "rem-44c3e4be4dd3f9c8",
+  "cases": [
+    {
+      "case": "default_ceiling_refuses",
+      "ceiling": {
+        "max_refunds": 3,
+        "max_total_paise": 50000,
+        "max_single_paise": 25000
+      },
+      "executed": false,
+      "reason": "single-refund cap exceeded: 383600 paise requested, cap is 25000",
+      "refund_id": null
+    },
+    {
+      "case": "live_refund",
+      "ceiling": {
+        "max_refunds": 3,
+        "max_total_paise": 767200,
+        "max_single_paise": 383600
+      },
+      "executed": true,
+      "refund_id": "rfnd_TYLGPnBwDurta9",
+      "replayed": false,
+      "reason": "refunded 383600 paise as rfnd_TYLGPnBwDurta9"
+    },
+    {
+      "case": "idempotent_replay",
+      "executed": true,
+      "replayed": true,
+      "refund_id": "rfnd_TYLGPnBwDurta9",
+      "same_refund_as_first": true
+    }
+  ],
+  "ceiling_after": {
+    "max_refunds": 3,
+    "max_total_paise": 767200,
+    "max_single_paise": 383600,
+    "refunds_made": 1,
+    "total_paise": 383600,
+    "remaining_refunds": 2,
+    "remaining_paise": 383600,
+    "exhausted": false
+  }
+}

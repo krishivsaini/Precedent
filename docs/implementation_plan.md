@@ -279,7 +279,7 @@ report renders from committed files; `FAILURES.md` updated.
 
 ---
 
-## Ring 4 — Calibration
+## Ring 4 — Calibration ✅
 
 **Gate:** re-measure after threshold changes; confirm precision-at-coverage moved in the intended
 direction, not merely that accuracy rose.
@@ -290,12 +290,19 @@ direction, not merely that accuracy rose.
   `domain/confidence.py`; document the operating point and its precision/coverage tradeoff.
 - **4.3** Precision-at-coverage as a standing metric in the report.
 
-**Exit:** the threshold change is traceable to calibration data, not intuition; before/after
-committed.
+**Exit:** ✅ the threshold change is traceable to calibration data, not intuition; before/after
+committed. `DEFAULT_AUTO_RESOLVE_THRESHOLD` moved 0.8 → **0.90**, set from
+`evals/results/calibration-2026-09-04-1751.json`: 0.75pp of resolution rate given up to remove
+₹23,739 of false-resolution exposure. Precision-at-coverage and the reliability table are a
+standing section of the eval report (4.3).
+
+> ⚠️ **The curve it was fitted to is not monotonic.** The agent is right 73.8% of the time at a
+> stated 0.90 and 63.4% at 0.95, and a stated 1.00 is anti-predictive. The operating point is
+> evidence about this model and this prompt only.
 
 ---
 
-## Ring 5 — Bounded remediation
+## Ring 5 — Bounded remediation ✅
 
 **Gate:** re-measure; ceiling and stopping rule demonstrably enforced, not merely coded.
 
@@ -306,8 +313,21 @@ committed.
 - **5.2** A second gate distinct from the resolution gate, showing ceiling and usage. Prove the
   stopping rule by driving the ceiling to exhaustion in a test, not by code review.
 
-**Exit:** a real test-mode refund fired end-to-end under the gate; ceiling test passes; final
-report re-run and committed.
+**Exit:** ✅ `rfnd_TYLGPnBwDurta9`, ₹3,836.00, fired end-to-end against the live test-mode API
+through the remediation gate — with the default ceiling refusing the same refund first, and an
+idempotent replay returning the original id (confirmed against the API: one refund, two calls).
+Ceiling driven to exhaustion in tests at both the domain and usecase layers. Report re-run and
+committed.
+
+**5.1 changed the design.** The SDK's header wiring was verified against a live call as the plan
+required, and the verification disqualified it: `razorpay.Client.request` discards
+`response.status_code` and picks its exception from the body's error code, where a 409 and a 400
+are both `BAD_REQUEST_ERROR`. Refund creation therefore bypasses the SDK. See ARCHITECTURE.md.
+
+> ⚠️ **Two defects, neither found by reading the code.** A request-scoped rollback silently
+> discarded the reservation row on every failed refund — caught by API-level tests of the failure
+> path. A `UNIQUE` idempotency key meant a refusal could never be reconsidered — caught by running
+> the live script. Both in FAILURES.md.
 
 ---
 
