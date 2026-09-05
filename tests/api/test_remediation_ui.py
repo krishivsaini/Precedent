@@ -129,6 +129,24 @@ class TestABlockedRefundOffersNoButton:
             flat(client.get("/exceptions/res_dup").text)
 
 
+class TestConfirmingADuplicateReachesTheMoneyGate:
+    """The path a judge actually takes.
+
+    Before `domain.reasons.reason_code_for`, an agent-classified `duplicate_payment` was not
+    a `ReasonCode`, so confirming it was refused outright — and Ring 5, which triggers only
+    on `duplicate_payment_rejected`, could not be reached without the reviewer knowing to
+    correct the code first. The most interesting screen in the system was one non-obvious
+    step away.
+    """
+
+    def test_the_agents_own_classification_opens_the_refund_gate(self, app_with):
+        client, _, _ = app_with(kind="duplicate_payment")
+        body = flat(client.get("/exceptions/res_dup").text)
+        assert "Does money need to move?" in body
+        assert "Approve and send" in body
+        assert "no storable reason code" not in body
+
+
 class TestWhenNoMoneyNeedsToMove:
     def test_it_says_so_rather_than_rendering_nothing(self, app_with):
         # The commonest answer, and a real one. Rendering nothing would leave the reviewer

@@ -42,6 +42,7 @@ from precedent.adapters.storage.repositories import (
     ResolutionsRepository,
 )
 from precedent.domain.reasons import ReasonCode
+from precedent.domain.reasons import reason_code_for
 from precedent.domain.remediation import (
     CeilingUsage,
     RemediationCeiling,
@@ -135,9 +136,16 @@ def propose_remediation(conn, resolution_id: str, reason_code: str | None = None
     if exception is None:
         raise RemediationRefused(f"resolution {resolution_id} has no exception behind it")
 
-    code = reason_code or _reason_code_of(resolution) or exception.kind
-    if code not in REMEDIABLE_REASON_CODES:
+    # Resolved rather than compared raw. The three sources disagree on vocabulary: a
+    # caller's override and a reviewer's correction are `ReasonCode` values, while an
+    # agent's own classification is the exception's `kind` — and `duplicate_payment` is the
+    # kind whose code is `duplicate_payment_rejected`. Comparing the kind directly meant an
+    # agent-classified duplicate charge could never be proposed for a refund, which made
+    # this entire use case unreachable without a reviewer correcting the code by hand.
+    resolved = reason_code_for(reason_code or _reason_code_of(resolution) or exception.kind)
+    if resolved is None or resolved.value not in REMEDIABLE_REASON_CODES:
         return None
+    code = resolved.value
 
     payment_id, amount_paise = _duplicate_payment_to_refund(conn, exception)
     if payment_id is None:

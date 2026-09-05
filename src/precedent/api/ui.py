@@ -52,7 +52,7 @@ from precedent.api.approvals import _now
 from precedent.api.deps import get_connection
 from precedent.domain.case import ReconciliationCase, format_paise
 from precedent.domain.confidence import DEFAULT_AUTO_RESOLVE_THRESHOLD
-from precedent.domain.reasons import ReasonCode
+from precedent.domain.reasons import ReasonCode, reason_code_for
 from precedent.usecases.deposit import DepositRefused, record_and_deposit
 
 router = APIRouter(tags=["ui"])
@@ -525,10 +525,14 @@ def depositing_llm():
 
 
 def _reason_code_or_none(raw: str) -> ReasonCode | None:
-    try:
-        return ReasonCode(raw)
-    except ValueError:
-        return None
+    """A corrected code, or the code the agent's own exception kind concludes to.
+
+    Delegated to the domain because the two vocabularies genuinely differ: a reviewer's
+    correction arrives as a `ReasonCode`, an agent's classification as an exception `kind`,
+    and four kinds resolve to a differently-named code. Resolving them at the call site is
+    how `duplicate_payment` used to reach this gate as "no storable reason code".
+    """
+    return reason_code_for(raw)
 
 
 def _deposited_precedent(conn, resolution_id: str):
@@ -796,10 +800,10 @@ def decide(
     reason_code = _reason_code_or_none(raw_code)
 
     if human_action in DEPOSITING and reason_code is None:
-        # The agent's own class is not always a storable reason code — the dataset's
-        # `duplicate_payment` and `unmatchable` have no `ReasonCode` member. Refusing beats
-        # coercing: a precedent filed under a code the corpus cannot retrieve on is worse
-        # than no precedent, and correcting it is one field away.
+        # Reached only when the class maps to nothing at all — `domain.reasons` already
+        # resolves every kind the generator produces. Refusing beats coercing: a precedent
+        # filed under a code the corpus cannot retrieve on is worse than no precedent, and
+        # correcting it is one field away.
         return page("Needs a reason code", f"""
         <h1>This case has no storable reason code</h1>
         <p class="standfirst">The agent classified it as
