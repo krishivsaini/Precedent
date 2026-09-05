@@ -11,7 +11,8 @@ import re
 
 import pytest
 
-from evals.report import build_report, latest, pct
+from evals.report import build_report, esc, latest, pct
+from precedent.domain.confidence import DEFAULT_AUTO_RESOLVE_THRESHOLD
 
 
 class TestFormatting:
@@ -104,6 +105,65 @@ class TestItLeadsWithTheLimitations:
         # "Grounding gives +14.5pp" over-claims by more than 2x; the split is the honest form.
         assert "from having precedents" in report
         assert "their relevance" in report
+
+
+class TestCalibrationIsAStandingMetric:
+    """Ring 4.3. The threshold in `domain/confidence.py` was set from this sweep, so a
+    report that carried the threshold without the curve behind it would be asking to be
+    trusted on the number rather than on the evidence for it."""
+
+    @staticmethod
+    @pytest.fixture(scope="class")
+    def report():
+        return build_report()
+
+    def test_it_renders_without_a_calibration_result(self, tmp_path, monkeypatch):
+        monkeypatch.setattr("evals.report.RESULTS_DIR", tmp_path)
+        assert "No calibration result committed yet" in build_report()
+
+    def test_every_sweep_row_comes_from_the_committed_json(self, report):
+        calibration = latest("calibration-*.json")
+        assert calibration, "the Ring 4 calibration result should be committed"
+        for row in calibration["sweep_graph_grounded"]:
+            assert f"{row['threshold']:.2f}" in report
+            assert pct(row["resolution_rate"]) in report
+
+    def test_the_reliability_bins_are_carried_through(self, report):
+        calibration = latest("calibration-*.json")
+        for row in calibration["reliability_graph_grounded"]:
+            assert pct(row["observed_accuracy"]) in report
+
+    def test_the_adopted_threshold_matches_the_constant_it_set(self, report):
+        # The traceability Ring 4's exit asks for: if someone edits the constant without
+        # re-running the sweep, this fails rather than the report quietly disagreeing with
+        # the code.
+        calibration = latest("calibration-*.json")
+        assert calibration["recommendation"]["recommended"] == pytest.approx(
+            DEFAULT_AUTO_RESOLVE_THRESHOLD
+        )
+        assert f"{DEFAULT_AUTO_RESOLVE_THRESHOLD:.2f}" in report
+
+    def test_the_price_of_the_threshold_is_stated_not_just_the_threshold(self, report):
+        assert esc(latest("calibration-*.json")["recommendation"]["why"]) in report
+
+    def test_the_miscalibration_verdict_is_derived_from_the_bins(self, report):
+        # An earlier section elsewhere in this report hard-coded a verdict that was true of
+        # one run and false of the next. Same trap, so the same test.
+        rows = sorted(
+            latest("calibration-*.json")["reliability_graph_grounded"],
+            key=lambda r: r["stated_confidence"],
+        )
+        monotonic = all(
+            a["observed_accuracy"] <= b["observed_accuracy"]
+            for a, b in zip(rows, rows[1:])
+        )
+        if monotonic:
+            assert "does rise with observed accuracy" in report
+        else:
+            assert "not</strong> rise with observed accuracy" in report
+
+    def test_it_says_the_threshold_is_not_portable(self, report):
+        assert "re-derive it" in report.lower()
 
 
 class TestSelfContained:

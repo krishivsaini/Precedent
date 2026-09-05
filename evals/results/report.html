@@ -15,10 +15,12 @@ result file; none is typed in. Regenerate rather than edit. -->
   th, td { text-align: left; padding: .5rem .65rem; border-bottom: 1px solid #e6e3dd; }
   th { background: #f3f1ec; font-weight: 600; }
   td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  th.num { text-align: right; }
   td.strong { font-weight: 650; }
   td.control { color: #9a6a00; }
   td.yes { color: #1a7f4b; font-weight: 600; }
   td.no { color: #8a8a8a; }
+  tr.chosen td { background: #f3f1ec; font-weight: 650; }
   .callout { background: #fff; border: 1px solid #e6e3dd; border-left: 3px solid #14181f;
              padding: .9rem 1.1rem; margin: 1.4rem 0; border-radius: 3px; }
   .callout h3 { margin-top: 0; }
@@ -33,7 +35,7 @@ result file; none is typed in. Regenerate rather than edit. -->
 </style>
 
 <h1>Precedent — eval report</h1>
-<p class="sub">Generated 2026-09-04 17:36 UTC from committed result files. Every figure is read from
+<p class="sub">Generated 2026-09-05 11:43 UTC from committed result files. Every figure is read from
 JSON; none is transcribed. Regenerating this page is a reproducibility check.</p>
 
 <div class="callout">
@@ -112,6 +114,37 @@ JSON; none is transcribed. Regenerating this page is a reproducibility check.</p
     <p class="note">Feature hashing over surface tokens. Cannot relate &#x27;withholding&#x27; to &#x27;TDS&#x27;. The dense and hybrid arms below are therefore lower bounds; a real embedding model is required before any claim that hybrid beats lexical.</p>
     
 
+    <h2>Calibration and precision at coverage</h2>
+    <p>Does a resolution proposed at 0.90 confidence actually get confirmed 90% of the time?
+    Scored over 804 cases; the table below is the grounded graph arm,
+    which is the one the operating point governs.</p>
+    <table>
+      <thead><tr><th>Stated confidence</th><th class="num">n</th>
+      <th class="num">Observed accuracy</th><th class="num">Gap</th></tr></thead>
+      <tbody><tr><td class='num'>0.80</td><td class='num'>2</td><td class='num'>0.0%</td><td class='num'>-80.0%</td></tr><tr><td class='num'>0.85</td><td class='num'>7</td><td class='num'>14.3%</td><td class='num'>-70.7%</td></tr><tr><td class='num'>0.90</td><td class='num'>42</td><td class='num'>73.8%</td><td class='num'>-16.2%</td></tr><tr><td class='num'>0.95</td><td class='num'>71</td><td class='num'>63.4%</td><td class='num'>-31.6%</td></tr><tr><td class='num'>1.00</td><td class='num'>1</td><td class='num'>100.0%</td><td class='num'>+0.0%</td></tr></tbody>
+    </table>
+    <div class="callout">
+      <h3>It is miscalibrated, and not even monotonically</h3>
+      <p>Stated confidence does <strong>not</strong> rise with observed accuracy: the agent's most confident answers are among its least reliable, so the operating point below is fitted to a shape, not read off a trend. Every bin overstates itself. This is the constraint that makes the
+      threshold below a fact about <em>this model and this prompt</em> rather than a
+      portable setting — re-derive it whenever either changes.</p>
+    </div>
+
+    <h3>Precision at coverage — what each operating point costs and buys</h3>
+    <table>
+      <thead><tr><th>Threshold</th><th class="num">Resolution rate</th>
+      <th class="num">Escalation rate</th><th class="num">Error rate</th>
+      <th class="num">False-resolution exposure</th></tr></thead>
+      <tbody><tr><td class='num'>0.50</td><td class='num'>58.2%</td><td class='num'>8.2%</td><td class='num'>33.6%</td><td class='num'>INR 123,680</td></tr><tr><td class='num'>0.70</td><td class='num'>58.2%</td><td class='num'>8.2%</td><td class='num'>33.6%</td><td class='num'>INR 123,680</td></tr><tr><td class='num'>0.80</td><td class='num'>58.2%</td><td class='num'>8.2%</td><td class='num'>33.6%</td><td class='num'>INR 123,680</td></tr><tr><td class='num'>0.85</td><td class='num'>58.2%</td><td class='num'>9.7%</td><td class='num'>32.1%</td><td class='num'>INR 118,573</td></tr><tr><td class='num'>0.88</td><td class='num'>57.5%</td><td class='num'>14.9%</td><td class='num'>27.6%</td><td class='num'>INR 109,220</td></tr><tr class=chosen><td class='num'>0.90</td><td class='num'>57.5%</td><td class='num'>17.2%</td><td class='num'>25.4%</td><td class='num'>INR 99,941</td></tr><tr><td class='num'>0.92</td><td class='num'>51.5%</td><td class='num'>26.1%</td><td class='num'>22.4%</td><td class='num'>INR 88,670</td></tr><tr><td class='num'>0.95</td><td class='num'>31.3%</td><td class='num'>49.2%</td><td class='num'>19.4%</td><td class='num'>INR 75,247</td></tr><tr><td class='num'>0.99</td><td class='num'>0.0%</td><td class='num'>100.0%</td><td class='num'>0.0%</td><td class='num'>INR 0</td></tr></tbody>
+    </table>
+    <p>Adopted: <strong>0.90</strong> —
+    gives up 0.75pp of resolution rate to remove INR 23,739 of exposure. Chosen over the free improvement at
+    0.85, which costs no
+    coverage but removes far less exposure. Preferring the priced cutoff is a judgement about
+    reconciliation — a false accept is the failure that matters and a point of coverage is
+    cheap against it — not something the numbers settle on their own.</p>
+    
+
     <h2>Deposit prompt versions</h2>
     <p>Spec §4 asks the eval to measure whether one prompt version authors better precedents
     than another — prompt engineering with a number attached.</p>
@@ -130,7 +163,7 @@ test set — every test record is an exception by construction, so a rules-only 
 score zero there. That is the floor the agent has to beat.</p>
 
 <footer>
-  Sources: learning-curve, ablation (chain), ablation (graph), retrieval, deposit-prompt, rules baseline. Model:
+  Sources: learning-curve, ablation (chain), ablation (graph), retrieval, deposit-prompt, calibration, rules baseline. Model:
   <code>nvidia/nemotron-3-super-120b-a12b</code>.
   Regenerate with <code>uv run python -m evals.report</code>.
 </footer>

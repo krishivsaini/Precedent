@@ -226,19 +226,103 @@ def deposit_section(deposit: dict) -> str:
     """
 
 
+def calibration_section(calibration: dict) -> str:
+    """Ring 4.3 — precision at coverage, as a standing metric rather than a one-off note.
+
+    The threshold in `domain/confidence.py` was set from this sweep, and a report that
+    carried the threshold without the curve behind it would be asking to be trusted on the
+    number rather than on the evidence for it. It also happens to be the least flattering
+    table on the page, which is the best argument for its being here.
+    """
+    if not calibration:
+        return """
+    <h2>Calibration and precision at coverage</h2>
+    <p class="missing">No calibration result committed yet — run
+    <code>uv run python -m evals.calibration</code>.</p>
+    """
+
+    reliability = "".join(
+        f"<tr><td class='num'>{row['stated_confidence']:.2f}</td>"
+        f"<td class='num'>{row['n']}</td>"
+        f"<td class='num'>{pct(row['observed_accuracy'])}</td>"
+        f"<td class='num'>{row['gap']:+.1%}</td></tr>"
+        for row in calibration["reliability_graph_grounded"]
+    )
+    recommended = calibration["recommendation"]["recommended"]
+    sweep = "".join(
+        f"<tr{' class=chosen' if row['threshold'] == recommended else ''}>"
+        f"<td class='num'>{row['threshold']:.2f}</td>"
+        f"<td class='num'>{pct(row['resolution_rate'])}</td>"
+        f"<td class='num'>{pct(row['escalation_rate'])}</td>"
+        f"<td class='num'>{pct(row['error_rate'])}</td>"
+        f"<td class='num'>INR {row['false_resolution_cost_inr']:,.0f}</td></tr>"
+        for row in calibration["sweep_graph_grounded"]
+    )
+
+    # Derived, never asserted: whether confidence predicts correctness at all is the whole
+    # question this section answers, and hard-coding the answer would make it decoration.
+    rows = calibration["reliability_graph_grounded"]
+    ordered = sorted(rows, key=lambda r: r["stated_confidence"])
+    monotonic = all(
+        a["observed_accuracy"] <= b["observed_accuracy"]
+        for a, b in zip(ordered, ordered[1:])
+    )
+    verdict = (
+        "Stated confidence does rise with observed accuracy here."
+        if monotonic
+        else "Stated confidence does <strong>not</strong> rise with observed accuracy: the "
+             "agent's most confident answers are among its least reliable, so the operating "
+             "point below is fitted to a shape, not read off a trend."
+    )
+
+    return f"""
+    <h2>Calibration and precision at coverage</h2>
+    <p>Does a resolution proposed at 0.90 confidence actually get confirmed 90% of the time?
+    Scored over {calibration['cases_scored']} cases; the table below is the grounded graph arm,
+    which is the one the operating point governs.</p>
+    <table>
+      <thead><tr><th>Stated confidence</th><th class="num">n</th>
+      <th class="num">Observed accuracy</th><th class="num">Gap</th></tr></thead>
+      <tbody>{reliability}</tbody>
+    </table>
+    <div class="callout">
+      <h3>It is miscalibrated, and not even monotonically</h3>
+      <p>{verdict} Every bin overstates itself. This is the constraint that makes the
+      threshold below a fact about <em>this model and this prompt</em> rather than a
+      portable setting — re-derive it whenever either changes.</p>
+    </div>
+
+    <h3>Precision at coverage — what each operating point costs and buys</h3>
+    <table>
+      <thead><tr><th>Threshold</th><th class="num">Resolution rate</th>
+      <th class="num">Escalation rate</th><th class="num">Error rate</th>
+      <th class="num">False-resolution exposure</th></tr></thead>
+      <tbody>{sweep}</tbody>
+    </table>
+    <p>Adopted: <strong>{recommended:.2f}</strong> —
+    {esc(calibration['recommendation']['why'])}. Chosen over the free improvement at
+    {calibration['recommendation']['free_improvement']['threshold']:.2f}, which costs no
+    coverage but removes far less exposure. Preferring the priced cutoff is a judgement about
+    reconciliation — a false accept is the failure that matters and a point of coverage is
+    cheap against it — not something the numbers settle on their own.</p>
+    """
+
+
 def build_report() -> str:
     curve = latest("learning-curve-*.json")
     chain = latest("ablation-2026*.json")
     graph = latest("ablation-graph-*.json")
     retrieval = latest("retrieval-*.json")
     deposit = latest("deposit-prompt-*.json")
+    calibration = latest("calibration-*.json")
     baseline = latest("2026-09-01-0838.json")
 
     sources = [
         name for name, data in (
             ("learning-curve", curve), ("ablation (chain)", chain),
             ("ablation (graph)", graph), ("retrieval", retrieval),
-            ("deposit-prompt", deposit), ("rules baseline", baseline),
+            ("deposit-prompt", deposit), ("calibration", calibration),
+            ("rules baseline", baseline),
         ) if data
     ]
 
@@ -264,10 +348,12 @@ result file; none is typed in. Regenerate rather than edit. -->
   th, td {{ text-align: left; padding: .5rem .65rem; border-bottom: 1px solid #e6e3dd; }}
   th {{ background: #f3f1ec; font-weight: 600; }}
   td.num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+  th.num {{ text-align: right; }}
   td.strong {{ font-weight: 650; }}
   td.control {{ color: #9a6a00; }}
   td.yes {{ color: #1a7f4b; font-weight: 600; }}
   td.no {{ color: #8a8a8a; }}
+  tr.chosen td {{ background: #f3f1ec; font-weight: 650; }}
   .callout {{ background: #fff; border: 1px solid #e6e3dd; border-left: 3px solid #14181f;
              padding: .9rem 1.1rem; margin: 1.4rem 0; border-radius: 3px; }}
   .callout h3 {{ margin-top: 0; }}
@@ -297,6 +383,7 @@ JSON; none is transcribed. Regenerating this page is a reproducibility check.</p
 {curve_section(curve, rules_rate)}
 {ablation_section(chain, graph)}
 {retrieval_section(retrieval)}
+{calibration_section(calibration)}
 {deposit_section(deposit)}
 
 <h2>Baselines</h2>
