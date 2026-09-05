@@ -48,19 +48,63 @@ No metric, chart, or claim in this repo is produced from anything but a committe
 
 ---
 
+## See it running
+
+| | |
+|---|---|
+| **The system** | https://precedent-k5qf.onrender.com |
+| **The argument** | https://precedent-3ob.pages.dev |
+
+The app sleeps when idle; the first request takes about a minute to wake it. It is seeded with
+real dataset cases, so the queue is populated on arrival.
+
+**A three-minute path through it.** Open the queue, pick the duplicate-charge case, and read the
+tie-out — two comparisons kept apart, because the bank credit is net of the processor's fee and
+the invoice is gross. Retrieved precedents sit *above* the proposal, so you judge whether the
+cases are alike before knowing what was concluded from them. Press **Confirm**: the system spends
+about twelve seconds writing a precedent from your decision, and `/corpus` gains an entry under
+*authored by operation*. The case then presents a second, separate gate for the refund — and
+refuses to offer the button, because the amount is over the per-call ceiling.
+
+That last refusal is the system working, not failing.
+
 ## Status
 
-Ring 0 complete. The deterministic baseline is measured and committed, which is the gate the spec
-sets before any LLM code may exist in the repo.
+Rings 0 through 5 are built and measured. Every figure below is read from a committed file in
+[`evals/results/`](evals/results/); none is typed in.
 
-| Baseline | Autonomous resolution rate | On held-out test set |
-|---|---|---|
-| Deterministic rules alone | **49.2%** (118/240) | **0.0%** |
+| | corpus of 42 | corpus of 151 | paired exact McNemar |
+|---|---|---|---|
+| **Autonomous resolution** | 70.0% | **86.7%** | p = 0.041, 15 gained / 5 lost |
+| Random-precedent control | 56.7% | 61.7% | p = 0.629 — **not significant** |
+| Cases only a precedent can answer | 0.0% | **83.3%** | p = 0.00006, 15 gained / **0 lost** |
 
-Full result: [`evals/results/`](evals/results/). The rules baseline resolves clean 1:1 matches
-(108) and fee/tax rounding deltas (10), and escalates the other 122 records — including 10 that
-are **genuinely unmatchable by construction**. Any system here reporting 100% coverage would be
-lying; the exception list is a permanent, mandatory output.
+The control draws the same number of precedents from the same corpus and differs only in whether
+they are *relevant*. It stays flat. That is what rules out "more text in the prompt", and it is
+the line that decides whether the other one means anything.
+
+The bottom row is the claim. Those cases carry a shortfall matching no statutory band, with
+nothing in the evidence saying why — a negotiated rebate, an advance already adjusted. They
+cannot be worked out. They can only be remembered, which is precisely what a corpus authored by
+the system's own operation provides and a better prompt does not.
+
+Measured on `nvidia/nemotron-3-super-120b-a12b`. The deterministic baseline this had to clear is
+**49.2%**, and **0.0%** on the held-out test set.
+
+### What this does not show
+
+- The reviewer in the learning-curve run is simulated: it confirms the agent when right, corrects
+  it when wrong, and rejects 15% of cases outright. The curve is an estimate, not a ceiling.
+- Seven of nine exception classes are derivable from the evidence and already sit at 98–100% with
+  no corpus at all. Giving the agent investigation tools removes the "having precedents" effect
+  entirely — **+0.0pp** — leaving **+9.7pp** attributable to their relevance. Reporting the total
+  as retrieval would over-claim.
+- The counterparty task is recall of a customer's standing terms. That is real institutional
+  knowledge, and it is not deep generalisation.
+- Precedent precision is approximated by reason-code agreement. A precedent of the right class can
+  still be the wrong precedent.
+
+[`FAILURES.md`](FAILURES.md) was opened on the first commit, not the last.
 
 ## Layout
 
@@ -68,13 +112,16 @@ lying; the exception list is a permanent, mandatory output.
 src/precedent/
   domain/      pure, zero I/O — money (integer paise), matching, reason codes, confidence
   adapters/    razorpay/ (client + webhook signature), storage/ (SQLite schema + repositories)
-  api/         FastAPI app, webhook receiver
+  api/         FastAPI app — webhook receiver, JSON gates, and seven server-rendered screens
+  graph/       the LangGraph investigation: classify -> retrieve -> investigate -> verify -> route
+  usecases/    deposit (review and precedent in one transaction), remediate (the money gate)
 evals/
   dataset/     seeded generator, committed 240-record dataset, real payment fixture
   gold.jsonl   hand-authored gold labels, one per record
   runner.py    scores the deterministic baseline against gold
   results/     every run, committed — including the bad ones
-docs/          PRECEDENT_SPEC.md, ARCHITECTURE.md, requirements, product design, implementation plan
+deploy/        entrypoint + Cloud Run script; render.yaml deploys the same image
+docs/          PRECEDENT_SPEC.md, ARCHITECTURE.md, requirements, product design, DEPLOYMENT.md
 FAILURES.md    opened on the first commit, not the last
 ```
 
@@ -82,10 +129,18 @@ FAILURES.md    opened on the first commit, not the last
 
 ```bash
 uv sync
-uv run pytest                        # 178 tests
+uv run pytest                        # 809 tests
 uv run python -m evals.dataset.generate   # regenerate the dataset (deterministic, fixed seed)
 uv run python -m evals.runner             # re-measure the baseline, write to evals/results/
+
+uv run python scripts/seed_demo.py        # populate a database with real dataset cases
+uv run uvicorn precedent.api.main:app     # then open http://localhost:8000
 ```
+
+Confirming a resolution authors a precedent, so the approval gate calls a model in the request
+path and needs `NVIDIA_API_KEY` or `GROQ_API_KEY`. Without one the gate refuses a confirmation
+rather than recording a review with nothing in the corpus behind it — the review and the deposit
+are one transaction, deliberately.
 
 Razorpay calls need test-mode credentials — copy `.env.example` to `.env` and fill it in. Nothing
 in the eval or the test suite requires them.
