@@ -144,3 +144,12 @@ class TestTheResultScreenNeverComputesAFigureOfItsOwn:
 
     def test_it_names_the_model_behind_the_number(self, mixed):
         assert "Model:" in mixed.get("/result").text
+
+    def test_it_says_the_measured_corpus_is_not_this_database(self, mixed):
+        # Without this, a reader sees "a corpus of 151" here and 3 on /corpus and concludes
+        # something is inconsistent. Two different corpora: one committed by a finished eval,
+        # one accumulating in this deployment. Depositing here cannot move a figure there.
+        body = flat(mixed.get("/result").text)
+        assert "This is not this database" in body
+        assert "will not move a number on this page" in body
+        assert 'href="/corpus"' in mixed.get("/result").text

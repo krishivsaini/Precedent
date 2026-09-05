@@ -268,6 +268,16 @@ def result():
     <p class="standfirst">Every figure here is read from
     <code>evals/results/</code> at request time. None is typed in.</p>
 
+    <div class="flag">
+      <h3>This is not this database</h3>
+      <p>The corpus below is the one an offline eval grew by replaying held-out exceptions
+      against a simulated reviewer &mdash; 42 precedents to 151, on a test set that is never
+      deposited into. The corpus on <a href="/corpus">this deployment</a> is a different and
+      much smaller thing, and depositing a precedent here will not move a number on this
+      page. It cannot: these figures were committed by a run that has already finished, which
+      is the only way a reported result can still be true a year from now.</p>
+    </div>
+
     <div class="headline">
       <span class="big">{pct(last['retrieved']['resolution_rate'])}</span>
       <span class="from">of held-out exceptions resolved without a human, at a corpus of
