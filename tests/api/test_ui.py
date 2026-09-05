@@ -294,10 +294,40 @@ class TestQualityFloor:
         assert ":focus-visible" in client.get("/exceptions/res_1").text
 
     def test_it_loads_with_no_external_asset(self, client):
-        # Works from a clone with no network, like everything else in this repo.
+        # Works from a clone with no network, like everything else in this repo. The bar is
+        # that nothing is *fetched*, not that no script exists: the gate's pending state is
+        # inline, ships in the same response, and needs no network to run.
         body = client.get("/exceptions/res_1").text
-        assert not re.search(r"<(script|link|img)\b", body)
+        assert not re.search(r"<script\b[^>]*\ssrc=", body)
+        assert not re.search(r"<(link|img)\b", body)
         assert "url(" not in body
+
+    def test_its_javascript_is_an_enhancement_rather_than_the_mechanism(self, client):
+        # The gate must work with scripting off, so the buttons carry their own name and
+        # value and the form posts on its own. If the decision ever depended on JS, a
+        # reviewer with it disabled would click Confirm and silently record nothing.
+        body = client.get("/exceptions/res_1").text
+        assert 'name="human_action" value="confirmed"' in body
+        assert '<form method="post" action="/exceptions/res_1/decide">' in body
+
+    def test_every_gate_button_carries_its_own_name_and_value(self, client):
+        # Two things depend on this. Without JS it is how the server learns which action was
+        # chosen; with JS it is what the submit handler copies into a hidden input before it
+        # disables the buttons, because a disabled button is not submitted.
+        body = client.get("/exceptions/res_1").text
+        buttons = re.findall(r"<button\b[^>]*>", body)
+        assert buttons
+        for button in buttons:
+            assert 'name="human_action"' in button, button
+            assert "value=" in button, button
+
+    def test_the_gate_says_a_slow_click_is_working(self, client):
+        # Confirming calls a model and takes seconds. A button that looks unpressed for that
+        # long is one a reviewer clicks again.
+        body = client.get("/exceptions/res_1").text
+        assert "data-pending" in body
+        assert 'class="pending"' in body
+        assert "takes a few" in body
 
     def test_values_are_escaped(self, tmp_path):
         with seed(tmp_path / "x.db", rationale="<script>alert(1)</script>") as client:

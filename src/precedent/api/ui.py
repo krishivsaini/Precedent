@@ -245,6 +245,15 @@ button.reject  { border-color: #B79A97; color: var(--debit); }
 button:hover { background: var(--ink); color: var(--paper); }
 button.reject:hover { background: var(--debit); border-color: var(--debit); color: #fff; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+/* A gate mid-submit. Held at the same weight rather than greyed to near-nothing: the
+   reviewer needs to still read what they chose while it is happening. */
+button[disabled] { opacity: .5; cursor: progress; }
+button[disabled]:hover { background: var(--card); color: var(--ink); }
+button.confirm[disabled], button.confirm[disabled]:hover { background: var(--ink);
+                                                           color: var(--paper); }
+button.reject[disabled]:hover { background: var(--card); border-color: #B79A97;
+                                color: var(--debit); }
+.pending { margin: .9rem 0 0; color: var(--muted); font-size: .95rem; }
 
 details.correct { margin-top: 1rem; border-top: 1px solid var(--rule); padding-top: .9rem; }
 details.correct summary { cursor: pointer; font-weight: 600; }
@@ -284,6 +293,40 @@ table.queue a:hover { text-decoration: underline; }
 """
 
 
+#: Progressive enhancement, and nothing more. With JavaScript off both gates still submit
+#: and still work; what this adds is the one thing the server cannot say — that a click
+#: taking fourteen seconds is working rather than broken. Confirming authors a precedent
+#: through a model, and a button that sits there looking unpressed for that long teaches the
+#: reviewer to click it again.
+#:
+#: The submitter's name and value are copied into a hidden input *before* the buttons are
+#: disabled. A disabled button is not submitted, so skipping that step would post a decision
+#: with no `human_action` at all — the reassurance silently breaking the form it was added
+#: to reassure people about.
+SCRIPT = """
+document.querySelectorAll('form[method="post"]').forEach(function (form) {
+  form.addEventListener('submit', function (event) {
+    var button = event.submitter;
+    if (!button || !button.name) { return; }
+
+    var carried = document.createElement('input');
+    carried.type = 'hidden';
+    carried.name = button.name;
+    carried.value = button.value;
+    form.appendChild(carried);
+
+    form.querySelectorAll('button').forEach(function (other) { other.disabled = true; });
+
+    var note = form.querySelector('.pending');
+    if (note) {
+      note.textContent = button.getAttribute('data-pending') || 'Recording\u2026';
+      note.hidden = false;
+    }
+  });
+});
+"""
+
+
 def page(title: str, body: str, here: str = "", waiting: int | None = None) -> HTMLResponse:
     """One shell for every screen, so the demo is a single app rather than a set of pages."""
     links = "".join(
@@ -299,7 +342,7 @@ def page(title: str, body: str, here: str = "", waiting: int | None = None) -> H
         "<header class='masthead'>"
         "<span class='name'><a href='/'>Precedent</a></span>"
         f'<nav>{links}</nav>{count}</header>'
-        f"{body}</div>"
+        f"{body}</div><script>{SCRIPT}</script>"
     )
 
 
@@ -629,13 +672,17 @@ def detail(resolution_id: str, conn=Depends(get_connection)):
             <input type="text" name="correction_note" placeholder="What the agent missed"
                    aria-label="What the agent missed">
             <button class="{"confirm" if not trustworthy else ""}"
-                    name="human_action" value="corrected">Correct and deposit</button>
+                    name="human_action" value="corrected"
+                    data-pending="Writing the precedent from your correction. This calls a
+model, so it takes a few seconds.">Correct and deposit</button>
           </div>
         </details>"""
     confirm_button = (
-        '<button class="confirm" name="human_action" value="confirmed">Confirm and '
-        'deposit</button>' if trustworthy else
-        '<button name="human_action" value="confirmed">Confirm anyway</button>'
+        '<button class="confirm" name="human_action" value="confirmed" '
+        'data-pending="Writing the precedent. This calls a model, so it takes a few '
+        'seconds.">Confirm and deposit</button>' if trustworthy else
+        '<button name="human_action" value="confirmed" data-pending="Writing the '
+        'precedent. This calls a model, so it takes a few seconds.">Confirm anyway</button>'
     )
 
     # Imported here rather than at module scope: `remediation_ui` imports this module's
@@ -650,9 +697,11 @@ def detail(resolution_id: str, conn=Depends(get_connection)):
       <form method="post" action="/exceptions/{esc(resolution_id)}/decide">
         <div class="actions">
           {confirm_button}
-          <button class="reject" name="human_action" value="rejected">Reject</button>
+          <button class="reject" name="human_action" value="rejected"
+                  data-pending="Recording. Nothing is written to the corpus.">Reject</button>
         </div>
         {correction}
+        <p class="pending" role="status" aria-live="polite" hidden></p>
       </form>
     </div>"""
 

@@ -199,10 +199,14 @@ def second_gate(conn, resolution) -> str:
 
     actions = f"""
         <div class="actions">
-          <button class="confirm" name="gate_action" value="approved">
+          <button class="confirm" name="gate_action" value="approved"
+                  data-pending="Sending the refund. Do not reload — the request carries a
+derived idempotency key, so it cannot double-send, but the outcome is worth waiting for.">
             Approve and send {rupees(proposal.amount_paise)}</button>
-          <button class="reject" name="gate_action" value="refused">Refuse</button>
-        </div>""" if not blocked else f"""
+          <button class="reject" name="gate_action" value="refused"
+                  data-pending="Recording the refusal. No money moves.">Refuse</button>
+        </div>
+        <p class="pending" role="status" aria-live="polite" hidden></p>""" if not blocked else f"""
         <div class="flag stop"><h3>Blocked by the ceiling</h3><p>{esc(reason)} Approving is
         not offered — a limit that can be clicked past is not a limit.</p></div>"""
 
