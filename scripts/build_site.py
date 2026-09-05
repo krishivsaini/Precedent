@@ -429,7 +429,7 @@ def live_link() -> str:
     return f'<a class="live" href="{esc(url)}">the running approval screen &rarr;</a>'
 
 
-def build(model: str, generated: str, sections: str) -> str:
+def build(model: str, generated: str, sections: str, script: str) -> str:
     return f"""<!doctype html>
 <html lang="en">
 <meta charset="utf-8">
@@ -455,7 +455,7 @@ corpus grows, while a random-precedent control stays flat.">
     none is typed in. Model: <code>{esc(model)}</code>. Built {esc(generated)}.</p>
   </footer>
 </div>
-<script>{JS}</script>
+<script>{script}</script>
 </body></html>"""
 
 
@@ -632,7 +632,31 @@ document.querySelectorAll('#gateDemo button').forEach(function(b){
 """
 
 
-def csp_headers() -> str:
+def script_text() -> str:
+    """The page's inline script: the gate demo, plus a wake-up call when there is an app.
+
+    **Why the page pings the app.** The service sleeps when idle and takes the better part of
+    a minute to wake. A reader who follows the link cold gets a blank browser and concludes
+    it is broken — the worst possible reading, since the thing they were about to look at is
+    the part that actually works. Landing here starts the wake-up, so by the time anyone has
+    read this far and clicked through, it is warm.
+
+    Fire-and-forget and `no-cors`: nothing on this page depends on the response, and the page
+    must render identically whether the app is up, asleep, or gone.
+    """
+    app = os.environ.get("PRECEDENT_APP_URL", "").strip().rstrip("/")
+    if not app:
+        return JS
+    return JS + """
+(function () {
+  try {
+    fetch(%s + "/healthz", { mode: "no-cors", cache: "no-store" });
+  } catch (e) { /* the page is complete without it */ }
+})();
+""" % json.dumps(app)
+
+
+def csp_headers(script: str) -> str:
     """Cloudflare Pages `_headers`, with the inline script pinned by hash.
 
     The script is generated right here, so its hash can be computed rather than maintained —
@@ -644,7 +668,8 @@ def csp_headers() -> str:
     hash — a broader grant than the one it would replace. On a page with no user input and no
     third-party script, the inline style is not the exposure worth contorting the chart for.
     """
-    digest = base64.b64encode(hashlib.sha256(JS.encode("utf-8")).digest()).decode("ascii")
+    digest = base64.b64encode(hashlib.sha256(script.encode("utf-8")).digest()).decode("ascii")
+    app = os.environ.get("PRECEDENT_APP_URL", "").strip().rstrip("/")
     policy = "; ".join([
         "default-src 'none'",
         "base-uri 'none'",
@@ -654,6 +679,8 @@ def csp_headers() -> str:
         "font-src https://fonts.gstatic.com",
         "style-src 'unsafe-inline' https://fonts.googleapis.com",
         f"script-src 'sha256-{digest}'",
+        # Only ever the one origin the page was built to wake, and only when there is one.
+        f"connect-src {app}" if app else "connect-src 'none'",
     ])
     return "\n".join([
         "/*",
@@ -688,12 +715,14 @@ def main() -> int:
         evidence(curve, chain, graph, calib),
     ])
     OUT.parent.mkdir(parents=True, exist_ok=True)
+    script = script_text()
     OUT.write_text(build(
         curve["model"],
         datetime.now(timezone.utc).strftime("%-d %B %Y"),
         sections,
+        script,
     ), encoding="utf-8")
-    HEADERS.write_text(csp_headers(), encoding="utf-8")
+    HEADERS.write_text(csp_headers(script), encoding="utf-8")
     print(f"written to {OUT} ({OUT.stat().st_size:,} bytes)")
     print(f"written to {HEADERS}")
     return 0
