@@ -398,9 +398,18 @@ def _tieout(case: ReconciliationCase) -> str:
     expected = case.expected_paise()
     bank_gap, customer_gap = settles - landed, expected - gross
 
-    def verdict(gap: int, whole: str, short: str) -> str:
-        return (f'<span class="ties">{whole}</span>' if gap == 0
-                else f'<span class="figure-neg">{short}</span>')
+    def verdict(gap: int, whole: str, short: str, over: str) -> str:
+        """Three outcomes, not two.
+
+        A gap has a sign, and the earlier version read every non-zero gap as a shortfall —
+        so a duplicate charge, where the customer paid *twice*, was captioned "the customer
+        withheld part of the invoice" directly beneath a figure showing the opposite. That is
+        the exact failure this whole screen exists to prevent: a line of copy asserting
+        something the numbers beside it disprove.
+        """
+        if gap == 0:
+            return f'<span class="ties">{whole}</span>'
+        return f'<span class="figure-neg">{short if gap > 0 else over}</span>'
 
     return f"""
     <div class="tieout">
@@ -414,18 +423,26 @@ def _tieout(case: ReconciliationCase) -> str:
           {_row("Actually landed", landed)}
           {_row("Unexplained", bank_gap, cls="tie")}
         </table>
-        <p class="reads">{verdict(bank_gap, "The credit ties out.",
-                                  "The credit is short by more than the fee explains.")}</p>
+        <p class="reads">{verdict(
+            bank_gap,
+            "The credit ties out.",
+            "The credit is short by more than the fee explains.",
+            "More reached the bank than these payments account for.")}</p>
       </div>
       <div>
         <h3>Against the invoice</h3>
         <table class="ledger">
           {_row("Ledger expects, gross", expected)}
           {_row("Customer paid, gross", gross)}
-          {_row("Kept back", customer_gap, cls="tie")}
+          {_row("Kept back" if customer_gap >= 0 else "Overpaid",
+                customer_gap if customer_gap >= 0 else -customer_gap, cls="tie")}
         </table>
-        <p class="reads">{verdict(customer_gap, "The customer paid in full.",
-                                  "The customer withheld part of the invoice.")}</p>
+        <p class="reads">{verdict(
+            customer_gap,
+            "The customer paid in full.",
+            "The customer withheld part of the invoice.",
+            "The customer paid more than the invoice — a duplicate charge is the "
+            "usual cause.")}</p>
       </div>
     </div>
     <p class="note">Two comparisons, kept apart on purpose. The bank credit is net of the

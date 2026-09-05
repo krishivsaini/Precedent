@@ -223,6 +223,48 @@ class TestTheGate:
             assert "now in the corpus" in body
 
 
+class TestTheWordsAgreeWithTheFigures:
+    """The screen's one job is that a caption never contradicts the number beside it."""
+
+    def test_an_overpayment_is_not_called_a_shortfall(self, tmp_path):
+        # A duplicate charge pays the invoice twice. The earlier renderer read every
+        # non-zero gap as a shortfall and captioned it "the customer withheld part of the
+        # invoice" directly under a figure showing the opposite.
+        conn = connect(str(tmp_path / "over.db"))
+        init_db(conn)
+        PaymentsRepository(conn).insert(PaymentRecord(
+            payment_id="pay_a", order_id="order_1", amount_paise=32_800, captured_at=NOW,
+            status="captured", source="synthetic", fee_paise=0, tax_paise=0,
+        ))
+        PaymentsRepository(conn).insert(PaymentRecord(
+            payment_id="pay_b", order_id="order_1", amount_paise=32_800, captured_at=NOW,
+            status="captured", source="synthetic", fee_paise=0, tax_paise=0,
+        ))
+        LedgerEntriesRepository(conn).insert(LedgerEntryRecord(
+            entry_id="led_1", order_id="order_1", expected_amount_paise=32_800,
+            invoice_no="INV-1", customer_name="Sunrise Bakery", terms="net_30",
+        ))
+        ExceptionsRepository(conn).insert(ExceptionRecord(
+            exception_id="exc_1", batch_id="b1", kind="duplicate_payment",
+            member_refs=["pay_a", "pay_b", "led_1"], detected_at=NOW, status="open",
+            correlation_id="corr_1",
+        ))
+        ResolutionsRepository(conn).insert(ResolutionRecord(
+            resolution_id="res_1", exception_id="exc_1", proposed_by="agent",
+            confidence=0.78, rationale="charged twice", cited_precedents=[], verified=True,
+        ))
+        conn.commit()
+        conn.close()
+        app = create_app(db_path=str(tmp_path / "over.db"))
+        app.dependency_overrides[depositing_llm] = lambda: ScriptedLLM([AUTHORED])
+        with TestClient(app) as client:
+            body = client.get("/exceptions/res_1").text
+            assert "paid more than the invoice" in body
+            assert "withheld part of the invoice" not in body
+            assert "Overpaid" in body
+            assert "Kept back" not in body
+
+
 class TestFailureStatesAreDistinct:
     """§3.2b — rendering 'no proposal' identically whether the system was thinking,
     unreachable, or refusing to guess teaches the reviewer to distrust all three."""
